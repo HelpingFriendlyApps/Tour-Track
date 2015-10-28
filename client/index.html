@@ -6,9 +6,36 @@
   
   <body ng-app="myApp">
     <div class="container">
-      <div ui-view></div>
+      <!-- <div ui-view></div> -->
+
+      <div id="setlist">
+
+      </div>
+
       </div>
     </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+    <!-- Phish API Example - Latest Setlist -->
+    <script type="text/javascript">
+      $.getJSON('https://api.phish.net/api.js?api=2.0&method=pnet.shows.setlists.latest&format=json&callback=?',
+        function pnet3setlist(data) {
+          $('#setlist').append("<div id=\"pnetsetlist\">");
+          for(i=0;i<data.length;i++) {
+            var n = data[i];
+            $('#setlist').append("<h3>"+n['mmddyy']+" <a href=\"http://phish.net/setlists/?d="+n['showdate']+"\">"+n['venue']
+            + "</a></h3><p class='pnetsl'>"+n['setlistdata']+"</p>");
+            if(n['setlistnotes'].replace(/^\s+|\s+$/g,"")!='') { 
+              $('#setlist').append("<p class='pnetsn' style=\"font-size:10px;\">"+n['setlistnotes']+"</p>"); 
+            }
+          }
+          $('#setlist').append("</div>");
+        }   
+      );  
+    </script>
+
   </body>
 
 
