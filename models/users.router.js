@@ -8,10 +8,10 @@ router.get('/:id', function (req, res, next) {
 	console.log("made it in")
 	// db('users').select('*')
 	db('users').select('*').where({uid: id})
-	.then(function (res) {
+	.then(function (data) {
 		console.log("res", res)
 		console.log("res data", res.data)
-		res.json(res);
+		res.json(data);
 	})
 	.then(null, next);
 });
