@@ -1,6 +1,7 @@
 var express = require('express');
 var Path = require('path');
 var routes = express.Router();
+var db = require('./db');
 
 //
 //route to your index.html
