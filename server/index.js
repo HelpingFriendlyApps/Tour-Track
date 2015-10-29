@@ -12,6 +12,9 @@ routes.use(express.static(assetFolder));
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
+
+app.use('/users', require('../models/users.router'));
+
 routes.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'angular'])
 });
@@ -37,6 +40,7 @@ if(process.env.NODE_ENV !== 'test') {
 
   // Mount our main router
   app.use('/', routes);
+  
 
   // Start the server!
   var port = process.env.PORT || 4000;
