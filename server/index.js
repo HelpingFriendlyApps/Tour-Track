@@ -13,8 +13,7 @@ routes.use(express.static(assetFolder));
 // Example endpoint (also tested in test/server/index_test.js)
 //
 
-routes.use('/users', require('../models/users.router'));
-
+routes.use('/users', require('../models/Users'));
 routes.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'angular'])
 });
