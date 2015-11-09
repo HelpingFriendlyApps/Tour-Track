@@ -25,7 +25,7 @@ var Users = module.exports = {
     },
     
     updateOrCreate : function(attrs){
-        Users.update(attrs)
-        .catch(Users.createUser(attrs));
+        var updated = Users.update(attrs)
+        return updated ? updated : Users.createUser(attrs);
     }
 }
