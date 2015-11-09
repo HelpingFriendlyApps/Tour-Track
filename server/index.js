@@ -2,6 +2,7 @@ var express = require('express');
 var Path = require('path');
 var routes = express.Router();
 var db = require('./db');
+var session = require('cookie-session');
 
 //
 //route to your index.html
@@ -41,8 +42,17 @@ if(process.env.NODE_ENV !== 'test') {
   var port = process.env.PORT || 4000;
   var host = process.env.HOST || 'http://localhost:' + port;
   app.listen(port);
+
+  app.use(session({
+    name: 'Tour-Track:session',
+    secret: process.env.SESSION_SECRET || 'development',
+    secure: (!! process.env.SESSION_SECRET),
+    signed: true
+  }))
+
   //pass the server to Passport
   require('./Auth').mount(app, host);
+
 
 
   // routes.get('/*', function(req, res){

@@ -1,19 +1,19 @@
 var Promise = require('bluebird');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
-var User = require('./API/Users-api')
+var User = require('./models/Users')
 
 exports.mount = function (app, host) {
 passport.use(new FacebookStrategy({
     clientID: "780383652067079",
     clientSecret: "5a46ca22db78f89df6d3e6e431611b49",
-    callbackURL: host + "/auth/facebook/callback",
-    enableProof: false
+    callbackURL: host + "/auth/facebook/callback"
   },
 
   function(accessToken, refreshToken, profile, done) {
-    
-    importUser(profile).then(done.papp(null))
+
+    importUser(profile);
+    done(null, profile);
   }
 ))
 
@@ -29,30 +29,31 @@ passport.deserializeUser(function(obj, done) {
 });
 
 app.get('/auth/facebook',
-  passport.authenticate('facebook'),
-  function(req, res){
-    // The request will be redirected to Facebook for authentication, so this
-    // function will not be called.
-  });
+  passport.authenticate('facebook'));
 
 
 app.get('/auth/facebook/callback', 
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
+  passport.authenticate('facebook', { failureRedirect: '/#/' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/#/about');
   });
+
+app.get('/me', function(req, res){
+  console.log(req.user)
+    res.send(req.user)
+})
+
 
 app.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/');
+  res.redirect('/#/');
 });
 
 function importUser (user) {
   return User.updateOrCreate({
     uid: user.id,
     name: user.displayName,
-    email: null,
-    avatar_url: null
+    email: null
   })
 }
 

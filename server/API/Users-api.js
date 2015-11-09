@@ -8,6 +8,10 @@ router.get('/', function (req, res, next) {
 	Users.getUsers().then(function(x){ res.send(x)})
 });
 
+router.post('/', function (req, res, next) {
+	Users.createUser().then(function(x){ res.send(x)})
+});
+
 
 router.get('/:id', function (req, res, next) {
 	var id = req.params.id;
