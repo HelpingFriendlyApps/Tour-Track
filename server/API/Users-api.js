@@ -1,15 +1,11 @@
 var express = require('express');
-var router = express.Router();
-var db  = require('../server/db');
+var db  = require('../db');
+var Users = require('../models/Users')
 
+var router = module.exports = express.Router();
 
 router.get('/', function (req, res, next) {
-	db('users').select('*')
-	.then(function (data) {
-		console.log("All users in user table: ", data)
-		res.send(data);
-	})
-	.then(null, next);
+	Users.getUsers().then(function(x){ res.send(x)})
 });
 
 
@@ -23,4 +19,3 @@ router.get('/:id', function (req, res, next) {
 	.then(null, next);
 });
 
-module.exports = router;
