@@ -9,10 +9,11 @@ exports.up = function(knex, Promise) {
 			table.string('password');
 			table.string('name');
 			table.string('email');
+			table.string('phish_username');
+			table.string('phish_password');
 			table.timestamps();
 		})
 	])
-
 };
 
 exports.down = function(knex, Promise) {
