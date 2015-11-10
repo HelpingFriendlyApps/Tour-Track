@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('Tour-Track', [
-    'ui.router'
+    'ui.router',
+    'ngSanitize'
   ])
 
     .config(function($stateProvider, $urlRouterProvider) {
