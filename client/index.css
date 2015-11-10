@@ -1,10 +1,20 @@
 h1{
-	color: #2380E2;
-	font-family: sans-serif;
+	color: #9bb1b4;
+  background : url("http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0271/8974/rrrrrrdonuts_V_drop_preview.png");
+	background-size: 20%;
+  font-family: sans-serif;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body{
+  background: url("http://phishthoughts.com/wp-content/uploads/2012/08/DSC00438.jpg");
+  background-size: 100%;
 }
 
 .btn {
-  background: #639FDE;
+  background: url("http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0271/8974/rrrrrrdonuts_V_drop_preview.png");
+  background-size: 80%;
   border-radius: 28px;
   font-family: sans-serif;
   color: #ffffff;
@@ -15,7 +25,8 @@ h1{
 }
 
 .btn:hover{
-  background-color: #2380E2;
+  background: url("http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0271/8974/rrrrrrdonuts_V_drop_preview.png");
+  background-size: 300%;
 }
 
 
@@ -23,4 +34,9 @@ h1{
 	background-color: #dcdcdc;
 	text-align: center;
 	border-radius: 2px;
+}
+
+.home{
+  text-align: center;
+  padding-top: 15%;
 }

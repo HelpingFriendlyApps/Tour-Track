@@ -2,6 +2,7 @@ var express = require('express');
 var Path = require('path');
 var routes = express.Router();
 var db = require('./db');
+var session = require('cookie-session');
 
 //
 //route to your index.html
@@ -13,7 +14,7 @@ routes.use(express.static(assetFolder));
 // Example endpoint (also tested in test/server/index_test.js)
 //
 
-routes.use('/users', require('../models/Users'));
+routes.use('/users', require('./API/Users-api.js'));
 routes.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'angular'])
 });
@@ -24,10 +25,6 @@ if(process.env.NODE_ENV !== 'test') {
   // This is for supporting browser history pushstate.
   // NOTE: Make sure this route is always LAST.
   //
-  routes.get('/*', function(req, res){
-    res.sendFile( assetFolder + '/index.html' )
-  })
-
   //
   // We're in development or production mode;
   // create and run a real server.
@@ -43,9 +40,31 @@ if(process.env.NODE_ENV !== 'test') {
 
   // Start the server!
   var port = process.env.PORT || 4000;
+  var host = process.env.HOST || 'http://localhost:' + port;
   app.listen(port);
+
+  app.use(session({
+    name: 'Tour-Track:session',
+    secret: process.env.SESSION_SECRET || 'development',
+    secure: (!! process.env.SESSION_SECRET),
+    signed: true
+  }))
+
+  //pass the server to Passport
+  require('./Auth').mount(app, host);
+
+
+
+  // routes.get('/*', function(req, res){
+  //   res.sendFile( assetFolder + '/index.html' )
+  // })
+
+
   console.log("Listening on port", port);
 } else {
   // We're in test mode; make this file importable instead.
   module.exports = routes;
 }
+
+
+
