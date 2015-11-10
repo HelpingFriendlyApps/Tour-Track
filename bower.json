@@ -8,7 +8,9 @@
     "angular-resource": "^1.4.0",
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
-    "angular-ui-router": "^0.2.15"
+    "angular-ui-router": "^0.2.15",
+    "bourbon": "7e6e3f22d14641a787f021e985781bff4edf9627",
+    "neat": "1.4.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

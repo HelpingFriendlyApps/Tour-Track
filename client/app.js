@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp', [
+angular.module('Tour-Track', [
     'ui.router'
   ])
 
@@ -15,10 +15,10 @@ angular.module('myApp', [
             controller: 'MainCtrl'
         })
 
-        .state('about', {
-          url: '/about',
-          templateUrl: 'views/about.html',
-          controller: 'AboutCtrl'
+        .state('profile', {
+          url: '/profile',
+          templateUrl: 'views/profile.html',
+          controller: 'ProfileCtrl'
         });
         
 });

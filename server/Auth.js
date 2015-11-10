@@ -7,7 +7,8 @@ exports.mount = function (app, host) {
   passport.use(new FacebookStrategy({
       clientID: "780383652067079",
       clientSecret: "5a46ca22db78f89df6d3e6e431611b49",
-      callbackURL: host + "/auth/facebook/callback"
+      callbackURL: host + "/auth/facebook/callback",
+      profileFields: ['id', 'displayName', 'photos', 'emails','age_range','birthday']
     },
 
     function(accessToken, refreshToken, profile, done) {
@@ -35,7 +36,7 @@ exports.mount = function (app, host) {
   app.get('/auth/facebook/callback', 
     passport.authenticate('facebook', { failureRedirect: '/#/' }),
     function(req, res) {
-      res.redirect('/#/about');
+      res.redirect('/#/profile');
     });
 
   app.get('/me', function(req, res){
@@ -49,9 +50,11 @@ exports.mount = function (app, host) {
   });
 
   function importUser (user) {
+    console.log(user.photos[0])
     return User.updateOrCreate({
       uid: user.id,
       name: user.displayName,
+      profilePic: user.photos[0].value,
       email: null
     })
   }
