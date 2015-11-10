@@ -1,6 +1,6 @@
 .container {
   @include outer-container;
- 
+
   .child {
     height: 200px;
   }

@@ -4,11 +4,14 @@ angular.module('Tour-Track')
   .factory('Profile', function($http) {
 
     return {
+
         userObject : function(){
             return $http.get('/me')
-            // .success(function(data, status, headers, config) {
-            //     return data;
-            // })
+        },
+
+        userShows : function(id){
+            console.log(id)
+            return $http.get('/users/shows/' + id);
         }
     }
 });

@@ -8,6 +8,7 @@ exports.mount = function (app, host) {
       clientID: "780383652067079",
       clientSecret: "5a46ca22db78f89df6d3e6e431611b49",
       callbackURL: host + "/auth/facebook/callback",
+      scope: "email",
       profileFields: ['id', 'displayName', 'photos', 'emails','age_range','birthday']
     },
 
@@ -50,12 +51,12 @@ exports.mount = function (app, host) {
   });
 
   function importUser (user) {
-    console.log(user.photos[0])
+    console.log(user.emails[0].value)
     return User.updateOrCreate({
       uid: user.id,
       name: user.displayName,
-      profilePic: user.photos[0].value,
-      email: null
+      email: user.emails[0].value,
+      profilePic: user.photos[0].value
     })
   }
 

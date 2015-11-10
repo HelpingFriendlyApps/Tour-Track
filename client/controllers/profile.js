@@ -5,9 +5,14 @@ angular.module('Tour-Track')
     
     	Profile.userObject().then(function(data){ 
             var user = data.data;
-            console.log(user)
             $scope.id = user.uid;
-            $scope.pic = user.profilePic
+            $scope.pic = user.profilePic;
             $scope.name = user.name;
-        });
+            return user;
+        }).then(function(data){
+            Profile.userShows(data.uid).then(function(data){
+                console.log(data)
+                $scope.shows = data.data    ;
+            })
+        })
 }]);
