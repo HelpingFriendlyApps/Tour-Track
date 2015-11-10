@@ -39,7 +39,7 @@ exports.mount = function (app, host) {
     });
 
   app.get('/me', function(req, res){
-      res.send(req.user)
+    User.getUser(req.user.id).then(function(userObj){res.send(userObj)});
   })
 
 
