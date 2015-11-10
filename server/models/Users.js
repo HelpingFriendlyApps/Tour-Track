@@ -11,6 +11,13 @@ var Users = module.exports = {
         })
     },
 
+    getUser : function(id){
+        return db('users').select('*').where({ uid: id })
+        .then(function (data) {
+            return data;
+        })
+    },
+
     createUser : function(attrs){
         attrs.created_at = new Date();
         return db('users').insert(attrs).return(attrs);
@@ -25,7 +32,7 @@ var Users = module.exports = {
     },
     
     updateOrCreate : function(attrs){
-        var updated = Users.update(attrs)
+        var updated = Users.update(attrs);
         return updated ? updated : Users.createUser(attrs);
     }
 }

@@ -15,8 +15,7 @@ router.post('/', function (req, res, next) {
 
 router.get('/:id', function (req, res, next) {
 	var id = req.params.id;
-	db('users').select('*').where({uid: id})
-	.then(function (data) {
+	Users.getUser(id).then(function (data) {
 		console.log("single user with requested ID: ", data)
 		res.send(data);
 	})
