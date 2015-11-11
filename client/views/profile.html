@@ -5,7 +5,15 @@
     <img src="{{pic}}"/>
     <button ng-click="getUserSongs(id)">Get your songs!</button>
     <button ng-click="getUserShows(id)">Get your shows!</button>
-
+    <!-- ng-if='Phish_username' add below -->
+    <div>
+        <h1>Please add your phish.net username and password</h1>
+        <form ng-submit='submitPhishAccountDeets(id)' class='phish-deets'>
+            <input type='text' ng-model='phishUsername' placeholder='Phish Username'>
+            <input type='text' ng-model='phishPassword' placeholder='Phish Password'>
+            <input type="submit" value="Submit now" />
+        </form>
+    </div>
   </div>
 </div>
 <table class="child right">
