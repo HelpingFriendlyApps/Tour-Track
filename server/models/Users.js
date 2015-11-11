@@ -24,6 +24,10 @@ var Users = module.exports = {
         return db('users').insert(attrs).return(attrs);
     },
 
+    // update:
+    // Every Knex query returns an array of objects
+    // If affectedCount (array of objects) is empty => return an Error
+    // If not => return attrs => updateOrCreate will catch attrs and pass it into createUser
     update: function (attrs) {
         attrs.updated_at = new Date();
         return db('users').update(attrs).where({ uid: attrs.uid })
