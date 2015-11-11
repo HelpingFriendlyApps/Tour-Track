@@ -4,6 +4,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var User = require('./models/Users')
 
 exports.mount = function (app, host) {
+  
   passport.use(new FacebookStrategy({
       clientID: process.env.facebookClientId,
       clientSecret: process.env.facebookClientSecret,

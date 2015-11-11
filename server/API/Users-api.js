@@ -12,12 +12,22 @@ router.post('/', function (req, res, next) {
 	Users.createUser().then(function(x){ res.send(x)})
 });
 
+router.get('/shows/songs/:id', function(req, res, next){
+    var id = req.params.id;
+    Users.getUserShows(id).then(function(userShows){
+        Users.getAllSongs(userShows).then(function(x){ 
+            res.send(x);
+        })
+    })
+});
+
 router.get('/shows/:id', function(req, res, next){
     var id = req.params.id;
     Users.getUserShows(id).then(function(userShows){
         res.send(userShows);
     })
 });
+
 
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
