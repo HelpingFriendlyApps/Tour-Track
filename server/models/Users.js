@@ -1,5 +1,6 @@
-var db      = require('../db.js')
-var Promise = require('bluebird')
+var db      = require('../db.js');
+var Promise = require('bluebird');
+var request = require('request-promise');
 
 var Users = module.exports = {
 
@@ -10,29 +11,39 @@ var Users = module.exports = {
             return data;
         })
     },
-
     getUser : function(id){
         return db('users').select('*').where({ uid: id })
         .then(function (data) {
-            return data;
+            return data[0];
         })
     },
-
     createUser : function(attrs){
         attrs.created_at = new Date();
         return db('users').insert(attrs).return(attrs);
     },
-
     update: function (attrs) {
-        attrs.updated_at = new Date()
+        attrs.updated_at = new Date();
         return db('users').update(attrs).where({ uid: attrs.uid })
           .then(function(affectedCount) {
             return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs;
           });
     },
-    
+
+    getUserShows : function(id){
+        return Users.getUser(id).then(function(x){
+            return request('https://api.phish.net/api.js?api=2.0&method=pnet.user.myshows.get&format=json&apikey=' + process.env.phishAPIKEY + '&username=' + x.phish_username)
+        })
+    },
+
+    getAllSongs : function(showArray, callback){
+        var promiseArr = [];
+        JSON.parse(showArray).map(function(show){
+            promiseArr.push(request('https://api.phish.net/api.js?api=2.0&method=pnet.shows.setlists.get&format=html&apikey=' + process.env.phishAPIKEY + '&showid=' + show.showid));
+        })
+        return Promise.all(promiseArr);
+    },
+
     updateOrCreate : function(attrs){
-        var updated = Users.update(attrs);
-        return updated ? updated : Users.createUser(attrs);
+        return Users.update(attrs).catch(Users.createUser(attrs));
     }
 }

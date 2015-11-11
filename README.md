@@ -1,10 +1,6 @@
-# Node Catapult - Angular
+# Tour Track
 
-A boilerplate starter project that includes Node, Express, and Angular:
-
-* Lightweight - Comprehend everything.
-* Logical - Firm basics for development and production.
-* Swift - Get started immediately.
+Phish tour statistics visualizer.
 
 ## Getting Started
 
@@ -13,6 +9,10 @@ $ git clone https://github.com/dYale/node-catapult-angular my-project
 $ cd my-project
 $ npm install
 $ bower install
+
+add @import '../../../../neat/app/assets/stylesheets/neat-helpers';
+to ./client/lib/bitters/app/assets/stylesheets/_grid_settings.scss
+
 $ npm start
 ```
 

@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="child left">
+    <div class='profile'>
+    <h2>{{name}}</h2>
+    <img src="{{pic}}"/>
+    <button ng-click="getUserSongs(id)">Get your songs!</button>
+    <button ng-click="getUserShows(id)">Get your shows!</button>
+
+  </div>
+</div>
+<table class="child right">
+    <tr class='deets' ng-repeat="show in shows">
+        <td>{{show.venuename}}<td>
+        <td>{{show.nicedate}}<td>
+        <td>{{show.city}}<td>
+        <td>{{show.state}} <td> 
+        <td>{{show.country}}<td>
+        <div class='setlist' ng-bind-html='show.sanitizedSetList'></div>
+    </tr>
+</table>
+</div>
