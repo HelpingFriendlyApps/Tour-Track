@@ -38,7 +38,7 @@ var Users = module.exports = {
         })
     },
 
-    getAllSongs : function(showArray, callback){
+    getAllSongs : function(showArray){
         var promiseArr = [];
         JSON.parse(showArray).map(function(show){
             promiseArr.push(request('https://api.phish.net/api.js?api=2.0&method=pnet.shows.setlists.get&format=html&apikey=' + process.env.phishAPIKEY + '&showid=' + show.showid));
@@ -49,9 +49,5 @@ var Users = module.exports = {
 
     updateOrCreate : function(attrs){
         return Users.update(attrs).catch(Users.createUser(attrs));
-    },
-
-    addPhishNETAccountDetails : function(attrs){
-        return Users.update(attrs)
     }
 }
