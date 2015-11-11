@@ -11,16 +11,19 @@ var Users = module.exports = {
             return data;
         })
     },
+
     getUser : function(id){
         return db('users').select('*').where({ uid: id })
         .then(function (data) {
             return data[0];
         })
     },
+
     createUser : function(attrs){
         attrs.created_at = new Date();
         return db('users').insert(attrs).return(attrs);
     },
+
     update: function (attrs) {
         attrs.updated_at = new Date();
         return db('users').update(attrs).where({ uid: attrs.uid })
@@ -40,10 +43,15 @@ var Users = module.exports = {
         JSON.parse(showArray).map(function(show){
             promiseArr.push(request('https://api.phish.net/api.js?api=2.0&method=pnet.shows.setlists.get&format=html&apikey=' + process.env.phishAPIKEY + '&showid=' + show.showid));
         })
+        //A-synch technique to run all the api calls and then return them together after all complete
         return Promise.all(promiseArr);
     },
 
     updateOrCreate : function(attrs){
         return Users.update(attrs).catch(Users.createUser(attrs));
+    },
+
+    addPhishNETAccountDetails : function(attrs){
+        return Users.update(attrs)
     }
 }

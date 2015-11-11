@@ -2,7 +2,6 @@
 
 angular.module('Tour-Track')
   .controller('ProfileCtrl', ['$scope','$http', 'Profile', function($scope,$http, Profile) {
-    
         //CURRENTLY GETS ALL SETLISTS, NEED TO PARSE SONGS AND MAKE SONG OBJECT
         $scope.getUserSongs = function(id){
             Profile.userSongs(id).then(function(x){
@@ -15,6 +14,15 @@ angular.module('Tour-Track')
             Profile.userShows(id).then(function(x){
                 console.log(x);  
             })
+        }
+        //adds phish.net account details to database enabling api usage.
+        $scope.submitPhishAccountDeets = function(uid){
+            var phishObj = {uid: uid, phish_username: this.phishUsername, phish_password: this.phishPassword};
+            Profile.addPhishAccountDetails(phishObj).then(function(data){
+                $scope.shows = data.data;
+            })
+            this.phishUsername = '';
+            this.phishPassword = '';
         }
 
         Profile.userObject().then(function(data){ 

@@ -25,6 +25,11 @@ angular.module('Tour-Track')
                     return parsedShows[0];
                 })
             })
+        },
+
+        addPhishAccountDetails : function(accountDetails){
+            return $http.post('/users/phishNETaccount/' + accountDetails.uid, accountDetails);
         }
+
     }
 });
