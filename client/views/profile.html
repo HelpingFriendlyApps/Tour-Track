@@ -1,19 +1,18 @@
 <div class="container">
   <div class="child left">
-    <div class='home'>
+    <div class='profile'>
     <h2>{{name}}</h2>
     <img src="{{pic}}"/>
   </div>
 </div>
-<div class="child right">
-    <div ng-repeat="show in shows">
-        <div>{{show.venue}}<div>
-        <div>{{show.nicedate}}<div>
-        <div>{{show.city}}<div>
-        <div>{{show.state}}<div>
-        <div>{{show.country}}<div>
+<table class="child right">
+    <tr class='deets' ng-repeat="show in shows">
+        <td>{{show.venuename}}<td>
+        <td>{{show.nicedate}}<td>
+        <td>{{show.city}}<td>
+        <td>{{show.state}} <td> 
+        <td>{{show.country}}<td>
         <div class='setlist' ng-bind-html='show.sanitizedSetList'></div>
-
-    <div>
-</div>
+    </tr>
+</table>
 </div>

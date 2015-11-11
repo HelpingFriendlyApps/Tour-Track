@@ -5,8 +5,8 @@ var User = require('./models/Users')
 
 exports.mount = function (app, host) {
   passport.use(new FacebookStrategy({
-      clientID: "780383652067079",
-      clientSecret: "5a46ca22db78f89df6d3e6e431611b49",
+      clientID: process.env.facebookClientId,
+      clientSecret: process.env.facebookClientSecret,
       callbackURL: host + "/auth/facebook/callback",
       scope: "email",
       profileFields: ['id', 'displayName', 'photos', 'emails','age_range','birthday']
@@ -51,7 +51,6 @@ exports.mount = function (app, host) {
   });
 
   function importUser (user) {
-    console.log(user.emails[0].value)
     return User.updateOrCreate({
       uid: user.id,
       name: user.displayName,

@@ -34,19 +34,11 @@ var Users = module.exports = {
 
     getUserShows : function(id){
         return Users.getUser(id).then(function(x){
-            return request({
-                method: 'GET',
-                uri: 'https://api.phish.net/api.js',
-                api: '2.0',
-                method: 'pnet.user.uid.get',
-                format: 'json',
-                username: x.phish_username,
-                password: x.phish_password,
-                callback: 'pnet3setlist'
+            return request('https://api.phish.net/api.js?api=2.0&method=pnet.user.myshows.get&format=json&apikey=' + process.env.phishAPIKEY + '&username=' + x.phish_username, function(x,y,z){
             })
         })
     },
-    
+
     updateOrCreate : function(attrs){
         return Users.update(attrs).catch(Users.createUser(attrs));
     }

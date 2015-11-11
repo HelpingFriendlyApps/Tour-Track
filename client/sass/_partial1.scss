@@ -1,6 +1,5 @@
 .container {
   @include outer-container;
-
   .child {
     height: 200px;
   }
@@ -8,7 +7,7 @@
   .left {
     @include span-columns(6);
   }
- 
+
   .right {
     @include span-columns(5);
 
@@ -18,3 +17,4 @@
     }
   }
 }
+

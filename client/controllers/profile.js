@@ -11,7 +11,6 @@ angular.module('Tour-Track')
             return user;
         }).then(function(data){
             Profile.userShows(data.uid).then(function(data){
-                console.log(data.data)
                 $scope.shows = data.data;
             })
         })
