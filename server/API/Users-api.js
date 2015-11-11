@@ -14,7 +14,7 @@ router.post('/', function (req, res, next) {
 
 router.post('/phishNETaccount/:id', function (req, res, next) {
     var id = req.params.id;
-	Users.addPhishNETAccountDetails(req.body).then(function(x){
+	Users.update(req.body).then(function(x){
 		Users.getUserShows(id).then(function(userShows){
         	res.send(userShows);
     	})
@@ -30,14 +30,12 @@ router.get('/shows/songs/:id', function(req, res, next){
     })
 });
 
-
 router.get('/shows/:id', function(req, res, next){
     var id = req.params.id;
     Users.getUserShows(id).then(function(userShows){
         res.send(userShows);
     })
 });
-
 
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
@@ -47,5 +45,3 @@ router.get('/:id', function (req, res, next) {
     })
     .then(null, next);
 });
-
-
