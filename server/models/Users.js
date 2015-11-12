@@ -1,8 +1,8 @@
 var db      = require('../db.js');
 var Promise = require('bluebird');
 var request = require('request-promise');
-
-var Users = module.exports = {
+var Songs   = require('./Songs')
+var Users   = module.exports = {
 
     getUsers : function(){
         return db('users').select('*')
@@ -42,13 +42,33 @@ var Users = module.exports = {
         })
     },
 
-    getAllSongs : function(showArray){
-        var promiseArr = [];
-        JSON.parse(showArray).map(function(show){
-            promiseArr.push(request('https://api.phish.net/api.js?api=2.0&method=pnet.shows.setlists.get&format=html&apikey=' + process.env.phishAPIKEY + '&showid=' + show.showid));
+    getAllSongs: function (showArray) {
+    var promiseArr = [];
+    JSON.parse(showArray).map(function (show) {
+        promiseArr.push(request('http://phish.in/api/v1/shows/' + show.showdate))
+    })
+    //A-synch technique to run all the api calls and then return them together after all complete
+    return Promise.all(promiseArr).then(function (x) {
+        var userSongs = {};
+        //iterate over every show for the specific user
+        x.forEach((show) => {
+            var data = JSON.parse(show).data;
+            //iterate over every song played during that show
+            data.tracks.forEach((songInstance) => {
+                /*if the songs flow into eachother, 
+                break the string into individual song accounts */
+                if (songInstance.title.indexOf('>') !== -1) {
+                    for (var song in Songs.breakMultiSongintoSongObject(songInstance.title)) {
+                        userSongs[song] ? userSongs[song]++ : userSongs[song] = 1;
+                    }
+                //else, count the song instance
+                } else {
+                    userSongs[songInstance.title] ? userSongs[songInstance.title]++ : userSongs[songInstance.title] = 1;
+                }
+            })
         })
-        //A-synch technique to run all the api calls and then return them together after all complete
-        return Promise.all(promiseArr);
+        return userSongs;
+        })
     },
 
     updateOrCreate : function(attrs){
