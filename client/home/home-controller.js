@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-  .controller('MainCtrl', ['$scope', function($scope) {
+  .controller('HomeCtrl', ['$scope', function($scope) {
   	$scope.welcome = 'Tour Track';
   	$scope.buttonText = 'Facebook Signin';
   }]);
