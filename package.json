@@ -20,8 +20,7 @@
     "passport-facebook": "^2.0.0",
     "pg": "^4.4.3",
     "request": "^2.65.0",
-    "request-promise": "^1.0.2",
-    "xmlhttprequest": "^1.8.0"
+    "request-promise": "^1.0.2"
   },
   "devDependencies": {
     "chai": "^3.4.0",
