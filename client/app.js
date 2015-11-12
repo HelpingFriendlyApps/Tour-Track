@@ -12,19 +12,19 @@ angular.module('Tour-Track', [
     $stateProvider
         .state('home', {
             url: '/',
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
+            templateUrl: 'home/home.html',
+            controller: 'HomeCtrl'
         })
 
         .state('profile', {
           url: '/profile',
-          templateUrl: 'views/profile.html',
+          templateUrl: 'profile/profile.html',
           controller: 'ProfileCtrl'
         })
 
         .state('testing', {
           url: '/testing',
-          templateUrl: 'views/testing.html',
+          templateUrl: 'testing/testing.html',
           controller: 'TestingCtrl'
         });
         
