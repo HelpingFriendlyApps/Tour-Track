@@ -20,6 +20,12 @@ angular.module('Tour-Track', [
           url: '/profile',
           templateUrl: 'views/profile.html',
           controller: 'ProfileCtrl'
+        })
+
+        .state('testing', {
+          url: '/testing',
+          templateUrl: 'views/testing.html',
+          controller: 'TestingCtrl'
         });
         
 });
