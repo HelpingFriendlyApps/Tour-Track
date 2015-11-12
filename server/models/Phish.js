@@ -25,7 +25,6 @@ Phish.Phishin = function (settings) {
                 if(params.length < i) url += '&';
             })
         }
-        console.log(url)
         return request(url);
     };
     return this;
