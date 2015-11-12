@@ -8,7 +8,7 @@ var session = require('cookie-session');
 //
 //route to your index.html
 //
-var assetFolder = Path.resolve(__dirname, '../client/');
+var assetFolder = Path.resolve(__dirname, '../client');
 routes.use(express.static(assetFolder));
 
 //
