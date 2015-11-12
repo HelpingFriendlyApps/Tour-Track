@@ -19,11 +19,7 @@ angular.module('Tour-Track')
 
         userSongs : function(id){
             return $http.get('/users/shows/songs/' + id).then(function(x){
-                return x.data.map(function(shows){
-                    var parsedShows = JSON.parse(shows);
-                    parsedShows[0].sanitizedSetList = $sce.trustAsHtml(parsedShows[0].setlistdata);
-                    return parsedShows[0];
-                })
+                return x
             })
         },
 

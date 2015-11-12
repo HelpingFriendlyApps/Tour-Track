@@ -15,7 +15,7 @@ routes.use(express.static(assetFolder));
 // Example endpoint (also tested in test/server/index_test.js)
 //
 
-routes.use('/users', require('./API/Users-api.js'));
+
 routes.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'angular'])
 });
@@ -72,6 +72,10 @@ if(process.env.NODE_ENV !== 'test') {
 
   //pass the server to Passport
   require('./Auth').mount(app, host);
+  routes.use('/users', require('./API/Users-api.js'));
+  routes.use('/shows', require('./API/Shows-api.js'));
+
+
 
 
 

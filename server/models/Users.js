@@ -42,13 +42,38 @@ var Users = module.exports = {
         })
     },
 
-    getAllSongs : function(showArray){
-        var promiseArr = [];
-        JSON.parse(showArray).map(function(show){
-            promiseArr.push(request('https://api.phish.net/api.js?api=2.0&method=pnet.shows.setlists.get&format=html&apikey=' + process.env.phishAPIKEY + '&showid=' + show.showid));
+    getAllSongs: function (showArray) {
+    var promiseArr = [];
+    JSON.parse(showArray).map(function (show) {
+        promiseArr.push(request('http://phish.in/api/v1/shows/' + show.showdate))
+    })
+    //A-synch technique to run all the api calls and then return them together after all complete
+    return Promise.all(promiseArr).then(function (x) {
+        var userSongs = {};
+        x.forEach((show) => {
+            var data = JSON.parse(show).data;
+            data.tracks.forEach((songInstance) => {
+                /*if the songs flow into eachother, 
+                    break the string into individual song accounts */
+                if (songInstance.title.indexOf('>') !== -1) {
+                    tempObj = {};
+                    var multiSongArr = songInstance.title.split('>');
+
+                    multiSongArr.forEach((song) => {
+                        tempObj[song.trim()] ? null : tempObj[song.trim()] = 1;
+                    })
+
+                    for (var song in tempObj) {
+                        userSongs[song] ? userSongs[song]++ : userSongs[song] = 1;
+                    }
+                    //else, count the song instance
+                } else {
+                    userSongs[songInstance.title] ? userSongs[songInstance.title]++ : userSongs[songInstance.title] = 1;
+                }
+            })
         })
-        //A-synch technique to run all the api calls and then return them together after all complete
-        return Promise.all(promiseArr);
+        return userSongs;
+        })
     },
 
     updateOrCreate : function(attrs){
