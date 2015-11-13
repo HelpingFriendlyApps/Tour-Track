@@ -4,7 +4,6 @@ var routes = express.Router();
 var db = require('./db');
 var sass = require('node-sass-endpoint');
 var session = require('cookie-session');
-var Seeding = require('./Seeds/PHISH.IN-seed')
 
 
 //
