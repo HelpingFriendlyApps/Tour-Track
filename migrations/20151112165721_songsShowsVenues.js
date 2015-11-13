@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
 
         knex.schema.createTable('tours', function(table) {
             table.integer('id').primary();
+            table.string('name');
             table.dateTime('starts_on');
             table.dateTime('ends_on');
             table.timestamps();
@@ -39,7 +40,10 @@ exports.up = function(knex, Promise) {
             table.integer('id').primary();
             table.string('set');
             table.integer('position');
+            table.integer('duration');
             table.integer('song_id').references('id').inTable('songs');
+            table.integer('song_id2').references('id').inTable('songs');
+            table.integer('song_id3').references('id').inTable('songs');
             table.integer('show_id').references('id').inTable('shows');
             table.timestamps();
         }),
@@ -57,7 +61,7 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
 
     return Promise.all([
-        knex.schema.dropTable('songheard'),
+        knex.schema.dropTable('usershows'),
         knex.schema.dropTable('songplayed'),
         knex.schema.dropTable('songs'),
         knex.schema.dropTable('shows'),

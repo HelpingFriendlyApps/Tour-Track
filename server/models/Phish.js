@@ -9,7 +9,7 @@ Phish.Phishin = function (settings) {
 
     var baseUrl = 'http://phish.in/api/v1/';
 
-    ['Eras', 'Years', 'Songs', 'Tours', 'Shows', 'Tracks'].forEach(function (value) {
+    ['Eras', 'Years', 'Songs', 'Tours', 'Shows', 'Tracks','Venues'].forEach(function (value) {
         this['get' + value] = function (id, params) {
             return this._get(value.toLowerCase(), id, params);
         };
