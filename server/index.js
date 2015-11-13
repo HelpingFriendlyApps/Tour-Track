@@ -4,6 +4,8 @@ var routes = express.Router();
 var db = require('./db');
 var sass = require('node-sass-endpoint');
 var session = require('cookie-session');
+var Seeding = require('./Seeds/PHISH.IN-seed')
+
 
 //
 //route to your index.html
@@ -83,9 +85,17 @@ if(process.env.NODE_ENV !== 'test') {
   //   res.sendFile( assetFolder + '/index.html' )
   // })
 
-
   console.log("Listening on port", port);
 } else {
   // We're in test mode; make this file importable instead.
   module.exports = routes;
 }
+
+//seed DB
+db.select('*').from('shows').limit(1).then(function(x){
+  if(x.length === 0){
+    console.log('seeding')
+    require('./Seeds/PHISH.IN-seed')
+  }
+})
+
