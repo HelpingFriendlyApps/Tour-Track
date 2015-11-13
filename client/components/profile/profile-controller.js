@@ -2,6 +2,7 @@
 
 angular.module('Tour-Track')
   .controller('ProfileCtrl', ['$scope','$http', 'Profile', function($scope,$http, Profile) {
+
         //CURRENTLY GETS ALL SETLISTS, NEED TO PARSE SONGS AND MAKE SONG OBJECT
         $scope.getUserSongs = function(id){
             Profile.userSongs(id).then(function(x){
@@ -36,4 +37,5 @@ angular.module('Tour-Track')
             })
                 return data;
         })
+
 }]);
