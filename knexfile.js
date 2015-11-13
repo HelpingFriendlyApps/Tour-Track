@@ -3,6 +3,9 @@ module.exports = {
 		client: 'postgresql',
 		connection: {
 			database: 'tourtrack_dev'
-		}
+		},
+        seeds: {
+            directory: './server/Seeds'
+        }
 	}
 }

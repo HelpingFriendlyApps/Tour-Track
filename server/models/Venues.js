@@ -6,20 +6,20 @@ var ph = require('./Phish').Phishin();
 
 
 
-var Shows = module.exports = {
+var Venues = module.exports = {
 
-    getAllShows : function(){
-        return ph.getShows(null, ['per_page=50']).then( (data) => {
+    getAllVenues : function(){
+        return ph.getVenues(null, ['per_page=50']).then( (data) => {
         })
     },
 
     updateOrCreate : function(attrs){
-        return Shows.update(attrs).catch(Shows.create(attrs));
+        return Venues.update(attrs).catch(Venues.create(attrs));
     },
 
     update: function (attrs) {
         attrs.updated_at = new Date();
-        return db('shows').update(attrs).where({ id: attrs.id })
+        return db('venues').update(attrs).where({ id: attrs.id })
           .then(function(affectedCount) {
             return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs;
           });
@@ -27,6 +27,6 @@ var Shows = module.exports = {
 
     create : function(attrs){
         attrs.created_at = new Date();
-        return db('shows').insert(attrs).return(attrs);
+        return db('venues').insert(attrs).return(attrs);
     }
 }
