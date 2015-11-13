@@ -67,7 +67,13 @@ var Users   = module.exports = {
                 }
             })
         })
-        return userSongs;
+
+        var tupleArr = [];
+        for (var songs in userSongs){
+            tupleArr.push([songs, userSongs[songs]])
+        }
+            tupleArr.sort(function(a, b) {return b[1] - a[1]})
+        return tupleArr;
         })
     },
 

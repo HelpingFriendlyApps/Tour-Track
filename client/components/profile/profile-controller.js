@@ -5,14 +5,15 @@ angular.module('Tour-Track')
         //CURRENTLY GETS ALL SETLISTS, NEED TO PARSE SONGS AND MAKE SONG OBJECT
         $scope.getUserSongs = function(id){
             Profile.userSongs(id).then(function(x){
-                console.log(x);  
+                console.log(x.data)
+                $scope.allUserSongs = x.data;
             })
         }
 
         //CURRENTLY GETS ALL SHOWS
         $scope.getUserShows = function(id){
             Profile.userShows(id).then(function(x){
-                console.log(x);  
+                console.log(x)
             })
         }
         //adds phish.net account details to database enabling api usage.
@@ -37,5 +38,4 @@ angular.module('Tour-Track')
             })
                 return data;
         })
-        
 }]);
