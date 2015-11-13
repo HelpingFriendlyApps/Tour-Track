@@ -1,10 +1,12 @@
 <div class="container">
   <div class="child left">
     <div class='profile'>
+    <button class='btn2' ng-click="getUserSongs(id)">Songs!</button>
+    <button class='btn2' ng-click="getUserShows(id)">Shows!</button>
+    <button class='btn2' ui-sref=".tabs">Graphs</button>
     <h2>{{name}}</h2>
+
     <img src="{{pic}}"/>
-    <button ng-click="getUserSongs(id)">Get your songs!</button>
-    <button ng-click="getUserShows(id)">Get your shows!</button>
     <!-- ng-if='Phish_username' add below -->
     <div>
         <h1>Please add your phish.net username and password</h1>
@@ -16,14 +18,7 @@
     </div>
   </div>
 </div>
-<table class="child right">
-    <tr class='deets' ng-repeat="show in shows">
-        <td>{{show.venuename}}<td>
-        <td>{{show.nicedate}}<td>
-        <td>{{show.city}}<td>
-        <td>{{show.state}} <td> 
-        <td>{{show.country}}<td>
-        <div class='setlist' ng-bind-html='show.sanitizedSetList'></div>
-    </tr>
-</table>
+<div class='child right'>
+    <div ui-view></div>
+</div>
 </div>

@@ -9,8 +9,7 @@ var ph = require('./Phish').Phishin();
 var Shows = module.exports = {
 
     getAllShows : function(){
-        return ph.getShows(null, ['per_page=50']).then( (data) => {
-        })
+        return db('shows').select('*');
     },
 
     updateOrCreate : function(attrs){

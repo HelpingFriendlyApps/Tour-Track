@@ -1,0 +1,39 @@
+    <div id="tabs" ng-controller="ProfileCtrl">
+        <ul>
+            <li ng-repeat="tab in tabs" 
+                ng-class="{active:isActiveTab(tab.url)}" 
+                ng-click="onClickTab(tab)">{{tab.title}}</li>
+        </ul>
+        <div id="mainView">
+            <div ng-include="currentTab"></div>
+        </div>
+    </div>
+    <script type="text/ng-template" id="shows.tpl.html">
+        <div id="viewShows">
+            <h1>All Your Shows</h1>
+            
+            <table>
+    <tr class='deets' ng-repeat="show in shows">
+            <td>{{show.venuename}}</td>
+            <td>{{show.nicedate}}</td>
+            </tr>
+            </table>
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="two.tpl.html">
+        <div id="viewTwo">
+            <h1>Second d3 Graph</h1>
+            <span ng-repeat="song in allUserSongs">
+            <h1 class='line'>{{song[0]}}</h1>:<h2 class='line'>{{song[1]}}</h2>
+            <br>
+            </span>
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="three.tpl.html">
+        <div id="viewThree">
+            <h1>Third d3 Graph</h1>
+            <p>In pellentesque faucibus vestibulum. Nulla at nulla justo, eget luctus tortor. Nulla facilisi. Duis aliquet egestas purus in blandit. Curabitur vulputate, ligula lacinia scelerisque tempor, lacus lacus ornare ante, ac egestas est urna sit amet arcu. Class aptent taciti sociosqu.</p>
+        </div>
+    </script>
