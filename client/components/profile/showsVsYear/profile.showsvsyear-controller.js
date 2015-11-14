@@ -3,18 +3,20 @@
 angular.module('Tour-Track')
 .controller('ProfileShowsVsYearCtrl' , ['$scope', 'Profile', function ($scope, Profile) {
 
-	// $scope.testArr = [1,2,3]; // WORKS
-
-	function objCreator(shows) {
-		var showsVsYear = {};
+	function arrCreator(shows) {
+		var showsVsYear = [];
 
 		shows.forEach(function(show) {
+			var yearFound = false;
 			var year = parseInt(show.showdate.slice(0,4));
-			console.log("year", typeof year, year)
-			if(!showsVsYear[year]) {
-				showsVsYear[year] = [];
+			for (var i = 0; i < showsVsYear.length; i++) {
+				if(showsVsYear[i][0] === year) {
+					yearFound = true;
+					showsVsYear[i][1]++;
+					break;
+				}
 			}
-			showsVsYear[year].push(show);
+			if(!yearFound) showsVsYear.push([year, 1]);
 		})
 		return showsVsYear;
 	}
@@ -25,9 +27,14 @@ angular.module('Tour-Track')
 	}).then(function(data) {
 		Profile.userShows(data.uid).then(function(data) {
 			$scope.shows = data;
-			$scope.showYears = (Object.keys(objCreator(data))).map(Number);
-			console.log("$scope.showYears", $scope.showYears)
-			$scope.testArr = [1,2,3]; // DOESN'T WORK
+			$scope.showVsYears = arrCreator(data);
+			// console.log("$scope.showVsYears", $scope.showVsYears)
+
+			$scope.$watch('showYears', function() {
+				// console.log("inside watch")
+				$scope.showVsYears;
+			});
+
 		})
 		return data;
 	})
