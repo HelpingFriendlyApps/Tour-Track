@@ -33,7 +33,8 @@
   "license": "MIT",
   "scripts": {
     "start": "./node_modules/.bin/nodemon server/index.js --ignore client/ --ignore node_modules/",
-    "test": "./test/run.sh"
+    "test": "./test/run.sh",
+    "postinstall": "bower install"
   },
   "bugs": {
     "url": "https://github.com/dyale/node-catapult-angular/issues"

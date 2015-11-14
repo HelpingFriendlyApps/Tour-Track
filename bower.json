@@ -1,5 +1,5 @@
 {
-  "name": "myApp",
+  "name": "tour-track",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.4.0",
@@ -10,8 +10,8 @@
     "angular-touch": "^1.4.0",
     "angular-ui-router": "^0.2.15",
     "neat": "1.4.0",
-    "bitters": "1.1.0",
-    "bourbon": "4.2.6"
+    "bourbon": "4.2.6",
+    "bitters": "git://github.com/dYale/bitters"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
