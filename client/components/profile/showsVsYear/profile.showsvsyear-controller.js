@@ -20,7 +20,7 @@ angular.module('Tour-Track')
 		})
 		return showsVsYear;
 	}
-
+	$scope.dogs = 'dog';
 	Profile.userObject().then(function(data) {
 		var user = data.data;
 		return user;
@@ -29,12 +29,6 @@ angular.module('Tour-Track')
 			$scope.shows = data;
 			$scope.showVsYears = arrCreator(data);
 			// console.log("$scope.showVsYears", $scope.showVsYears)
-
-			$scope.$watch('showYears', function() {
-				// console.log("inside watch")
-				$scope.showVsYears;
-			});
-
 		})
 		return data;
 	})
