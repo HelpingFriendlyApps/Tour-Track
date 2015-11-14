@@ -5,10 +5,9 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 		template: '<div id="randomId"></div>',
 		controller: 'ProfileShowsVsYearCtrl',
 		scope: {
-			showVsYears: '='
+			data: '='
 		},
 		link: function(scope, element, attrs) {
-
 			//Width and height
 			var w = 100;
 			var h = 250;
@@ -40,10 +39,13 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 			// var datasetLength = Object.keys(dataset).length;
 
 			var dataset = scope.showVsYears;
-			console.log("dataset", dataset)
+			console.log("data", dataset)
 			// var dataset = scope.testArr;
-			
-			//Create SVG element
+			scope.$watch('data', function(newData, oldData) {
+				console.log(newData, 'inside watch')
+				dataset = newData;
+			// Create SVG element
+			if(dataset){
 			var svg = d3.select("#randomId")
 				.append("svg")
 				.attr("width", w + "%")
@@ -81,6 +83,8 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
+			}
+        	}, true);
 
 			// ORIGINAL
 			// //Create SVG element
