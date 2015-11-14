@@ -9,8 +9,10 @@ angular.module('Tour-Track')
 	}).then(function(data) {
 		Profile.userShows(data.uid).then(function(data) {
 			$scope.shows = data;
-			$scope.showsVsState = SVS.showsVsStateCreator(data);
-			console.log("$scope.showsVsState", $scope.showsVsState)
+			$scope.allShowStates = SVS.showsVsStateCreator(data);
+			$scope.profileShowStates = SVS.showStatesSorter(SVS.showStates(data));
+			$scope.topXStates = SVS.topXStates;
+			console.log("$scope.topXStates", $scope.topXStates(3, $scope.profileShowStates))
 		})
 		return data;
 	})
