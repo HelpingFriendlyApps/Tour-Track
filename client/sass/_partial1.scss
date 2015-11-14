@@ -1,4 +1,5 @@
 .container {
+  display: center;
   @include outer-container;
   .child {
     height: 200px;
