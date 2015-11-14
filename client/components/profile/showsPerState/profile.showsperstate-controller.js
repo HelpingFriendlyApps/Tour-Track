@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ProfileShowsPerState' , ['$scope', 'Profile', 'SVY', function ($scope, Profile, SVY) {
+.controller('ProfileShowsPerState' , ['$scope', 'Profile', 'SVS', function ($scope, Profile, SVS) {
     
     Profile.userObject().then(function(data) {
         var user = data.data;
@@ -9,10 +9,15 @@ angular.module('Tour-Track')
     }).then(function(data) {
         Profile.userShows(data.uid).then(function(data) {
             $scope.shows = data;
-            $scope.allShowStates = SVS.showsVsStateCreator(data);
+            
+            // This gets sent over
+            $scope.showsPerState = SVS.showsVsStateCreator(data);
+            console.log("$scope.showsPerState", $scope.showsPerState)
+            console.log("$scope.showsPerState.LA", $scope.showsPerState.LA)
+
             $scope.profileShowStates = SVS.showStatesSorter(SVS.showStates(data));
             $scope.topXStates = SVS.topXStates;
-            console.log("$scope.topXStates", $scope.topXStates(3, $scope.profileShowStates))
+            // console.log("$scope.topXStates", $scope.topXStates(3, $scope.profileShowStates))
         })
         return data;
     })

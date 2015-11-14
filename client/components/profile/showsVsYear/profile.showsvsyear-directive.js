@@ -14,7 +14,6 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 			var h = 250;
 			var barPadding = 1;
 
-			var dataset = scope.showVsYears;
 			scope.$watch('data', function(newData, oldData) {
 				dataset = newData;
 			
