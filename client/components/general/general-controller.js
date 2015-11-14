@@ -9,4 +9,13 @@ angular.module('Tour-Track')
 		});
 	}
 
+	General.shows().then(function(data) {
+		$scope.shows = data;
+		return data;
+	})
+
+
+
+
+
 }]);

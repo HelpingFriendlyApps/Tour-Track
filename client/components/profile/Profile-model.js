@@ -10,6 +10,7 @@ angular.module('Tour-Track')
 
         userShows : function(id){
             return $http.get('/users/shows/' + id).then(function(x){
+                console.log("x from profile model", x)
                 x.data.forEach(function(shows){
                     shows.sanitizedSetList = $sce.trustAsHtml(shows.setlistdata);
                 })

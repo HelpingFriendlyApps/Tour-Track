@@ -39,6 +39,7 @@ router.get('/shows/songs/:id', function(req, res, next){
 // Gets a user's shows
 router.get('/shows/:id', function(req, res, next){
     var id = req.params.id;
+    console.log("id from user route", id)
     Users.getUserShows(id).then(function(userShows){
         res.send(userShows);
     })
