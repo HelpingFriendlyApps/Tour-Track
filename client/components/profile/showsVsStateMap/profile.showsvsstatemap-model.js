@@ -20,6 +20,30 @@ angular.module('Tour-Track')
 				showsVsStateObj[state] = stateShows;
 			});
 			return showsVsStateObj;
+		},
+
+		showStates: function (shows) {
+			var states = {};
+			shows.forEach(function(show) {
+				!states[show.state] ? states[show.state] = [] : states[show.state].push(show);
+			})
+			return states;
+		},
+
+		showStatesSorter: function (showStates) {
+			var topStates = [];
+			for (var state in showStates) {
+				topStates.push([state, showStates[state]]);
+				topStates.sort(function(a, b) {
+					return b[1].length-a[1].length;
+				});
+			}
+			return topStates;
+		},
+
+		topXStates: function (x, states) {
+			var topXstates = states.slice(0,x);
+			return topXstates;
 		}
 
 	}
