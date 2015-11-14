@@ -34,8 +34,8 @@ angular.module('Tour-Track')
     }).then(function(data){
         Profile.userShows(data.uid).then(function(data){
             $scope.shows = data;
-        })
-            return data;
+        }) 
+        return data;
     })
 
 }]);

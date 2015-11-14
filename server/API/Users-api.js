@@ -48,7 +48,6 @@ router.get('/shows/:id', function(req, res, next){
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     Users.getUser(id).then(function (data) {
-        console.log("single user with requested ID: ", data)
         res.send(data);
     })
     .then(null, next);

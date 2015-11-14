@@ -6,7 +6,12 @@ angular.module('Tour-Track')
 	return {
 		
 		shows: function () {
-			return $http.get('/');
+			return $http.get('/shows').then(function(shows) {
+				shows.data.forEach(function(show) {
+					show.sanitizedSetList = $sce.trustAsHtml(show.setlistdata);
+				})
+				return shows.data;
+			})
 		}
 
 	}
