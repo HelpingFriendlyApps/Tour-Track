@@ -10,7 +10,6 @@ angular.module('Tour-Track')
 		Profile.userShows(data.uid).then(function(data) {
 			$scope.shows = data;
 			$scope.showVsYears = SVY.arrCreator(data);
-			// console.log("$scope.showVsYears", $scope.showVsYears)
 		})
 		return data;
 	})
