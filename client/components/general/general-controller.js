@@ -8,4 +8,9 @@ angular.module('Tour-Track')
 		return data;
 	});
 
+	General.allSongs().then(function(data) {
+		$scope.songs = data;
+		return data;
+	});
+
 }]);

@@ -8,10 +8,37 @@ var ph = require('./Phish').Phishin();
 
 var Songs = module.exports = {
 
-    getAllSongs : function(){
-        return request('http://phish.in/api/v1/songs?page=1&per_page=2000')
-    },
+    // getAllSongs : function(){
+    //     return request('http://phish.in/api/v1/songs?page=1&per_page=2000')
+    // },
 
+    // WORKS
+    // getAllSongs : function(){
+    //     return db('songplayed').select('*')
+    //     .join('shows', function () {
+    //         this.on('shows.id', '=', 'songplayed.show_id')
+    //     });
+    // },
+
+    // getAllSongs : function(){
+    //     return db('songplayed').select('*')
+    //     .join('shows', function () {
+    //         this.on('shows.id', '=', 'songplayed.show_id')
+    //     }).then(function (newSongs) {
+    //         newSongs.join('venues', function () {
+    //             this.on('venues.id', '=', 'newSongs.venue_id')
+    //             return newSongs
+    //         })
+    //     })
+    // },
+
+    getAllSongs : function(){
+        return db('songplayed').select('*')
+        .join('shows', 'shows.id', 'songplayed.show_id')
+        .join('songs', 'songs.id', 'songplayed.song_id')
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id')
+    },
 
     breakMultiSongintoSongObject : function(songString){
         var tempObj = {};

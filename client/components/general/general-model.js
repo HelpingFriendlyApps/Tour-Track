@@ -12,6 +12,12 @@ angular.module('Tour-Track')
 				});
 				return shows.data;
 			});
+		},
+
+		allSongs: function () {
+			return $http.get('/songs').then(function(songs) {
+				return songs.data;
+			})
 		}
 
 	}
