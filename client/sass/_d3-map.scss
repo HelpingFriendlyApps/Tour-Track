@@ -27,7 +27,7 @@
 		border:1px solid grey;
 		border-radius:5px;
 		font-size:12px;
-		width:120px;
+		width:250px;
 		padding:4px;
 		color:white;
 		opacity:0;
@@ -35,14 +35,18 @@
 	#tooltip table{
 		table-layout:fixed;
 	}
+	#tooltip tr.venueTitle > th {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
 	#tooltip tr td{
-		padding:0;
+		padding:2px 2px;
 		margin:0;
 	}
-	#tooltip tr td:nth-child(1){
-		width:50px;
+	#tooltip tr th{
+		padding:2px 1px;
+		margin:0;
+		text-align: center;
 	}
-	#tooltip tr td:nth-child(2){
-		text-align:center;
-	}
+
 }

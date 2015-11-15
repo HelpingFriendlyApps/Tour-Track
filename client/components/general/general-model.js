@@ -5,13 +5,13 @@ angular.module('Tour-Track')
 
 	return {
 		
-		shows: function () {
-			return $http.get('/shows').then(function(shows) {
+		allShows: function () {
+			return $http.get('/shows/venues').then(function(shows) {
 				shows.data.forEach(function(show) {
 					show.sanitizedSetList = $sce.trustAsHtml(show.setlistdata);
-				})
+				});
 				return shows.data;
-			})
+			});
 		}
 
 	}

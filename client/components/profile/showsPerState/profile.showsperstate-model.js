@@ -17,7 +17,6 @@ angular.module('Tour-Track')
 				var showsArr = shows.filter(function(show) {
 					return show.state === state;
 				});
-				// console.log("showsArr", showsArr);
 
 				var venuesArr = [];
 				showsArr.forEach(function(show) {
@@ -25,9 +24,6 @@ angular.module('Tour-Track')
 						venuesArr.push(show.venuename);
 					}
 				})
-
-				// showsVsStateObj[state] = {shows: showsArr, venues: venuesArr, color: d3.interpolate("#ffffcc", "#800026")(showsArr.length/100)};
-				// showsVsStateObj[state] = {shows: showsArr, venues: venuesArr, color: d3.interpolate("#ffffcc", "#800026")(Math.sqrt(showsArr.length/100))};
 				showsVsStateObj[state] = {shows: showsArr, venues: venuesArr, color: d3.interpolate("#444857", "#E2121D")(1.5 * Math.sqrt(showsArr.length/100))};
 			});
 			return showsVsStateObj;
