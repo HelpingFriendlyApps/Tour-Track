@@ -17,7 +17,6 @@ angular.module('Tour-Track')
 
             $scope.profileShowStates = SVS.showStatesSorter(SVS.showStates(data));
             $scope.topXStates = SVS.topXStates;
-            // console.log("$scope.topXStates", $scope.topXStates(3, $scope.profileShowStates))
         })
         return data;
     })

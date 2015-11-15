@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href='http://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
   </head>
   
   <body ng-app="Tour-Track">
@@ -12,7 +11,6 @@
 
 
   <footer>
-    <script type="text/javascript" src="./lib/d3/d3.js"></script>
     <script src="./lib/angular/angular.js"></script>
     <script src="./lib/angular-animate/angular-animate.js"></script>
     <script src="./lib/angular-cookies/angular-cookies.js"></script>
@@ -20,11 +18,10 @@
     <script src="./lib/angular-touch/angular-touch.js"></script>
     <script src="./lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="./lib/angular-ui-router/release/angular-ui-router.js"></script>
-
-    <script src="./lib/gmap/map.js"></script>
     
     <script type="text/javascript" src="./lib/d3/d3.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQxgWt-LSZcEmTEN8581Uq9SzZHnpuys&sensor=true"></script>
+
+    <script type="text/javascript" src="./helpers/uStates.js"></script>
 
     <script src="app.js"></script>
 
@@ -37,6 +34,11 @@
 
     <script src="components/general/map/general.map-controller.js"></script>
     <script src="components/general/map/general.map-state.js"></script>
+
+    <script src="components/general/showsperstate/general.showsperstate-controller.js"></script>
+    <script src="components/general/showsperstate/general.showsperstate-directive.js"></script>
+    <script src="components/general/showsperstate/general.showsperstate-model.js"></script>
+    <script src="components/general/showsperstate/general.showsperstate-state.js"></script>
 
     <script src="components/profile/profile-controller.js"></script>
     <script src="components/profile/Profile-model.js"></script>
@@ -51,7 +53,7 @@
     <script src="components/profile/showsPerState/profile.showsPerState-directive.js"></script>
     <script src="components/profile/showsPerState/profile.showsPerState-model.js"></script>
     <script src="components/profile/showsPerState/profile.showsPerState-state.js"></script>
-    <!-- // <script src="components/profile/showsPerState/profile.showsPerState-model.js"></script> -->
+
 
 
     <script src="components/profile/tabs/profile.tabs-state.js"></script>

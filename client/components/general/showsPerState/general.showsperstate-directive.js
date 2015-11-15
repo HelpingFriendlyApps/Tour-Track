@@ -1,4 +1,4 @@
-angular.module('Tour-Track').directive('profileshowsperstate', function($parse) {
+angular.module('Tour-Track').directive('generalshowsperstate', function($parse) {
     return {
         restrict: 'E',
         replace: true,

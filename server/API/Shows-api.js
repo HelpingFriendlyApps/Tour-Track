@@ -8,13 +8,14 @@ var router = module.exports = express.Router();
 
 
 
-
+// Get all shows
 router.get('/', function (req, res, next) {
     Shows.getAllShows().then(function(x) {
         res.send(x)
     })
 })
 
+// Get all shows with Venue info
 router.get('/venues', function (req, res, next) {
     Shows.getAllShowsWithVenueInfo().then(function(x) {
         res.send(x)
