@@ -4,6 +4,9 @@ var routes = express.Router();
 var db = require('./db');
 var sass = require('node-sass-endpoint');
 var session = require('cookie-session');
+require('./Seeds/seedRun')
+
+
 
 
 //
@@ -89,12 +92,3 @@ if(process.env.NODE_ENV !== 'test') {
   // We're in test mode; make this file importable instead.
   module.exports = routes;
 }
-
-//seed DB
-db.select('*').from('shows').limit(1).then(function(x){
-  if(x.length === 0){
-    console.log('seeding')
-    require('./Seeds/PHISH.IN-seed')
-  }
-})
-
