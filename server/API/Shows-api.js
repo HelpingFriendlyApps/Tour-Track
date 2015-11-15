@@ -14,3 +14,9 @@ router.get('/', function (req, res, next) {
         res.send(x)
     })
 })
+
+router.get('/venues', function (req, res, next) {
+    Shows.getAllShowsWithVenueInfo().then(function(x) {
+        res.send(x)
+    })
+})

@@ -12,6 +12,11 @@ var Shows = module.exports = {
         return db('shows').select('*');
     },
 
+    getAllShowsWithVenueInfo : function(){
+        return db('shows').select('*').join('venues', function() {
+        this.on('venues.id', '=', 'shows.venue_id')})
+    },
+
     updateOrCreate : function(attrs){
         return Shows.update(attrs).catch(Shows.create(attrs));
     },
