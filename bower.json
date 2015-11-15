@@ -11,7 +11,8 @@
     "angular-ui-router": "^0.2.15",
     "neat": "1.4.0",
     "bourbon": "4.2.6",
-    "bitters": "git://github.com/dYale/bitters"
+    "bitters": "git://github.com/dYale/bitters",
+    "d3": "~3.5.8"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
