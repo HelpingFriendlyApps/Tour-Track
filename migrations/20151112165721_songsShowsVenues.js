@@ -42,8 +42,6 @@ exports.up = function(knex, Promise) {
             table.integer('position');
             table.integer('duration');
             table.integer('song_id').references('id').inTable('songs');
-            table.integer('song_id2').references('id').inTable('songs');
-            table.integer('song_id3').references('id').inTable('songs');
             table.integer('show_id').references('id').inTable('shows');
             table.timestamps();
         }),

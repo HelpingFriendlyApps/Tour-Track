@@ -5,6 +5,7 @@ var Songs = require('../models/Songs');
 var Venues = require('../models/Venues');
 var Tracks = require('../models/Tracks');
 var Promise = require('bluebird');
+var db = require('../db');
 
 
 function seedSongs(){
@@ -69,33 +70,43 @@ function seedShows(){
         })
     })
 }
-seedSongs();
-seedTours();
-seedVenues();
-seedShows();
-//Possibly add, currently overloads the API service 
-// function seedPlayedSongs(){
-//     for(var i = 0; i < 1000; i++){
-//         ph.getTracks(i).then(function(x){
-//             var track = JSON.parse(x).data;
-//             var playedSongsModel = {
-//                 position: track.position,
-//                 duration: track.duration,
-//                 id: track.id,
-//                 show_id: track.show_id,
-//                 set: track.set,
-//                 created_at: new Date()
-//             }
-//             if(track.song_ids.length === 1){
-//                 playedSongsModel.song_id =  track.song_ids[0];
-//             } else {
-//                 track.song_ids.forEach( (song_id, i) => {
-//                     console.log(i);
-//                     var num = (1 + i).toString();
-//                     playedSongsModel[song_id + num] = song_id
-//                 })
-//             }               
-//             Tracks.updateOrCreate(playedSongsModel);
-//         })
-//     }
-// }
+
+function seedTracks(){
+    for(var i = 1000; i > 0; i--){   
+        ph.getSongs(i).then(function(x){
+            var data = JSON.parse(x).data;
+            data.tracks.map( (song) => {
+
+                // console.log(Object.keys(song))
+                var trackModel = {
+                        id: song.id,
+                        set: song.set,
+                        show_id: song.show_id,
+                        song_id: data.id,
+                        position:  song.position,
+                        duration: song.duration,
+                        created_at: new Date()
+                    }
+                Tracks.updateOrCreate(trackModel);
+            })
+        })
+    }
+}
+
+function fillSongsPlayed(){
+    db('songplayed').count('id').then(function(total) {
+        if(total[0].count !== '29004'){
+            seedTracks()
+            setTimeout(fillSongsPlayed, 30000);
+        }
+    })
+}
+
+
+var Seeds = module.exports = {
+    seedSongs : seedSongs,
+    seedTours : seedTours,
+    seedVenues : seedVenues,
+    seedShows : seedShows,
+    seedTracks : fillSongsPlayed 
+}
