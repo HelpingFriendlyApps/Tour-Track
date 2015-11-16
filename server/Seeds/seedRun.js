@@ -30,7 +30,6 @@ db.select('*').from('songs').limit(1).then(function(x){
 
 //seed tracks
 db('songplayed').count('id').then(function(total) {
-    console.log(parseInt(total[0].count))
     if(parseInt(total[0].count) < 29004){
       Seeds.seedTracks();
     }
