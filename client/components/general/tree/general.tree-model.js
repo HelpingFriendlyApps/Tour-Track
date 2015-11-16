@@ -49,7 +49,14 @@ angular.module('Tour-Track')
 						})
 
 						var showNode = new Node (showName, songArr);
-						if(showNode) showArr.push(showNode);
+						if(showNode) {
+							showArr.push(showNode);
+							showArr.sort(function(a, b) {
+								var aNumber = Number(a.name.slice(0,4)+a.name.slice(5,7)+a.name.slice(8,10));
+						        var bNumber = Number(b.name.slice(0,4)+b.name.slice(5,7)+b.name.slice(8,10));
+								return aNumber - bNumber;
+							})
+						}
 					})
 
 					var tourNode = new Node (tour.name, showArr);

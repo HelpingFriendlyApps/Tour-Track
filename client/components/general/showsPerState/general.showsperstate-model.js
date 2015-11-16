@@ -27,7 +27,7 @@ angular.module('Tour-Track')
 
 				var venuesArr = [];
 				showsArr.forEach(function(show) {
-					if(venuesArr.indexOf(show.name) === -1) venuesArr.push(show.name);
+					if(venuesArr.indexOf(show.venue_name) === -1) venuesArr.push(show.venue_name);
 				});
 				showsVsStateObj[state] = {shows: showsArr, venues: venuesArr, color: d3.interpolate("#444857", "#E2121D")(showsArr.length/100)};
 			});

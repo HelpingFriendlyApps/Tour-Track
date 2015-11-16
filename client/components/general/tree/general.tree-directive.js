@@ -149,10 +149,10 @@ angular.module('Tour-Track').directive('generallayouttree', function($parse) {
 					// Toggle children.
 					function toggle(d) {
 						console.log("d inside toggle", d)
-						if (d.children) {
+						if (d&&d.children) {
 							d._children = d.children;
 							d.children = null;
-						} else {
+						} else if (d&&d._children){
 							d.children = d._children;
 							d._children = null;
 						}

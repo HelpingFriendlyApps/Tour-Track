@@ -11,7 +11,7 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 			
 			//Width and height
 			var w = 100;
-			var h = 250;
+			var h = 350;
 			var barPadding = 1;
 
 			scope.$watch('data', function(newData, oldData) {
