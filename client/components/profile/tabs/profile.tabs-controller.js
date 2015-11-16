@@ -6,10 +6,8 @@ angular.module('Tour-Track')
         }, {
             title: 'Songs',
             url: 'two.tpl.html'
-        }, {
-            title: 'Years',
-            url: 'three.tpl.html'
-    }];
+        }
+    ];
 
     $scope.currentTab = 'shows.tpl.html';
 

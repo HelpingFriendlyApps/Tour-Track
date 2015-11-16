@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('GeneralCtrl', ['$scope','$http', 'General', function($scope, $http, General) {
+.controller('GeneralCtrl', ['$scope','$http', 'General','Profile', function($scope, $http, General, Profile) {
 
 	General.allShows().then(function(data) {
 		$scope.shows = data;
@@ -23,6 +23,13 @@ angular.module('Tour-Track')
 		return data;
 	});
 
+	Profile.userObject().then(function(data){ 
+        var user = data.data;
+        $scope.id = user.uid;
+        $scope.pic = user.profilePic;
+        $scope.name = user.name;
+        return user;
+    })
 
 
 }]);
