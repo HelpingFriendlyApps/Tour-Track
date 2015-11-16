@@ -1,8 +1,8 @@
     <div id="tabs" ng-controller="ProfileCtrl">
         <ul>
-            <li ng-repeat="tab in tabs" 
+            <button ng-repeat="tab in tabs" 
                 ng-class="{active:isActiveTab(tab.url)}" 
-                ng-click="onClickTab(tab)">{{tab.title}}</li>
+                ng-click="onClickTab(tab)">{{tab.title}}</button>
         </ul>
         <div id="mainView">
             <div ng-include="currentTab"></div>
@@ -31,10 +31,4 @@
             </span>
         </div>
     </script>
-    
-    <script type="text/ng-template" id="three.tpl.html">
-        <div id="viewThree">
-            <h1>Third d3 Graph</h1>
-            <p>MORE DATA HERE!</p>
-        </div>
     </script>

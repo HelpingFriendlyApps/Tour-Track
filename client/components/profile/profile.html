@@ -1,19 +1,49 @@
 <div class="container">
-	<div class='profile'>
-		<button class='btn2' ng-click="getUserSongs(id)">Songs!</button>
-		<button class='btn2' ng-click="getUserShows(id)">Shows!</button>
-		<button class='btn2' ui-sref=".tabs">Graphs</button>
-		<h2>{{name}}</h2>
-
-		<img src="{{pic}}"/>
-		<!-- ng-if='Phish_username' add below -->
-		<div>
-			<h1>Please add your phish.net username and password</h1>
-			<form ng-submit='submitPhishAccountDeets(id)' class='phish-deets'>
-				<input type='text' ng-model='phishUsername' placeholder='Phish Username'>
-				<input type='text' ng-model='phishPassword' placeholder='Phish Password'>
-				<input type="submit" value="Submit now" />
-			</form>
+	<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      <img src="{{pic}}"/>
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link"><a href="/#/profile">Profile</a></li>
+        <li ng-click='getUserSongs(id)' class="nav-link"><a href="/#/profile/tabs"> Stats</a></li>
+        <li class="nav-link more"><a href="javascript:void(0)">Your Charts</a>
+        <ul class="submenu">
+            <li><a href="/#/profile/showsvsyear">Shows Per Year</a></li>
+            <li><a href="/#/profile/showsperstate">Shows Per State</a></li>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-link more"><a href="javascript:void(0)">Charts</a>
+          <ul class="submenu">
+            <li><a href="/#/general/showsperstate">Shows Per State</a></li>
+            <li><a href="/#/general/map">Mapped Shows</a></li>
+            <li><a href="/#/general/layouttree">Song Histree</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <div class="navigation-tools">
+      <li class="search-bar">
+        <div class='show name'>Tour Track</div>
+      </li>
+    </div>
+  </div>
+</header>
+	<!-- <div class="child left"> -->
+		<div class='profile'>
+			<!-- ng-if='Phish_username' add below -->
+			<div>
+				<h1>Please add your phish.net username and password</h1>
+				<form ng-submit='submitPhishAccountDeets(id)' class='phish-deets'>
+					<input type='text' ng-model='phishUsername' placeholder='Phish Username'>
+					<input type='text' ng-model='phishPassword' placeholder='Phish Password'>
+					<input type="submit" value="Submit now" />
+				</form>
+			</div>
 		</div>
 	</div>
 	

@@ -1,10 +1,9 @@
 /* remember to set all global css and variables before importing */
 
-$black: #000;
+$black: #dcdcdc;
 
 body {
   background-color: $black;
-  vertical-align: middle;
 }
 
 /* import boubon and neat */
@@ -19,6 +18,7 @@ body {
 @import 'partial1';
 @import 'partial2';
 @import 'testing';
+@import 'navbar';
 
 /* set up grid structure */
 $visual-grid: true;
