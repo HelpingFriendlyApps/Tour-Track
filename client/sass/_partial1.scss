@@ -21,13 +21,22 @@
 }
 
 
-
+#tabs {
+  margin-left: 20%;
+  margin-right: 20%;
+  button {
+    border-top:1px solid black;
+    border-left:1px solid black;
+    border-right:1px solid black;
+  }
+}
 
 #mainView {
   border: 1px solid black;
+  border-radius: 5px;
   clear: both;
   padding: 0 1em;
-  height: 250px;
+  height: 550px;
   overflow: scroll;
   background-color: #dcdcdc;
   text-align: center;  
