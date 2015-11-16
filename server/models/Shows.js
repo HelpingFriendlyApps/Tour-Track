@@ -13,8 +13,9 @@ var Shows = module.exports = {
     },
 
     getAllShowsWithVenueInfo : function(){
-        return db('shows').select('*').join('venues', function() {
-        this.on('venues.id', '=', 'shows.venue_id')})
+        return db('shows').select('shows.*', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id', 'tours.name as tour_name')
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id')
     },
 
     updateOrCreate : function(attrs){

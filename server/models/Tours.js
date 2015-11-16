@@ -8,6 +8,10 @@ var ph = require('./Phish').Phishin();
 
 var Tours = module.exports = {
 
+    getAllTours: function () {
+        return db('tours').select('*');
+    },
+
     updateOrCreate : function(attrs){
         return Tours.update(attrs).catch(Tours.create(attrs));
     },
