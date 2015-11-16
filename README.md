@@ -2,13 +2,13 @@
 
 ##Phish Statistics Visualizer. 
 
-Tour Track takes data from ever phish show, venue, live-track, tour, concert, etc,. and visualizes it in an aesthetic and pleasing way. Enables users with current phish.net accounts to import their list of attended shows and view personalized statistics. Signin utilizes Facebook oAuth for future implementation of social postings of personal data.
+Tour Track takes data from every Phish show, venue, live-track, tour, concert, etc, and visualizes it in an aesthetic and pleasing way. Enables users with current phish.net accounts to import their list of attended shows and view personalized statistics. Signin utilizes Facebook oAuth for future implementation of social postings of personal data.
 
 ## Stack
-Front-End: [Angular](https://angularjs.org/) & [d3.js](http://d3js.org/)<br>
-Back-End: [Node.js](http://www.nodejs.org/) & [Express](http://expressjs.com/)<br>
-Database: [PostgreSQL](http://www.postgresql.org/) with [Knex.js](http://knexjs.org/)<br>
-Styling: [SASS](http://sass-lang.com/) w/ [Bourbon](http://bourbon.io/), [Neat](http://neat.bourbon.io/) and [Bitters](http://bitters.bourbon.io/)
+**Front-End**: [Angular](https://angularjs.org/) & [d3.js](http://d3js.org/)<br>
+**Back-End**: [Node.js](http://www.nodejs.org/) & [Express](http://expressjs.com/)<br>
+**Database**: [PostgreSQL](http://www.postgresql.org/) with [Knex.js](http://knexjs.org/)<br>
+**Styling**: [SASS](http://sass-lang.com/) w/ [Bourbon](http://bourbon.io/), [Neat](http://neat.bourbon.io/) and [Bitters](http://bitters.bourbon.io/)
 
 ## License
 (The MIT License)
