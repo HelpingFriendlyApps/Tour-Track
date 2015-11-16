@@ -34,8 +34,8 @@
 </header>
 	<!-- <div class="child left"> -->
 		<div class='profile'>
-			<!-- ng-if='Phish_username' add below -->
-			<div>
+
+			<div ng-if='Phish_username'>
 				<h1>Please add your phish.net username and password</h1>
 				<form ng-submit='submitPhishAccountDeets(id)' class='phish-deets'>
 					<input type='text' ng-model='phishUsername' placeholder='Username'>

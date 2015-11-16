@@ -1,9 +1,17 @@
-#d3map {
-	#statesvg {
-		margin-left: 25%;
+div{
+	.d3map{
+		margin-top: 0 !important;
+
 	}
-	margin-top:150px;
-	margin-bottom:250px;
+
+}
+
+.d3map {
+	#statesvg {
+		margin-left: 12.5%;
+		margin-right: 12.5%;
+
+	}
 	.state{
 		fill: none;
 		stroke: #a9a9a9;
