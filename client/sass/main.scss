@@ -13,6 +13,7 @@ body {
 @import "../lib/neat/app/assets/stylesheets/neat";
 
 /* import partials */
+@import 'bar-graph';
 @import 'd3-map';
 @import 'layout-tree';
 @import 'partial1';

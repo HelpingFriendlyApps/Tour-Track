@@ -2,7 +2,7 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 	return {
 		restrict: 'E',
 		replace: true,
-		template: '<div id="randomId"></div>',
+		template: '<div id="barGraph"></div>',
 		controller: 'ProfileShowsVsYearCtrl',
 		scope: {
 			data: '='
@@ -10,7 +10,7 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 		link: function(scope, element, attrs) {
 			
 			//Width and height
-			var w = 100;
+			var w = 80;
 			var h = 350;
 			var barPadding = 1;
 
@@ -19,10 +19,11 @@ angular.module('Tour-Track').directive('profileshowsvsyear', function($parse) {
 			
 			// Create SVG element
 			if(dataset) {
-				var svg = d3.select("#randomId")
+				var svg = d3.select("#barGraph")
 					.append("svg")
 					.attr("width", w + "%")
-					.attr("height", h);
+					.attr("height", h)
+					.attr("margin-left", "20%");
 
 				svg.selectAll("rect")
 				   .data(dataset)

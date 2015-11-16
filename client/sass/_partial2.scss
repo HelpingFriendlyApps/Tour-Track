@@ -46,10 +46,12 @@ body{
 
 .profile{
   text-align: center;
-  padding-top: 15%;
+  padding-top: 5%;
+  margin-left: 20%;
+  margin-right: 20%;
 
   .phish-deets{
-    font-size: 5px;
+    font-size: 15px;
     font-color: blue;
   }
 
@@ -71,7 +73,7 @@ body{
 }
 
 .deets{
-  font-size: 9px;
+  font-size: 13px;
 }
 .table{
   overflow: scroll;
