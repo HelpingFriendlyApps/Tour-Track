@@ -79,6 +79,8 @@ if(process.env.NODE_ENV !== 'test') {
   routes.use('/users', require('./API/Users-api.js'));
   routes.use('/shows', require('./API/Shows-api.js'));
   routes.use('/songs', require('./API/Songs-api.js'));
+  routes.use('/tours', require('./API/Tours-api.js'));
+  routes.use('/venues', require('./API/Venues-api.js'));
 
 
 

@@ -13,4 +13,16 @@ angular.module('Tour-Track')
 		return data;
 	});
 
+	General.allTours().then(function(data) {
+		$scope.tours = data;
+		return data;
+	});
+
+	General.allVenues().then(function(data) {
+		$scope.venues = data;
+		return data;
+	});
+
+
+
 }]);

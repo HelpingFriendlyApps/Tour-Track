@@ -8,32 +8,8 @@ var ph = require('./Phish').Phishin();
 
 var Songs = module.exports = {
 
-    // getAllSongs : function(){
-    //     return request('http://phish.in/api/v1/songs?page=1&per_page=2000')
-    // },
-
-    // WORKS
-    // getAllSongs : function(){
-    //     return db('songplayed').select('*')
-    //     .join('shows', function () {
-    //         this.on('shows.id', '=', 'songplayed.show_id')
-    //     });
-    // },
-
-    // getAllSongs : function(){
-    //     return db('songplayed').select('*')
-    //     .join('shows', function () {
-    //         this.on('shows.id', '=', 'songplayed.show_id')
-    //     }).then(function (newSongs) {
-    //         newSongs.join('venues', function () {
-    //             this.on('venues.id', '=', 'newSongs.venue_id')
-    //             return newSongs
-    //         })
-    //     })
-    // },
-
     getAllSongs : function(){
-        return db('songplayed').select('*')
+        return db('songplayed').select('songplayed.*','shows.*','shows.id as show_id','songs.*','songs.id as song_id', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id')
         .join('shows', 'shows.id', 'songplayed.show_id')
         .join('songs', 'songs.id', 'songplayed.song_id')
         .join('venues', 'venues.id', 'shows.venue_id')
