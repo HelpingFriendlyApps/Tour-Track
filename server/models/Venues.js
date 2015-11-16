@@ -8,11 +8,6 @@ var ph = require('./Phish').Phishin();
 
 var Venues = module.exports = {
 
-    // getAllVenues : function(){
-    //     return ph.getVenues(null, ['per_page=50']).then( (data) => {
-    //     })
-    // },
-
     getAllVenues : function(){
         return db('venues').select('*');
     },
