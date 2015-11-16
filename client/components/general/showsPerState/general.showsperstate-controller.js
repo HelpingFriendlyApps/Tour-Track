@@ -6,7 +6,6 @@ angular.module('Tour-Track')
 	General.allShows().then(function(data) {
 		$scope.shows = data;
 		$scope.allShowsPerState = GeneralSVS.showsVsStateCreator($scope.shows);
-		console.log("$scope.allShowsPerState", $scope.allShowsPerState)
 		return data;
 	});
 

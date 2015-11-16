@@ -12,7 +12,6 @@ angular.module('Tour-Track').directive('generallayouttree', function($parse) {
         	scope.$watch('data', function(dataset, oldData) {
 
         		if(dataset) {
-        			console.log("dataset", dataset)
 
 		        	// START
 					var m = [20, 120, 20, 120],
@@ -34,12 +33,10 @@ angular.module('Tour-Track').directive('generallayouttree', function($parse) {
 						.attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 						root = dataset;
-						console.log("root", root)
 						root.x0 = h / 2;
 						root.y0 = 0;
 
 					function toggleAll(d) {
-						// console.log("inside toggle", d)
 						if (d.children) {
 							d.children.forEach(toggleAll);
 							toggle(d);
@@ -56,7 +53,6 @@ angular.module('Tour-Track').directive('generallayouttree', function($parse) {
 					update(root);
 
 					function update(source) {
-						console.log("source", source)
 						var duration = d3.event && d3.event.altKey ? 5000 : 500;
 
 						// Compute the new tree layout.
@@ -148,7 +144,6 @@ angular.module('Tour-Track').directive('generallayouttree', function($parse) {
 
 					// Toggle children.
 					function toggle(d) {
-						console.log("d inside toggle", d)
 						if (d&&d.children) {
 							d._children = d.children;
 							d.children = null;

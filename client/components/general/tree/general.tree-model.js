@@ -62,13 +62,9 @@ angular.module('Tour-Track')
 					var tourNode = new Node (tour.name, showArr);
 					if(tourNode) tourArr.push(tourNode);
 				})
-
 				phishObj.children.push(new Node (year, tourArr));
-
-
 			});
 
-			console.log("phishObj", phishObj);
 			return phishObj;
 
 		}

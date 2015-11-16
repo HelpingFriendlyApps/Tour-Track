@@ -31,7 +31,6 @@ angular.module('Tour-Track')
 				});
 				showsVsStateObj[state] = {shows: showsArr, venues: venuesArr, color: d3.interpolate("#444857", "#E2121D")(showsArr.length/100)};
 			});
-			// console.log("internationalShows", internationalShows)
 			return showsVsStateObj;
 		}
 
