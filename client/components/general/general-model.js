@@ -4,9 +4,24 @@ angular.module('Tour-Track')
 .factory('General', function($http, $sce) {
 
 	return {
-		
-		allShows: function () {
+
+		allShows: function() {
+			return $http.get('/shows').then(function(shows) {
+				// shows.data.forEach(function(show) {
+				// 	show.sanitizedSetList = $sce.trustAsHtml(show.setlistdata);
+				// });
+				return shows.data;
+			});
+		},
+
+		allShowsWithVenueInfo: function() {
 			return $http.get('/shows/venues').then(function(shows) {
+				return shows.data;
+			});
+		},
+		
+		allShowsWithVenueTourInfo: function () {
+			return $http.get('/shows/venuestours').then(function(shows) {
 				shows.data.forEach(function(show) {
 					show.sanitizedSetList = $sce.trustAsHtml(show.setlistdata);
 				});

@@ -12,7 +12,13 @@ var Shows = module.exports = {
         return db('shows').select('*');
     },
 
-    getAllShowsWithVenueInfo : function(){
+    getAllShowsWithVenueInfo : function() {
+        return db('shows').select('shows.*', 'venues.*')
+        .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id')
+    },
+
+    getAllShowsWithVenueTourInfo : function(){
         return db('shows').select('shows.*', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id', 'tours.name as tour_name')
         .join('venues', 'venues.id', 'shows.venue_id')
         .join('tours', 'tours.id', 'shows.tour_id')
@@ -22,7 +28,7 @@ var Shows = module.exports = {
         return Shows.update(attrs).catch(Shows.create(attrs));
     },
 
-    update: function (attrs) {
+    update : function (attrs) {
         attrs.updated_at = new Date();
         return db('shows').update(attrs).where({ id: attrs.id })
           .then(function(affectedCount) {

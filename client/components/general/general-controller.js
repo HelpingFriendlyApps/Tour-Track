@@ -8,6 +8,11 @@ angular.module('Tour-Track')
 		return data;
 	});
 
+	General.allShowsWithVenueInfo().then(function(data) {
+		$scope.showsWithVenueInfo = data;
+		return data;
+	})
+
 	General.allSongs().then(function(data) {
 		$scope.songs = data;
 		return data;
