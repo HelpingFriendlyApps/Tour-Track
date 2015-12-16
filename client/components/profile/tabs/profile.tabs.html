@@ -23,7 +23,7 @@
     
     <script type="text/ng-template" id="two.tpl.html">
         <div id="viewTwo">
-            <h1>Second d3 Graph</h1>
+            <h1>All Your Songs</h1>
         <label class='searchBar'><input placeholder='Search for Songs'class='searchBar' ng-model="searchText"></label>
             <span ng-repeat="song in allUserSongs  | filter:searchText">
             <h1 class='line'>{{song[0]}}</h1>:<h2 class='line'>{{song[1]}}</h2>
