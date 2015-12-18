@@ -2,9 +2,11 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
     return {
         restrict: 'E',
         replace: true,
+        require: '^ngController',
         template: '<div id="map"></div>',
         scope: {
-            shows: '='
+            shows: '=',
+            progress: '='
         },
         link: function(scope, element, attrs) {
 
@@ -13,12 +15,9 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
                 .setView([37.9, -77],4);
 
 
-            var rendered = false;
             scope.$watch('shows', function(shows) {
                 // if(shows && !rendered) {
                 if(shows) {
-                    rendered = true;
-                    // console.log('shows', shows)
 
                     var geoJsonData = {
                         type: "FeatureCollection",
@@ -40,13 +39,24 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
                         }
                     }
 
-                    var radius = 50;
 
-                    var geoJson = L.geoJson(geoJsonData, {
-                        pointToLayer: function(feature, latlng) {
-                            return L.circle(latlng, radius);
-                        }
-                    }).addTo(map);
+                    scope.$watch('progress', function(progress) {
+                        console.log('progress', progress)
+                        var progShows = geoJsonData.features.slice(0, progress);
+                        console.log('progShows', progShows)
+                        
+
+                        var radius = 50;
+
+                        var geoJson = L.geoJson(progShows, {
+                            pointToLayer: function(feature, latlng) {
+                                return L.circle(latlng, radius);
+                            }
+                        }).addTo(map);
+                    });
+
+
+
 
 
 

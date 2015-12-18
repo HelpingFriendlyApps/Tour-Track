@@ -1,11 +1,10 @@
 angular.module('Tour-Track').directive('slider', function() {
     return {
         restrict: 'A',
-        // replace: true,
-        // template: '<div id="map"></div>',
         scope: {
             config: "=config",
-            price: "=model"
+            progress: "=model",
+            shows: "="
         },
         link: function(scope, element, attrs) {
 
@@ -13,17 +12,24 @@ angular.module('Tour-Track').directive('slider', function() {
         		scope.model = value;
         	}
 
-        	$(element).slider({
-                range: false,
-	            min: scope.config.min,
-	            max: scope.config.max,
-                step: scope.config.step,
-                slide: function(event, ui) { 
-                    scope.$apply(function() {
-                        scope.price = ui.value;
-                    });
-	            }
-	        });
+        	scope.$watch('shows', function(shows) {
+        		if(shows) {
+
+		        	$(element).slider({
+		                range: false,
+			            min: 0,
+			            max: shows.length,
+		                step: 1,
+		                slide: function(event, ui) { 
+		                    scope.$apply(function() {
+		                        scope.progress = ui.value;
+		                    });
+			            }
+			        });
+        			
+        		}
+        	})
+
 
 
 
