@@ -1,2 +1,6 @@
 PROGRESSMAP
-<progress-map shows='showsWithVenueInfo'></progress-map>
+<!-- <progress-map shows='showsWithVenueInfo'></progress-map> -->
+<div ng-controller="ProgressMapCtrl">
+	Price: {{price}}
+	<div slider config="sliderConfig" model="price" class="cdbl-slider"></div>
+</div>
