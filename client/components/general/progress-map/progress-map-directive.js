@@ -15,7 +15,8 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
 
             var rendered = false;
             scope.$watch('shows', function(shows) {
-                if(shows && !rendered) {
+                // if(shows && !rendered) {
+                if(shows) {
                     rendered = true;
                     // console.log('shows', shows)
 
@@ -39,7 +40,7 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
                         }
                     }
 
-                    var radius = 500;
+                    var radius = 50;
 
                     var geoJson = L.geoJson(geoJsonData, {
                         pointToLayer: function(feature, latlng) {
