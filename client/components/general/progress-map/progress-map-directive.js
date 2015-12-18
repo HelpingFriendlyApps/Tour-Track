@@ -14,9 +14,15 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
             var map = L.mapbox.map('map', 'mapbox.streets')
                 .setView([37.9, -77],4);
 
+            var showsLayer = L.geoJson(null, { pointToLayer: scaledPoint })
+                .addTo(map);
+
+            var radius = 50;
+            function scaledPoint(feature, latlng) {
+                return L.circle(latlng, radius);
+            }
 
             scope.$watch('shows', function(shows) {
-                // if(shows && !rendered) {
                 if(shows) {
 
                     var geoJsonData = {
@@ -39,35 +45,22 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
                         }
                     }
 
-
                     scope.$watch('progress', function(progress) {
-                        console.log('progress', progress)
-                        var progShows = geoJsonData.features.slice(0, progress);
-                        console.log('progShows', progShows)
-                        
+                        var progShows = Object.assign({}, geoJsonData)
+                        progShows.features = progShows.features.slice(0, progress);
 
-                        var radius = 50;
+                        showsLayer.clearLayers()
+                            .addData(progShows);
 
-                        var geoJson = L.geoJson(progShows, {
-                            pointToLayer: function(feature, latlng) {
-                                return L.circle(latlng, radius);
-                            }
-                        }).addTo(map);
-                    });
-
-
-
-
-
+                    }, true);
 
 
                 }
             }, true);
 
-            map.on('zoomend', function() {
-                console.log('map.getZoom()', map.getZoom())
-            })
-
+            // map.on('zoomend', function() {
+            //     console.log('map.getZoom()', map.getZoom())
+            // })
 
         }
     };
