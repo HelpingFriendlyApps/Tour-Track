@@ -11,7 +11,8 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
         link: function(scope, element, attrs) {
 
             L.mapbox.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
-            var map = L.mapbox.map('map', 'mapbox.streets')
+            // var map = L.mapbox.map('map', 'mapbox.streets')
+            var map = L.mapbox.map('map', 'examples.map-h68a1pf7')
                 .setView([37.9, -77],4);
 
             var showsLayer = L.geoJson(null, { pointToLayer: scaledPoint })
@@ -23,6 +24,7 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
             }
 
             scope.$watch('shows', function(shows) {
+                console.log('shows', shows)
                 if(shows) {
 
                     var geoJsonData = {

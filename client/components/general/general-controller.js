@@ -15,11 +15,13 @@ angular.module('Tour-Track')
 
 	General.allSongs().then(function(data) {
 		$scope.songs = data;
+		console.log('$scope.songs', $scope.songs)
 		return data;
 	});
 
 	General.allTours().then(function(data) {
 		$scope.tours = data;
+		console.log('$scope.tours', $scope.tours)
 		return data;
 	});
 

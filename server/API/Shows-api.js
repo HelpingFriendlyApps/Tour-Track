@@ -20,7 +20,7 @@ router.get('/venues', function (req, res, next) {
 	})
 })
 
-router.get('/venuestours', function (req, res, next) {
+router.get('/venuesTours', function (req, res, next) {
     Shows.getAllShowsWithVenueTourInfo().then(function(x) {
         res.send(x);
     })

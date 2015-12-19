@@ -21,7 +21,7 @@ angular.module('Tour-Track')
 		},
 		
 		allShowsWithVenueTourInfo: function () {
-			return $http.get('/shows/venuestours').then(function(shows) {
+			return $http.get('/shows/venuesTours').then(function(shows) {
 				shows.data.forEach(function(show) {
 					show.sanitizedSetList = $sce.trustAsHtml(show.setlistdata);
 				});
