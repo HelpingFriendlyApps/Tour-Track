@@ -27,5 +27,18 @@ var Tours = module.exports = {
     create : function(attrs){
         attrs.created_at = new Date();
         return db('tours').insert(attrs).return(attrs);
+    },
+
+    getAllToursWithShows: function() {
+        var promiseArr = [];
+        return Tours.getAllTours().then( (tours) => {
+            tours.forEach( (tour) => {
+                promiseArr.push(db('shows').select('*').where({tour_id: tour.id}).then( (showList) => {
+                    tour.shows = showList;
+                    return tour;
+                }))
+            });
+            return Promise.all(promiseArr);
+        });
     }
 }
