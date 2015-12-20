@@ -9,7 +9,8 @@ var ph = require('./Phish').Phishin();
 var Tours = module.exports = {
 
     getAllTours: function () {
-        return db('tours').select('*');
+        return db('tours').select('*')
+        .orderBy('starts_on', 'asc');
     },
 
     updateOrCreate : function(attrs){

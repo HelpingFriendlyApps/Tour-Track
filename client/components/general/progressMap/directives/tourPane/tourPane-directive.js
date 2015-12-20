@@ -3,11 +3,10 @@ angular.module('Tour-Track').directive('tourPane', function($parse, General) {
         restrict: 'E',
         replace: true,
         templateUrl: '../components/general/progressMap/directives/tourPane/tourPane.html',
+        scope: {
+        	tours: '='
+        },
         link: function(scope, element, attrs) {
-
-            scope.tours = General.allTours();
-
-            console.log('scope.tours', scope.tours)
 
         }
     };

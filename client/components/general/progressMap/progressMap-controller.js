@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ProgressMapCtrl', ['$scope', 'General', function($scope, General) {
+.controller('ProgressMapCtrl', ['$scope', 'General', 'ProgressMapFactory', function($scope, General, ProgressMapFactory) {
 
 	$scope.progress = 10;
 
