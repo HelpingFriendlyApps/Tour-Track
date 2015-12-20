@@ -24,7 +24,6 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
             }
 
             scope.$watch('shows', function(shows) {
-                console.log('shows', shows)
                 if(shows) {
 
                     var geoJsonData = {
