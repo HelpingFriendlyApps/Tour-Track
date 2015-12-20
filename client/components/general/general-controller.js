@@ -5,7 +5,6 @@ angular.module('Tour-Track')
 
 	General.allShows().then(function(data) {
 		$scope.shows = data;
-		console.log('$scope.shows', $scope.shows)
 		return data;
 	});
 
@@ -21,7 +20,6 @@ angular.module('Tour-Track')
 
 	General.allTours().then(function(data) {
 		$scope.tours = data;
-		console.log('$scope.tours', $scope.tours)
 		return data;
 	});
 
