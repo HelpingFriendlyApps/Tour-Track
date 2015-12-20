@@ -13,3 +13,9 @@ router.get('/', function (req, res, next) {
 		res.send(x);
 	});
 });
+
+router.get('/shows', function (req, res, next) {
+    Tours.getAllToursWithShows().then(function(x) {
+        res.send(x);
+    });
+});
