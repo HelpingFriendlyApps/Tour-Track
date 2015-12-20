@@ -18,9 +18,14 @@
     <script src="./lib/angular-touch/angular-touch.js"></script>
     <script src="./lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="./lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+    <script src="./lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="./lib/jquery-ui/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="./lib/jquery-ui/themes/smoothness/jquery-ui.css">
     
     <script type="text/javascript" src="./lib/d3/d3.js"></script>
-    <script type="text/javascript" src="./lib/d3/d3.layout.js"></script>
+    <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
+    <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 
     <script type="text/javascript" src="./helpers/uStates.js"></script>
     <!-- <script type="text/javascript" src="./helpers/flare.json"></script> -->
@@ -34,8 +39,12 @@
     <script src="components/general/general-model.js"></script>
     <script src="components/general/general-state.js"></script>
 
-    <script src="components/general/map/general.map-controller.js"></script>
-    <script src="components/general/map/general.map-state.js"></script>
+    <script src="components/general/progressMap/directives/map/map-directive.js"></script>
+    <script src="components/general/progressMap/directives/slider/slider-directive.js"></script>
+    <script src="components/general/progressMap/directives/tourPane/tourPane-directive.js"></script>
+    <script src="components/general/progressMap/progressMap-controller.js"></script>
+    <script src="components/general/progressMap/progressMap-factory.js"></script>
+    <script src="components/general/progressMap/progressMap-state.js"></script>
 
     <script src="components/general/showsperstate/general.showsperstate-controller.js"></script>
     <script src="components/general/showsperstate/general.showsperstate-directive.js"></script>
