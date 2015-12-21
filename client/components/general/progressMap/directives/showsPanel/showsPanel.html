@@ -1,10 +1,13 @@
 <div class='showsPanel'>
+	<h1>Shows Panel</h1>
 	<div ng-controller='ProgressMapCtrl'>
 		<div ng-repeat='show in shows'>
-			<tr>
+			<p ng-click='getSetlist(show)'>{{dateParser(show.date)}}</p>
+			<!-- <p ng-click="changeView('tours')">{{dateParser(show.date)}}</p> -->
+			<!-- <tr ng-click='getSetlist(show)'>
 				<td>{{dateParser(show.date)}}</td>
 				<td>{{show.location}}</td>
-			</tr>
+			</tr> -->
 		</div>
 	</div>
 </div>

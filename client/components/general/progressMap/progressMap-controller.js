@@ -13,6 +13,10 @@ angular.module('Tour-Track')
 		$scope.currentView = view;
 	}
 
+	$scope.getCurrentView = function() {
+		return $scope.currentView;
+	}
+
 	$scope.dateParser = function(date) {
         return date.slice(0,10).replace(/(-)/g, '/');
     }
@@ -26,10 +30,16 @@ angular.module('Tour-Track')
 	});
 
 	$scope.getShowsByTour = function(tour) {
+		$scope.changeView('shows')
 		General.allShowsWithVenueInfoByTourId(tour.id).then(function(shows) {
 			$scope.filteredShows = shows;
-			$scope.currentView = 'shows';
-			return shows;
+		});
+	}
+
+	$scope.getSetlist = function(show) {
+		$scope.changeView('setlist')
+		General.setlistByShow(show.id).then(function(setlist) {
+			$scope.currSetlist = setlist;
 		});
 	}
 

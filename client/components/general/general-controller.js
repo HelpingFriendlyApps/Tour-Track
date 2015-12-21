@@ -15,7 +15,6 @@ angular.module('Tour-Track')
 
 	General.allSongs().then(function(data) {
 		$scope.songs = data;
-		console.log('$scope.songs', $scope.songs)
 		return data;
 	});
 

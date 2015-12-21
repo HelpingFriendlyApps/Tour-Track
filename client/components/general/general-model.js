@@ -41,6 +41,12 @@ angular.module('Tour-Track')
 			});
 		},
 
+		setlistByShow: function (showId) {
+			return $http.get('/songs/' + showId).then(function(setlist) {
+				return setlist.data;
+			});
+		},
+
 		allTours: function () {
 			return $http.get('/tours').then(function(tours) {
 				return tours.data;
