@@ -1,4 +1,6 @@
 .cdbl-slider {
+	z-index: 200;  
+    position: fixed;
     width: 200px;
     margin: 10px;    
 }

@@ -1,7 +1,7 @@
 <div class='tourOrShowPanel'>
-	<div class='btn-group'>
-		<button type='button' class='btn btn-default'>Tours</button>
-		<button type='button' class='btn btn-default'>Shows</button>
+	<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
+	<a class="waves-effect waves-light btn" ng-click="changeView('shows')">Shows</a>
+	<div ng-switch on="toursOrShows">
+		<tour-panel ng-switch-when="tours" tours='tours'></tour-panel>
 	</div>
-	<tour-panel tours='tours'></tour-panel>
 </div>
