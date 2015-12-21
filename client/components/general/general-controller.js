@@ -5,6 +5,7 @@ angular.module('Tour-Track')
 
 	General.allShows().then(function(data) {
 		$scope.shows = data;
+		console.log('$scope.shows', $scope.shows)
 		return data;
 	});
 
@@ -23,10 +24,20 @@ angular.module('Tour-Track')
 		return data;
 	});
 
+	General.allToursWithShows().then(function(data) {
+		$scope.toursWithShows = data;
+		return data;
+	});
+
 	General.allVenues().then(function(data) {
 		$scope.venues = data;
 		return data;
 	});
+
+	General.allYears().then(function(data) {
+		$scope.years = data;
+		return data;
+	})
 
 	Profile.userObject().then(function(data){ 
         var user = data.data;

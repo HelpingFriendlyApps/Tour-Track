@@ -1,7 +1,40 @@
-body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; }
+#map { 
+	position:absolute;
+	top:0;
+	bottom:0;
+	width:100%;
+	z-index: -1;
+}
 
 .cdbl-slider {
     width: 200px;
     margin: 10px;    
 }
+
+.tourPane {
+	background-color: white;
+	max-width: 18%;
+	display: block;
+	float: right;
+}
+
+#showsPerMonthGraph {
+	font: 10px sans-serif;
+
+	svg {
+		background-color: white;
+	}
+
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+
+	.area {
+		fill: steelblue;
+		stroke-width: 1;
+	}
+}
+

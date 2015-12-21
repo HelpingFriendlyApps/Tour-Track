@@ -41,25 +41,27 @@ angular.module('Tour-Track')
 			});
 		},
 
+		allToursWithShows: function() {
+			return $http.get('/tours/shows').then(function(tours) {
+				return tours.data;
+			});
+		},
+
 		allVenues: function () {
 			return $http.get('/venues').then(function(venues) {
 				return venues.data;
 			});
 		},
 
-		allYears: function (tours) {
+		allYears: function() {
 			var years = [];
-
-			tours.forEach(function(tour) {
-				var year = tour.starts_on.slice(0,4);
-				if(years.indexOf(year) === -1) {
-					years.push(year);
-					years.sort(function(a, b) {
-						return a - b;
-					})
-				}
+			return $http.get('/tours').then(function(tours) {
+				tours.data.forEach(function(tour) {
+					var year = tour.starts_on.slice(0,4);
+					if(years.indexOf(year) < 0) years.push(year);
+				});
+				return years;
 			});
-			return years;
 		}
 
 	}

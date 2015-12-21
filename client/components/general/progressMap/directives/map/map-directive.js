@@ -1,4 +1,4 @@
-angular.module('Tour-Track').directive('progressMap', function($parse) {
+angular.module('Tour-Track').directive('progressMap', function() {
     return {
         restrict: 'E',
         replace: true,
