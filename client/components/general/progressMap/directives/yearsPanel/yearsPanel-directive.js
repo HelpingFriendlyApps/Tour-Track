@@ -8,10 +8,6 @@ angular.module('Tour-Track').directive('yearsPanel', function(General) {
         },
         link: function(scope, element, attrs) {
 
-        	scope.$watch('years', function(years) {
-        		console.log('yerrrs', years)
-        	})
-
         }
     };
 });

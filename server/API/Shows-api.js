@@ -16,17 +16,21 @@ router.get('/', function (req, res, next) {
 
 router.get('/venues', function (req, res, next) {
 	Shows.getAllShowsWithVenueInfo().then(function(x) {
-		console.log('x', x)
 		res.send(x);
 	})
 })
 
-router.get('/venues/:year', function (req, res, next) {
-	Shows.getAllShowsWithVenueInfoById().then(function(x) {
-		console.log('x', x)
+router.get('/venues/tourId/:tourId', function (req, res, next) {
+	Shows.getAllShowsWithVenueInfoByTourId(req.params.tourId).then(function(x) {
 		res.send(x);
 	})
 })
+
+// router.get('/venues/year/:year', function (req, res, next) {
+// 	Shows.getAllShowsWithVenueInfoByYear(req.params.year).then(function(x) {
+// 		res.send(x);
+// 	})
+// })
 
 router.get('/venuesTours', function (req, res, next) {
     Shows.getAllShowsWithVenueTourInfo().then(function(x) {

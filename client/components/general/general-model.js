@@ -19,6 +19,12 @@ angular.module('Tour-Track')
 				return shows.data;
 			});
 		},
+
+		allShowsWithVenueInfoByTourId: function(tourId) {
+			return $http.get('/shows/venues/tourId/' + tourId).then(function(shows) {
+				return shows.data;
+			});
+		},
 		
 		allShowsWithVenueTourInfo: function () {
 			return $http.get('/shows/venuesTours').then(function(shows) {
@@ -38,6 +44,12 @@ angular.module('Tour-Track')
 		allTours: function () {
 			return $http.get('/tours').then(function(tours) {
 				return tours.data;
+			});
+		},
+
+		tourById: function (id) {
+			return $http.get('/tours/' + id).then(function(tour) {
+				return tour.data;
 			});
 		},
 

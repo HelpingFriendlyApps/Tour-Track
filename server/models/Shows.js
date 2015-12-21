@@ -19,11 +19,25 @@ var Shows = module.exports = {
         .join('venues', 'venues.id', 'shows.venue_id')
     },
 
-    getAllShowsWithVenueInfoByYear : function(year) {
+    getAllShowsWithVenueInfoByTourId : function(tourId) {
         return db('shows').select('shows.*', 'venues.*')
+        .where({tour_id: tourId})
         .orderBy('date', 'asc')
         .join('venues', 'venues.id', 'shows.venue_id')
     },
+
+
+
+
+    // getAllShowsWithVenueInfoByYear : function(year) {
+    //     return db('shows').select('shows.*', 'venues.*')
+    //     .whereRaw('date LIKE CAST(' + year + ' as TIMESTAMP)')
+    //     .orderBy('date', 'asc')
+    //     .join('venues', 'venues.id', 'shows.venue_id')
+    // },
+
+
+
 
     getAllShowsWithVenueTourInfo : function(){
         return db('shows').select('shows.*', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id', 'tours.name as tour_name')

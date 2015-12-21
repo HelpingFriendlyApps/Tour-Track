@@ -1,3 +1,10 @@
-<div class='showsPanel' ng-repeat='show in shows'>
-	<p>{{(show.date).slice(0,10)}}</p><p>{{(show.location)}}</p>
+<div class='showsPanel'>
+	<div ng-controller='ProgressMapCtrl'>
+		<div ng-repeat='show in shows'>
+			<tr>
+				<td>{{dateParser(show.date)}}</td>
+				<td>{{show.location}}</td>
+			</tr>
+		</div>
+	</div>
 </div>

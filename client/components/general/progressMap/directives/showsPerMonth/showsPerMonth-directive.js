@@ -34,10 +34,7 @@ angular.module('Tour-Track').directive('showsPerMonth', function() {
 				.interpolate('bundle')
 				.x(function(d) { return x(d.parsedDate); })
 				.y0(height)
-				.y1(function(d) {
-					console.log('y', y)
-					return y(1 + d.showCount);
-				});
+				.y1(function(d) { return y(1 + d.showCount); });
 
 			var svg = d3.select('#showsPerMonthGraph').append('svg')
 				.attr('width', width + margin.left + margin.right)

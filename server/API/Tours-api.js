@@ -7,9 +7,14 @@ var ph = require('../models/Phish').Phishin();
 var router = module.exports = express.Router();
 
 
-// Get all Tours
 router.get('/', function (req, res, next) {
 	Tours.getAllTours().then(function(x) {
+		res.send(x);
+	});
+});
+
+router.get('/:id', function (req, res, next) {
+	Tours.getTourById(req.params.id).then(function(x) {
 		res.send(x);
 	});
 });

@@ -7,7 +7,7 @@ angular.module('Tour-Track').directive('showsPanel', function(General) {
         	shows: '='
         },
         link: function(scope, element, attrs) {
-            console.log('EHY HLELO')
+
         }
     };
 });
