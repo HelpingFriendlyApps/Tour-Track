@@ -16,6 +16,14 @@ router.get('/', function (req, res, next) {
 
 router.get('/venues', function (req, res, next) {
 	Shows.getAllShowsWithVenueInfo().then(function(x) {
+		console.log('x', x)
+		res.send(x);
+	})
+})
+
+router.get('/venues/:year', function (req, res, next) {
+	Shows.getAllShowsWithVenueInfoById().then(function(x) {
+		console.log('x', x)
 		res.send(x);
 	})
 })

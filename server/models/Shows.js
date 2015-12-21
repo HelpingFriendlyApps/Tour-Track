@@ -19,6 +19,12 @@ var Shows = module.exports = {
         .join('venues', 'venues.id', 'shows.venue_id')
     },
 
+    getAllShowsWithVenueInfoByYear : function(year) {
+        return db('shows').select('shows.*', 'venues.*')
+        .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id')
+    },
+
     getAllShowsWithVenueTourInfo : function(){
         return db('shows').select('shows.*', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id', 'tours.name as tour_name')
         .orderBy('date', 'asc')
