@@ -1,8 +1,8 @@
-angular.module('Tour-Track').directive('tourPane', function($parse, General) {
+angular.module('Tour-Track').directive('tourPanel', function($parse, General) {
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: '../components/general/progressMap/directives/tourPane/tourPane.html',
+        templateUrl: '../components/general/progressMap/directives/tourPanel/tourPanel.html',
         scope: {
         	tours: '='
         },
