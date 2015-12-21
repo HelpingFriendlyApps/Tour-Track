@@ -5,7 +5,7 @@ var Users   = require('./Users');
 var Users   = module.exports = {
 
     getAllFriends : function(){
-        return db('Friends').select('*')
+        return db('friends').select('*')
         .then(function (data) {
             console.log("All Friends in user table: ", data)
             return data;
@@ -13,7 +13,7 @@ var Users   = module.exports = {
     },
 
     getFriends : function(id){
-        return db('Friends').select('*').where({ user_id: id })
+        return db('friends').select('*').where({ user_id: id }).orWhere({friend_id: id})
         .then(function (data) {
             return data;
         })
@@ -21,7 +21,7 @@ var Users   = module.exports = {
 
     addFriend : function(attrs){
         attrs.created_at = new Date();
-        return db('Friends').insert(attrs).return(attrs);
+        return db('friends').insert(attrs).return(attrs);
     },
 
     // update:
@@ -30,7 +30,7 @@ var Users   = module.exports = {
     // If not => return attrs => updateOrCreate will catch attrs and pass it into createUser
     update: function (attrs) {
         attrs.updated_at = new Date();
-        return db('Friends').update(attrs).where({ id: attrs.uid })
+        return db('friends').update(attrs).where({ id: attrs.id })
           .then(function(affectedCount) {
             return (affectedCount === 0) ? Promise.reject(new Error('not_found')) : attrs;
           });

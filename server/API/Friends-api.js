@@ -17,6 +17,6 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     Friends.getFriends(id).then( (usersFriends) => {
-        
+    res.send(usersFriends);    
     })
 });
