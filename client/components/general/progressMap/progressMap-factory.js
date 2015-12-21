@@ -27,6 +27,10 @@ angular.module('Tour-Track')
 			});
 		}
 
+		// showsByYear: function(years) {
+		// 	General.allShowsWithVenueInfo().then
+		// }
+
 
 	}
 

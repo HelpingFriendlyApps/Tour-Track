@@ -9,9 +9,14 @@ angular.module('Tour-Track')
 		$scope.progress = progress;
 	}
 
+
 	ProgressMapFactory.showsPerMonth().then(function(data) {
 		$scope.showsPerMonth = data;
-		return data;
 	});
+
+	General.allYears().then(function(data) {
+		$scope.years = data;
+		console.log('$scope.years', $scope.years)
+	})
 
 }]);

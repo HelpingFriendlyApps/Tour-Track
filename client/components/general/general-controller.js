@@ -11,6 +11,7 @@ angular.module('Tour-Track')
 
 	General.allShowsWithVenueInfo().then(function(data) {
 		$scope.showsWithVenueInfo = data;
+		console.log('$scope.showsWithVenueInfo', $scope.showsWithVenueInfo)
 		return data;
 	});
 
