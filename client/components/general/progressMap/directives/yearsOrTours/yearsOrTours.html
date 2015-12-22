@@ -1,15 +1,10 @@
 <div class='yearsOrToursPanel'>
 	<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
 	<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
-	<!-- <div ng-switch on="getCurrentView()"> -->
-	<div>
-		<!-- <years-panel ng-switch-when="years" years='years'></years-panel>
+	<div ng-switch on="getCurrentView()">
+		<years-panel ng-switch-when="years" years='years'></years-panel>
 		<tours-panel ng-switch-when="tours" tours='tours'></tours-panel>
 		<shows-panel ng-switch-when="shows" shows='filteredShows'></shows-panel>
-		<setlist-panel ng-switch-when="setlist" setlist='currSetlist'></setlist-panel> -->
-		<years-panel ng-if="getCurrentView() === 'years'" years='years'></years-panel>
-		<tours-panel ng-if="getCurrentView() === 'tours'" tours='tours'></tours-panel>
-		<shows-panel ng-if="getCurrentView() === 'shows'" shows='filteredShows'></shows-panel>
-		<setlist-panel ng-if="getCurrentView() === 'setlist'" setlist='currSetlist'></setlist-panel>
+		<setlist-panel ng-switch-when="setlist" setlist='currSetlist'></setlist-panel>
 	</div>
 </div>

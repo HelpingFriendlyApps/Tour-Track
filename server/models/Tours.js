@@ -15,8 +15,7 @@ var Tours = module.exports = {
 
     getTourById: function (id) {
         return db('tours').select('*')
-        .where({id: id})
-        .orderBy('starts_on', 'asc');
+        .where({id: id});
     },
 
     updateOrCreate : function(attrs){

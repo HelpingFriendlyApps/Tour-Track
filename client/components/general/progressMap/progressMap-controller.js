@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ProgressMapCtrl', ['$scope', 'General', 'ProgressMapFactory', function($scope, General, ProgressMapFactory) {
+.controller('ProgressMapCtrl', ['$scope', '$rootScope', 'General', 'ProgressMapFactory', function($scope, $rootScope, General, ProgressMapFactory) {
 
 	$scope.progress = 0;
 	$scope.setProgress = function(progress) {
@@ -40,6 +40,8 @@ angular.module('Tour-Track')
 		$scope.changeView('setlist')
 		General.setlistByShow(show.id).then(function(setlist) {
 			$scope.currSetlist = setlist;
+			console.log('$scope.currSetlist', $scope.currSetlist)
+			// $rootScope.currSetlist = setlist;
 		});
 	}
 

@@ -23,6 +23,7 @@ angular.module('Tour-Track').directive('progressMap', function() {
                 return L.circle(latlng, radius);
             }
 
+
             scope.$watch('shows', function(shows) {
                 if(shows) {
 
