@@ -1,3 +1,5 @@
-<div class='toursPanel' ng-repeat='tour in tours'>
-	<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
+<div class='toursPanel' ng-controller='ToursPanelCtrl'>
+	<div ng-repeat='tour in tours'>
+		<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
+	</div>
 </div>

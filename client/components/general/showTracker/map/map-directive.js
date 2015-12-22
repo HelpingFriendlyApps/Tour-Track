@@ -10,8 +10,6 @@ angular.module('Tour-Track').directive('map', function() {
         },
         link: function(scope, element, attrs) {
 
-            console.log('inside direc')
-
             L.mapbox.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
             // var map = L.mapbox.map('map', 'mapbox.streets')
             var map = L.mapbox.map('map', 'examples.map-h68a1pf7')
@@ -28,9 +26,6 @@ angular.module('Tour-Track').directive('map', function() {
 
             scope.$watch('shows', function(shows) {
                 if(shows) {
-
-                    console.log('shows', shows)
-
                     var geoJsonData = {
                         type: "FeatureCollection",
                         features: []
@@ -52,7 +47,6 @@ angular.module('Tour-Track').directive('map', function() {
                     }
 
                     scope.$watch('progress', function(progress) {
-                        console.log('progress', progress)
                         var progShows = Object.assign({}, geoJsonData)
                         progShows.features = progShows.features.slice(0, progress);
 

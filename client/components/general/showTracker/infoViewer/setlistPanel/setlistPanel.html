@@ -1,12 +1,6 @@
-<div class='setlistPanel'>
+<div class='setlistPanel' ng-controller='SetlistPanelCtrl'>
 	<h1>setlistPanel</h1>
-	<div ng-controller='ShowTrackerCtrl'>
-		<div ng-repeat='song in setlist'>
-			<p>{{song.title}}</p>
-			<!-- <tr>
-				<td>{{dateParser(show.date)}}</td>
-				<td>{{show.location}}</td>
-			</tr> -->
-		</div>
+	<div ng-repeat='song in setlist'>
+		<p>{{song.title}}</p>
 	</div>
 </div>
