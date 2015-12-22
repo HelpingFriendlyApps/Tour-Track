@@ -1,4 +1,4 @@
-angular.module('Tour-Track').directive('progressMap', function() {
+angular.module('Tour-Track').directive('map', function() {
     return {
         restrict: 'E',
         replace: true,
@@ -9,6 +9,8 @@ angular.module('Tour-Track').directive('progressMap', function() {
             progress: '='
         },
         link: function(scope, element, attrs) {
+
+            console.log('inside direc')
 
             L.mapbox.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
             // var map = L.mapbox.map('map', 'mapbox.streets')
@@ -26,6 +28,8 @@ angular.module('Tour-Track').directive('progressMap', function() {
 
             scope.$watch('shows', function(shows) {
                 if(shows) {
+
+                    console.log('shows', shows)
 
                     var geoJsonData = {
                         type: "FeatureCollection",
@@ -48,6 +52,7 @@ angular.module('Tour-Track').directive('progressMap', function() {
                     }
 
                     scope.$watch('progress', function(progress) {
+                        console.log('progress', progress)
                         var progShows = Object.assign({}, geoJsonData)
                         progShows.features = progShows.features.slice(0, progress);
 

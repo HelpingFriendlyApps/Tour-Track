@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ProgressMapCtrl', ['$scope', '$rootScope', 'General', 'ProgressMapFactory', function($scope, $rootScope, General, ProgressMapFactory) {
+.controller('ShowTrackerCtrl', ['$scope', '$rootScope', 'General', 'ShowTrackerFactory', function($scope, $rootScope, General, ShowTrackerFactory) {
 
 	$scope.progress = 0;
 	$scope.setProgress = function(progress) {
@@ -21,7 +21,7 @@ angular.module('Tour-Track')
         return date.slice(0,10).replace(/(-)/g, '/');
     }
 
-	ProgressMapFactory.showsPerMonth().then(function(data) {
+	ShowTrackerFactory.showsPerMonth().then(function(data) {
 		$scope.showsPerMonth = data;
 	});
 

@@ -2,7 +2,7 @@ angular.module('Tour-Track').directive('yearsPanel', function(General) {
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: '../components/general/progressMap/directives/yearsPanel/yearsPanel.html',
+        templateUrl: '../components/general/showTracker/infoViewer/yearsPanel/yearsPanel.html',
         scope: {
         	years: '='
         },

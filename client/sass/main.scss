@@ -18,12 +18,12 @@ body {
 @import 'layout-tree';
 @import 'partial1';
 @import 'partial2';
-@import 'progressMap/map';
-@import 'progressMap/showsPanel';
-@import 'progressMap/showsPerMonthGraph';
-@import 'progressMap/slider';
-@import 'progressMap/tourOrShowPanel';
-@import 'progressMap/toursPanel';
+@import 'showTracker/map';
+@import 'showTracker/showsPanel';
+@import 'showTracker/showsPerMonthGraph';
+@import 'showTracker/slider';
+@import 'showTracker/infoViewer';
+@import 'showTracker/toursPanel';
 @import 'navbar';
 
 /* set up grid structure */

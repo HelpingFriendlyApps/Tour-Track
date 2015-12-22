@@ -2,7 +2,7 @@ angular.module('Tour-Track').directive('showsPanel', function(General) {
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: '../components/general/progressMap/directives/showsPanel/showsPanel.html',
+        templateUrl: '../components/general/showTracker/infoViewer/showsPanel/showsPanel.html',
         scope: {
         	shows: '='
         },

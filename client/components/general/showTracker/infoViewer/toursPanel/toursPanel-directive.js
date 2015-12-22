@@ -2,7 +2,7 @@ angular.module('Tour-Track').directive('toursPanel', function(General) {
     return {
         restrict: 'E',
         replace: true,
-        templateUrl: '../components/general/progressMap/directives/toursPanel/toursPanel.html',
+        templateUrl: '../components/general/showTracker/infoViewer/toursPanel/toursPanel.html',
         scope: {
         	tours: '='
         },

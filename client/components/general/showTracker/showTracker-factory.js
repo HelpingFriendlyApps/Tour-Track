@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.factory('ProgressMapFactory', function($http, General) {
+.factory('ShowTrackerFactory', function($http, General) {
 	
 	return {
 
@@ -27,9 +27,6 @@ angular.module('Tour-Track')
 			});
 		}
 
-		// showsByYear: function(years) {
-		// 	General.allShowsWithVenueInfo().then
-		// }
 
 
 	}
