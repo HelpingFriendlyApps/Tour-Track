@@ -11,9 +11,3 @@ router.get('/', function (req, res, next) {
         res.send(x)
     });
 });
-
-router.get('/shows/:showId', function (req, res, next) {
-    Songs.getSetlist(req.params.showId).then(function(x) {
-        res.send(x)
-    });
-});

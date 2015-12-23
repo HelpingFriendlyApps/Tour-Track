@@ -42,7 +42,7 @@ angular.module('Tour-Track')
 		},
 
 		setlistByShow: function (showId) {
-			return $http.get('/songs/' + showId).then(function(setlist) {
+			return $http.get('/shows/setlist/' + showId).then(function(setlist) {
 				return setlist.data;
 			});
 		},
