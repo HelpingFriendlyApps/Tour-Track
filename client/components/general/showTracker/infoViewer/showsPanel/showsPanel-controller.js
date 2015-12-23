@@ -8,13 +8,16 @@ angular.module('Tour-Track')
     }
 
 	$scope.getSetlist = function(show) {
-		console.log('show', show)
+		// console.log('show', show)
+		// console.log('$scope.currentView 1', $scope.currentView)
+		$scope.currentView = 'setlist';
+		// console.log('$scope.currentView 2', $scope.currentView)
 		General.setlistByShow(show.id).then(function(setlist) {
-			console.log('setlist', setlist)
+			// console.log('setlist', setlist)
 		});
 	}
 
-	console.log('$scope.currentView in shows', $scope.currentView)
+
 
 
 }]);

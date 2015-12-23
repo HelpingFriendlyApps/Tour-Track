@@ -5,7 +5,6 @@ angular.module('Tour-Track')
 
 	$scope.currentView = 'years';
 	$scope.changeView = function(view) {
-		console.log('view', view)
 		$scope.currentView = view;
 	}
 
@@ -13,14 +12,20 @@ angular.module('Tour-Track')
 		return $scope.currentView;
 	}
 
-    $scope.setFilteredShows = function(shows) {
-	    $scope.filteredShows = shows;
-    }
+	// console.log('$scope.shows', $scope.shows)
+	// console.log('$scope.tours', $scope.tours)
+	// console.log('$scope.years', $scope.years)
 
-    $scope.setCurrentSetlist = function(show) {
-    	$scope.changeView('setlist')
-	    $scope.currSetlist = ['a','b','c'];
-    }
+	console.log('test', $scope.test)
+
+    // $scope.setFilteredShows = function(shows) {
+	   //  $scope.filteredShows = shows;
+    // }
+
+    // $scope.setCurrentSetlist = function(show) {
+    // 	$scope.changeView('setlist')
+	   //  $scope.currSetlist = ['a','b','c'];
+    // }
 
 
 }]);

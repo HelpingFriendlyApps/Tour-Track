@@ -36,7 +36,7 @@ angular.module('Tour-Track')
 	General.allYears().then(function(data) {
 		$scope.years = data;
 		return data;
-	})
+	});
 
 	Profile.userObject().then(function(data){ 
         var user = data.data;

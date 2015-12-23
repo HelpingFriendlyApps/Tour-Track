@@ -4,12 +4,17 @@ angular.module('Tour-Track').directive('showsPanel', function(General) {
         // replace: true,
         templateUrl: '../components/general/showTracker/infoViewer/showsPanel/showsPanel.html',
         scope: {
-        	filteredShows: '=shows'
+        	filteredShows: '=shows',
+            currentView: '=view'
         },
         link: function(scope, element, attrs) {
 
             scope.$watch('filteredShows', function(filteredShows) {
-                console.log('filteredShows', filteredShows)
+                // console.log('filteredShows', filteredShows)
+            })
+
+            scope.$watch('currentView', function(currentView) {
+                // console.log('currentView in show direc', currentView)
             })
 
         }
