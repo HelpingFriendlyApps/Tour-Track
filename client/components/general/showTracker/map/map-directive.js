@@ -6,12 +6,12 @@ angular.module('Tour-Track').directive('map', function() {
         template: '<div id="map"></div>',
         scope: {
             shows: '=',
-            progress: '='
+            progress: '=',
+            currentShow: '='
         },
         link: function(scope, element, attrs) {
 
             L.mapbox.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
-            // var map = L.mapbox.map('map', 'mapbox.streets')
             var map = L.mapbox.map('map', 'examples.map-h68a1pf7')
                 .setView([37.9, -77],4);
 
@@ -22,6 +22,12 @@ angular.module('Tour-Track').directive('map', function() {
             function scaledPoint(feature, latlng) {
                 return L.circle(latlng, radius);
             }
+
+            scope.$watch('currentShow', function(currentShow) {
+                if(currentShow) {
+                    map.setView([currentShow.latitude, currentShow.longitude], 8);
+                }
+            }, true);
 
 
             scope.$watch('shows', function(shows) {

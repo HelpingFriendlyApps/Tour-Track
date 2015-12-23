@@ -14,17 +14,14 @@ angular.module('Tour-Track')
 
 	General.allShows().then(function(data) {
 		$scope.shows = data;
-		// console.log('$scope.shows', $scope.shows)
 	});
 
 	General.allTours().then(function(data) {
 		$scope.tours = data;
-		// console.log('$scope.tours', $scope.tours)
 	});
 
 	General.allYears().then(function(data) {
 		$scope.years = data;
-		// console.log('$scope.years', $scope.years)
 	});
 
 

@@ -8,24 +8,27 @@ angular.module('Tour-Track')
 		$scope.currentView = view;
 	}
 
-	$scope.getCurrentView = function() {
-		return $scope.currentView;
+	$scope.getShowsByTour = function(tour) {
+		$scope.prevTour = $scope.currentView;
+		$scope.changeView('shows');
+		$scope.currentTour = tour;
+		General.allShowsWithVenueInfoByTourId(tour.id).then(function(filteredShows) {
+			$scope.filteredShows = filteredShows;
+		});
 	}
 
-	// console.log('$scope.shows', $scope.shows)
-	// console.log('$scope.tours', $scope.tours)
-	// console.log('$scope.years', $scope.years)
+	$scope.dateParser = function(date) {
+        return date.slice(0,10).replace(/(-)/g, '/');
+    }
 
-	console.log('test', $scope.test)
-
-    // $scope.setFilteredShows = function(shows) {
-	   //  $scope.filteredShows = shows;
-    // }
-
-    // $scope.setCurrentSetlist = function(show) {
-    // 	$scope.changeView('setlist')
-	   //  $scope.currSetlist = ['a','b','c'];
-    // }
+	$scope.viewShow = function(show) {
+		$scope.prevView = $scope.currentView;
+		$scope.changeView('setlist');
+		$scope.$parent.currentShow = show;
+		General.setlistByShow(show.id).then(function(setlist) {
+			$scope.setlist = setlist;
+		});
+	}
 
 
 }]);

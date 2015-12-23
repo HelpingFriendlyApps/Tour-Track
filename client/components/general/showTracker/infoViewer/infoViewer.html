@@ -1,11 +1,34 @@
 <div class='infoViewer' ng-controller='InfoViewerCtrl'>
-	<h1>InfoViewer</h1>
-	<!-- <a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a> -->
-	<!-- <a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a> -->
-	<!-- <div ng-switch on="getCurrentView()"> -->
-		<!-- <years-panel ng-switch-when="years" years='years'></years-panel>
-		<tours-panel ng-switch-when="tours" tours='tours'></tours-panel>
-		<shows-panel ng-switch-when="shows" shows='filteredShows' view='currentView'></shows-panel>
-		<setlist-panel ng-switch-when="setlist" setlist='currSetlist'></setlist-panel> -->
-	<!-- </div> -->
+	<div ng-switch on="currentView">
+		<div ng-switch-when="years">
+			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
+			<h1>Years</h1>
+			<div ng-repeat='year in years'>
+				<p>{{year}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="tours">
+			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
+			<h1>Tours</h1>
+			<div ng-repeat='tour in tours'>
+				<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="shows">
+			<a class="waves-effect waves-light btn" ng-click="changeView(prevTour)">Back</a>
+			<h1>{{currentTour.name}}</h1>
+			<div ng-repeat='show in filteredShows'>
+				<p ng-click='viewShow(show)'>{{dateParser(show.date)}}</p>
+			</div>
+		</div>
+		<div ng-switch-when="setlist">
+			<a class="waves-effect waves-light btn" ng-click="changeView(prevView)">Back</a>
+			<h1>{{dateParser(currentShow.date)}}</h1>
+			<div ng-repeat='song in setlist'>
+				<p>{{song.title}}</p>
+			</div>
+		</div>
+	</div>
 </div>
