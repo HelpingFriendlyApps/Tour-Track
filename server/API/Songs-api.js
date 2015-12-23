@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     });
 });
 
-router.get('/:showId', function (req, res, next) {
+router.get('/shows/:showId', function (req, res, next) {
     Songs.getSetlist(req.params.showId).then(function(x) {
         res.send(x)
     });

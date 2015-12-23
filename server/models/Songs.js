@@ -14,14 +14,12 @@ var Songs = module.exports = {
     },
 
     getSetlist : function(showId){
-        return db('songplayed').select('songplayed.*','shows.*','shows.id as show_id','songs.*','songs.id as song_id', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id')
-        .where({show_id: showId})
+        return db('shows').select('songs.title')
+        .where('shows.id', showId)
         .orderBy('set', 'asc')
         .orderBy('position', 'asc')
-        .join('shows', 'shows.id', 'songplayed.show_id')
-        .join('songs', 'songs.id', 'songplayed.song_id')
-        .join('venues', 'venues.id', 'shows.venue_id')
-        .join('tours', 'tours.id', 'shows.tour_id')
+        .join('songplayed', 'shows.id', 'songplayed.show_id')
+        .join('songs', 'songplayed.song_id','songs.id')
     },
 
     breakMultiSongintoSongObject : function(songString){
