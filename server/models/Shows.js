@@ -13,6 +13,15 @@ var Shows = module.exports = {
         .orderBy('date', 'asc');
     },
 
+    getSetlist : function(showId){
+        return db('shows').select('songs.title')
+        .where('shows.id', showId)
+        .orderBy('set', 'asc')
+        .orderBy('position', 'asc')
+        .join('songplayed', 'shows.id', 'songplayed.show_id')
+        .join('songs', 'songplayed.song_id','songs.id')
+    },
+
     getAllShowsWithVenueInfo : function() {
         return db('shows').select('shows.*', 'venues.*')
         .orderBy('date', 'asc')

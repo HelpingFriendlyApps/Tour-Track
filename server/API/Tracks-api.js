@@ -1,13 +1,14 @@
 var express = require('express');
 var db  = require('../db');
-var Songs = require('../models/Songs');
-var ph = require('../models/Phish').Phishin();
+var Tracks = require('../models/Tracks');
 
 var router = module.exports = express.Router();
 
 
+// Get all Tours
 router.get('/', function (req, res, next) {
-    Songs.getAllSongs().then(function(x) {
-        res.send(x)
+    Tracks.getAllTracks().then(function(x) {
+        console.log('retrieving')
+        res.send(x);
     });
 });

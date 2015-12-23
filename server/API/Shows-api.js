@@ -26,6 +26,13 @@ router.get('/venues/tourId/:tourId', function (req, res, next) {
 	})
 })
 
+
+router.get('/setlist/:showId', function (req, res, next) {
+    Shows.getSetlist(req.params.showId).then(function(x) {
+        res.send(x)
+    });
+});
+
 // router.get('/venues/year/:year', function (req, res, next) {
 // 	Shows.getAllShowsWithVenueInfoByYear(req.params.year).then(function(x) {
 // 		res.send(x);
