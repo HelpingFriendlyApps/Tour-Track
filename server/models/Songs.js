@@ -8,8 +8,16 @@ var ph = require('./Phish').Phishin();
 
 var Songs = module.exports = {
 
-    getAllSongs : function(){
+    getAllSongs: function() {
+        return db('songs').select('*')
+        .orderBy('title', 'asc');
+    },
+
+    getSetlist : function(showId){
         return db('songplayed').select('songplayed.*','shows.*','shows.id as show_id','songs.*','songs.id as song_id', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id')
+        .where({show_id: showId})
+        .orderBy('set', 'asc')
+        .orderBy('position', 'asc')
         .join('shows', 'shows.id', 'songplayed.show_id')
         .join('songs', 'songs.id', 'songplayed.song_id')
         .join('venues', 'venues.id', 'shows.venue_id')

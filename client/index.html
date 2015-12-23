@@ -18,6 +18,9 @@
     <script src="./lib/angular-touch/angular-touch.js"></script>
     <script src="./lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="./lib/angular-ui-router/release/angular-ui-router.js"></script>
+    
+    <script type="text/javascript" src="./lib/materialize/dist/js/materialize.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="./lib/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
 
     <script src="./lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./lib/jquery-ui/jquery-ui.min.js"></script>
@@ -28,7 +31,6 @@
     <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
 
     <script type="text/javascript" src="./helpers/uStates.js"></script>
-    <!-- <script type="text/javascript" src="./helpers/flare.json"></script> -->
 
     <script src="app.js"></script>
 
@@ -39,13 +41,15 @@
     <script src="components/general/general-model.js"></script>
     <script src="components/general/general-state.js"></script>
 
-    <script src="components/general/progressMap/directives/map/map-directive.js"></script>
-    <script src="components/general/progressMap/directives/slider/slider-directive.js"></script>
-    <script src="components/general/progressMap/directives/tourPane/tourPane-directive.js"></script>
-    <script src="components/general/progressMap/progressMap-controller.js"></script>
-    <script src="components/general/progressMap/progressMap-factory.js"></script>
-    <script src="components/general/progressMap/progressMap-state.js"></script>
-
+    <script src="components/general/showTracker/showTracker-controller.js"></script>
+    <script src="components/general/showTracker/showTracker-factory.js"></script>
+    <script src="components/general/showTracker/showTracker-state.js"></script>
+    <script src="components/general/showTracker/map/map-directive.js"></script>
+    <script src="components/general/showTracker/showsPerMonth/showsPerMonth-directive.js"></script>
+    <script src="components/general/showTracker/slider/slider-directive.js"></script>
+    <script src="components/general/showTracker/infoViewer/infoViewer-controller.js"></script>
+    <script src="components/general/showTracker/infoViewer/infoViewer-directive.js"></script>
+    
     <script src="components/general/showsperstate/general.showsperstate-controller.js"></script>
     <script src="components/general/showsperstate/general.showsperstate-directive.js"></script>
     <script src="components/general/showsperstate/general.showsperstate-model.js"></script>
@@ -65,7 +69,7 @@
     <script src="components/profile/showsVsYear/profile.showsvsyear-state.js"></script>
     <script src="components/profile/showsVsYear/profile.showsvsyear-model.js"></script>
 
-     <script src="components/profile/showsPerState/profile.showsPerState-controller.js"></script>
+    <script src="components/profile/showsPerState/profile.showsPerState-controller.js"></script>
     <script src="components/profile/showsPerState/profile.showsPerState-directive.js"></script>
     <script src="components/profile/showsPerState/profile.showsPerState-model.js"></script>
     <script src="components/profile/showsPerState/profile.showsPerState-state.js"></script>

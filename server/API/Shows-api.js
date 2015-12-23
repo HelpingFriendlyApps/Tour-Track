@@ -20,6 +20,18 @@ router.get('/venues', function (req, res, next) {
 	})
 })
 
+router.get('/venues/tourId/:tourId', function (req, res, next) {
+	Shows.getAllShowsWithVenueInfoByTourId(req.params.tourId).then(function(x) {
+		res.send(x);
+	})
+})
+
+// router.get('/venues/year/:year', function (req, res, next) {
+// 	Shows.getAllShowsWithVenueInfoByYear(req.params.year).then(function(x) {
+// 		res.send(x);
+// 	})
+// })
+
 router.get('/venuesTours', function (req, res, next) {
     Shows.getAllShowsWithVenueTourInfo().then(function(x) {
         res.send(x);

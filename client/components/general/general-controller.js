@@ -23,8 +23,18 @@ angular.module('Tour-Track')
 		return data;
 	});
 
+	General.allToursWithShows().then(function(data) {
+		$scope.toursWithShows = data;
+		return data;
+	});
+
 	General.allVenues().then(function(data) {
 		$scope.venues = data;
+		return data;
+	});
+
+	General.allYears().then(function(data) {
+		$scope.years = data;
 		return data;
 	});
 

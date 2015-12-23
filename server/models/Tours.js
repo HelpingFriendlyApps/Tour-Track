@@ -13,6 +13,11 @@ var Tours = module.exports = {
         .orderBy('starts_on', 'asc');
     },
 
+    getTourById: function (id) {
+        return db('tours').select('*')
+        .where({id: id});
+    },
+
     updateOrCreate : function(attrs){
         return Tours.update(attrs).catch(Tours.create(attrs));
     },

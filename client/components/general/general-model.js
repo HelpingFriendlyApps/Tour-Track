@@ -19,6 +19,12 @@ angular.module('Tour-Track')
 				return shows.data;
 			});
 		},
+
+		allShowsWithVenueInfoByTourId: function(tourId) {
+			return $http.get('/shows/venues/tourId/' + tourId).then(function(shows) {
+				return shows.data;
+			});
+		},
 		
 		allShowsWithVenueTourInfo: function () {
 			return $http.get('/shows/venuesTours').then(function(shows) {
@@ -35,8 +41,26 @@ angular.module('Tour-Track')
 			});
 		},
 
+		setlistByShow: function (showId) {
+			return $http.get('/songs/' + showId).then(function(setlist) {
+				return setlist.data;
+			});
+		},
+
 		allTours: function () {
 			return $http.get('/tours').then(function(tours) {
+				return tours.data;
+			});
+		},
+
+		tourById: function (id) {
+			return $http.get('/tours/' + id).then(function(tour) {
+				return tour.data;
+			});
+		},
+
+		allToursWithShows: function() {
+			return $http.get('/tours/shows').then(function(tours) {
 				return tours.data;
 			});
 		},
@@ -47,19 +71,15 @@ angular.module('Tour-Track')
 			});
 		},
 
-		allYears: function (tours) {
+		allYears: function() {
 			var years = [];
-
-			tours.forEach(function(tour) {
-				var year = tour.starts_on.slice(0,4);
-				if(years.indexOf(year) === -1) {
-					years.push(year);
-					years.sort(function(a, b) {
-						return a - b;
-					})
-				}
+			return $http.get('/tours').then(function(tours) {
+				tours.data.forEach(function(tour) {
+					var year = tour.starts_on.slice(0,4);
+					if(years.indexOf(year) < 0) years.push(year);
+				});
+				return years;
 			});
-			return years;
 		}
 
 	}

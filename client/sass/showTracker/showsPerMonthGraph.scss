@@ -1,0 +1,21 @@
+#showsPerMonthGraph {
+	z-index: 200;  
+    position: fixed;
+	font: 10px sans-serif;
+
+	svg {
+		// background-color: white;
+	}
+
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+
+	.area {
+		fill: steelblue;
+		stroke-width: 1;
+	}
+}

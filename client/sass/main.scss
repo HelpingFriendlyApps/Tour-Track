@@ -18,7 +18,10 @@ body {
 @import 'layout-tree';
 @import 'partial1';
 @import 'partial2';
-@import 'progress-map';
+@import 'showTracker/map';
+@import 'showTracker/showsPerMonthGraph';
+@import 'showTracker/slider';
+@import 'showTracker/infoViewer';
 @import 'navbar';
 
 /* set up grid structure */

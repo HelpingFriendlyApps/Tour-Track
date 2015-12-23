@@ -1,4 +1,4 @@
-angular.module('Tour-Track').directive('progressMap', function($parse) {
+angular.module('Tour-Track').directive('map', function() {
     return {
         restrict: 'E',
         replace: true,
@@ -6,12 +6,12 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
         template: '<div id="map"></div>',
         scope: {
             shows: '=',
-            progress: '='
+            progress: '=',
+            currentShow: '='
         },
         link: function(scope, element, attrs) {
 
             L.mapbox.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
-            // var map = L.mapbox.map('map', 'mapbox.streets')
             var map = L.mapbox.map('map', 'examples.map-h68a1pf7')
                 .setView([37.9, -77],4);
 
@@ -23,9 +23,15 @@ angular.module('Tour-Track').directive('progressMap', function($parse) {
                 return L.circle(latlng, radius);
             }
 
+            scope.$watch('currentShow', function(currentShow) {
+                if(currentShow) {
+                    map.setView([currentShow.latitude, currentShow.longitude], 8);
+                }
+            }, true);
+
+
             scope.$watch('shows', function(shows) {
                 if(shows) {
-
                     var geoJsonData = {
                         type: "FeatureCollection",
                         features: []
