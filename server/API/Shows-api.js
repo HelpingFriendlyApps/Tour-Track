@@ -14,10 +14,22 @@ router.get('/', function (req, res, next) {
     })
 })
 
+router.get('/showId/:showId', function (req, res, next) {
+    Shows.getShowById(req.params.showId).then(function(x) {
+        res.send(x);
+    })
+})
+
 router.get('/venues', function (req, res, next) {
-	Shows.getAllShowsWithVenueInfo().then(function(x) {
-		res.send(x);
-	})
+    Shows.getAllShowsWithVenueInfo().then(function(x) {
+        res.send(x);
+    })
+})
+
+router.get('/venues/showId/:showId', function (req, res, next) {
+    Shows.getShowWithVenueInfoById(req.params.showId).then(function(x) {
+        res.send(x);
+    })
 })
 
 router.get('/venues/tourId/:tourId', function (req, res, next) {
@@ -26,12 +38,11 @@ router.get('/venues/tourId/:tourId', function (req, res, next) {
 	})
 })
 
-
 router.get('/setlist/:showId', function (req, res, next) {
     Shows.getSetlist(req.params.showId).then(function(x) {
-        res.send(x)
-    });
-});
+        res.send(x);
+    })
+})
 
 // router.get('/venues/year/:year', function (req, res, next) {
 // 	Shows.getAllShowsWithVenueInfoByYear(req.params.year).then(function(x) {

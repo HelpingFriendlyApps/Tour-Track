@@ -8,12 +8,21 @@ angular.module('Tour-Track')
 		$scope.currentView = view;
 	}
 
+	$scope.resetFilteredShows = function() {
+		$scope.$parent.filteredShows = null;
+	}
+
+	$scope.resetCurrentShow = function() {
+		$scope.$parent.currentShow = null;
+	}
+
 	$scope.getShowsByTour = function(tour) {
 		$scope.prevTour = $scope.currentView;
 		$scope.changeView('shows');
+		$scope.$parent.currentTour = tour;
 		$scope.currentTour = tour;
 		General.allShowsWithVenueInfoByTourId(tour.id).then(function(filteredShows) {
-			$scope.filteredShows = filteredShows;
+			$scope.$parent.filteredShows = filteredShows;
 		});
 	}
 

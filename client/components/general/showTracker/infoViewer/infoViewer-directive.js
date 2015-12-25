@@ -6,7 +6,8 @@ angular.module('Tour-Track').directive('infoViewer', function($parse, General) {
         	shows: '=',
         	tours: '=',
         	years: '=',
-            currentShow: '='
+            currentShow: '=',
+            filteredShows: '='
         },
         link: function(scope, element, attrs) {
 

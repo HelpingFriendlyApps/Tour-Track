@@ -17,14 +17,14 @@
 			</div>
 		</div>
 		<div ng-switch-when="shows">
-			<a class="waves-effect waves-light btn" ng-click="changeView(prevTour)">Back</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView(prevTour); resetFilteredShows()">Back</a>
 			<h1>{{currentTour.name}}</h1>
 			<div ng-repeat='show in filteredShows'>
 				<p ng-click='viewShow(show)'>{{dateParser(show.date)}}</p>
 			</div>
 		</div>
 		<div ng-switch-when="setlist">
-			<a class="waves-effect waves-light btn" ng-click="changeView(prevView)">Back</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView(prevView); resetCurrentShow()">Back</a>
 			<h1>{{dateParser(currentShow.date)}}</h1>
 			<div ng-repeat='song in setlist'>
 				<p>{{song.title}}</p>
