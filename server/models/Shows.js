@@ -13,6 +13,11 @@ var Shows = module.exports = {
         .orderBy('date', 'asc');
     },
 
+    getShowById: function(showId) {
+        return db('shows').select('*')
+        .where('shows.id', showId);
+    },
+
     getSetlist : function(showId){
         return db('shows').select('songs.title')
         .where('shows.id', showId)
@@ -22,10 +27,17 @@ var Shows = module.exports = {
         .join('songs', 'songplayed.song_id','songs.id')
     },
 
-    getAllShowsWithVenueInfo : function() {
+    getAllShowsWithVenueInfo: function() {
         return db('shows').select('shows.*', 'venues.*')
         .orderBy('date', 'asc')
-        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('venues', 'venues.id', 'shows.venue_id');
+    },
+
+    getShowWithVenueInfoById: function(showId) {
+        return db('shows').select('shows.*', 'venues.*')
+        .where('shows.id', showId)
+        .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id');
     },
 
     getAllShowsWithVenueInfoByTourId : function(tourId) {

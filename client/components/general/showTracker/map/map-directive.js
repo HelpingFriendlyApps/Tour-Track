@@ -1,4 +1,6 @@
-angular.module('Tour-Track').directive('map', function() {
+'use strict'
+
+angular.module('Tour-Track').directive('map', function(General, MapFactory) {
     return {
         restrict: 'E',
         replace: true,
@@ -7,67 +9,57 @@ angular.module('Tour-Track').directive('map', function() {
         scope: {
             shows: '=',
             progress: '=',
-            currentShow: '='
+            currentShow: '=',
+            filteredShows: '=',
+            clickedShow: '='
         },
         link: function(scope, element, attrs) {
 
-            L.mapbox.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
-            var map = L.mapbox.map('map', 'examples.map-h68a1pf7')
-                .setView([37.9, -77],4);
+            mapboxgl.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/luismartins/ciijx4rg4004z1mmbunfmzml2',
+                center: [-77.38, 39],
+                zoom: 3
+            });
 
-            var showsLayer = L.geoJson(null, { pointToLayer: scaledPoint })
-                .addTo(map);
+            map.on('style.load', function() {
+                if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
+            });
+            
+            scope.$watch('shows', function(shows) {
+                if(shows) MapFactory.addShowsLayer(map, shows);
+            }, true);
 
-            var radius = 50;
-            function scaledPoint(feature, latlng) {
-                return L.circle(latlng, radius);
-            }
+            map.on('click', function(e) {
+                map.featuresAt(e.point, {layer: 'shows', radius: 15, includeGeometry: true}, function(err, features) {
+                    if(err) throw err;
+                    if(features.length) {
+                        map.flyTo({center: features[0].geometry.coordinates});
+                        General.getShowWithVenueInfoById(features[0].properties.show_id).then( (show) => {
+                            scope.clickedShow = show[0];
+                        });
+                    }
+                });
+            });
+
+            map.on('mousemove', function(e) {
+                map.featuresAt(e.point, {layer: 'shows', radius: 15}, function(err, features) {
+                    if(err) throw err;
+                    map.getCanvas().style.cursor = features.length ? 'pointer' : '';
+                });
+            });
+
+            scope.$watch('filteredShows', function(filteredShows) {
+                if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
+                if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
+            }, true);
 
             scope.$watch('currentShow', function(currentShow) {
-                if(currentShow) {
-                    map.setView([currentShow.latitude, currentShow.longitude], 8);
-                }
+                if(currentShow) MapFactory.addCurrentShowLayer(map, currentShow);
+                if(currentShow === null) MapFactory.resetCurrentShowLayer(map, scope.filteredShows)
             }, true);
 
-
-            scope.$watch('shows', function(shows) {
-                if(shows) {
-                    var geoJsonData = {
-                        type: "FeatureCollection",
-                        features: []
-                    };
-
-                    for(var i = 0; i < shows.length; i++) {
-                        if(shows[i].latitude && shows[i].longitude) {
-                            geoJsonData.features.push({
-                                type: 'Feature',
-                                properties: {
-                                    count: 20
-                                },
-                                geometry: {
-                                    type: 'Point',
-                                    coordinates: [shows[i].longitude, shows[i].latitude]
-                                }
-                            });
-                        }
-                    }
-
-                    scope.$watch('progress', function(progress) {
-                        var progShows = Object.assign({}, geoJsonData)
-                        progShows.features = progShows.features.slice(0, progress);
-
-                        showsLayer.clearLayers()
-                            .addData(progShows);
-
-                    }, true);
-
-
-                }
-            }, true);
-
-            // map.on('zoomend', function() {
-            //     console.log('map.getZoom()', map.getZoom())
-            // })
 
         }
     };

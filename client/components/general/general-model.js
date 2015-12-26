@@ -14,9 +14,21 @@ angular.module('Tour-Track')
 			});
 		},
 
+		showById: function(showId) {
+			return $http.get('/shows/showId/' + showId).then(function(show) {
+				return show.data;
+			});
+		},
+
 		allShowsWithVenueInfo: function() {
 			return $http.get('/shows/venues').then(function(shows) {
 				return shows.data;
+			});
+		},
+
+		getShowWithVenueInfoById: function(showId) {
+			return $http.get('/shows/venues/showId/' + showId).then(function(show) {
+				return show.data;
 			});
 		},
 
