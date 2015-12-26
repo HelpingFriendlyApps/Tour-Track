@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ShowTrackerCtrl', ['$scope', 'General', 'ShowTrackerFactory', function($scope, General, ShowTrackerFactory) {
+.controller('ShowTrackerCtrl', ['$scope', '$rootScope', 'General', 'ShowTrackerFactory', function($scope, $rootScope, General, ShowTrackerFactory) {
 
 	$scope.progress = 0;
 	$scope.setProgress = function(progress) {
@@ -23,6 +23,10 @@ angular.module('Tour-Track')
 	General.allYears().then(function(data) {
 		$scope.years = data;
 	});
+
+	$scope.clickedShowBroadcast = function() {
+		$rootScope.$broadcast('showClicked');
+	}
 
 
 }]);

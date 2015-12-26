@@ -3,7 +3,7 @@
 angular.module('Tour-Track')
 .factory('MapFactory', function($http) {
 	
-	var filteredShowsRendered = false;
+    var startingPoint = { center: [-77.38, 39], zoom: 3 };
 
 	function geoJsonConverter(shows) {
 		var geoJson = {
@@ -18,7 +18,7 @@ angular.module('Tour-Track')
                 geoJson.data.features.push({
                     type: 'Feature',
                     properties: {
-                        // show_id: shows[i].id
+                        show_id: shows[i].id
                     },
                     geometry: {
                         type: 'Point',
@@ -75,10 +75,7 @@ angular.module('Tour-Track')
         resetFilteredShowsLayer: function(map) {
             map.removeSource('filteredShows')
               .removeLayer('filteredShows')
-              .flyTo({
-                center: [-77.38, 39],
-                zoom: 3
-            });
+              .flyTo(startingPoint);
         },
 
 		addCurrentShowLayer: function(map, currentShow) {
@@ -93,17 +90,16 @@ angular.module('Tour-Track')
                 }})
               .flyTo({
                 center: [currentShow.longitude, currentShow.latitude],
-                zoom: 9
+                zoom: 13
             });
 		},
 
         resetCurrentShowLayer: function(map, filteredShows) {
             map.removeSource('currentShow')
-              .removeLayer('currentShow')
-              .fitBounds(getBounds(filteredShows));
+              .removeLayer('currentShow');
+            if(filteredShows) map.fitBounds(getBounds(filteredShows));
+            else map.flyTo({ center: [-77.38, 39], zoom: 3 });
         }
-
-
 
 	}
 

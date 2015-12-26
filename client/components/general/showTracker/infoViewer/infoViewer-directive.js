@@ -1,4 +1,4 @@
-angular.module('Tour-Track').directive('infoViewer', function($parse, General) {
+angular.module('Tour-Track').directive('infoViewer', function(General) {
     return {
         restrict: 'E',
         templateUrl: '../components/general/showTracker/infoViewer/infoViewer.html',
@@ -7,10 +7,15 @@ angular.module('Tour-Track').directive('infoViewer', function($parse, General) {
         	tours: '=',
         	years: '=',
             currentShow: '=',
-            filteredShows: '='
+            filteredShows: '=',
+            clickedShow: '=',
+            clickedShowBroadcast: '&'
         },
         link: function(scope, element, attrs) {
 
+            scope.$watch('clickedShow', function(clickedShow) {
+                if(clickedShow) scope.clickedShowBroadcast();
+            }, true);
 
         }
     };

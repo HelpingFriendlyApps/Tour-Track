@@ -10,7 +10,8 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             shows: '=',
             progress: '=',
             currentShow: '=',
-            filteredShows: '='
+            filteredShows: '=',
+            clickedShow: '='
         },
         link: function(scope, element, attrs) {
 
@@ -30,14 +31,14 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
                 if(shows) MapFactory.addShowsLayer(map, shows);
             }, true);
 
-
             map.on('click', function(e) {
                 map.featuresAt(e.point, {layer: 'shows', radius: 15, includeGeometry: true}, function(err, features) {
                     if(err) throw err;
                     if(features.length) {
                         map.flyTo({center: features[0].geometry.coordinates});
-                        var thing = General.getShowWithVenueInfoById(features[0].properties.show_id);
-                        console.log('thing', thing)
+                        General.getShowWithVenueInfoById(features[0].properties.show_id).then( (show) => {
+                            scope.clickedShow = show[0];
+                        });
                     }
                 });
             });
@@ -49,7 +50,6 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
                 });
             });
 
-            
             scope.$watch('filteredShows', function(filteredShows) {
                 if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
                 if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
