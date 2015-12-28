@@ -3,6 +3,7 @@
 		<div ng-switch-when="years">
 			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
 			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('venues')">Venues</a>
 			<h1>Years</h1>
 			<div ng-repeat='year in years'>
 				<p>{{year}}</p>
@@ -11,20 +12,30 @@
 		<div ng-switch-when="tours">
 			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
 			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('venues')">Venues</a>
 			<h1>Tours</h1>
 			<div ng-repeat='tour in tours'>
 				<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
 			</div>
 		</div>
+		<div ng-switch-when="venues">
+			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('venues')">Venues</a>
+			<h1>Venues</h1>
+			<div ng-repeat='venue in venues'>
+				<p ng-click='getShowsByVenue(venue)'>{{venue.name}}</p>
+			</div>
+		</div>
 		<div ng-switch-when="shows">
-			<a class="waves-effect waves-light btn" ng-click="changeView(prevTour); resetFilteredShows()">Back</a>
-			<h1>{{currentTour.name}}</h1>
+			<a class="waves-effect waves-light btn" ng-click="changeView(prevView); resetFilteredShows()">Back</a>
+			<h1>{{currYearTourVenue.name}}</h1>
 			<div ng-repeat='show in filteredShows'>
 				<p ng-click='viewShow(show)'>{{dateParser(show.date)}}</p>
 			</div>
 		</div>
 		<div ng-switch-when="setlist">
-			<a class="waves-effect waves-light btn" ng-click="changeView(prevView); resetCurrentShow()">Back</a>
+			<a class="waves-effect waves-light btn" ng-click="changeView('shows'); resetCurrentShow()">Back</a>
 			<h1>{{dateParser(currentShow.date)}}</h1>
 			<div ng-repeat='song in setlist'>
 				<p>{{song.title}}</p>

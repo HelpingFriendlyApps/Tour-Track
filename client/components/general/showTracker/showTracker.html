@@ -1,19 +1,23 @@
 <div ng-controller='ShowTrackerCtrl'>
 	<shows-per-month shows-per-month='showsPerMonth'></shows-per-month>
 	<map shows='showsWithVenueInfo'
+		venues='venues'
 		progress='progress'
 		current-show='currentShow'
 		filtered-shows='filteredShows'
-		clicked-show='clickedShow'></map>
+		clicked-show='clickedShow'
+		clicked-venue-id='clickedVenueId'></map>
 	<div slider config="sliderConfig"
 		model="progress"
 		shows='showsWithVenueInfo'
 		class="cdbl-slider"></div>
 	<info-viewer shows='shows'
 		tours='tours'
+		venues='venues'
 		years='years'
 		current-show='currentShow'
 		filtered-shows='filteredShows'
 		clicked-show='clickedShow'
+		clicked-venue-id='clickedVenueId'
 		clicked-show-broadcast='clickedShowBroadcast()'></info-viewer>
 </div>

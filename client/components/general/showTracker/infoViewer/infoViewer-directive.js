@@ -5,6 +5,7 @@ angular.module('Tour-Track').directive('infoViewer', function(General) {
         scope: {
         	shows: '=',
         	tours: '=',
+            venues: '=',
         	years: '=',
             currentShow: '=',
             filteredShows: '=',

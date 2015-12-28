@@ -8,10 +8,12 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
         template: '<div id="map"></div>',
         scope: {
             shows: '=',
+            venues: '=',
             progress: '=',
             currentShow: '=',
             filteredShows: '=',
-            clickedShow: '='
+            clickedShow: '=',
+            clickedVenueId: '='
         },
         link: function(scope, element, attrs) {
 
@@ -27,18 +29,27 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
                 if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
             });
             
-            scope.$watch('shows', function(shows) {
-                if(shows) MapFactory.addShowsLayer(map, shows);
+            // scope.$watch('shows', function(shows) {
+            //     if(shows) MapFactory.addShowsLayer(map, shows);
+            // }, true);
+
+            scope.$watch('venues', function(venues) {
+                if(venues) MapFactory.addVenuesLayer(map, venues);
             }, true);
 
             map.on('click', function(e) {
-                map.featuresAt(e.point, {layer: 'shows', radius: 15, includeGeometry: true}, function(err, features) {
+                map.featuresAt(e.point, {layer: 'venues', radius: 15, includeGeometry: true}, function(err, features) {
                     if(err) throw err;
                     if(features.length) {
                         map.flyTo({center: features[0].geometry.coordinates});
-                        General.getShowWithVenueInfoById(features[0].properties.show_id).then( (show) => {
-                            scope.clickedShow = show[0];
-                        });
+                        scope.clickedVenueId = features[0].properties.venue_id;
+                        // General.getShowWithVenueInfoById(features[0].properties.show_id).then( (show) => {
+                        //     scope.clickedShow = show[0];
+                        // });
+                        // General.allShowsByVenueId(features[0].properties.venue_id).then(function(shows) {
+                        //     scope.showsByClickedVenue = shows;
+                        //     console.log('scope.showsByClickedVenue', scope.showsByClickedVenue)
+                        // })
                     }
                 });
             });

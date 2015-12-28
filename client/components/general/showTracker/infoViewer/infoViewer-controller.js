@@ -17,11 +17,20 @@ angular.module('Tour-Track')
 	}
 
 	$scope.getShowsByTour = function(tour) {
-		$scope.prevTour = $scope.currentView;
+		$scope.prevView = $scope.currentView;
 		$scope.changeView('shows');
-		$scope.$parent.currentTour = tour;
-		$scope.currentTour = tour;
+		$scope.$parent.currYearTourVenue = tour;
+		// $scope.currentTour = tour;
 		General.allShowsWithVenueInfoByTourId(tour.id).then(function(filteredShows) {
+			$scope.$parent.filteredShows = filteredShows;
+		});
+	}
+
+	$scope.getShowsByVenue = function(venue) {
+		$scope.prevView = $scope.currentView;
+		$scope.changeView('shows');
+		$scope.$parent.currYearTourVenue = venue;
+		General.allShowsByVenueId(venue.id).then(function(filteredShows) {
 			$scope.$parent.filteredShows = filteredShows;
 		});
 	}
@@ -32,7 +41,7 @@ angular.module('Tour-Track')
 
 	$scope.viewShow = function(show) {
 		if(!show) show = $scope.clickedShow;
-		$scope.prevView = $scope.currentView;
+		// $scope.prevView = $scope.currentView;
 		$scope.changeView('setlist');
 		$scope.$parent.currentShow = show;
 		General.setlistByShow(show.id).then(function(setlist) {

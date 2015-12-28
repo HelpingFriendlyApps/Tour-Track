@@ -20,6 +20,12 @@ angular.module('Tour-Track')
 			});
 		},
 
+		allShowsByVenueId: function(venueId) {
+			return $http.get('/shows/venueId/' + venueId).then(function(shows) {
+				return shows.data;
+			});
+		},
+
 		allShowsWithVenueInfo: function() {
 			return $http.get('/shows/venues').then(function(shows) {
 				return shows.data;

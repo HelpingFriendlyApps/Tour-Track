@@ -19,6 +19,11 @@ router.get('/showId/:showId', function (req, res, next) {
         res.send(x);
     })
 })
+router.get('/venueId/:venueId', function (req, res, next) {
+    Shows.getShowsByVenueId(req.params.venueId).then(function(x) {
+        res.send(x);
+    })
+})
 
 router.get('/venues', function (req, res, next) {
     Shows.getAllShowsWithVenueInfo().then(function(x) {

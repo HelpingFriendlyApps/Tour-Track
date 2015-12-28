@@ -5,7 +5,7 @@ angular.module('Tour-Track')
 	
     var startingPoint = { center: [-77.38, 39], zoom: 3 };
 
-	function geoJsonConverter(shows) {
+	function geoJsonConverter(venues) {
 		var geoJson = {
 			type: "geojson",
 			data: {
@@ -13,16 +13,16 @@ angular.module('Tour-Track')
 				features: []
             }
         };
-        for(var i = 0; i < shows.length; i++) {
-            if(shows[i].latitude && shows[i].longitude) {
+        for(var i = 0; i < venues.length; i++) {
+            if(venues[i].latitude && venues[i].longitude) {
                 geoJson.data.features.push({
                     type: 'Feature',
                     properties: {
-                        show_id: shows[i].id
+                        venue_id: venues[i].id
                     },
                     geometry: {
                         type: 'Point',
-                        coordinates: [shows[i].longitude, shows[i].latitude]
+                        coordinates: [venues[i].longitude, venues[i].latitude]
                     }
                 });
             }
@@ -45,7 +45,21 @@ angular.module('Tour-Track')
 
 	return {
 
-		addShowsLayer: function(map, shows) {
+		addVenuesLayer: function(map, venues) {
+            map.addSource('venues', geoJsonConverter(venues))
+              .addLayer({
+                id: "venues",
+                interactive: true,
+                type: "circle",
+                source: "venues",
+                paint: {
+                    'circle-radius': 8,
+                    'circle-color': 'rgba(55,148,179,1)'
+                }
+            });
+        },
+
+        addShowsLayer: function(map, shows) {
 			map.addSource('shows', geoJsonConverter(shows))
 			  .addLayer({
                 id: "shows",

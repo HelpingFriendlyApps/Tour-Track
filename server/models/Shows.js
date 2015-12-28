@@ -18,6 +18,13 @@ var Shows = module.exports = {
         .where('shows.id', showId);
     },
 
+    getShowsByVenueId: function(venueId) {
+        return db('shows').select('shows.*', 'venues.*')
+        .where('venue_id', venueId)
+        .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id');
+    },
+
     getSetlist : function(showId){
         return db('shows').select('songs.title')
         .where('shows.id', showId)
