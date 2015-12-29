@@ -4,7 +4,7 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
     return {
         restrict: 'E',
         replace: true,
-        require: '^ngController',
+        // require: '^ngController',
         template: '<div id="map"></div>',
         scope: {
             shows: '=',
@@ -13,7 +13,8 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             currentShow: '=',
             filteredShows: '=',
             clickedShow: '=',
-            clickedVenueId: '='
+            clickedVenueId: '=',
+            clickedVenueBroadcast: '&'
         },
         link: function(scope, element, attrs) {
 
@@ -26,7 +27,8 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             });
 
             map.on('style.load', function() {
-                if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
+                // if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
+                if(scope.venues) MapFactory.addVenuesLayer(map, scope.venues);
             });
             
             // scope.$watch('shows', function(shows) {
@@ -43,6 +45,9 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
                     if(features.length) {
                         map.flyTo({center: features[0].geometry.coordinates});
                         scope.clickedVenueId = features[0].properties.venue_id;
+                        console.log('scope.clickedVenueId', scope.clickedVenueId);
+                        // SCOPE.CLICKEDVENUEID ONLY REACHES INFOVIEWER CTRL AFTER 1+ MINUTES
+                        scope.clickedVenueBroadcast();
                         // General.getShowWithVenueInfoById(features[0].properties.show_id).then( (show) => {
                         //     scope.clickedShow = show[0];
                         // });
@@ -55,7 +60,7 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             });
 
             map.on('mousemove', function(e) {
-                map.featuresAt(e.point, {layer: 'shows', radius: 15}, function(err, features) {
+                map.featuresAt(e.point, {layer: 'venues', radius: 15}, function(err, features) {
                     if(err) throw err;
                     map.getCanvas().style.cursor = features.length ? 'pointer' : '';
                 });

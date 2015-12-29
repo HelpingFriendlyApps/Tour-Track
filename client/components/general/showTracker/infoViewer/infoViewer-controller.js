@@ -40,7 +40,7 @@ angular.module('Tour-Track')
     }
 
 	$scope.viewShow = function(show) {
-		if(!show) show = $scope.clickedShow;
+		show = show || $scope.clickedShow;
 		// $scope.prevView = $scope.currentView;
 		$scope.changeView('setlist');
 		$scope.$parent.currentShow = show;
@@ -49,8 +49,17 @@ angular.module('Tour-Track')
 		});
 	}
 
+	function viewShowListByVenue() {
+		console.log('i deed it')
+		console.log('$scope.clickedVenueId', $scope.clickedVenueId)
+	}
+
 	$scope.$on('showClicked', function() {
 		$scope.viewShow();
+	});
+
+	$scope.$on('venueClicked', function() {
+		viewShowListByVenue();
 	});
 
 }]);

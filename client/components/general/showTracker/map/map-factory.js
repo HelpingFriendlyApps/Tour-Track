@@ -53,8 +53,8 @@ angular.module('Tour-Track')
                 type: "circle",
                 source: "venues",
                 paint: {
-                    'circle-radius': 8,
-                    'circle-color': 'rgba(55,148,179,1)'
+                    'circle-radius': 3,
+                    'circle-color': '#962D3E'
                 }
             });
         },

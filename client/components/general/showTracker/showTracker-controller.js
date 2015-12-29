@@ -32,5 +32,10 @@ angular.module('Tour-Track')
 		$rootScope.$broadcast('showClicked');
 	}
 
+	$scope.clickedVenueBroadcast = function() {
+		console.log('inside broadcast')
+		$rootScope.$broadcast('venueClicked');
+	}
+
 
 }]);
