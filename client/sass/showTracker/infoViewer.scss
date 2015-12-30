@@ -2,12 +2,30 @@
 	z-index: 200;  
     position: relative;
 	float: right;
-	background-color: white;
+	background-color: #343642;
+	color: white;
 	max-width: 25%;
-	width: 400px;
+	width: 300px;
 	height: 600px;
 	// display: block;
-	margin-right: 10px;
-	padding: 5px;
+	margin-right: 20px;
 	overflow-y: scroll;
+
+	.tabs {
+		// overflow-y: visible;
+		background-color: #962D3E;
+		color: white;
+	}
+	.thingy {
+		padding: 25px;
+	}
+
+	// .topButtonContainer {
+	// 	text-align: center;
+	// 	border: 1px solid white;
+	// 	// margin: auto;
+	// 	// // width: 95%;
+	// 	// padding: 5px;
+	// 	// // display: inline;
+	// }
 }

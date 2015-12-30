@@ -21,19 +21,21 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             mapboxgl.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
             var map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/luismartins/ciijx4rg4004z1mmbunfmzml2',
+                style: 'mapbox://styles/luismartins/ciio2ede4007uzwmaourk3stv',
                 center: [-77.38, 39],
                 zoom: 3
             });
 
             map.on('style.load', function() {
                 // if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
-                if(scope.venues) MapFactory.addVenuesLayer(map, scope.venues);
+                if(scope.shows) MapFactory.addVenuesLayer(map, scope.shows);
+                // if(scope.venues) MapFactory.addVenuesLayer(map, scope.venues);
             });
             
-            // scope.$watch('shows', function(shows) {
-            //     if(shows) MapFactory.addShowsLayer(map, shows);
-            // }, true);
+            scope.$watch('shows', function(shows) {
+                if(shows) MapFactory.addVenuesLayer(map, shows);
+                // if(shows) MapFactory.addShowsLayer(map, shows);
+            }, true);
 
             scope.$watch('venues', function(venues) {
                 if(venues) MapFactory.addVenuesLayer(map, venues);
@@ -45,7 +47,6 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
                     if(features.length) {
                         map.flyTo({center: features[0].geometry.coordinates});
                         scope.clickedVenueId = features[0].properties.venue_id;
-                        console.log('scope.clickedVenueId', scope.clickedVenueId);
                         // SCOPE.CLICKEDVENUEID ONLY REACHES INFOVIEWER CTRL AFTER 1+ MINUTES
                         scope.clickedVenueBroadcast();
                         // General.getShowWithVenueInfoById(features[0].properties.show_id).then( (show) => {

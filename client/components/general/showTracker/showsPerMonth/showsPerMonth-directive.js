@@ -6,7 +6,8 @@ angular.module('Tour-Track').directive('showsPerMonth', function() {
         replace: true,
         template: '<div id="showsPerMonthGraph"></div>',
         scope: {
-        	showsPerMonth: '='
+        	showsPerMonth: '=',
+        	currentShow: '='
         },
         link: function(scope, element, attrs) {
 
@@ -67,6 +68,10 @@ angular.module('Tour-Track').directive('showsPerMonth', function() {
     					.call(yAxis);
 
         		}
+        	}, true);
+
+        	scope.$watch('currentShow', function(currentShow) {
+        		// console.log('currentShow from showsPerMonth', currentShow);
         	}, true);
 
 

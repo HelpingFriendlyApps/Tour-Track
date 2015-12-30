@@ -1,28 +1,21 @@
 <div class='infoViewer' ng-controller='InfoViewerCtrl'>
-	<div ng-switch on="currentView">
+	<ul class='tabs'>
+		<li class='wave tab col s4' ng-click="changeView('years')">Years</li>
+		<li class='wave tab col s4' ng-click="changeView('tours')">Tours</li>
+		<li class='wave tab col s4' ng-click="changeView('venues')">Venues</li>
+	</ul>
+	<div ng-switch on="currentView" class='thingy'>
 		<div ng-switch-when="years">
-			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
-			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
-			<a class="waves-effect waves-light btn" ng-click="changeView('venues')">Venues</a>
-			<h1>Years</h1>
 			<div ng-repeat='year in years'>
 				<p>{{year}}</p>
 			</div>
 		</div>
 		<div ng-switch-when="tours">
-			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
-			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
-			<a class="waves-effect waves-light btn" ng-click="changeView('venues')">Venues</a>
-			<h1>Tours</h1>
 			<div ng-repeat='tour in tours'>
 				<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
 			</div>
 		</div>
 		<div ng-switch-when="venues">
-			<a class="waves-effect waves-light btn" ng-click="changeView('years')">Years</a>
-			<a class="waves-effect waves-light btn" ng-click="changeView('tours')">Tours</a>
-			<a class="waves-effect waves-light btn" ng-click="changeView('venues')">Venues</a>
-			<h1>Venues</h1>
 			<div ng-repeat='venue in venues'>
 				<p ng-click='getShowsByVenue(venue)'>{{venue.name}}</p>
 			</div>
