@@ -33,6 +33,7 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             });
             
             scope.$watch('shows', function(shows) {
+                console.log('shows', shows)
                 if(shows) MapFactory.addVenuesLayer(map, shows);
                 // if(shows) MapFactory.addShowsLayer(map, shows);
             }, true);
