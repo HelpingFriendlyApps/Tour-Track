@@ -28,18 +28,19 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
 
             map.on('style.load', function() {
                 // if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
-                if(scope.shows) MapFactory.addVenuesLayer(map, scope.shows);
+                // if(scope.shows) MapFactory.addVenuesLayer(map, scope.shows);
                 // if(scope.venues) MapFactory.addVenuesLayer(map, scope.venues);
             });
             
-            scope.$watch('shows', function(shows) {
-                console.log('shows', shows)
-                if(shows) MapFactory.addVenuesLayer(map, shows);
-                // if(shows) MapFactory.addShowsLayer(map, shows);
-            }, true);
+            // scope.$watch('shows', function(shows) {
+            //     if(shows) MapFactory.addVenuesLayer(map, shows);
+            //     // if(shows) MapFactory.addShowsLayer(map, shows);
+            // }, true);
 
             scope.$watch('venues', function(venues) {
-                if(venues) MapFactory.addVenuesLayer(map, venues);
+                if(venues) {
+                    MapFactory.addVenuesLayer(map, venues);
+                }
             }, true);
 
             map.on('click', function(e) {
