@@ -3,13 +3,13 @@
 angular.module('Tour-Track')
 .controller('GeneralCtrl', ['$scope','$http', 'General','Profile', function($scope, $http, General, Profile) {
 
-	General.allShows().then(function(data) {
-		$scope.shows = data;
-		return data;
-	});
+	// General.allShows().then(function(data) {
+	// 	$scope.shows = data;
+	// 	return data;
+	// });
 
 	General.allShowsWithVenueInfo().then(function(data) {
-		$scope.showsWithVenueInfo = data;
+		$scope.shows = data;
 		return data;
 	});
 
