@@ -1,63 +1,90 @@
 'use strict';
 
-angular.module('Tour-Track')
-.factory('MapFactory', function($http) {
+angular.module('Tour-Track').factory('MapFactory', function($http) {
   
   var startingPoint = { center: [-77.38, 39], zoom: 3 };
 
-  function geoJsonConverter(venues) {
+  function geoJsonConverter(shows, venues) {
     var geoJson = {
       type: "geojson",
       data: {
         type: "FeatureCollection",
         features: []
-            }
-        };
-        for(var i = 0; i < venues.length; i++) {
-          geoJson.data.features.push({
-              type: 'Feature',
-              properties: {
-                  venue_id: venues[i].id
-              },
-              geometry: {
-                  type: 'Point',
-                  coordinates: [venues[i].longitude, venues[i].latitude]
-              }
-          });
+      }
+    };
+
+    var venueShowCount = {};
+    shows.forEach(function(show) {
+      venueShowCount[show.venue_id] =  venueShowCount[show.venue_id] || [];
+      venueShowCount[show.venue_id].push(show.id);
+    });
+
+    for(var i = 0; i < venues.length; i++) {
+      if(!venueShowCount[venues[i].id]) continue;
+      geoJson.data.features.push({
+        type: 'Feature',
+        properties: {
+          venue_id: venues[i].id,
+          show_count: venueShowCount[venues[i].id].length
+        },
+        geometry: {
+          type: 'Point',
+          coordinates: [venues[i].longitude, venues[i].latitude]
         }
-        console.log('geoJson', geoJson)
-        return geoJson;
+      });
+    }
+    return geoJson;
   }
 
-    function getBounds(shows) {
-        var longitudes = [],
-            latitudes = [];
-        shows.forEach( (show) => {
-            longitudes.push(show.longitude);
-            latitudes.push(show.latitude);
-        });
-        return [
-            [Math.min(...longitudes)-1, Math.min(...latitudes)-1],
-            [Math.max(...longitudes)+1, Math.max(...latitudes)+1]
-        ];
-    }
+
+  function getBounds(shows) {
+    var longitudes = [],
+      latitudes = [];
+    
+    shows.forEach( (show) => {
+      longitudes.push(show.longitude);
+      latitudes.push(show.latitude);
+    });
+
+    return [
+      [Math.min(...longitudes)-1, Math.min(...latitudes)-1],
+      [Math.max(...longitudes)+1, Math.max(...latitudes)+1]
+    ];
+  }
+
 
   return {
 
-    addVenuesLayer: function(map, venues) {
-            console.log('factory venues', venues)
-            map.addSource('venues', geoJsonConverter(venues))
-              .addLayer({
-                id: "venuessss",
-                interactive: true,
-                type: "circle",
-                source: "venues",
-                paint: {
-                    'circle-radius': 5,
-                    'circle-color': '#962D3E'
-                }
-            });
-        },
+    addVenuesLayer: function(map, shows, venues) {
+      map.addSource('venues', geoJsonConverter(shows, venues))
+      var breaks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
+      for (var i = 0; i < breaks.length; i++) {
+        var filters;
+        if(i < breaks.length-1) {
+          filters = ['all',
+            ['>=', 'show_count', breaks[i]],
+            ['<', 'show_count', breaks[i+1]]
+          ];
+        } else {
+          filters = ['all',
+            ['>=', 'show_count', breaks[i]]
+          ];
+        }
+
+        map.addLayer({
+          id: 'venues-' + i,
+          interactive: true,
+          type: 'circle',
+          source: 'venues',
+          paint: {
+            'circle-radius': (i+1)*3,
+            'circle-color': '#962D3E'
+          },
+          filter: filters
+        });
+
+      }
+    }
 
 
         

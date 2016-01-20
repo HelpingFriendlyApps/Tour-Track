@@ -23,7 +23,6 @@ angular.module('Tour-Track').directive('infoViewer', function(General) {
             // }, true);
 
             scope.$watch('clickedVenueId', function(clickedVenueId) {
-                console.log('clickedVenueId', clickedVenueId)
                 // Taking over a minute to get here...
                 if(clickedVenueId) scope.clickedVenueBroadcast();
             }, true);

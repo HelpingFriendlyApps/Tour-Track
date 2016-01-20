@@ -18,14 +18,14 @@ angular.module('Tour-Track')
 		$scope.madeUpVal += 10;
 	}
 
-	$scope.venueShowCount = {}
+	// $scope.venueShowCount = {}
 	$scope.$watch('shows', function(shows) {
-		shows.forEach(function(show) {
-			$scope.venueShowCount[show.venue_id] = $scope.venueShowCount[show.venue_id] || [];
-			$scope.venueShowCount[show.venue_id].push(show)
-		});
-		console.log('$scope.venueShowCount[408]', $scope.venueShowCount['408'])
-		console.log('showTracker controller SHOWS', shows)
+		// console.log('showTracker shows', shows)
+		// shows.forEach(function(show) {
+		// 	$scope.venueShowCount[show.venue_id] = $scope.venueShowCount[show.venue_id] || [];
+		// 	$scope.venueShowCount[show.venue_id].push(show)
+		// });
+		// console.log('MSG show count', $scope.venueShowCount['408'].length)
 	})
 
 	// General.allShows().then(function(data) {

@@ -26,7 +26,6 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
         center: [-77.38, 39],
         zoom: 3
       });
-      console.log('map', map)
 
       // map.on('style.load', function() {
         // if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
@@ -35,22 +34,30 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       // });
       
       scope.$watch('shows', function(shows) {
-        console.log('shows', shows)
           // if(shows) MapFactory.addVenuesLayer(map, shows);
           // if(shows) MapFactory.addShowsLayer(map, shows);
       }, true);
 
-      scope.$watch('venues', function(venues) {
-        if(venues) {
+      // scope.$watch('venues', function(venues) {
+      //   if(venues) {
+      //     console.log('venues', venues)
+      //     MapFactory.addVenuesLayer(map, venues);
+      //   }
+      // }, true);
+
+      scope.$watchGroup(['shows', 'venues'], function(newVals) {
+        if(newVals[0] && newVals[1]) {
+          var shows = newVals[0];
+          var venues = newVals[1];
+          console.log('shows', shows)
           console.log('venues', venues)
-          MapFactory.addVenuesLayer(map, venues);
+          MapFactory.addVenuesLayer(map, shows, venues);
         }
-      }, true);
+      })
 
       scope.$watch('madeUpVal', function(val) {
-        console.log('val', val)
         // map.setPaintProperty('venues', 'circle-radius', val);
-        map.setFilter('venues', ['$type'])
+        // map.setFilter('venues', ['==', 'venue_id', 408]);
       }, true);
 
       // map.on('click', function(e) {

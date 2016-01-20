@@ -34,11 +34,15 @@ var Shows = module.exports = {
         .join('songs', 'songplayed.song_id','songs.id')
     },
 
+
+
     getAllShowsWithVenueInfo: function() {
         return db('shows').select('shows.*', 'venues.*')
         .orderBy('date', 'asc')
         .join('venues', 'venues.id', 'shows.venue_id');
     },
+
+
 
     getShowWithVenueInfoById: function(showId) {
         return db('shows').select('shows.*', 'venues.*')
