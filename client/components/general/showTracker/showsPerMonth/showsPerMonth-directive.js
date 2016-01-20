@@ -4,7 +4,7 @@ angular.module('Tour-Track').directive('showsPerMonth', function() {
     return {
         restrict: 'E',
         replace: true,
-        template: '<div id="showsPerMonthGraph"></div>',
+        template: '<div class="showsPerMonthGraph"></div>',
         scope: {
         	showsPerMonth: '=',
         	currentShow: '='
@@ -37,7 +37,7 @@ angular.module('Tour-Track').directive('showsPerMonth', function() {
 				.y0(height)
 				.y1(function(d) { return y(1 + d.showCount); });
 
-			var svg = d3.select('#showsPerMonthGraph').append('svg')
+			var svg = d3.select('.showsPerMonthGraph').append('svg')
 				.attr('width', width + margin.left + margin.right)
 				.attr('height', height + margin.top + margin.bottom)
 				.append('g')

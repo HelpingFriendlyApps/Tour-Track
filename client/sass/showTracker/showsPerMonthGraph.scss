@@ -1,11 +1,8 @@
-#showsPerMonthGraph {
-	z-index: 200;  
-    position: fixed;
+.showsPerMonthGraph {
+	z-index: 200;
+	position: fixed;
+	bottom: 10px;
 	font: 10px sans-serif;
-
-	svg {
-		// background-color: white;
-	}
 
 	.axis path,
 	.axis line {
@@ -15,7 +12,7 @@
 	}
 
 	.area {
-		fill: steelblue;
+		fill: #962D3E;
 		stroke-width: 1;
 	}
 }

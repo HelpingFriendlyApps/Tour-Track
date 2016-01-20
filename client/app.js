@@ -7,6 +7,7 @@ angular.module('Tour-Track', [
 
     .config(function($stateProvider, $urlRouterProvider) {
     
-    $urlRouterProvider.otherwise('/');
+    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/general/showtracker');
      
 });
