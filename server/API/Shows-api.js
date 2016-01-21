@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/showId/:showId', function(req, res, next) {
+router.get('/:showId', function(req, res, next) {
     Shows.getShowById(req.params.showId).then(function(x) {
         res.send(x);
     });

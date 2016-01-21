@@ -13,6 +13,11 @@ var Venues = module.exports = {
         .orderBy('name', 'asc');
     },
 
+    getVenueById: function(venueId) {
+        return db('venues').select('*')
+        .where('venues.id', venueId);
+    },
+
     updateOrCreate : function(attrs){
         return Venues.update(attrs).catch(Venues.create(attrs));
     },

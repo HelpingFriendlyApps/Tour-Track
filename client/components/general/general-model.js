@@ -15,7 +15,7 @@ angular.module('Tour-Track')
 		},
 
 		showById: function(showId) {
-			return $http.get('/shows/showId/' + showId).then(function(show) {
+			return $http.get('/shows/' + showId).then(function(show) {
 				return show.data;
 			});
 		},
@@ -71,6 +71,12 @@ angular.module('Tour-Track')
 		allVenues: function () {
 			return $http.get('/venues').then(function(venues) {
 				return venues.data;
+			});
+		},
+
+		venueById: function (id) {
+			return $http.get('/venues/' + id).then(function(venue) {
+				return venue.data;
 			});
 		},
 

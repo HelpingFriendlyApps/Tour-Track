@@ -21,6 +21,7 @@ angular.module('Tour-Track')
 		$scope.changeView('shows');
 		$scope.$parent.currYearTourVenue = tour;
 		General.allShowsByTourId(tour.id).then(function(shows) {
+			console.log('shows', shows)
 			$scope.$parent.filteredShows = shows;
 		});
 	}
@@ -30,6 +31,7 @@ angular.module('Tour-Track')
 		$scope.changeView('shows');
 		$scope.$parent.currYearTourVenue = venue;
 		General.allShowsByVenueId(venue.id).then(function(shows) {
+			console.log('shows', shows)
 			$scope.$parent.filteredShows = shows;
 		});
 	}

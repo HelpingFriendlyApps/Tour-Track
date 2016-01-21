@@ -18,16 +18,18 @@ var Shows = module.exports = {
     },
 
     getShowsByVenueId: function(venueId) {
-        return db('shows').select('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
+        return db('shows').select('shows.*', 'tours.name as tour_name', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
         .where('venue_id', venueId)
         .orderBy('date', 'asc')
-        .join('venues', 'venues.id', 'shows.venue_id');
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id');
     },
 
     getShowsByTourId: function(tourId) {
-        return db('shows').select('shows.*', 'tours.name as tour_name')
+        return db('shows').select('shows.*', 'tours.name as tour_name', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
         .where('tour_id', tourId)
         .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id')
         .join('tours', 'tours.id', 'shows.tour_id');
     },
 

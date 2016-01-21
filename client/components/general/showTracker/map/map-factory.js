@@ -91,14 +91,16 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
       var filter = ['in', 'venue_id', ...venueIds];
       for (var i = 0; i < showCountFilters.length; i++) {
         map.setPaintProperty('venues-' + i, 'circle-radius', 5)
-          .setFilter('venues-' + i, filter);
+          .setFilter('venues-' + i, filter)
+          .fitBounds(getBounds(filteredShows));
       }
     },
 
     resetFilteredShowsLayer: function(map) {
       for (var i = 0; i < showCountFilters.length; i++) {
         map.setPaintProperty('venues-' + i, 'circle-radius', (i+1)*2)
-          .setFilter('venues-' + i, showCountFilters[i]);
+          .setFilter('venues-' + i, showCountFilters[i])
+          .flyTo(startingPoint);
       }
     }
 
