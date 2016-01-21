@@ -27,33 +27,15 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
         zoom: 3
       });
 
-      // map.on('style.load', function() {
-        // if(scope.shows) MapFactory.addShowsLayer(map, scope.shows);
-        // if(scope.shows) MapFactory.addVenuesLayer(map, scope.shows);
-        // if(scope.venues) MapFactory.addVenuesLayer(map, scope.venues);
-      // });
-      
-      scope.$watch('shows', function(shows) {
-          // if(shows) MapFactory.addVenuesLayer(map, shows);
-          // if(shows) MapFactory.addShowsLayer(map, shows);
-      }, true);
-
-      // scope.$watch('venues', function(venues) {
-      //   if(venues) {
-      //     console.log('venues', venues)
-      //     MapFactory.addVenuesLayer(map, venues);
-      //   }
-      // }, true);
+      map.on('style.load', function() {
+        if(scope.shows && scope.venues) MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
+      });
 
       scope.$watchGroup(['shows', 'venues'], function(newVals) {
         if(newVals[0] && newVals[1]) {
-          var shows = newVals[0];
-          var venues = newVals[1];
-          console.log('shows', shows)
-          console.log('venues', venues)
-          MapFactory.addVenuesLayer(map, shows, venues);
+          MapFactory.addVenuesLayer(map, newVals[0], newVals[1]);
         }
-      })
+      });
 
       scope.$watch('madeUpVal', function(val) {
         // map.setPaintProperty('venues', 'circle-radius', val);
