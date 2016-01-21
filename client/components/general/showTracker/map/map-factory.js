@@ -86,16 +86,24 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
       }
     },
 
+    // addFilteredShowsLayer: function(map, filteredShows) {
+    //   var venueIds = [];
+    //   for (var j = 0; j < filteredShows.length; j++) {
+    //     venueIds.push(filteredShows[j].venue_id);
+    //   }
+    //   var filter = ['in', 'venue_id', ...venueIds];
+    //   for (var i = 0; i < showCountFilters.length; i++) {
+    //     map.setPaintProperty('venues-' + i, 'circle-radius', 5)
+    //       .setFilter('venues-' + i, filter)
+    //       .fitBounds(getBounds(filteredShows));
+    //   }
+    // },
+
     addFilteredShowsLayer: function(map, filteredShows) {
-      var venueIds = [];
-      for (var j = 0; j < filteredShows.length; j++) {
-        venueIds.push(filteredShows[j].venue_id);
-      }
-      var filter = ['in', 'venue_id', ...venueIds];
+      console.log('inside')
+      // map.removeSource('venues');
       for (var i = 0; i < showCountFilters.length; i++) {
-        map.setPaintProperty('venues-' + i, 'circle-radius', 5)
-          .setFilter('venues-' + i, filter)
-          .fitBounds(getBounds(filteredShows));
+        map.removeLayer('venues-' + i)
       }
     },
 
