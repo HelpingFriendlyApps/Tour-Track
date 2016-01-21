@@ -20,6 +20,8 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
     },
     link: function(scope, element, attrs) {
 
+      var venueSourceAdded = false;
+
       mapboxgl.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
       var map = new mapboxgl.Map({
         container: 'map',
@@ -29,33 +31,48 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       });
 
       map.on('style.load', function() {
-        if(scope.shows && scope.venues) MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
+        if(scope.shows && scope.venues) {
+          if(!venueSourceAdded) {
+            MapFactory.addVenuesSource(map, scope.shows, scope.venues);
+            venueSourceAdded = true;
+          }
+          MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
+        }
       });
 
       scope.$watchGroup(['shows', 'venues'], function(newVals) {
         if(newVals[0] && newVals[1]) {
+          if(!venueSourceAdded) {
+            MapFactory.addVenuesSource(map, newVals[0], newVals[1]);
+            venueSourceAdded = true;
+          }
+          console.log('venueSourceAdded', venueSourceAdded)
           MapFactory.addVenuesLayer(map, newVals[0], newVals[1]);
         }
       }, true);
       
       scope.$watch('filteredShows', function(filteredShows, oldFilteredShows) {
         console.log('filteredShows', filteredShows)
-        console.log('oldFilteredShows', oldFilteredShows)
         if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
-        if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
+        if(filteredShows === null) MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
       }, true);
      
       scope.$watch('currentShow', function(currentShow) {
         console.log('currentShow', currentShow)
         if(currentShow) MapFactory.addCurrentShowLayer(map, currentShow);
-        if(currentShow === null) MapFactory.resetCurrentShowLayer(map, scope.filteredShows)
+        if(currentShow === null) {
+          var filteredViews = ['years', 'tours', 'venues'];
+          if(filteredViews.includes(scope.currentView)) MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
+          if(scope.currentView === 'shows') MapFactory.addFilteredShowsLayer(map, scope.filteredShows);
+        }
       }, true);
 
       scope.$watch('currentView', function(currentView) {
-        if(currentView) console.log('currentView', currentView)
+        // if(currentView) console.log('currentView', currentView)
       }, true);
 
       scope.$watch('madeUpVal', function(val) {
+        if(val) console.log(map.getSource('venues').style._layers)
         // console.log('MAP', map)
         // map.setPaintProperty('venues', 'circle-radius', val);
         // map.setFilter('venues', ['==', 'venue_id', 408]);

@@ -4,19 +4,35 @@ angular.module('Tour-Track')
 .controller('InfoViewerCtrl', ['$scope', 'General', function($scope, General) {
 
 	$scope.$parent.currentView = 'years';
-	console.log('$scope.$parent.currentView', $scope.$parent.currentView)
+	// console.log('$scope.$parent.currentView', $scope.$parent.currentView)
 
 	$scope.changeView = function(view) {
+		console.log('currentView BEFORE', $scope.$parent.currentView)
+		var prevView = $scope.$parent.currentView;
 		$scope.$parent.currentView = view;
+		var filteredViews = ['years', 'tours', 'venues'];
+		if(prevView === 'shows' && filteredViews.includes(view)) resetFilteredShows();
+		if(prevView === 'setlist') resetCurrentShow();
+		console.log('currentView AFTER', $scope.$parent.currentView)
 	}
 
-	$scope.resetFilteredShows = function() {
+	function resetFilteredShows() {
+		console.log('resetig filtered')
 		$scope.$parent.filteredShows = null;
 	}
 
-	$scope.resetCurrentShow = function() {
+	function resetCurrentShow() {
+		console.log('resetig current')
 		$scope.$parent.currentShow = null;
 	}
+
+	// $scope.resetFilteredShows = function() {
+	// 	$scope.$parent.filteredShows = null;
+	// }
+
+	// $scope.resetCurrentShow = function() {
+	// 	$scope.$parent.currentShow = null;
+	// }
 
 	$scope.getShowsByTour = function(tour) {
 		$scope.prevView = $scope.$parent.currentView;

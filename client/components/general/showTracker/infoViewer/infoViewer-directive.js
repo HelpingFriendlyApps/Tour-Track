@@ -29,7 +29,7 @@ angular.module('Tour-Track').directive('infoViewer', function(General) {
             }, true);
 
             scope.$watch('currentView', function(currentView) {
-                console.log('currentView', currentView)
+                // console.log('currentView', currentView)
             }, true);
 
         }

@@ -10,10 +10,8 @@ angular.module('Tour-Track').directive('visualizer', function() {
         },
         link: function(scope, element, attrs) {
 
-            console.log('AYYY')
-        	
             scope.$watch('currentShow', function(currentShow) {
-        		console.log('currentShow from showsPerMonth', currentShow);
+        		// console.log('currentShow from showsPerMonth', currentShow);
         	}, true);
 
             var margin = {top: 20, right: 20, bottom: 30, left: 30},
