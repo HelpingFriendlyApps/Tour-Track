@@ -1,0 +1,18 @@
+.visualizer {
+	z-index: 200;
+	position: fixed;
+	bottom: 10px;
+	font: 10px sans-serif;
+
+	.axis path,
+	.axis line {
+		fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+
+	.area {
+		fill: #962D3E;
+		stroke-width: 1;
+	}
+}
