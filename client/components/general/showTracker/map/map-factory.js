@@ -13,7 +13,7 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
       }
     };
     var showsPerVenue = {};
-    shows.forEach(function(show) {
+    shows.forEach( (show) => {
       showsPerVenue[show.venue_id] =  showsPerVenue[show.venue_id] || [];
       showsPerVenue[show.venue_id].push(show.id);
     });
@@ -118,7 +118,6 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
     },
     
     addCurrentShowLayer: function(map, currentShow) {
-      console.log('currentShow', currentShow)
       if(currentLayers.length) removeCurrentLayers(map);
       var filter = ['in', 'venue_id', currentShow.venue_id];
       map.addLayer({
@@ -138,90 +137,6 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
       });
       currentLayers.push('currentShow');
     }
-
-    // addFilteredShowsLayer: function(map, filteredShows) {
-    //   var venueIds = [];
-    //   for (var j = 0; j < filteredShows.length; j++) {
-    //     venueIds.push(filteredShows[j].venue_id);
-    //   }
-    //   var filter = ['in', 'venue_id', ...venueIds];
-    //   for (var i = 0; i < showCountFilters.length; i++) {
-    //     map.setPaintProperty('venues-' + i, 'circle-radius', 5)
-    //       .setFilter('venues-' + i, filter)
-    //       .fitBounds(getBounds(filteredShows));
-    //   }
-    // },
-
-    
-
-    // resetFilteredShowsLayer: function(map) {
-    //   for (var i = 0; i < showCountFilters.length; i++) {
-    //     map.setPaintProperty('venues-' + i, 'circle-radius', (i+1)*2)
-    //       .setFilter('venues-' + i, showCountFilters[i])
-    //       .flyTo(startingPoint);
-    //   }
-    // },
-
-
-
-
-        
-
-  //       addShowsLayer: function(map, shows) {
-    //  map.addSource('shows', geoJsonConverter(shows))
-    //    .addLayer({
-  //               id: "shows",
-  //               interactive: true,
-  //               type: "circle",
-  //               source: "shows",
-  //               paint: {
-  //                   'circle-radius': 8,
-  //                   'circle-color': 'rgba(55,148,179,1)'
-  //               }
-  //           });
-    // },
-
-    // addFilteredShowsLayer: function(map, filteredShows) {
-    //  map.addSource('filteredShows', geoJsonConverter(filteredShows))
-    //    .addLayer({
-  //               id: "filteredShows",
-  //               type: "circle",
-  //               source: "filteredShows",
-  //               paint: {
-  //                   'circle-radius': 10,
-  //                   'circle-color': 'red'
-  //               }})
-  //             .fitBounds(getBounds(filteredShows));
-    // },
-
-  //       resetFilteredShowsLayer: function(map) {
-  //           map.removeSource('filteredShows')
-  //             .removeLayer('filteredShows')
-  //             .flyTo(startingPoint);
-  //       },
-
-    // addCurrentShowLayer: function(map, currentShow) {
-    //  map.addSource('currentShow', geoJsonConverter([currentShow]))
-  //             .addLayer({
-  //               id: "currentShow",
-  //               type: "circle",
-  //               source: "currentShow",
-  //               paint: {
-  //                   'circle-radius': 5,
-  //                   'circle-color': 'white'
-  //               }})
-  //             .flyTo({
-  //               center: [currentShow.longitude, currentShow.latitude],
-  //               zoom: 13
-  //           });
-    // },
-
-  //       resetCurrentShowLayer: function(map, filteredShows) {
-  //           map.removeSource('currentShow')
-  //             .removeLayer('currentShow');
-  //           if(filteredShows) map.fitBounds(getBounds(filteredShows));
-  //           else map.flyTo({ center: [-77.38, 39], zoom: 3 });
-  //       }
 
   }
 

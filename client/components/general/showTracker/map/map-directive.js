@@ -4,7 +4,6 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
   return {
     restrict: 'E',
     replace: true,
-    // require: '^ngController',
     template: '<div id="map"></div>',
     scope: {
       shows: '=',
@@ -46,19 +45,16 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
             MapFactory.addVenuesSource(map, newVals[0], newVals[1]);
             venueSourceAdded = true;
           }
-          console.log('venueSourceAdded', venueSourceAdded)
           MapFactory.addVenuesLayer(map, newVals[0], newVals[1]);
         }
       }, true);
       
       scope.$watch('filteredShows', function(filteredShows, oldFilteredShows) {
-        console.log('filteredShows', filteredShows)
         if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
         if(filteredShows === null) MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
       }, true);
      
       scope.$watch('currentShow', function(currentShow) {
-        console.log('currentShow', currentShow)
         if(currentShow) MapFactory.addCurrentShowLayer(map, currentShow);
         if(currentShow === null) {
           var filteredViews = ['years', 'tours', 'venues'];
@@ -72,10 +68,7 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       }, true);
 
       scope.$watch('madeUpVal', function(val) {
-        if(val) console.log(map.getSource('venues').style._layers)
-        // console.log('MAP', map)
-        // map.setPaintProperty('venues', 'circle-radius', val);
-        // map.setFilter('venues', ['==', 'venue_id', 408]);
+
       }, true);
 
       // map.on('click', function(e) {
