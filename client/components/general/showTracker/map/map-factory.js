@@ -48,37 +48,60 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
     ];
   }
 
+  var showCountFilters = [];
+  for (var i = 0; i < 10; i++) {
+    var filter;
+    if(i < showCountFilters.length - 1) {
+      filter = ['all',
+        ['>=', 'show_count', i * 3],
+        ['<', 'show_count', (i+1)*3]
+      ];
+    } else {
+      filter = ['all',
+        ['>=', 'show_count', i * 3]
+      ];
+    }
+    showCountFilters.push(filter);
+  }
 
   return {
 
     addVenuesLayer: function(map, shows, venues) {
       map.addSource('venues', geoJsonConverter(shows, venues))
-      var breaks = [0, 5, 10, 15, 20, 25, 30, 35, 40];
-      for (var i = 0; i < breaks.length; i++) {
-        var filters;
-        if(i < breaks.length-1) {
-          filters = ['all',
-            ['>=', 'show_count', breaks[i]],
-            ['<', 'show_count', breaks[i+1]]
-          ];
-        } else {
-          filters = ['all',
-            ['>=', 'show_count', breaks[i]]
-          ];
-        }
+      for (var i = 0; i < showCountFilters.length; i++) {
         map.addLayer({
           id: 'venues-' + i,
           interactive: true,
           type: 'circle',
           source: 'venues',
           paint: {
-            'circle-radius': (i+1)*3,
+            'circle-radius': (i+1)*2,
             'circle-color': '#962D3E'
           },
-          filter: filters
+          filter: showCountFilters[i]
         });
       }
+    },
+
+    addFilteredShowsLayer: function(map, filteredShows) {
+      var venueIds = [];
+      for (var j = 0; j < filteredShows.length; j++) {
+        venueIds.push(filteredShows[j].venue_id);
+      }
+      var filter = ['in', 'venue_id', ...venueIds];
+      for (var i = 0; i < showCountFilters.length; i++) {
+        map.setPaintProperty('venues-' + i, 'circle-radius', 5)
+          .setFilter('venues-' + i, filter);
+      }
+    },
+
+    resetFilteredShowsLayer: function(map) {
+      for (var i = 0; i < showCountFilters.length; i++) {
+        map.setPaintProperty('venues-' + i, 'circle-radius', (i+1)*2)
+          .setFilter('venues-' + i, showCountFilters[i]);
+      }
     }
+
 
 
         

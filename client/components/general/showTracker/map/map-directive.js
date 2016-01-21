@@ -39,8 +39,8 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       
       scope.$watch('filteredShows', function(filteredShows) {
         console.log('filteredShows', filteredShows)
-        // if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
-        // if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
+        if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
+        if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
       }, true);
 
       scope.$watch('madeUpVal', function(val) {
