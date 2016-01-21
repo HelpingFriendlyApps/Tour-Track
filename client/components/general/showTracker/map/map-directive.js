@@ -15,7 +15,8 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       clickedShow: '=',
       clickedVenueId: '=',
       clickedVenueBroadcast: '&',
-      madeUpVal: '='
+      madeUpVal: '=',
+      currentView: '='
     },
     link: function(scope, element, attrs) {
 
@@ -37,13 +38,25 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
         }
       }, true);
       
-      scope.$watch('filteredShows', function(filteredShows) {
+      scope.$watch('filteredShows', function(filteredShows, oldFilteredShows) {
         console.log('filteredShows', filteredShows)
+        console.log('oldFilteredShows', oldFilteredShows)
         if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
         if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
       }, true);
+     
+      scope.$watch('currentShow', function(currentShow) {
+        console.log('currentShow', currentShow)
+        if(currentShow) MapFactory.addCurrentShowLayer(map, currentShow);
+        if(currentShow === null) MapFactory.resetCurrentShowLayer(map, scope.filteredShows)
+      }, true);
+
+      scope.$watch('currentView', function(currentView) {
+        if(currentView) console.log('currentView', currentView)
+      }, true);
 
       scope.$watch('madeUpVal', function(val) {
+        // console.log('MAP', map)
         // map.setPaintProperty('venues', 'circle-radius', val);
         // map.setFilter('venues', ['==', 'venue_id', 408]);
       }, true);
@@ -75,10 +88,6 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       // });
 
 
-      // scope.$watch('currentShow', function(currentShow) {
-      //     if(currentShow) MapFactory.addCurrentShowLayer(map, currentShow);
-      //     if(currentShow === null) MapFactory.resetCurrentShowLayer(map, scope.filteredShows)
-      // }, true);
 
 
     }

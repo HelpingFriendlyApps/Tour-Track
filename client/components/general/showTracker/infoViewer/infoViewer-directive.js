@@ -14,7 +14,8 @@ angular.module('Tour-Track').directive('infoViewer', function(General) {
             clickedShow: '=',
             clickedVenueId: '=',
             clickedShowBroadcast: '&',
-            clickedVenueBroadcast: '&'
+            clickedVenueBroadcast: '&',
+            currentView: '='
         },
         link: function(scope, element, attrs) {
 
@@ -25,6 +26,10 @@ angular.module('Tour-Track').directive('infoViewer', function(General) {
             scope.$watch('clickedVenueId', function(clickedVenueId) {
                 // Taking over a minute to get here...
                 if(clickedVenueId) scope.clickedVenueBroadcast();
+            }, true);
+
+            scope.$watch('currentView', function(currentView) {
+                console.log('currentView', currentView)
             }, true);
 
         }

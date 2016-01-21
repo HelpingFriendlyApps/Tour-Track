@@ -3,9 +3,11 @@
 angular.module('Tour-Track')
 .controller('InfoViewerCtrl', ['$scope', 'General', function($scope, General) {
 
-	$scope.currentView = 'years';
+	$scope.$parent.currentView = 'years';
+	console.log('$scope.$parent.currentView', $scope.$parent.currentView)
+
 	$scope.changeView = function(view) {
-		$scope.currentView = view;
+		$scope.$parent.currentView = view;
 	}
 
 	$scope.resetFilteredShows = function() {
@@ -17,7 +19,7 @@ angular.module('Tour-Track')
 	}
 
 	$scope.getShowsByTour = function(tour) {
-		$scope.prevView = $scope.currentView;
+		$scope.prevView = $scope.$parent.currentView;
 		$scope.changeView('shows');
 		$scope.$parent.currYearTourVenue = tour;
 		General.allShowsByTourId(tour.id).then(function(shows) {
@@ -27,7 +29,7 @@ angular.module('Tour-Track')
 	}
 
 	$scope.getShowsByVenue = function(venue) {
-		$scope.prevView = $scope.currentView;
+		$scope.prevView = $scope.$parent.currentView;
 		$scope.changeView('shows');
 		$scope.$parent.currYearTourVenue = venue;
 		General.allShowsByVenueId(venue.id).then(function(shows) {
@@ -42,7 +44,7 @@ angular.module('Tour-Track')
 
 	$scope.viewShow = function(show) {
 		show = show || $scope.clickedShow;
-		// $scope.prevView = $scope.currentView;
+		// $scope.prevView = $scope.$parent.currentView;
 		$scope.changeView('setlist');
 		$scope.$parent.currentShow = show;
 		General.setlistByShow(show.id).then(function(setlist) {

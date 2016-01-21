@@ -12,18 +12,19 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
         features: []
       }
     };
-    var venueShowCount = {};
+    var showsPerVenue = {};
     shows.forEach(function(show) {
-      venueShowCount[show.venue_id] =  venueShowCount[show.venue_id] || [];
-      venueShowCount[show.venue_id].push(show.id);
+      showsPerVenue[show.venue_id] =  showsPerVenue[show.venue_id] || [];
+      showsPerVenue[show.venue_id].push(show.id);
     });
+    console.log('showsPerVenue', showsPerVenue)
     for(var i = 0; i < venues.length; i++) {
-      if(!venueShowCount[venues[i].id]) continue;
+      if(!showsPerVenue[venues[i].id]) continue;
       geoJson.data.features.push({
         type: 'Feature',
         properties: {
           venue_id: venues[i].id,
-          show_count: venueShowCount[venues[i].id].length
+          show_count: showsPerVenue[venues[i].id].length
         },
         geometry: {
           type: 'Point',
@@ -66,6 +67,8 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
 
   return {
 
+    currentLayer: 'all',
+
     addVenuesLayer: function(map, shows, venues) {
       map.addSource('venues', geoJsonConverter(shows, venues))
       for (var i = 0; i < showCountFilters.length; i++) {
@@ -102,6 +105,10 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
           .setFilter('venues-' + i, showCountFilters[i])
           .flyTo(startingPoint);
       }
+    },
+
+    addCurrentShowLayer: function() {
+
     }
 
 
