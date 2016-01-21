@@ -12,13 +12,11 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
         features: []
       }
     };
-
     var venueShowCount = {};
     shows.forEach(function(show) {
       venueShowCount[show.venue_id] =  venueShowCount[show.venue_id] || [];
       venueShowCount[show.venue_id].push(show.id);
     });
-
     for(var i = 0; i < venues.length; i++) {
       if(!venueShowCount[venues[i].id]) continue;
       geoJson.data.features.push({
@@ -40,12 +38,10 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
   function getBounds(shows) {
     var longitudes = [],
       latitudes = [];
-    
     shows.forEach( (show) => {
       longitudes.push(show.longitude);
       latitudes.push(show.latitude);
     });
-
     return [
       [Math.min(...longitudes)-1, Math.min(...latitudes)-1],
       [Math.max(...longitudes)+1, Math.max(...latitudes)+1]
@@ -70,7 +66,6 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
             ['>=', 'show_count', breaks[i]]
           ];
         }
-
         map.addLayer({
           id: 'venues-' + i,
           interactive: true,
@@ -82,7 +77,6 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
           },
           filter: filters
         });
-
       }
     }
 

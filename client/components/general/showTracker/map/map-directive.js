@@ -35,7 +35,13 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
         if(newVals[0] && newVals[1]) {
           MapFactory.addVenuesLayer(map, newVals[0], newVals[1]);
         }
-      });
+      }, true);
+      
+      scope.$watch('filteredShows', function(filteredShows) {
+        console.log('filteredShows', filteredShows)
+        // if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
+        // if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
+      }, true);
 
       scope.$watch('madeUpVal', function(val) {
         // map.setPaintProperty('venues', 'circle-radius', val);
@@ -68,10 +74,6 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       //     });
       // });
 
-      // scope.$watch('filteredShows', function(filteredShows) {
-      //     if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
-      //     if(filteredShows === null) MapFactory.resetFilteredShowsLayer(map);
-      // }, true);
 
       // scope.$watch('currentShow', function(currentShow) {
       //     if(currentShow) MapFactory.addCurrentShowLayer(map, currentShow);

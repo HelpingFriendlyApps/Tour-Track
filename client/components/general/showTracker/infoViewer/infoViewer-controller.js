@@ -20,9 +20,8 @@ angular.module('Tour-Track')
 		$scope.prevView = $scope.currentView;
 		$scope.changeView('shows');
 		$scope.$parent.currYearTourVenue = tour;
-		// $scope.currentTour = tour;
-		General.allShowsWithVenueInfoByTourId(tour.id).then(function(filteredShows) {
-			$scope.$parent.filteredShows = filteredShows;
+		General.allShowsByTourId(tour.id).then(function(shows) {
+			$scope.$parent.filteredShows = shows;
 		});
 	}
 
@@ -30,8 +29,8 @@ angular.module('Tour-Track')
 		$scope.prevView = $scope.currentView;
 		$scope.changeView('shows');
 		$scope.$parent.currYearTourVenue = venue;
-		General.allShowsByVenueId(venue.id).then(function(filteredShows) {
-			$scope.$parent.filteredShows = filteredShows;
+		General.allShowsByVenueId(venue.id).then(function(shows) {
+			$scope.$parent.filteredShows = shows;
 		});
 	}
 

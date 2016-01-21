@@ -13,6 +13,11 @@ var Songs = module.exports = {
         .orderBy('title', 'asc');
     },
 
+    getSongById: function(songId) {
+        return db('songs').select('*')
+        .where('songs.id', songId);
+    },
+
     breakMultiSongintoSongObject : function(songString){
         var tempObj = {};
         var multiSongArr = songString.split('>');

@@ -6,8 +6,14 @@ var ph = require('../models/Phish').Phishin();
 var router = module.exports = express.Router();
 
 
-router.get('/', function (req, res, next) {
-    Songs.getAllSongs().then(function(x) {
-        res.send(x)
-    });
+router.get('/', function(req, res, next) {
+  Songs.getAllSongs().then(function(x) {
+    res.send(x)
+  });
+});
+
+router.get('/:songId', function(req, res, next) {
+  Songs.getSongById(req.params.songId).then(function(x) {
+    res.send(x)
+  });
 });

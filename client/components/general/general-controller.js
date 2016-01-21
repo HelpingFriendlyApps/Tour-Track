@@ -5,15 +5,8 @@ angular.module('Tour-Track')
 
 	General.allShows().then(function(data) {
 		$scope.shows = data;
-		console.log('$scope.shows', $scope.shows)
 		return data;
 	});
-
-	// General.allShowsWithVenueInfo().then(function(data) {
-	// 	$scope.shows = data;
-	// 	console.log('$scope.shows',$scope.shows)
-	// 	return data;
-	// });
 
 	General.allSongs().then(function(data) {
 		$scope.songs = data;
@@ -25,10 +18,10 @@ angular.module('Tour-Track')
 		return data;
 	});
 
-	General.allToursWithShows().then(function(data) {
-		$scope.toursWithShows = data;
-		return data;
-	});
+	// General.allToursWithShows().then(function(data) {
+	// 	$scope.toursWithShows = data;
+	// 	return data;
+	// });
 
 	General.allVenues().then(function(data) {
 		$scope.venues = data;

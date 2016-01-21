@@ -5,7 +5,6 @@ var Users   = require('./Users')
 var ph = require('./Phish').Phishin();
 
 
-
 var Shows = module.exports = {
 
     getAllShows : function(){
@@ -19,63 +18,26 @@ var Shows = module.exports = {
     },
 
     getShowsByVenueId: function(venueId) {
-        return db('shows').select('shows.*', 'venues.*')
+        return db('shows').select('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
         .where('venue_id', venueId)
         .orderBy('date', 'asc')
         .join('venues', 'venues.id', 'shows.venue_id');
     },
 
-    getSetlist : function(showId){
-        return db('shows').select('songs.title')
+    getShowsByTourId: function(tourId) {
+        return db('shows').select('shows.*', 'tours.name as tour_name')
+        .where('tour_id', tourId)
+        .orderBy('date', 'asc')
+        .join('tours', 'tours.id', 'shows.tour_id');
+    },
+
+    getSetlist: function(showId){
+        return db('shows').select('songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songs.title')
         .where('shows.id', showId)
+        .join('songplayed', 'songplayed.show_id', 'shows.id')
+        .join('songs', 'songplayed.song_id', 'songs.id')
         .orderBy('set', 'asc')
-        .orderBy('position', 'asc')
-        .join('songplayed', 'shows.id', 'songplayed.show_id')
-        .join('songs', 'songplayed.song_id','songs.id')
-    },
-
-
-
-    getAllShowsWithVenueInfo: function() {
-        return db('shows').select('shows.*', 'venues.*')
-        .orderBy('date', 'asc')
-        .join('venues', 'venues.id', 'shows.venue_id');
-    },
-
-
-
-    getShowWithVenueInfoById: function(showId) {
-        return db('shows').select('shows.*', 'venues.*')
-        .where('shows.id', showId)
-        .orderBy('date', 'asc')
-        .join('venues', 'venues.id', 'shows.venue_id');
-    },
-
-    getAllShowsWithVenueInfoByTourId : function(tourId) {
-        return db('shows').select('shows.*', 'venues.*')
-        .where({tour_id: tourId})
-        .orderBy('date', 'asc')
-        .join('venues', 'venues.id', 'shows.venue_id')
-    },
-
-
-
-
-    // getAllShowsWithVenueInfoByYear : function(year) {
-    //     return db('shows').select('shows.*', 'venues.*')
-    //     .whereRaw('date LIKE CAST(' + year + ' as TIMESTAMP)')
-    //     .orderBy('date', 'asc')
-    //     .join('venues', 'venues.id', 'shows.venue_id')
-    // },
-
-
-
-
-    getAllShowsWithVenueTourInfo : function(){
-        return db('shows').select('shows.*', 'venues.*', 'venues.id as venue_id','venues.name as venue_name','tours.*','tours.id as tour_id', 'tours.name as tour_name')
-        .orderBy('date', 'asc')
-        .join('venues', 'venues.id', 'shows.venue_id')
-        .join('tours', 'tours.id', 'shows.tour_id')
+        .orderBy('position', 'asc');
     },
 
     updateOrCreate : function(attrs){
