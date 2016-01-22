@@ -1,38 +1,54 @@
 <div class='infoViewer' ng-controller='InfoViewerCtrl'>
-	<ul class='tabs'>
-		<li class='wave tab col s4' ng-click="changeView('years')">Years</li>
-		<li class='wave tab col s4' ng-click="changeView('tours')">Tours</li>
-		<li class='wave tab col s4' ng-click="changeView('venues')">Venues</li>
-	</ul>
-	<div ng-switch on="currentView" class='thingy'>
-		<div ng-switch-when="years">
-			<div ng-repeat='year in years'>
-				<p>{{year}}</p>
-			</div>
+	<div class='buttonPanel'>
+		<div class='row'>
+			<ul class='tabs col s12'>
+				<li class='wave tab col s4' ng-click="changeView('years')">Years</li>
+				<li class='wave tab col s4' ng-click="changeView('tours')">Tours</li>
+				<li class='wave tab col s4' ng-click="changeView('venues')">Venues</li>
+			</ul>
 		</div>
-		<div ng-switch-when="tours">
-			<div ng-repeat='tour in tours'>
-				<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
+	</div>
+
+	<div class='infoContainer'>
+		<div ng-switch on="currentView">
+			<div ng-switch-when="years">
+				<div ng-repeat='year in years'>
+					<p>{{year}}</p>
+				</div>
 			</div>
-		</div>
-		<div ng-switch-when="venues">
-			<div ng-repeat='venue in venues'>
-				<p ng-click='getShowsByVenue(venue)'>{{venue.name}}</p>
+			<div ng-switch-when="tours">
+				<div ng-repeat='tour in tours'>
+					<p ng-click='getShowsByTour(tour)'>{{tour.name}}</p>
+				</div>
 			</div>
-		</div>
-		<div ng-switch-when="shows">
-			<a class="waves-effect waves-light btn" ng-click="changeView(prevView)">Back</a>
-			<h1>{{currYearTourVenue.name}}</h1>
-			<div ng-repeat='show in filteredShows'>
-				<p ng-click='viewShow(show)'>{{dateParser(show.date)}}</p>
+			<div ng-switch-when="venues">
+				<div ng-repeat='venue in venues'>
+					<p ng-click='getShowsByVenue(venue)'>{{venue.name}}</p>
+				</div>
 			</div>
-		</div>
-		<div ng-switch-when="setlist">
-			<a class="waves-effect waves-light btn" ng-click="changeView('shows')">Back</a>
-			<h1>{{dateParser(currentShow.date)}}</h1>
-			<div ng-repeat='song in setlist'>
-				<p>{{song.title}}</p>
+			<div ng-switch-when="shows">
+				<a class="waves-effect waves-light btn" ng-click="changeView(prevView)">Back</a>
+				<h5>{{currYearTourVenue.name}}</h5>
+				<div ng-repeat='show in filteredShows'>
+					<p ng-click='viewShow(show)'>{{dateParser(show.date)}}</p>
+				</div>
+			</div>
+			<div ng-switch-when="setlist">
+				<a class="waves-effect waves-light btn" ng-click="changeView('shows')">Back</a>
+				<div class='showInfo'>
+					<h5>{{dateParser(currentShow.date)}}</h5>
+					<p>{{currentShow.venue_name}}</p>
+					<p>{{currentShow.location}}</p>
+					<hr>
+				</div>
+				<div ng-repeat='song in setlist' class='setlist'>
+					<div class='song'>
+						<p class='left'>{{song.title}}</p>
+						<p class='right'><small>{{timeParser(song.duration)}}</small></p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
 </div>

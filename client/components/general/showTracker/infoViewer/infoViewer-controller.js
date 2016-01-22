@@ -43,6 +43,13 @@ angular.module('Tour-Track')
 		return date.slice(0,10).replace(/(-)/g, '/');
 	}
 
+	$scope.timeParser = function(ms) {
+    var min = Math.floor(ms/60000);
+    var sec = Math.floor(ms/1000 % 60);
+    if(sec < 10) sec = '0' + sec;
+    return min + ':' + sec;
+}
+
 	$scope.viewShow = function(show) {
 		show = show || $scope.clickedShow;
 		$scope.changeView('setlist');
