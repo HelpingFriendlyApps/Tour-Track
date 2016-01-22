@@ -21,6 +21,10 @@ angular.module('Tour-Track')
 		$scope.$parent.currentShow = null;
 	}
 
+	$scope.getShowByYear = function(year) {
+		
+	}
+
 	$scope.getShowsByTour = function(tour) {
 		$scope.prevView = $scope.$parent.currentView;
 		$scope.changeView('shows');

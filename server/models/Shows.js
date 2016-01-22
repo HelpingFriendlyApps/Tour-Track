@@ -17,6 +17,12 @@ var Shows = module.exports = {
         .where('shows.id', showId);
     },
 
+    getShowsByYear: function(timeRange) {
+        return db('shows').select('*')
+        .whereBetween('date', timeRange)
+        .orderBy('date', 'asc');
+    },
+
     getShowsByVenueId: function(venueId) {
         return db('shows').select('shows.*', 'tours.name as tour_name', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
         .where('venue_id', venueId)
