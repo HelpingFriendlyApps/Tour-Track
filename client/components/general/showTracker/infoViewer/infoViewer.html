@@ -13,7 +13,7 @@
 		<div ng-switch on="currentView">
 			<div ng-switch-when="years">
 				<div ng-repeat='year in years'>
-					<p>{{year}}</p>
+					<p ng-click='getShowsByYear(year)'>{{year}}</p>
 				</div>
 			</div>
 			<div ng-switch-when="tours">

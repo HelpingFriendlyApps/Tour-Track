@@ -50,6 +50,7 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       }, true);
       
       scope.$watch('filteredShows', function(filteredShows, oldFilteredShows) {
+        console.log('filteredShows', filteredShows)
         if(filteredShows) MapFactory.addFilteredShowsLayer(map, filteredShows);
         if(filteredShows === null) MapFactory.addVenuesLayer(map, scope.shows, scope.venues);
       }, true);

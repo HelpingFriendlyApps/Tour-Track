@@ -18,9 +18,11 @@ var Shows = module.exports = {
     },
 
     getShowsByYear: function(timeRange) {
-        return db('shows').select('*')
+        return db('shows').select('shows.*', 'tours.name as tour_name', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
         .whereBetween('date', timeRange)
-        .orderBy('date', 'asc');
+        .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id');
     },
 
     getShowsByVenueId: function(venueId) {
