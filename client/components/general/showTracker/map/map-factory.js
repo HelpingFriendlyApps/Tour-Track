@@ -17,7 +17,7 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
       showsPerVenue[show.venue_id] =  showsPerVenue[show.venue_id] || [];
       showsPerVenue[show.venue_id].push(show.id);
     });
-    for(var i = 0; i < venues.length; i++) {
+    for(var i = 0, len = venues.length; i < len; i++) {
       if(!showsPerVenue[venues[i].id]) continue;
       geoJson.data.features.push({
         type: 'Feature',
@@ -33,7 +33,6 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
     }
     return geoJson;
   }
-
 
   function getBounds(shows) {
     var longitudes = [],
