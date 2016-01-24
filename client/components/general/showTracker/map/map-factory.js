@@ -85,7 +85,7 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
           source: 'venues',
           paint: {
             'circle-radius': (i+1)*2,
-            'circle-color': '#962D3E'
+            'circle-color': '#D74B4B'
           },
           filter: showCountFilters[i]
         });
@@ -108,7 +108,7 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
         source: 'venues',
         paint: {
           'circle-radius': 10,
-          'circle-color': '#962D3E'
+          'circle-color': '#D74B4B'
         },
         filter: filter
       });
@@ -126,13 +126,13 @@ angular.module('Tour-Track').factory('MapFactory', function($http) {
         source: 'venues',
         paint: {
           'circle-radius': 15,
-          'circle-color': 'blue'
+          'circle-color': '#D74B4B'
         },
         filter: filter
       });
       map.flyTo({
         center: [currentShow.longitude, currentShow.latitude],
-        zoom: 13
+        zoom: 15
       });
       currentLayers.push('currentShow');
     }

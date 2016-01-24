@@ -15,7 +15,8 @@ angular.module('Tour-Track').directive('infoViewer', function(General) {
             clickedVenueId: '=',
             clickedShowBroadcast: '&',
             clickedVenueBroadcast: '&',
-            currentView: '='
+            currentView: '=',
+            setlist: '='
         },
         link: function(scope, element, attrs) {
 

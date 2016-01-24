@@ -24,7 +24,7 @@ angular.module('Tour-Track').directive('map', function(General, MapFactory) {
       mapboxgl.accessToken = 'pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ';
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/luismartins/ciio2ede4007uzwmaourk3stv',
+        style: 'mapbox://styles/luismartins/cijroc9jb006t90lx8ehn9k2v',
         center: [-77.38, 39],
         zoom: 3
       });

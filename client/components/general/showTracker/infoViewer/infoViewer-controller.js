@@ -53,8 +53,8 @@ angular.module('Tour-Track')
 	}
 
 	$scope.timeParser = function(ms) {
-    var min = Math.floor(ms/60000);
-    var sec = Math.floor(ms/1000 % 60);
+    var min = Math.floor(ms / 60000);
+    var sec = Math.floor(ms / 1000 % 60);
     if(sec < 10) sec = '0' + sec;
     return min + ':' + sec;
 }
@@ -64,7 +64,7 @@ angular.module('Tour-Track')
 		$scope.changeView('setlist');
 		$scope.$parent.currentShow = show;
 		General.setlistByShow(show.id).then(function(setlist) {
-			$scope.setlist = setlist;
+			$scope.$parent.setlist = setlist;
 		});
 	}
 

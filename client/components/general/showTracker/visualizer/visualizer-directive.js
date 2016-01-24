@@ -7,17 +7,17 @@ angular.module('Tour-Track').directive('visualizer', function() {
     scope: {
       showsPerMonth: '=',
       filteredShows: '=',
-      currentShow: '='
+      currentShow: '=',
+      setlist: '='
     },
     link: function(scope, element, attrs) {
 
-      scope.$watch('currentShow', function(currentShow) {
-        console.log('currentShow', currentShow);
+      scope.$watchGroup(['currentShow', 'setlist'], function(newVals) {
+        if(newVals[0] && newVals[1]) {
+          console.log('currentShow', newVals[0])
+          console.log('setlist', newVals[1])
+        }
       }, true);
-
-      // scope.$watch('filteredShows', function(filteredShows) {
-      //   console.log('filteredShows', filteredShows);
-      // }, true);
 
       var margin = {top: 20, right: 20, bottom: 30, left: 30},
         width = 1600 - margin.left - margin.right,
