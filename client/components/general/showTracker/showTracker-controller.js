@@ -12,21 +12,12 @@ angular.module('Tour-Track')
 		$scope.showsPerMonth = data;
 	});
 
-	General.allShows().then(function(data) {
-		$scope.shows = data;
-	});
-
-	General.allTours().then(function(data) {
-		$scope.tours = data;
-	});
-
-	General.allYears().then(function(data) {
-		$scope.years = data;
-	});
-
 	$scope.clickedShowBroadcast = function() {
 		$rootScope.$broadcast('showClicked');
 	}
 
+	$scope.clickedVenueBroadcast = function() {
+		$rootScope.$broadcast('venueClicked');
+	}
 
 }]);

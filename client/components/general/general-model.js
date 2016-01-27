@@ -15,35 +15,32 @@ angular.module('Tour-Track')
 		},
 
 		showById: function(showId) {
-			return $http.get('/shows/showId/' + showId).then(function(show) {
+			return $http.get('/shows/' + showId).then(function(show) {
 				return show.data;
 			});
 		},
 
-		allShowsWithVenueInfo: function() {
-			return $http.get('/shows/venues').then(function(shows) {
+		allShowsByYear: function(year) {
+			return $http.get('/shows/year/' + year).then(function(shows) {
 				return shows.data;
 			});
 		},
 
-		getShowWithVenueInfoById: function(showId) {
-			return $http.get('/shows/venues/showId/' + showId).then(function(show) {
-				return show.data;
+		allShowsByVenueId: function(venueId) {
+			return $http.get('/shows/venueId/' + venueId).then(function(shows) {
+				return shows.data;
 			});
 		},
 
-		allShowsWithVenueInfoByTourId: function(tourId) {
-			return $http.get('/shows/venues/tourId/' + tourId).then(function(shows) {
+		allShowsByTourId: function(tourId) {
+			return $http.get('/shows/tourId/' + tourId).then(function(shows) {
 				return shows.data;
 			});
 		},
 		
-		allShowsWithVenueTourInfo: function () {
-			return $http.get('/shows/venuesTours').then(function(shows) {
-				shows.data.forEach(function(show) {
-					show.sanitizedSetList = $sce.trustAsHtml(show.setlistdata);
-				});
-				return shows.data;
+		setlistByShow: function (showId) {
+			return $http.get('/shows/setlist/' + showId).then(function(setlist) {
+				return setlist.data;
 			});
 		},
 
@@ -53,9 +50,9 @@ angular.module('Tour-Track')
 			});
 		},
 
-		setlistByShow: function (showId) {
-			return $http.get('/shows/setlist/' + showId).then(function(setlist) {
-				return setlist.data;
+		songById: function(songId) {
+			return $http.get('/songs/' + songId).then(function(song) {
+				return song.data;
 			});
 		},
 
@@ -71,15 +68,21 @@ angular.module('Tour-Track')
 			});
 		},
 
-		allToursWithShows: function() {
-			return $http.get('/tours/shows').then(function(tours) {
-				return tours.data;
-			});
-		},
+		// allToursWithShows: function() {
+		// 	return $http.get('/tours/shows').then(function(tours) {
+		// 		return tours.data;
+		// 	});
+		// },
 
 		allVenues: function () {
 			return $http.get('/venues').then(function(venues) {
 				return venues.data;
+			});
+		},
+
+		venueById: function (id) {
+			return $http.get('/venues/' + id).then(function(venue) {
+				return venue.data;
 			});
 		},
 

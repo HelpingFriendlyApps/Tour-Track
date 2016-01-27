@@ -7,9 +7,14 @@ var ph = require('../models/Phish').Phishin();
 var router = module.exports = express.Router();
 
 
-// Get all Venues
-router.get('/', function (req, res, next) {
+router.get('/', function(req, res, next) {
 	Venues.getAllVenues().then(function(x) {
 		res.send(x);
 	});
+});
+
+router.get('/:venueId', function(req, res, next) {
+  Venues.getVenueById(req.params.venueId).then(function(x) {
+    res.send(x);
+  });
 });

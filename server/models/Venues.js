@@ -9,7 +9,13 @@ var ph = require('./Phish').Phishin();
 var Venues = module.exports = {
 
     getAllVenues : function(){
-        return db('venues').select('*');
+        return db('venues').select('*')
+        .orderBy('name', 'asc');
+    },
+
+    getVenueById: function(venueId) {
+        return db('venues').select('*')
+        .where('venues.id', venueId);
     },
 
     updateOrCreate : function(attrs){

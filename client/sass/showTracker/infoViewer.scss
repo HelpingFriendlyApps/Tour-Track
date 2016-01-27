@@ -1,13 +1,70 @@
 .infoViewer {
-	z-index: 200;  
-    position: relative;
+	z-index: 200;
+	position: relative;
 	float: right;
-	background-color: white;
+	background-color: #343642;
+	color: white;
 	max-width: 25%;
-	width: 400px;
+	width: 320px;
 	height: 600px;
-	// display: block;
-	margin-right: 10px;
-	padding: 5px;
+	margin-right: 20px;
 	overflow-y: scroll;
+
+	h1 {
+		color: white;
+	}
+
+	.buttonPanel {
+		width: auto;
+		overflow-y: hidden;
+	}
+
+	.tabs {
+		background-color: #962D3E;
+		color: white;
+	}
+
+	.infoContainer {
+		padding: 0px 25px 25px 25px;
+		overflow: hidden;
+	}
+
+	.showInfo {
+		p {
+			margin: 0
+		}
+		hr {
+			opacity: 0.5;
+		}
+	}
+
+	.setlist {
+		display: block;
+		
+		p {
+			margin: 5px;
+		}
+
+		.song {
+			p {
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			
+			.left {
+				float: left;
+				width: 125px;
+				text-align: left;
+				display: inline;
+			}
+			
+			.right {
+				float: left;
+				text-align: center;
+				display: inline;
+				margin-left: 20px;
+			}
+		}
+	}
+	
 }

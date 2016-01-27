@@ -3,45 +3,81 @@
 angular.module('Tour-Track')
 .controller('InfoViewerCtrl', ['$scope', 'General', function($scope, General) {
 
-	$scope.currentView = 'years';
+	$scope.$parent.currentView = 'years';
+
 	$scope.changeView = function(view) {
-		$scope.currentView = view;
+		var prevView = $scope.$parent.currentView;
+		$scope.$parent.currentView = view;
+		var filteredViews = ['years', 'tours', 'venues'];
+		if(prevView === 'shows' && filteredViews.includes(view)) resetFilteredShows();
+		if(prevView === 'setlist') resetCurrentShow();
 	}
 
-	$scope.resetFilteredShows = function() {
+	function resetFilteredShows() {
 		$scope.$parent.filteredShows = null;
 	}
 
-	$scope.resetCurrentShow = function() {
+	function resetCurrentShow() {
 		$scope.$parent.currentShow = null;
 	}
 
-	$scope.getShowsByTour = function(tour) {
-		$scope.prevTour = $scope.currentView;
+	$scope.getShowsByYear = function(year) {
+		$scope.prevView = $scope.$parent.currentView;
 		$scope.changeView('shows');
-		$scope.$parent.currentTour = tour;
-		$scope.currentTour = tour;
-		General.allShowsWithVenueInfoByTourId(tour.id).then(function(filteredShows) {
-			$scope.$parent.filteredShows = filteredShows;
+		$scope.$parent.currYearTourVenue = year;
+		General.allShowsByYear(year).then(function(shows) {
+			$scope.$parent.filteredShows = shows;
+		});
+	}
+
+	$scope.getShowsByTour = function(tour) {
+		$scope.prevView = $scope.$parent.currentView;
+		$scope.changeView('shows');
+		$scope.$parent.currYearTourVenue = tour;
+		General.allShowsByTourId(tour.id).then(function(shows) {
+			$scope.$parent.filteredShows = shows;
+		});
+	}
+
+	$scope.getShowsByVenue = function(venue) {
+		$scope.prevView = $scope.$parent.currentView;
+		$scope.changeView('shows');
+		$scope.$parent.currYearTourVenue = venue;
+		General.allShowsByVenueId(venue.id).then(function(shows) {
+			$scope.$parent.filteredShows = shows;
 		});
 	}
 
 	$scope.dateParser = function(date) {
-        return date.slice(0,10).replace(/(-)/g, '/');
-    }
+		return date.slice(0,10).replace(/(-)/g, '/');
+	}
+
+	$scope.timeParser = function(ms) {
+    var min = Math.floor(ms / 60000);
+    var sec = Math.floor(ms / 1000 % 60);
+    if(sec < 10) sec = '0' + sec;
+    return min + ':' + sec;
+}
 
 	$scope.viewShow = function(show) {
-		if(!show) show = $scope.clickedShow;
-		$scope.prevView = $scope.currentView;
+		show = show || $scope.clickedShow;
 		$scope.changeView('setlist');
 		$scope.$parent.currentShow = show;
 		General.setlistByShow(show.id).then(function(setlist) {
-			$scope.setlist = setlist;
+			$scope.$parent.setlist = setlist;
 		});
+	}
+
+	function viewShowListByVenue() {
+		console.log('$scope.clickedVenueId', $scope.clickedVenueId)
 	}
 
 	$scope.$on('showClicked', function() {
 		$scope.viewShow();
+	});
+
+	$scope.$on('venueClicked', function() {
+		viewShowListByVenue();
 	});
 
 }]);
