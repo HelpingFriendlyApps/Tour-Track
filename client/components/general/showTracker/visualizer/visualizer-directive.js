@@ -12,53 +12,50 @@ angular.module('Tour-Track').directive('visualizer', function() {
     },
     link: function(scope, element, attrs) {
 
-      scope.$watchGroup(['currentShow', 'setlist'], function(newVals) {
-        if(newVals[0] && newVals[1]) {
-          var currentShow = newVals[0];
-          var setlist = newVals[1];
-          console.log('currentShow', newVals[0])
-          console.log('setlist', newVals[1])
+      var margin = {top: 20, right: 20, bottom: 30, left: 30},
+        width = 1600 - margin.left - margin.right,
+        height = 100 - margin.top - margin.bottom;
 
-          var start = 0;
-          setlist.forEach(function(song, index) {
-            console.log('index', index)
-            start += song.duration;
-            song.start = start;
+      var parseDate = d3.time.format("%Y-%m").parse;
+
+      var x = d3.time.scale()
+        .range([0, width]);
+
+      var y = d3.scale.linear()
+        .range([height, 0]);
+
+      var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient('bottom');
+
+      var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient('left');
+
+      var area = d3.svg.area()
+        .interpolate('bundle')
+        .x(function(d) { return x(d.parsedDate); })
+        .y0(height)
+        .y1(function(d) { return y(1 + d.showCount); });
+
+      var svg = d3.select('.visualizer').append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+
+      scope.$watch('showsPerMonth', function(showsPerMonth) {
+        if(showsPerMonth) {
+          showsPerMonth.forEach( (month) => {
+            month.parsedDate = parseDate(month.date);
           });
 
-          console.log('SETLIST', setlist)
-
-          var x = d3.scale.linear()
-            .range([0, width]);
-
-          var y = d3.scale.linear()
-            .range([height, 0]);
-
-          var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient('bottom');
-
-          var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient('left');
-
-          var area = d3.svg.area()
-            .interpolate('bundle')
-            .x(function(d) { return x(d.start); })
-            .y0(height)
-            .y1(function(d) { return y(d.duration); });
-
-          var svg = d3.select('.visualizer').append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-          x.domain(d3.extent(setlist, function(d) { return d.start; }));
-          y.domain([0, d3.max(setlist, function(d) { return d.duration; })]);
+          x.domain(d3.extent(showsPerMonth, function(d) { return d.parsedDate; }));
+          y.domain([0, d3.max(showsPerMonth, function(d) { return d.showCount; })]);
 
           svg.append('path')
-            .datum(setlist)
+            .datum(showsPerMonth)
             .attr('class', 'area')
             .attr('d', area);
 
@@ -70,71 +67,9 @@ angular.module('Tour-Track').directive('visualizer', function() {
           svg.append('g')
             .attr('class', 'y axis')
             .call(yAxis);
-
         }
       }, true);
 
-      var margin = {top: 20, right: 20, bottom: 30, left: 30},
-        width = 1600 - margin.left - margin.right,
-        height = 100 - margin.top - margin.bottom;
-
-      var parseDate = d3.time.format("%Y-%m").parse;
-
-      // var x = d3.time.scale()
-      //   .range([0, width]);
-
-      // var y = d3.scale.linear()
-      //   .range([height, 0]);
-
-      // var xAxis = d3.svg.axis()
-      //   .scale(x)
-      //   .orient('bottom');
-
-      // var yAxis = d3.svg.axis()
-      //   .scale(y)
-      //   .orient('left');
-
-      // var area = d3.svg.area()
-      //   .interpolate('bundle')
-      //   .x(function(d) { return x(d.parsedDate); })
-      //   .y0(height)
-      //   .y1(function(d) { return y(1 + d.showCount); });
-
-      // var svg = d3.select('.visualizer').append('svg')
-      //   .attr('width', width + margin.left + margin.right)
-      //   .attr('height', height + margin.top + margin.bottom)
-      //   .append('g')
-      //   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-
-      // scope.$watch('showsPerMonth', function(showsPerMonth) {
-      //   if(showsPerMonth) {
-      //     showsPerMonth.forEach( (month) => {
-      //       month.parsedDate = parseDate(month.date);
-      //     });
-
-      //     x.domain(d3.extent(showsPerMonth, function(d) { return d.parsedDate; }));
-      //     y.domain([0, d3.max(showsPerMonth, function(d) { return d.showCount; })]);
-
-      //     svg.append('path')
-      //       .datum(showsPerMonth)
-      //       .attr('class', 'area')
-      //       .attr('d', area);
-
-      //     svg.append('g')
-      //       .attr('class', 'x axis')
-      //       .attr("transform", "translate(0," + height + ")")
-      //       .call(xAxis);
-
-      //     svg.append('g')
-      //       .attr('class', 'y axis')
-      //       .call(yAxis);
-      //   }
-      // }, true);
-
-
-
-
-        }
-    };
+    }
+  };
 });

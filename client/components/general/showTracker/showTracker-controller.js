@@ -11,48 +11,13 @@ angular.module('Tour-Track')
 	ShowTrackerFactory.showsPerMonth().then(function(data) {
 		$scope.showsPerMonth = data;
 	});
-	
-	$scope.madeUpVal = 0;
-	$scope.doItDude = function() {
-		console.log('deed it')
-		$scope.madeUpVal += 10;
-	}
-
-	// $scope.venueShowCount = {}
-	$scope.$watch('shows', function(shows) {
-		// console.log('showTracker shows', shows)
-		// shows.forEach(function(show) {
-		// 	$scope.venueShowCount[show.venue_id] = $scope.venueShowCount[show.venue_id] || [];
-		// 	$scope.venueShowCount[show.venue_id].push(show)
-		// });
-		// console.log('MSG show count', $scope.venueShowCount['408'].length)
-	})
-
-	// General.allShows().then(function(data) {
-	// 	$scope.shows = data;
-	// });
-
-	// General.allTours().then(function(data) {
-	// 	$scope.tours = data;
-	// });
-
-	// General.allVenues().then(function(data) {
-	// 	$scope.venues = data;
-	// });
-
-	// General.allYears().then(function(data) {
-	// 	$scope.years = data;
-	// });
-
 
 	$scope.clickedShowBroadcast = function() {
 		$rootScope.$broadcast('showClicked');
 	}
 
 	$scope.clickedVenueBroadcast = function() {
-		console.log('inside broadcast')
 		$rootScope.$broadcast('venueClicked');
 	}
-
 
 }]);
