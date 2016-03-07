@@ -38,7 +38,7 @@ exports.mount = function (app, host) {
   app.get('/auth/facebook/callback', 
     passport.authenticate('facebook', { failureRedirect: '/#/' }),
     function(req, res) {
-      res.redirect('/#/profile');
+      res.redirect('/#/');
     });
 
   app.get('/me', function(req, res){
