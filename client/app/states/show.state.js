@@ -9,6 +9,10 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     resolve: {
       show: function(ShowFactory, $stateParams) {
         return ShowFactory.getShowById($stateParams.showId);
+      },
+
+      setlist: function(ShowFactory, $stateParams) {
+        return ShowFactory.getSetlistByShowId($stateParams.showId);
       }
     }
   });
