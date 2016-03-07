@@ -1,2 +1,6 @@
-<div>Show</div>
-<div>{{show}}</div>
+<div class="container show-state">
+  <h1>{{show.date}}</h1>
+  <ul>
+    <li ng-repeat='song in setlist'>{{song}}</li>
+  </ul>
+</div>

@@ -13,7 +13,7 @@ var Shows = module.exports = {
     },
 
     getShowById: function(showId) {
-        return db('shows').select('*')
+        return db('shows').first('*')
         .where('shows.id', showId);
     },
 
