@@ -1,6 +1,23 @@
 <div class="container show-state">
-  <h1>{{show.date}}</h1>
-  <ul>
-    <li ng-repeat='song in setlist'>{{song}}</li>
-  </ul>
+  <h1>{{dateParser(show.date)}}</h1>
+  <h1>{{tour.name}}</h1>
+  <h1>{{venue.name}}</h1>
+  <h1>{{venue.location}}</h1>
+  <h1>{{show}}</h1>
+
+  <table class='table-striped'>
+    <thead>
+      <tr>
+        <th>Song</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat='song in setlist'>
+        <td>{{song.title}}</td>
+        <td>{{timeParser(song.duration)}}</td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>

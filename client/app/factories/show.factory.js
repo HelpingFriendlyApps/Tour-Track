@@ -40,6 +40,17 @@ angular.module('Tour-Track')
       return $http.get('/shows/setlist/' + showId).then(function(setlist) {
         return setlist.data;
       });
+    },
+
+    getAllShowYears: function() {
+      var years = [];
+      return $http.get('/tours').then(function(tours) {
+        tours.data.forEach(function(tour) {
+          var year = tour.starts_on.slice(0,4);
+          if(years.indexOf(year) < 0) years.push(year);
+        });
+        return years;
+      });
     }
 
   }
