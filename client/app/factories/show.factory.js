@@ -13,6 +13,7 @@ angular.module('Tour-Track')
 
     getShowById: function(showId) {
       return $http.get('/shows/' + showId).then(function(show) {
+        console.log('show', show)
         console.log('show.data', show.data)
         return show.data;
       });

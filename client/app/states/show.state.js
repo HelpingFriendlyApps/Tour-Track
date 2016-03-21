@@ -8,6 +8,7 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     controller: 'ShowCtrl',
     resolve: {
       show: function(ShowFactory, $stateParams) {
+        console.log('$stateParams', $stateParams)
         return ShowFactory.getShowById($stateParams.showId);
       },
 

@@ -4,6 +4,7 @@ angular.module('Tour-Track')
 .controller('ShowCtrl', ['$scope', 'show', 'setlist', 'TourFactory', 'VenueFactory', function($scope, show, setlist, TourFactory, VenueFactory) {
 
   $scope.show = show;
+  console.log('$scope.show', $scope.show)
   $scope.setlist = setlist;
 
   $scope.dateParser = function(date) {
