@@ -2,7 +2,8 @@
 
 angular.module('Tour-Track', [
     'ui.router',
-    'ngSanitize'
+    'ngSanitize',
+    'ngMaterial'
   ])
 
     .config(function($stateProvider, $urlRouterProvider) {

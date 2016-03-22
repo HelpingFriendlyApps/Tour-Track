@@ -19,6 +19,14 @@ router.get('/:showId', function(req, res, next) {
     });
 });
 
+router.get('/date/:showDate', function(req, res, next) {
+    var date = req.params.showDate;
+    var timeRange = [date + 'T00:00:00.000Z', date + 'T23:59:59.000Z'];
+    Shows.getShowByDate(timeRange).then( (x) => {
+        res.send(x);
+    });
+});
+
 router.get('/year/:year', function(req, res, next) {
     var year = parseInt(req.params.year);
     var string = '-01-01T00:00:00.000Z';
