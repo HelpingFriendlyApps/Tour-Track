@@ -13,11 +13,16 @@ angular.module('Tour-Track')
 
     getShowById: function(showId) {
       return $http.get('/shows/' + showId).then(function(show) {
-        console.log('show', show)
-        console.log('show.data', show.data)
         return show.data;
       });
     },
+
+    getShowByDate: function(date) {
+      return $http.get('/shows/date/' + date.slice(0,10)).then(function(show) {
+        return show.data;
+      });
+    },
+
 
     getShowsByYear: function(year) {
       return $http.get('/shows/year/' + year).then(function(shows) {
@@ -36,9 +41,15 @@ angular.module('Tour-Track')
         return shows.data;
       });
     },
-    
-    getSetlistByShowId: function (showId) {
-      return $http.get('/shows/setlist/' + showId).then(function(setlist) {
+
+    getSetlistByShowId: function(showId) {
+      return $http.get('/shows/setlist/showId/' + showId).then(function(setlist) {
+        return setlist.data;
+      });
+    },
+
+    getSetlistByDate: function(date) {
+      return $http.get('/shows/setlist/date/' + date.slice(0,10)).then(function(setlist) {
         return setlist.data;
       });
     },

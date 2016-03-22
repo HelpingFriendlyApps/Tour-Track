@@ -3,17 +3,16 @@
 angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('show', {
-    url: '/show/:showId',
+    url: '/show/:date',
     templateUrl: '../views/show.html',
     controller: 'ShowCtrl',
     resolve: {
       show: function(ShowFactory, $stateParams) {
-        console.log('$stateParams', $stateParams)
-        return ShowFactory.getShowById($stateParams.showId);
+        return ShowFactory.getShowByDate($stateParams.date);
       },
 
       setlist: function(ShowFactory, $stateParams) {
-        return ShowFactory.getSetlistByShowId($stateParams.showId);
+        return ShowFactory.getSetlistByDate($stateParams.date);
       }
     }
   });

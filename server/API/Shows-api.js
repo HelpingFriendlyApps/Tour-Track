@@ -19,8 +19,8 @@ router.get('/:showId', function(req, res, next) {
     });
 });
 
-router.get('/date/:showDate', function(req, res, next) {
-    var date = req.params.showDate;
+router.get('/date/:date', function(req, res, next) {
+    var date = req.params.date;
     var timeRange = [date + 'T00:00:00.000Z', date + 'T23:59:59.000Z'];
     Shows.getShowByDate(timeRange).then( (x) => {
         res.send(x);
@@ -48,8 +48,16 @@ router.get('/tourId/:tourId', function(req, res, next) {
     });
 });
 
-router.get('/setlist/:showId', function(req, res, next) {
-    Shows.getSetlist(req.params.showId).then( (x) => {
+router.get('/setlist/showId/:showId', function(req, res, next) {
+    Shows.getSetlistById(req.params.showId).then( (x) => {
+        res.send(x);
+    });
+});
+
+router.get('/setlist/date/:date', function(req, res, next) {
+    var date = req.params.date;
+    var timeRange = [date + 'T00:00:00.000Z', date + 'T23:59:59.000Z'];
+    Shows.getSetlistByDate(timeRange).then( (x) => {
         res.send(x);
     });
 });

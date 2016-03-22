@@ -46,13 +46,22 @@ var Shows = module.exports = {
         .join('tours', 'tours.id', 'shows.tour_id');
     },
 
-    getSetlist: function(showId){
+    getSetlistById: function(showId){
         return db('shows').select('songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songs.title')
         .where('shows.id', showId)
         .join('songplayed', 'songplayed.show_id', 'shows.id')
         .join('songs', 'songplayed.song_id', 'songs.id')
         .orderBy('set', 'asc')
         .orderBy('position', 'asc');
+    },
+
+    getSetlistByDate: function(date) {
+      return db('shows').select('songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songs.title')
+      .whereBetween('date', date)
+      .join('songplayed', 'songplayed.show_id', 'shows.id')
+      .join('songs', 'songplayed.song_id', 'songs.id')
+      .orderBy('set', 'asc')
+      .orderBy('position', 'asc');
     },
 
     updateOrCreate : function(attrs){
