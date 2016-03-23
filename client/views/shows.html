@@ -1,26 +1,24 @@
-<div class='container'>
-  <ul>
-    <li ng-repeat='show in shows' ui-sref="show({date: show.date})">{{show.date}}</li>
-  </ul>
+<div class='container shows-container'>
+  <p>{{shows[50]}}</p>
+  <button ng-click='doIt()'></button>
 
-  <!-- <div class='scrollthing 'layout='column' flex='' layout-fill='' ng-cloak="">
-    <md-toolbar md-scroll-shrink=''>
-      <div class='md-toolbar-tools'>MESSAGE HERE</div>
-    </md-toolbar>
-    <md-content>
-      <section>
-        <md-subheader class='md-primary'>Thing1</md-subheader>
-        <md-list>
-          <md-list-item ng-repeat='show in shows.slice(0,10)'>{{show.date}}</md-list-item>
-        </md-list>
-      </section>
-      <section>
-        <md-subheader class='md-primary'>Thing2</md-subheader>
-        <md-list>
-          <md-list-item ng-repeat='show in shows.slice(10,20)'>{{show.date}}</md-list-item>
-        </md-list>
-      </section>
-    </md-content>
-  </div> -->
+
+  <!-- TRYING TO DO: http://codepen.io/pen/?editors=1010 -->
+
+  <div class='wrapper'>
+    <md-input-container>
+      <md-select ng-model='selectedYear' aria-label='Select a Year'>
+        <md-option ng-value='$index' ng-repeat='year in allYears'>{{year}}</md-option>
+      </md-select>
+    </md-input-container>
+
+    <ul class='show-list' scroll-to>
+      <li ng-repeat='show in shows' ui-sref="show({date: show.date})">
+      <div class='year-header' ng-show='checkforNewYear($index, $index-1)'>{{show.date.slice(0,4)}}</div>
+      {{show.date}}
+      </li>
+    </ul>
+
+  </div>
 
 </div>

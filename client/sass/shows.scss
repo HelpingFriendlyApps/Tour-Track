@@ -1,0 +1,19 @@
+.shows-container {
+  // background: red;
+
+  .wrapper {
+    width: 600px;
+  }
+
+  .show-list {
+    background: lightblue;
+    height: 400px;
+    width: 600px;
+    overflow-y: scroll;
+  }
+
+  .year-header {
+    background: red;
+  }
+
+}
