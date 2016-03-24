@@ -16,7 +16,21 @@ body {
 .container {
   // background: cyan;
   // height: 100%;
+
+  &__profilestats {
+    overflow-y: auto;
+    max-height: 400px;
+  }
+  &__profilestats:hover {
+    border-radius: 3px;
+    background: red; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, #dcdcdc , lightblue); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right,  #dcdcdc , lightblue); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, #dcdcdc , lightblue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right,  #dcdcdc , lightblue); /* Standard syntax (must be last) */
+  }
 }
+
 
 .scrollthing {
   background: red;
@@ -29,3 +43,5 @@ md-list {
 }
 
 @import 'show';
+
+@import 'ui-misc';
