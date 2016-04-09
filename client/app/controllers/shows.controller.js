@@ -1,9 +1,11 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', function($scope, allShows, ShowFactory) {
+.controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', 'VenueFactory', function($scope, allShows, ShowFactory, VenueFactory) {
 
   $scope.shows = allShows;
+
+  // $scope.getVenuebyId = VenueFactory.getVenueById;
 
 
 

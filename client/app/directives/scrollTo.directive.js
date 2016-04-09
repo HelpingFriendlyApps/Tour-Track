@@ -8,7 +8,12 @@ angular.module('Tour-Track').directive('scrollTo', function() {
       scope.$watch('selectedYear', function(newVal, oldVal) {
         if(newVal && newVal !== oldVal) {
           console.log('newVal', newVal)
-          $('body').scrollTop(element.find('li').eq(newVal).position().top) 
+          // $('.show-list').scrollTop(element.find('li').eq(newVal).position().top)
+          console.log('element', element)
+          // console.log('element.find("li").eq(newVal)', element.find("li").eq(newVal))
+          console.log('element.find("li").eq(10)', element.find("li").eq(10))
+          // $('.show-list').scrollTop(element.find('md-list-item').eq(newVal).position().top)
+          $('.show-list').scrollTop(1000)
         }
       });
 
