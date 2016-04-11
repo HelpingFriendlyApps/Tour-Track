@@ -1,9 +1,8 @@
-<div class="container show-container">
-  <h1>{{dateParser(show.date)}}</h1>
-  <h1>{{tour.name}}</h1>
-  <h1>{{venue.name}}</h1>
-  <h1>{{venue.location}}</h1>
-  <h1>{{show}}</h1>
+<div class="show-container">
+  <p>{{show.date | date:'EEEE, MM/dd/yyyy'}}</p>
+  <p>{{show.venue_name}}</p>
+  <p>{{show.location}}</p>
+  
 
   <table class='table-striped'>
     <thead>
@@ -13,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat='song in setlist'>
+      <tr ng-repeat='song in show.setlist'>
         <td>{{song.title}}</td>
         <td>{{timeParser(song.duration)}}</td>
       </tr>

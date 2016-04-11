@@ -1,15 +1,11 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ShowCtrl', ['$scope', 'show', 'setlist', 'TourFactory', 'VenueFactory', function($scope, show, setlist, TourFactory, VenueFactory) {
+.controller('ShowCtrl', ['$scope', 'show', 'setlist', function($scope, show, setlist) {
 
   $scope.show = show;
+  $scope.show.setlist = setlist;
   console.log('$scope.show', $scope.show)
-  $scope.setlist = setlist;
-
-  $scope.dateParser = function(date) {
-    return date.slice(0,10).replace(/(-)/g, '/');
-  }
 
   $scope.timeParser = function(ms) {
     var min = Math.floor(ms / 60000);
@@ -17,13 +13,5 @@ angular.module('Tour-Track')
     if(sec < 10) sec = '0' + sec;
     return min + ':' + sec;
   }
-
-  TourFactory.getTourById(show.tour_id).then(function(tour) {
-    $scope.tour = tour;
-  });
-
-  VenueFactory.getVenueById(show.venue_id).then(function(venue) {
-    $scope.venue = venue;
-  });
 
 }]);

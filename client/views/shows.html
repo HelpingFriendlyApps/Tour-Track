@@ -2,7 +2,7 @@
 
   <md-list class='col-md-8 col-md-offset-2'>
     <md-virtual-repeat-container>
-      <md-list-item md-virtual-repeat='show in shows' class='md-2-line' ng-click='null' ui-sref='show({date: show.date})' md-on-demand='' aria-label='goAway'>
+      <md-list-item md-virtual-repeat='show in shows' class='md-2-line' ng-click='null' ui-sref='base.show({date: show.date})' md-on-demand='' aria-label='goAway'>
 
         <div class='md-list-item-text' layout='column'>
           <md-subheader ng-if='show.firstOfYear' class="md-no-sticky">{{show.date | date:'yyyy'}}</md-subheader>

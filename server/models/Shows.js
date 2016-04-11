@@ -7,11 +7,6 @@ var ph = require('./Phish').Phishin();
 
 var Shows = module.exports = {
 
-    // getAllShows : function(){
-    //     return db('shows').select('*')
-    //     .orderBy('date', 'asc');
-    // },
-
     getAllShows : function(){
         return db('shows').select('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
         .orderBy('date', 'asc')
@@ -24,9 +19,10 @@ var Shows = module.exports = {
     },
 
     getShowByDate: function(date) {
-        return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
+        return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location', 'tours.name as tour_name', 'tours.starts_on as tour_starts_on', 'tours.ends_on as tour_ends_on')
         .whereBetween('date', date)
-        .join('venues', 'venues.id', 'shows.venue_id');
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id');
     },
 
     getShowsByYear: function(timeRange) {
