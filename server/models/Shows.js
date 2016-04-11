@@ -24,8 +24,9 @@ var Shows = module.exports = {
     },
 
     getShowByDate: function(date) {
-        return db('shows').first('*')
-        .whereBetween('date', date);
+        return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
+        .whereBetween('date', date)
+        .join('venues', 'venues.id', 'shows.venue_id');
     },
 
     getShowsByYear: function(timeRange) {
