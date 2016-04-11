@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('Tour-Track', [
-    'ui.router',
-    'ngSanitize',
-    'ngMaterial',
-    'ngMessages'
-  ])
+var app = angular.module('Tour-Track', [
+  'ui.router',
+  'ngSanitize',
+  'ngMaterial',
+  'ngMessages'
+])
 
-    .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-    
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('base', {
@@ -17,5 +17,6 @@ angular.module('Tour-Track', [
     });
 
     // $locationProvider.html5Mode(true);
+
      
 });

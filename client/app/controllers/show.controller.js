@@ -1,7 +1,6 @@
 'use strict';
 
-angular.module('Tour-Track')
-.controller('ShowCtrl', ['$scope', 'show', 'setlist', function($scope, show, setlist) {
+app.controller('ShowCtrl', function($scope, show, setlist) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -14,4 +13,4 @@ angular.module('Tour-Track')
     return min + ':' + sec;
   }
 
-}]);
+});
