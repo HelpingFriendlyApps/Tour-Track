@@ -1,19 +1,52 @@
 .shows-container {
-  // background: red;
+  height: 100%;
 
-  .wrapper {
-    width: 600px;
-  }
+  md-list {
+    height: 100%;
+    // width: 100%;
+    background: lightgrey;
+    
+    md-virtual-repeat-container {
+      height: 100%;
+      width: 100%;
+      background: white;
+      border: 1px solid black;
+    }
 
-  .show-list {
-    background: lightblue;
-    height: 600px;
-    width: 100%;
-    overflow-y: scroll;
-  }
+    md-list-item {
+      // background: lightblue;
+      // padding: 0;
+      min-height: 0;
 
-  .year-header {
-    background: red;
+      a.md-button {
+        min-height: 0;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .md-list-item-text {
+      // background: red;
+    }
+
+    .md-subheader {
+      background: rgba(0,0,0,0.1);
+      // background: lightblue;
+      // border-top: 1px solid rgba(0,0,0,0.5);
+      // border-bottom: 1px solid rgba(0,0,0,0.5);
+      // background: black;
+    }
+
+    .show-info {
+      height: 40px;
+      p {
+        padding-left: 10px;
+      }
+    }
+
+
+
+
   }
 
 }

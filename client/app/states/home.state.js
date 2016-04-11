@@ -2,7 +2,7 @@
 
 angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('home', {
+  $stateProvider.state('base.home', {
     url: '/',
     templateUrl: '../views/home.html',
     controller: 'HomeCtrl'

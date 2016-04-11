@@ -3,11 +3,19 @@
 angular.module('Tour-Track', [
     'ui.router',
     'ngSanitize',
-    'ngMaterial'
+    'ngMaterial',
+    'ngMessages'
   ])
 
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
+
+    $stateProvider.state('base', {
+      abstract: true,
+      template: '<navbar></navbar><ui-view></ui-view>'
+    });
+
+    // $locationProvider.html5Mode(true);
      
 });

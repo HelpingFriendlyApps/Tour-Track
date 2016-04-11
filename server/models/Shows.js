@@ -7,9 +7,15 @@ var ph = require('./Phish').Phishin();
 
 var Shows = module.exports = {
 
+    // getAllShows : function(){
+    //     return db('shows').select('*')
+    //     .orderBy('date', 'asc');
+    // },
+
     getAllShows : function(){
-        return db('shows').select('*')
-        .orderBy('date', 'asc');
+        return db('shows').select('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
+        .orderBy('date', 'asc')
+        .join('venues', 'venues.id', 'shows.venue_id');
     },
 
     getShowById: function(showId) {
