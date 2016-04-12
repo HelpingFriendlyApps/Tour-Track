@@ -1,10 +1,17 @@
-.shows-container {
+.shows-state {
   height: 100%;
+  background: purple;
 
   md-list {
     height: 100%;
     // width: 100%;
     background: lightgrey;
+
+    #map {
+      height: 48px;
+      width: 100%;
+      opacity: 0.1;
+    }
     
     md-virtual-repeat-container {
       height: 100%;

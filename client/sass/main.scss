@@ -2,10 +2,14 @@ html, body {
   height: 100%;
 }
 
-body > .container {
-  margin-top: 51px;
+.container, .container-fluid {
   height: 100%;
-  background: rgba(0,0,0,0.05);
+  padding: 0;
+}
+
+body > .container-fluid {
+  margin-top: 51px;
+  // background: cyan;
 }
 
 @import 'show';
