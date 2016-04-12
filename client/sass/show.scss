@@ -53,6 +53,21 @@
       z-index: -1;
       // z-index: 900;
     }
+
+    button {
+      -webkit-transition: margin-top 1s ease-in;
+      -moz-transition: margin-top 1s ease-in;
+      -o-transition: margin-top 1s ease-in;
+      transition: margin-top 1s ease-in;
+      
+      transform: skewY(-5deg);
+      float: right;
+      margin-top: -180px;
+      margin-right: 40px;
+      font-size: 32px;
+
+    }
+
     div.ribbon {
       height: 200px;
       width: 100%;
@@ -71,13 +86,13 @@
   overflow: hidden;
 
   .map-container {
-    // -webkit-transition: height 1s ease-in;
-    // -moz-transition: height 1s ease-in;
-    // -o-transition: height 1s ease-in;
-    // transition: height 1s ease-in;
     height: 100%;
     #map {
       z-index: 0; // might want to change to let next/prev buttons on top
+    }
+    button {
+      margin-top: -200px;
+      margin-right: 40px;
     }
   }
   .container {
