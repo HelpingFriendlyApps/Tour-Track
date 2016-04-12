@@ -24,7 +24,8 @@
       <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
         
         <div class='md-list-item-text' layout='column'>
-          <md-subheader class="md-no-sticky">{{song.set}}</md-subheader>
+          <!-- <md-subheader ng-if='showSetHeader(song)' class="md-no-sticky">Hello</md-subheader> -->
+          <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
 
           <div class='show-info' layout='row' layout-align='space-between center'>
             <p ui-sref='base.song({songId: song.song_id})'>{{song.title}}</p>
