@@ -35,4 +35,9 @@ app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory) {
     $scope.prevShow = prevShow;
   });
 
+  $scope.fullscreen = false;
+  $scope.toggleFullscreen = function() {
+    $scope.fullscreen = !$scope.fullscreen;
+  }
+
 });

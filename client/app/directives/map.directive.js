@@ -1,13 +1,33 @@
 'use strict'
 
-app.directive('map', function(mapboxToken) {
+app.directive('map', function(mapboxToken, $interval, $window, $location, $anchorScroll) {
   return {
     restrict: 'E',
     template: '<div id="map"></div>',
     scope: {
-      coordinates: '='
+      coordinates: '=',
+      fullscreen: '='
     },
     link: function(scope, element, attrs) {
+
+      scope.$watch('fullscreen', function(fullscreen) {
+        console.log('fullscreen', fullscreen)
+        if(fullscreen) {
+          map.dragPan.enable();
+          map.scrollZoom.enable();
+          $('body').css('overflow', 'hidden');
+          // $window.scrollTo(0,0)
+          $location.hash('navbar');
+          $anchorScroll();
+        } else {
+          map.dragPan.disable();
+          map.scrollZoom.disable();
+          $('body').css('overflow', 'auto');
+        }
+        $interval(function() {
+          map.resize();
+        }, 10, 200);
+      });
 
       mapboxgl.accessToken = mapboxToken;
       var map = new mapboxgl.Map({
@@ -18,6 +38,7 @@ app.directive('map', function(mapboxToken) {
       });
 
       map.on('style.load', function() {
+        console.log('INSIDE')
         var geoJson = {
           type: 'geojson',
           data: {
@@ -48,6 +69,10 @@ app.directive('map', function(mapboxToken) {
             'circle-color': 'black'
           }
         });
+
+        map.dragPan.disable();
+        map.scrollZoom.disable();
+
       });
 
     }

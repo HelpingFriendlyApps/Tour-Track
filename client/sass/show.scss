@@ -1,5 +1,6 @@
 .show-container {
   height: 100%;
+  max-height: 100%;
 
   .navigation-buttons {
     position: fixed;
@@ -8,6 +9,11 @@
   }
 
   .container {
+    -webkit-transition: margin-top 1s ease-in;
+    -moz-transition: margin-top 1s ease-in;
+    -o-transition: margin-top 1s ease-in;
+    transition: margin-top 1s ease-in;
+
     position: relative;
     margin-top: -120px;
   }
@@ -16,6 +22,8 @@
     border: 1px solid black;
     background: white;
   }
+
+  // background-image: url('http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0339/2964/rrrrrPHISH_FABRICnewcolor_mirror.png'); 
 
   md-list-item {
     min-height: 100%;
@@ -30,12 +38,20 @@
   }
 
   .map-container {
+    -webkit-transition: height 1s ease-in;
+    -moz-transition: height 1s ease-in;
+    -o-transition: height 1s ease-in;
+    transition: height 1s ease-in;
+
+    height: 400px;
     transform: skewY(5deg);
     position: relative;
     #map {
-      height: 400px;
+      // height: 400px;
+      height: 100%;
       transform: skewY(-5deg);
       z-index: -1;
+      // z-index: 900;
     }
     div.ribbon {
       height: 200px;
@@ -47,3 +63,33 @@
   }
 
 }
+
+
+
+// apply to .show-container
+.map-fullscreen {
+  overflow: hidden;
+
+  .map-container {
+    // -webkit-transition: height 1s ease-in;
+    // -moz-transition: height 1s ease-in;
+    // -o-transition: height 1s ease-in;
+    // transition: height 1s ease-in;
+    height: 100%;
+    #map {
+      z-index: 0; // might want to change to let next/prev buttons on top
+    }
+  }
+  .container {
+    // -webkit-transition: margin-top 1s ease-in;
+    // -moz-transition: margin-top 1s ease-in;
+    // -o-transition: margin-top 1s ease-in;
+    // transition: margin-top 1s ease-in;
+    margin-top: 0;
+  }
+}
+
+
+
+
+
