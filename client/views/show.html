@@ -5,6 +5,15 @@
     <div class='ribbon'></div>
   </div>
 
+  <div class='navigation-buttons' layout='row' layout-align='space-between start'>
+    <md-button class="next md-raised" ui-sref='base.show({date: nextShow.date})'>
+      <i class="fa fa-angle-left"></i>
+    </md-button>
+    <md-button class="prev md-raised" ui-sref='base.show({date: prevShow.date})'>
+      <i class="fa fa-angle-right"></i>
+    </md-button>
+  </div>
+
 
   <div class='container'>
     <p>{{show.date | date:'EEEE, MM/dd/yyyy'}}</p>
@@ -18,7 +27,10 @@
         <md-divider></md-divider> 
       </md-list-item>
     </md-list>
+  
+
   </div>
+
 
 
 

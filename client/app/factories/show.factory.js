@@ -23,6 +23,17 @@ angular.module('Tour-Track')
       });
     },
 
+    getNextShowByDate: function(date) {
+      return $http.get('/shows/date/' + date.slice(0,10) + '/next').then(function(show) {
+        return show.data;
+      });
+    },
+
+    getPrevShowByDate: function(date) {
+      return $http.get('/shows/date/' + date.slice(0,10) + '/prev').then(function(show) {
+        return show.data;
+      });
+    },
 
     getShowsByYear: function(year) {
       return $http.get('/shows/year/' + year).then(function(shows) {

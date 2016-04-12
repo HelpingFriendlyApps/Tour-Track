@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, show, setlist) {
+app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -12,5 +12,17 @@ app.controller('ShowCtrl', function($scope, show, setlist) {
     if(sec < 10) sec = '0' + sec;
     return min + ':' + sec;
   }
+
+
+
+
+  ShowFactory.getNextShowByDate($scope.show.date).then(function(nextShow) {
+    $scope.nextShow = nextShow;
+  });
+
+  ShowFactory.getPrevShowByDate($scope.show.date).then(function(prevShow) {
+    $scope.prevShow = prevShow;
+  });
+
 
 });
