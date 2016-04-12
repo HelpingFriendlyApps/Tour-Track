@@ -1,19 +1,15 @@
 .show-container {
   height: 100%;
-  // background: lightblue;
 
   .navigation-buttons {
-    // border: 1px solid black;
     position: fixed;
     width: 100%;
     top: 45%;
   }
 
   .container {
-    // background: lightgrey;
     position: relative;
     margin-top: -120px;
-
   }
 
   md-list {
@@ -23,7 +19,14 @@
 
   md-list-item {
     min-height: 100%;
-    padding: 4px 16px;
+    padding: 0;
+    .show-info {
+      padding: 4px 16px;;
+    }
+  }
+
+  .md-subheader {
+    background: rgba(0,0,0,0.1);
   }
 
   .map-container {
@@ -41,16 +44,6 @@
       position: absolute;
       bottom: -100px;
     }
-    
   }
 
-
-
-
-
-
-
-  table {
-    width: 100%;
-  }
 }

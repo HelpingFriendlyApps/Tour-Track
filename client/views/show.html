@@ -21,10 +21,20 @@
     <p>{{show.location}}</p>
 
     <md-list>
-      <md-list-item ng-repeat='song in show.setlist'>
-        <p ui-sref='base.song({songId: song.song_id})'>{{song.title}}</p>
-        <p class='md-secondary'>{{timeParser(song.duration)}}</p>
-        <md-divider></md-divider> 
+      <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
+        
+        <div class='md-list-item-text' layout='column'>
+          <md-subheader class="md-no-sticky">{{song.set}}</md-subheader>
+
+          <div class='show-info' layout='row' layout-align='space-between center'>
+            <p ui-sref='base.song({songId: song.song_id})'>{{song.title}}</p>
+            <p>{{timeParser(song.duration)}}</p>
+          </div>
+
+        </div>
+
+        <md-divider></md-divider>
+
       </md-list-item>
     </md-list>
   

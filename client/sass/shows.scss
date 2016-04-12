@@ -4,7 +4,6 @@
 
   md-list {
     height: 100%;
-    // width: 100%;
     background: lightgrey;
 
     #map {
@@ -21,10 +20,7 @@
     }
 
     md-list-item {
-      // background: lightblue;
-      // padding: 0;
       min-height: 0;
-
       a.md-button {
         min-height: 0;
         padding: 0;
@@ -32,16 +28,8 @@
       }
     }
 
-    .md-list-item-text {
-      // background: red;
-    }
-
     .md-subheader {
       background: rgba(0,0,0,0.1);
-      // background: lightblue;
-      // border-top: 1px solid rgba(0,0,0,0.5);
-      // border-bottom: 1px solid rgba(0,0,0,0.5);
-      // background: black;
     }
 
     .show-info {
@@ -50,10 +38,6 @@
         padding-left: 10px;
       }
     }
-
-
-
-
   }
 
 }
