@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory) {
+app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory, $document, $timeout) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -36,8 +36,11 @@ app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory) {
   });
 
   $scope.fullscreen = false;
+
   $scope.toggleFullscreen = function() {
-    $scope.fullscreen = !$scope.fullscreen;
+    $document.scrollTop(0, 800).then(function() {
+      $scope.fullscreen = !$scope.fullscreen;
+    });
   }
 
 });

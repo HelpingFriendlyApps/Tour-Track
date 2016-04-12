@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('map', function(mapboxToken, $interval, $window, $location, $anchorScroll) {
+app.directive('map', function(mapboxToken, $interval) {
   return {
     restrict: 'E',
     template: '<div id="map"></div>',
@@ -11,14 +11,10 @@ app.directive('map', function(mapboxToken, $interval, $window, $location, $ancho
     link: function(scope, element, attrs) {
 
       scope.$watch('fullscreen', function(fullscreen) {
-        console.log('fullscreen', fullscreen)
         if(fullscreen) {
           map.dragPan.enable();
           map.scrollZoom.enable();
           $('body').css('overflow', 'hidden');
-          // $window.scrollTo(0,0)
-          $location.hash('navbar');
-          $anchorScroll();
         } else {
           map.dragPan.disable();
           map.scrollZoom.disable();

@@ -4,7 +4,8 @@ var app = angular.module('Tour-Track', [
   'ui.router',
   'ngSanitize',
   'ngMaterial',
-  'ngMessages'
+  'ngMessages',
+  'duScroll'
 ])
 
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
