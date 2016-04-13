@@ -15,6 +15,7 @@ var Tracks = module.exports = {
     getTracksBySongId: function(songId) {
         return db('songplayed').select('songplayed.*', 'shows.date', 'shows.venue_id', 'shows.tour_id', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location', 'tours.name as tour_name', 'tours.starts_on as tour_starts_on', 'tours.ends_on as tour_ends_on')
         .where('songplayed.song_id', songId)
+        .orderBy('date', 'asc')
         .join('shows', 'shows.id', 'songplayed.show_id')
         .join('venues', 'venues.id', 'shows.venue_id')
         .join('tours', 'tours.id', 'shows.tour_id');

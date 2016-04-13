@@ -20,7 +20,7 @@ app.directive('map', function(mapboxToken, $interval) {
           map.scrollZoom.disable();
           $('body').css('overflow', 'auto');
         }
-        $interval(function() {
+        $interval( () => {
           map.resize();
         }, 10, 200);
       });
@@ -34,7 +34,6 @@ app.directive('map', function(mapboxToken, $interval) {
       });
 
       map.on('style.load', function() {
-        console.log('INSIDE')
         var geoJson = {
           type: 'geojson',
           data: {
