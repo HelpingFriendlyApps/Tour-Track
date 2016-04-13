@@ -1,6 +1,16 @@
-<div class='container'>
-<h1>Songs</h1>
-  <ul>
-    <li ng-repeat='song in songs' ui-sref='base.song({songId: song.id})'>{{song.title}}</li>
-  </ul>
+<div class='container songs-container'>
+  <!-- <h1>Songs</h1> -->
+
+  <md-input-container>
+    <label>Song</label>
+    <input ng-model='song.title'></input>
+  </md-input-container>
+
+  <md-list>
+    <md-list-item ng-repeat='song in songs | filter: song.title' ui-sref='base.song({songId: song.id})'>
+      <p>{{song.title}}</p>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
+
 </div>

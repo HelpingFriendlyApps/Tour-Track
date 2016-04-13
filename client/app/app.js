@@ -5,6 +5,7 @@ var app = angular.module('Tour-Track', [
   'ngSanitize',
   'ngMaterial',
   'ngMessages',
+  'ngAnimate',
   'duScroll'
 ])
 

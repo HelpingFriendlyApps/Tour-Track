@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory, $document, $timeout) {
+app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -11,7 +11,6 @@ app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory, $documen
     if(sets.indexOf(song.set) < 0) {
       song.firstOfSet = true;
       sets.push(song.set);
-      console.log('sets', sets)
     }
   });
 
@@ -35,12 +34,34 @@ app.controller('ShowCtrl', function($scope, show, setlist, ShowFactory, $documen
     $scope.prevShow = prevShow;
   });
 
-  $scope.fullscreen = false;
+  $rootScope.fullscreen = $rootScope.fullscreen ? $rootScope.fullscreen : false;
+  $scope.showFullscreenInfo = $scope.alreadyFullscreen = $rootScope.fullscreen;
+  // $scope.alreadyFullscreen = $rootScope.fullscreen;
 
   $scope.toggleFullscreen = function() {
     $document.scrollTop(0, 800).then(function() {
-      $scope.fullscreen = !$scope.fullscreen;
+      $rootScope.fullscreen = !$rootScope.fullscreen;
+      if(!$rootScope.fullscreen) $scope.alreadyFullscreen = false;
     });
+
+    if(!$scope.showFullscreenInfo) {
+      $timeout(function() {
+        $scope.showFullscreenInfo = true;
+      }, 800);
+    } else $scope.showFullscreenInfo = false;
+
   }
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
