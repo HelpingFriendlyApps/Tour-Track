@@ -36,7 +36,6 @@ app.directive('barChart', function(mapboxToken, $interval) {
 
       scope.$watch('data', (data) => {
         if(!data) return;
-        console.log('data', data)
 
         x.domain(data.map( (d) => { return d.year; }));
         y.domain([0, d3.max(data, (d) => { return d.count; })]);
