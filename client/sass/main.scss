@@ -1,35 +1,17 @@
-/* remember to set all global css and variables before importing */
-
-$black: #dcdcdc;
-
-body {
-  background-color: $black;
+html, body {
+  height: 100%;
 }
 
-/* import boubon and neat */
-@import "../lib/bourbon/app/assets/stylesheets/bourbon";
-@import "../lib/neat/app/assets/stylesheets/neat";
+.container, .container-fluid {
+  height: 100%;
+  padding: 0;
+}
 
-/* import partials */
-@import 'bar-graph';
-@import 'd3-map';
-@import 'layout-tree';
-@import 'partial1';
-@import 'partial2';
-@import 'showTracker/map';
-@import 'showTracker/visualizer';
-@import 'showTracker/slider';
-@import 'showTracker/infoViewer';
-@import 'navbar';
+body > .container-fluid {
+  margin-top: 51px;
+}
 
-/* set up grid structure */
-$visual-grid: true;
-$visual-grid-color: red;
-$visual-grid-index: front;
-$visual-grid-opacity: 0.5;
- 
-// Change the grid settings
-$max-width: em(1024, 10);
- 
-$tablet: new-breakpoint(max-width 768px 8);
-$mobile: new-breakpoint(max-width 480px 3);
+@import 'show';
+@import 'shows';
+@import 'song';
+@import 'songs';

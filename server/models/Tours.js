@@ -14,7 +14,7 @@ var Tours = module.exports = {
     },
 
     getTourById: function (id) {
-        return db('tours').select('*')
+        return db('tours').first('*')
         .where({id: id});
     },
 

@@ -14,7 +14,7 @@ var Venues = module.exports = {
     },
 
     getVenueById: function(venueId) {
-        return db('venues').select('*')
+        return db('venues').first('*')
         .where('venues.id', venueId);
     },
 

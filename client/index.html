@@ -2,10 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <!-- <base href="/"> -->
+    <title>Tour Track</title>
   </head>
   
   <body ng-app="Tour-Track">
-      <div ui-view></div>
+      <!-- <div class="container" ui-view></div> -->
+      <div class="container-fluid" ui-view></div>
   </body>
 
 
@@ -18,72 +21,58 @@
     <script src="./lib/angular-touch/angular-touch.js"></script>
     <script src="./lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="./lib/angular-ui-router/release/angular-ui-router.js"></script>
-    
+    <script src="./lib/angular-aria/angular-aria.js"></script>
+    <script src="./lib/angular-messages/angular-messages.js"></script>
+    <script src="./lib/angular-material/angular-material.js"></script>
+    <script src="./lib/angular-scroll/angular-scroll.js"></script>
     <script src="./lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./lib/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <link rel="stylesheet" href="./lib/jquery-ui/themes/smoothness/jquery-ui.css">
-    
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" src="./lib/materialize/dist/js/materialize.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="./lib/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
-    
-    <script type="text/javascript" src="./lib/d3/d3.js"></script>
-    
-    <!-- // <script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script> -->
-    <!-- <link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' /> -->
-
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.12.2/mapbox-gl.css' rel='stylesheet' />
-
-    <script type="text/javascript" src="./helpers/uStates.js"></script>
-
-    <script src="app.js"></script>
-
-    <script src="components/home/home-controller.js"></script>
-    <script src="components/home/home-state.js"></script>
-    
-    <script src="components/general/general-controller.js"></script>
-    <script src="components/general/general-model.js"></script>
-    <script src="components/general/general-state.js"></script>
-
-    <script src="components/general/showTracker/showTracker-controller.js"></script>
-    <script src="components/general/showTracker/showTracker-factory.js"></script>
-    <script src="components/general/showTracker/showTracker-state.js"></script>
-    <script src="components/general/showTracker/map/map-directive.js"></script>
-    <script src="components/general/showTracker/map/map-factory.js"></script>
-    <script src="components/general/showTracker/visualizer/visualizer-directive.js"></script>
-    <script src="components/general/showTracker/slider/slider-directive.js"></script>
-    <script src="components/general/showTracker/infoViewer/infoViewer-controller.js"></script>
-    <script src="components/general/showTracker/infoViewer/infoViewer-directive.js"></script>
-    
-    <script src="components/general/showsperstate/general.showsperstate-controller.js"></script>
-    <script src="components/general/showsperstate/general.showsperstate-directive.js"></script>
-    <script src="components/general/showsperstate/general.showsperstate-model.js"></script>
-    <script src="components/general/showsperstate/general.showsperstate-state.js"></script>
-
-    <script src="components/general/tree/general.tree-controller.js"></script>
-    <script src="components/general/tree/general.tree-directive.js"></script>
-    <script src="components/general/tree/general.tree-model.js"></script>
-    <script src="components/general/tree/general.tree-state.js"></script>
-
-    <script src="components/profile/profile-controller.js"></script>
-    <script src="components/profile/Profile-model.js"></script>
-    <script src="components/profile/profile-state.js"></script>
-
-    <script src="components/profile/showsVsYear/profile.showsvsyear-controller.js"></script>
-    <script src="components/profile/showsVsYear/profile.showsvsyear-directive.js"></script>
-    <script src="components/profile/showsVsYear/profile.showsvsyear-state.js"></script>
-    <script src="components/profile/showsVsYear/profile.showsvsyear-model.js"></script>
-
-    <script src="components/profile/showsPerState/profile.showsPerState-controller.js"></script>
-    <script src="components/profile/showsPerState/profile.showsPerState-directive.js"></script>
-    <script src="components/profile/showsPerState/profile.showsPerState-model.js"></script>
-    <script src="components/profile/showsPerState/profile.showsPerState-state.js"></script>
+    <link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="./lib/fontawesome/css/font-awesome.min.css" />
 
 
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
 
-    <script src="components/profile/tabs/profile.tabs-state.js"></script>
-    <script src="components/profile/tabs/profile.tabs-controller.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+
+    <script src="app/app.js"></script>
+    <script src="app/config.js"></script>
+
+    <script src="app/controllers/home.controller.js"></script>
+    <script src="app/controllers/login.controller.js"></script>
+    <script src="app/controllers/show.controller.js"></script>
+    <script src="app/controllers/shows.controller.js"></script>
+    <script src="app/controllers/song.controller.js"></script>
+    <script src="app/controllers/songs.controller.js"></script>
+
+    <script src="app/directives/barChart.directive.js"></script>
+    <script src="app/directives/map.directive.js"></script>
+    <script src="app/directives/navbar.directive.js"></script>
+    <script src="app/directives/scrollTo.directive.js"></script>
+
+    <script src="app/factories/profile.factory.js"></script>
+    <script src="app/factories/show.factory.js"></script>
+    <script src="app/factories/song.factory.js"></script>
+    <script src="app/factories/tour.factory.js"></script>
+    <script src="app/factories/track.factory.js"></script>
+    <script src="app/factories/venue.factory.js"></script>
+
+    <script src="app/states/home.state.js"></script>
+    <script src="app/states/login.state.js"></script>
+    <script src="app/states/show.state.js"></script>
+    <script src="app/states/shows.state.js"></script>
+    <script src="app/states/song.state.js"></script>
+    <script src="app/states/songs.state.js"></script>
+
+
     <link rel="stylesheet" type="text/css" href="main.css">
   </footer>
 

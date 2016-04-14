@@ -1,0 +1,149 @@
+.show-container {
+  height: 100%;
+  max-height: 100%;
+
+  .navigation-buttons {
+    position: fixed;
+    width: 100%;
+    top: 45%;
+  }
+
+  .container {
+    -webkit-transition: margin-top 1s ease-in;
+    -moz-transition: margin-top 1s ease-in;
+    -o-transition: margin-top 1s ease-in;
+    transition: margin-top 1s ease-in;
+    position: relative;
+    margin-top: -120px;
+  }
+
+  md-list {
+    border: 1px solid black;
+    background: white;
+  }
+
+  md-list-item {
+    min-height: 100%;
+    padding: 0;
+    .show-info {
+      padding: 4px 16px;;
+    }
+  }
+
+  .md-subheader {
+    background: rgba(0,0,0,0.1);
+  }
+
+  .map-container {
+    -webkit-transition: height 1s ease-in;
+    -moz-transition: height 1s ease-in;
+    -o-transition: height 1s ease-in;
+    transition: height 1s ease-in;
+    height: 400px;
+    transform: skewY(5deg);
+    position: relative;
+    // .donuts {
+    //   height: 100%;
+    //   background-image: url('http://s3.amazonaws.com/spoonflower/public/design_thumbnails/0339/2964/rrrrrPHISH_FABRICnewcolor_mirror.png');
+    //   transform: skewY(-5deg);
+    //   z-index: -1;
+    // }
+    #map {
+      height: 100%;
+      transform: skewY(-5deg);
+      z-index: -1;
+    }
+
+    button {
+      -webkit-transition: margin-top 1s ease-in;
+      -moz-transition: margin-top 1s ease-in;
+      -o-transition: margin-top 1s ease-in;
+      transition: margin-top 1s ease-in;
+      transform: skewY(-5deg);
+      float: right;
+      margin-top: -180px;
+      margin-right: 40px;
+      font-size: 32px;
+    }
+
+    div.ribbon {
+      height: 200px;
+      width: 100%;
+      background: white;
+      position: absolute;
+      bottom: -100px;
+    }
+  }
+
+
+  .show-info-fullscreen {
+    position: absolute;
+    left: 0;
+    bottom: 80px;
+    padding-left: 30px;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .show-info-fullscreen.ng-hide {
+    opacity: 0;
+  }
+
+  .show-info-fullscreen.ng-hide-remove, .show-info-fullscreen.ng-hide-add {
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    transition: all 1s linear;
+  }
+
+}
+
+
+
+// apply to .show-container
+.map-fullscreen {
+  overflow: hidden;
+  .map-container {
+    height: 100%;
+    #map {
+      z-index: 0; // might want to change to let next/prev buttons on top
+    }
+    button {
+      margin-top: -200px;
+      margin-right: 40px;
+    }
+  }
+  .container {
+    margin-top: 0;
+  }
+}
+
+
+.already-fullscreen {
+  .container {
+    -webkit-transition: margin-top 0s ease-in;
+    -moz-transition: margin-top 0s ease-in;
+    -o-transition: margin-top 0s ease-in;
+    transition: margin-top 0s ease-in;
+  }
+  .map-container {
+    -webkit-transition: height 0s ease-in;
+    -moz-transition: height 0s ease-in;
+    -o-transition: height 0s ease-in;
+    transition: height 0s ease-in;
+    button {
+      -webkit-transition: margin-top 0s ease-in;
+      -moz-transition: margin-top 0s ease-in;
+      -o-transition: margin-top 0s ease-in;
+      transition: margin-top 0s ease-in;
+    }
+  }
+}
+
+
+
+
+
+
+
+

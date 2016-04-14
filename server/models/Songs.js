@@ -14,7 +14,7 @@ var Songs = module.exports = {
     },
 
     getSongById: function(songId) {
-        return db('songs').select('*')
+        return db('songs').first('*')
         .where('songs.id', songId);
     },
 
