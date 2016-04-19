@@ -2,6 +2,11 @@
   height: 100%;
   max-height: 100%;
 
+  // -webkit-transition: all 1s ease-in;
+  // -moz-transition: all 1s ease-in;
+  // -o-transition: all 1s ease-in;
+  // transition: all 1s ease-in;
+
   .navigation-buttons {
     position: fixed;
     width: 100%;
@@ -70,16 +75,19 @@
 }
 
 
-
-
 .map-fullscreen {
   .map-container {
     height: 100%;
-    button {
-      margin-top: -110px;
-    }
+    button { margin-top: -110px; }
   }
-  .container-fluid {
-    top: 100%;
+  .container-fluid { top: 100%; }
+}
+
+.already-fullscreen {
+  .map-container, .map-container > button, .container-fluid {
+    -webkit-transition: all 0s ease-in;
+    -moz-transition: all 0s ease-in;
+    -o-transition: all 0s ease-in;
+    transition: all 0s ease-in;
   }
 }
