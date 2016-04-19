@@ -34,7 +34,7 @@
           <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
           <div class='show-info' layout='row' layout-align='space-between center'>
             <p ui-sref='base.song({songId: song.song_id})'>{{song.title}}</p>
-            <p>{{timeParser(song.duration)}}</p>
+            <p>{{song.duration | millisecondsToDate | date:'m:ss'}}</p>
           </div>
         </div>
         <md-divider></md-divider>
