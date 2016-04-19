@@ -10,21 +10,41 @@
   }
 
   .map-container {
+    -webkit-transition: height 1s ease-in;
+    -moz-transition: height 1s ease-in;
+    -o-transition: height 1s ease-in;
+    transition: height 1s ease-in;
+
     width: 100%;
     position: fixed;
+    height: 300px;
     #map {
-      height: 300px;
+      height: 100%;
+    }
+    button {
+      -webkit-transition: margin-top 1s ease-in;
+      -moz-transition: margin-top 1s ease-in;
+      -o-transition: margin-top 1s ease-in;
+      transition: margin-top 1s ease-in;
+
+      float: right;
+      margin-top: -60px;
+      margin-right: 20px;
+      font-size: 28px;
     }
   }
 
-
   .container-fluid {
+    -webkit-transition: top 1s ease-in;
+    -moz-transition: top 1s ease-in;
+    -o-transition: top 1s ease-in;
+    transition: top 1s ease-in;
+
     background-image: url('assets/background-texture.jpg');
     position: absolute;
-    margin: auto;
     left: 0;
     right: 0;
-    top: 351px;
+    top: 300px;
     box-shadow: 0 0 1em #111;
   }
 
@@ -46,5 +66,20 @@
     .show-info {
       padding: 4px 16px;;
     }
+  }
+}
+
+
+
+
+.map-fullscreen {
+  .map-container {
+    height: 100%;
+    button {
+      margin-top: -110px;
+    }
+  }
+  .container-fluid {
+    top: 100%;
   }
 }
