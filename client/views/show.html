@@ -2,17 +2,17 @@
 
   <div class='map-container'>
     <map coordinates="[show.longitude, show.latitude]" fullscreen='fullscreen'></map>
-    <md-button class="md-fab md-mini" ng-click='toggleFullscreen()'>
+    <md-button class="md-fab md-mini" ng-click='toggleFullscreen()' aria-label="toggleFullscreen">
       <i ng-hide='fullscreen' class="fa fa-angle-down" aria-hidden="true"></i>
-      <i ng-show='fullscreen' class="fa fa-angle-up" aria-hidden="true" style='vertical-align:top;line-height:1.3em;'></i>
+      <i ng-show='fullscreen' class="fa fa-angle-up" aria-hidden="true"></i>
     </md-button>
   </div>
 
   <div class='navigation-buttons' layout='row' layout-align='space-between start'>    
-    <md-button class="next md-raised" ui-sref='base.show({date: nextShow.date})'>
+    <md-button class="md-raised" ui-sref='base.show({date: nextShow.date})' aria-label="nextShow">
       <i class="fa fa-angle-left"></i>
     </md-button>
-    <md-button class="prev md-raised" ui-sref='base.show({date: prevShow.date})'>
+    <md-button class="md-raised" ui-sref='base.show({date: prevShow.date})' aria-label="prevShow">
       <i class="fa fa-angle-right"></i>
     </md-button>
   </div>
