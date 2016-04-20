@@ -7,7 +7,6 @@ var Users   = module.exports = {
     getUsers : function(){
         return db('users').select('*')
         .then(function (data) {
-            console.log("All users in user table: ", data)
             return data;
         })
     },
@@ -37,22 +36,18 @@ var Users   = module.exports = {
     },
 
     getUserShows : function(id){
-        console.log(id)
         return Users.getUser(id).then(function(x){
-            console.log('https://api.phish.net/api.js?api=2.0&method=pnet.user.myshows.get&format=json&apikey=' + process.env.phishAPIKEY + '&username=' + x.phish_username);
             return request('https://api.phish.net/api.js?api=2.0&method=pnet.user.myshows.get&format=json&apikey=' + process.env.phishAPIKEY + '&username=' + x.phish_username)
         })
     },
 
     getAllSongs: function (showArray) {
-        console.log(showArray, 'ARRAY OF SHOWS');
         var promiseArr = [];
         JSON.parse(showArray).forEach(function (show) {
             promiseArr.push(request('http://phish.in/api/v1/shows/' + show.showdate))
         })
     //A-synch technique to run all the api calls and then return them together after all complete
         return Promise.all(promiseArr).then(function (x) {
-            console.log(x);
             var userSongs = {};
             //iterate over every show for the specific user
             x.forEach((show) => {

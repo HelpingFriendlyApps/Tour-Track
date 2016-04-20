@@ -7,13 +7,15 @@ angular.module('Tour-Track')
     $scope.showsLoading = true;
     $scope.songsLoading = true;
     $rootScope.user = user.data;
+
     Profile.userShows($scope.user.uid).then(function(shows) {
-        $scope.showsLoading = false;
+      $scope.showsLoading = false;
       $scope.userShows = shows;
     });
+
     Profile.userSongs($scope.user.uid).then(function(songs) {
-    $scope.songsLoading = false;
-    $scope.userSongs = songs;
+      $scope.songsLoading = false;
+      $scope.userSongs = songs;
     });
   });
 
