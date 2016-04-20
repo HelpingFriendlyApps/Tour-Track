@@ -1,0 +1,58 @@
+.song-container {
+  height: 100%;
+  min-height: 100%;
+
+  md-list {
+    min-height: 400px;
+    max-height: 80%;
+    overflow-y: scroll;
+    border: 1px solid black;
+    background: white;
+    padding: 0;
+  }
+
+  md-list-item {
+    height: 32px;
+    min-height: 100%;
+    padding: 0;
+    a.md-button {
+      margin: 0;
+      padding: 0;
+    }
+    .md-list-item-inner {
+      padding: 4px 16px;
+    }
+  }
+
+  #barChart {
+    border: 1px solid black;
+
+    .bar {
+      fill: steelblue;
+    }
+
+    .bar:hover {
+      fill: brown;
+    }
+
+    .axis {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .x.axis path {
+      display: none;
+    }
+  }
+
+
+
+
+
+}
