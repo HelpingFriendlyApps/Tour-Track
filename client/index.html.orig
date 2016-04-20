@@ -52,11 +52,13 @@
     <script src="app/controllers/shows.controller.js"></script>
     <script src="app/controllers/song.controller.js"></script>
     <script src="app/controllers/songs.controller.js"></script>
+<<<<<<< HEAD
+    <script src="app/controllers/profile.controller.js"></script>
+=======
 
     <script src="app/directives/barChart.directive.js"></script>
-    <script src="app/directives/throbber.directive.js"></script>
     <script src="app/directives/map.directive.js"></script>
-    <script src="app/controllers/profile.controller.js"></script>
+>>>>>>> master
     <script src="app/directives/navbar.directive.js"></script>
     <script src="app/directives/scrollTo.directive.js"></script>
 

@@ -6,19 +6,7 @@
   </div>
   <div class='container__profilestats col-md-5'>
   <h1>Your Shows</h1>
-  <div ng-show='showsLoading'>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="sk-folding-cube">
-      <div class="sk-cube1 sk-cube"></div>
-      <div class="sk-cube2 sk-cube"></div>
-      <div class="sk-cube4 sk-cube"></div>
-      <div class="sk-cube3 sk-cube"></div>
-    </div>
-  </div>
+  <throbber loading='showsLoading'></throbber>
     <div ng-hide='showsLoading' class="list-group">
     <table class="table table-hover">
       <thead>
@@ -45,21 +33,9 @@
   </div>
 </div>
 
-<div class='container__profilestats col-md-4'>
+<div class='container__profilestats col-md-5'>
   <h1>Your Songs</h1>
-    <div ng-show='songsLoading'>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="sk-folding-cube">
-      <div class="sk-cube1 sk-cube"></div>
-      <div class="sk-cube2 sk-cube"></div>
-      <div class="sk-cube4 sk-cube"></div>
-      <div class="sk-cube3 sk-cube"></div>
-    </div>
-    </div>
+    <throbber loading='songsLoading'></throbber>
     <div ng-hide='songsLoading' class="list-group">
     <table class="table table-hover">
       <thead>
