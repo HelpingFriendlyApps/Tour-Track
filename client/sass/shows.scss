@@ -1,0 +1,43 @@
+.shows-state {
+  height: 100%;
+  background: purple;
+
+  md-list {
+    height: 100%;
+    background: lightgrey;
+
+    #map {
+      height: 48px;
+      width: 100%;
+      opacity: 0.1;
+    }
+    
+    md-virtual-repeat-container {
+      height: 100%;
+      width: 100%;
+      background: white;
+      border: 1px solid black;
+    }
+
+    md-list-item {
+      min-height: 0;
+      a.md-button {
+        min-height: 0;
+        padding: 0;
+        margin: 0;
+      }
+    }
+
+    .md-subheader {
+      background: rgba(0,0,0,0.1);
+    }
+
+    .show-info {
+      height: 40px;
+      p {
+        padding-left: 10px;
+      }
+    }
+  }
+
+}

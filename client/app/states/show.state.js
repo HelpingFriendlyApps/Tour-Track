@@ -2,7 +2,7 @@
 
 angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('show', {
+  $stateProvider.state('base.show', {
     url: '/show/:date',
     templateUrl: '../views/show.html',
     controller: 'ShowCtrl',

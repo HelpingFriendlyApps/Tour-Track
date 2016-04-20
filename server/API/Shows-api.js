@@ -27,6 +27,22 @@ router.get('/date/:date', function(req, res, next) {
     });
 });
 
+router.get('/date/:date/next', function(req, res, next) {
+    var date = req.params.date;
+    var timeRange = [date + 'T00:00:00.000Z', '3000-01-01T23:59:59.000Z'];
+    Shows.getNextShowByDate(timeRange).then( (x) => {
+        res.send(x);
+    });
+});
+
+router.get('/date/:date/prev', function(req, res, next) {
+    var date = req.params.date;
+    var timeRange = ['0001-01-01T00:00:00.000Z', date + 'T23:59:59.000Z'];
+    Shows.getPrevShowByDate(timeRange).then( (x) => {
+        res.send(x);
+    });
+});
+
 router.get('/year/:year', function(req, res, next) {
     var year = parseInt(req.params.year);
     var string = '-01-01T00:00:00.000Z';
