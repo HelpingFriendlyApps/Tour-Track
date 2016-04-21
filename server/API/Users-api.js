@@ -30,6 +30,7 @@ router.post('/phishNETaccount/:id', function (req, res, next) {
 router.get('/shows/songs/:id', function(req, res, next){
     var id = req.params.id;
     Users.getUserShows(id).then(function(userShows){
+        console.log(userShows);
         Users.getAllSongs(userShows).then(function(x){ 
             res.send(x);
         })

@@ -30,7 +30,8 @@ app.directive('map', function(mapboxToken, $interval) {
         container: 'map',
         style: 'mapbox://styles/luismartins/cijroc9jb006t90lx8ehn9k2v',
         center: scope.coordinates,
-        zoom: 10
+        zoom: 10,
+        attributionControl: false
       });
 
       map.on('style.load', function() {

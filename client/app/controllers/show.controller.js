@@ -36,7 +36,6 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
 
   $rootScope.fullscreen = $rootScope.fullscreen ? $rootScope.fullscreen : false;
   $scope.showFullscreenInfo = $scope.alreadyFullscreen = $rootScope.fullscreen;
-  // $scope.alreadyFullscreen = $rootScope.fullscreen;
 
   $scope.toggleFullscreen = function() {
     $document.scrollTop(0, 800).then(function() {

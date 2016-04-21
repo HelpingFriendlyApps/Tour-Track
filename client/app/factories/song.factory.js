@@ -16,7 +16,6 @@ angular.module('Tour-Track')
         return song.data;
       });
     }
-
   }
 
 });
