@@ -77,7 +77,6 @@ function seedTracks(){
             var data = JSON.parse(x).data;
             data.tracks.map( (song) => {
 
-                // console.log(Object.keys(song))
                 var trackModel = {
                         id: song.id,
                         set: song.set,
@@ -96,7 +95,7 @@ function seedTracks(){
 function fillSongsPlayed(){
     db('songplayed').count('id').then(function(total) {
         if(total[0].count !== '29004'){
-            seedTracks()
+            seedTracks();
             setTimeout(fillSongsPlayed, 30000);
         }
     })

@@ -7,7 +7,6 @@ var Users   = module.exports = {
     getUsers : function(){
         return db('users').select('*')
         .then(function (data) {
-            console.log("All users in user table: ", data)
             return data;
         })
     },
@@ -43,37 +42,36 @@ var Users   = module.exports = {
     },
 
     getAllSongs: function (showArray) {
-    var promiseArr = [];
-    JSON.parse(showArray).map(function (show) {
-        promiseArr.push(request('http://phish.in/api/v1/shows/' + show.showdate))
-    })
-    //A-synch technique to run all the api calls and then return them together after all complete
-    return Promise.all(promiseArr).then(function (x) {
-        var userSongs = {};
-        //iterate over every show for the specific user
-        x.forEach((show) => {
-            var data = JSON.parse(show).data;
-            //iterate over every song played during that show
-            data.tracks.forEach((songInstance) => {
-                /*if the songs flow into eachother, 
-                break the string into individual song accounts */
-                if (songInstance.title.indexOf('>') !== -1) {
-                    for (var song in Songs.breakMultiSongintoSongObject(songInstance.title)) {
-                        userSongs[song] ? userSongs[song]++ : userSongs[song] = 1;
-                    }
-                //else, count the song instance
-                } else {
-                    userSongs[songInstance.title] ? userSongs[songInstance.title]++ : userSongs[songInstance.title] = 1;
-                }
-            })
+        var promiseArr = [];
+        JSON.parse(showArray).forEach(function (show) {
+            promiseArr.push(request('http://phish.in/api/v1/shows/' + show.showdate))
         })
-
-        var tupleArr = [];
-        for (var songs in userSongs){
-            tupleArr.push([songs, userSongs[songs]])
-        }
-            tupleArr.sort(function(a, b) {return b[1] - a[1]})
-        return tupleArr;
+    //A-synch technique to run all the api calls and then return them together after all complete
+        return Promise.all(promiseArr).then(function (x) {
+            var userSongs = {};
+            //iterate over every show for the specific user
+            x.forEach((show) => {
+                var data = JSON.parse(show).data;
+                //iterate over every song played during that show
+                data.tracks.forEach((songInstance) => {
+                    /*if the songs flow into eachother, 
+                    break the string into individual song accounts */
+                    if (songInstance.title.indexOf('>') !== -1) {
+                        for (var song in Songs.breakMultiSongintoSongObject(songInstance.title)) {
+                            userSongs[song] ? userSongs[song]++ : userSongs[song] = 1;
+                        }
+                    //else, count the song instance
+                    } else {
+                        userSongs[songInstance.title] ? userSongs[songInstance.title]++ : userSongs[songInstance.title] = 1;
+                    }
+                })
+            })
+            var tupleArr = [];
+            for (var songs in userSongs){
+                tupleArr.push([songs, userSongs[songs]]);
+            }
+                tupleArr.sort(function(a, b) {return b[1] - a[1]});
+            return tupleArr;
         })
     },
 
