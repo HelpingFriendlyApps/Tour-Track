@@ -12,12 +12,13 @@ app.directive('songLengthsPerYear', function($q, ShowFactory) {
       scope.$watch('data', (data) => {
         if(!data) return;
         var lengthTypes = ['longestLength', 'avg', 'shortestLength'],
+          legendTypes = ['Longest', 'Average', 'Shortest'],
           years = [],
           showIds = {longest: [], shortest: []},
           shows = {longest: [], shortest: []};
 
-        var columns = lengthTypes.map( (type) => {
-          var col = [type];
+        var columns = lengthTypes.map( (type, i) => {
+          var col = [legendTypes[i]];
           data.some( (yearObj, i) => {
             if(!yearObj.avg) return;
             if(i >= years.length) {
@@ -66,8 +67,10 @@ app.directive('songLengthsPerYear', function($q, ShowFactory) {
           tooltip: {
             format: {
               name: function(name, ratio, id, index) {
-                if(['longestLength', 'shortestLength'].indexOf(name) > -1) {
-                  return (shows[name.replace('Length', '')][index].date).slice(0,10).split('-').join('/');
+                if(['Longest', 'Shortest'].indexOf(name) > -1) {
+                  var date = (shows[name.toLowerCase()][index].date).slice(5,10).replace('-','/');
+                  if(date[0] === '0') date = date.slice(1, date.length);
+                  return date;
                 }
                 else return 'Average';
               }
