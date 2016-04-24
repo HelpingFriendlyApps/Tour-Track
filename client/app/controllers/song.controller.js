@@ -26,20 +26,18 @@ angular.module('Tour-Track')
 
       $scope.lengthsByYear.forEach( (year) => {
         if(!year.lengths.length) return;
-        year.avg = Math.floor(year.lengths.reduce( (a, b) => {
-          if(year.lengths.length > 1) {
-            if(!year.longestLength) {
-              year.longestLength = year.shortestLength = b.length;
-              year.longestShowId = year.shortestShowId = b.showId;
-            }
-            if(year.longestLength < b.length) {
-              year.longestLength = b.length;
-              year.longestShowId = b.showId;
-            }
-            if(year.shortestLength > b.length) {
-              year.shortestLength = b.length;
-              year.shortestShowId = b.showId;
-            }
+        year.avg = Math.floor(year.lengths.reduce( (a, b, i) => {
+          if(!i) {
+            year.longestLength = year.shortestLength = b.length;
+            year.longestShowId = year.shortestShowId = b.showId;
+          }
+          if(year.longestLength < b.length) {
+            year.longestLength = b.length;
+            year.longestShowId = b.showId;
+          }
+          if(year.shortestLength > b.length) {
+            year.shortestLength = b.length;
+            year.shortestShowId = b.showId;
           }
           return a + b.length;
         }, 0) / year.lengths.length);
