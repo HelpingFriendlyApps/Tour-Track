@@ -4,7 +4,6 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
 
   $scope.show = show;
   $scope.show.setlist = setlist;
-  console.log('$scope.show', $scope.show)
 
   var sets = [];
   $scope.show.setlist.forEach(function(song) {
