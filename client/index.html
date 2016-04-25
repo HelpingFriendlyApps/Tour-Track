@@ -14,7 +14,9 @@
 
 
   <footer>
-    <player></player>
+    <player player-song='playSong' add-to-playlist='addToPlaylist' add-to-up-next='addToUpNext'></player>
+
+
     <script src="./lib/angular/angular.js"></script>
     <script src="./lib/angular-animate/angular-animate.js"></script>
     <script src="./lib/angular-cookies/angular-cookies.js"></script>
@@ -62,6 +64,7 @@
     <script src="app/directives/player.directive.js"></script>
     <script src="app/directives/scrollTo.directive.js"></script>
 
+    <script src="app/factories/player.factory.js"></script>
     <script src="app/factories/profile.factory.js"></script>
     <script src="app/factories/show.factory.js"></script>
     <script src="app/factories/song.factory.js"></script>

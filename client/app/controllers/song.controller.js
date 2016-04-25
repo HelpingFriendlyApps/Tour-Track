@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('SongCtrl', function($scope, $rootScope, song, TrackFactory, ShowFactory) {
+.controller('SongCtrl', function($scope, $rootScope, song, TrackFactory, ShowFactory, $mdDialog, PlayerFactory) {
 
   $scope.song = song;
   TrackFactory.getTracksBySongId($scope.song.id).then( (tracks) => {
@@ -40,10 +40,28 @@ angular.module('Tour-Track')
       console.log('$scope.playsPerYear', $scope.playsPerYear)
       console.log('$scope.durationsByYear', $scope.durationsByYear)
 
-      $scope.playSong = function(song) {
-        console.log('song', song)
-        $rootScope.playerSong = song;
+
+
+
+
+
+      $scope.openSongControls = function($mdOpenMenu, ev) {
+        $mdOpenMenu(ev);
       }
+
+      $scope.hoverIn = function() {
+        this.hover = true;
+      }
+
+      $scope.hoverOut = function() {
+        this.hover = false;
+      }
+
+      $scope.playSong = PlayerFactory.playSong;
+      $scope.addToPlaylist = PlayerFactory.addToPlaylist;
+      $scope.addToUpNext = PlayerFactory.addToUpNext;
+
+
 
     });
   });

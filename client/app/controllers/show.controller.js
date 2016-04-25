@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout) {
+app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, $mdDialog) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -42,13 +42,11 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
       $rootScope.fullscreen = !$rootScope.fullscreen;
       if(!$rootScope.fullscreen) $scope.alreadyFullscreen = false;
     });
-
     if(!$scope.showFullscreenInfo) {
       $timeout(function() {
         $scope.showFullscreenInfo = true;
       }, 800);
     } else $scope.showFullscreenInfo = false;
-
   }
 
 });
