@@ -2,6 +2,7 @@
 
 app.directive('player', function() {
   return {
+    replace: true,
     restrict: 'E',
     templateUrl: '../views/directives/player.html',
     scope: {

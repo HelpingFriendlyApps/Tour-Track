@@ -1,8 +1,10 @@
-<div class='player-container'>
-  <p>player</p>
+<div class='player-container' layout="row" layout-align="center center">
   <audio></audio>
-  <md-button>
-    <i ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</i>
-    <i ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</i>
+  <md-button class="md-icon-button">
+    <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
+    <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
   </md-button>
+
+
+
 </div>

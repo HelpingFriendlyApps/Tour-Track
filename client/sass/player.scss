@@ -1,7 +1,16 @@
-player {
+.player-container {
   height: 50px;
   width: 100%;
   position: fixed;
   bottom: 0;
   background: tomato;
+  z-index: 1;
+
+  .md-button {
+    background: white;
+    padding: 0;
+    md-icon {
+      font-size: 2em;
+    }
+  }
 }
