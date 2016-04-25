@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('SongCtrl', function($scope, song, TrackFactory, ShowFactory) {
+.controller('SongCtrl', function($scope, $rootScope, song, TrackFactory, ShowFactory) {
 
   $scope.song = song;
   TrackFactory.getTracksBySongId($scope.song.id).then( (tracks) => {
@@ -40,6 +40,10 @@ angular.module('Tour-Track')
       console.log('$scope.playsPerYear', $scope.playsPerYear)
       console.log('$scope.durationsByYear', $scope.durationsByYear)
 
+      $scope.playSong = function(song) {
+        console.log('song', song)
+        $rootScope.playerSong = song;
+      }
 
     });
   });

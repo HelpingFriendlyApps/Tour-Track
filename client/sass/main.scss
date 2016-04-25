@@ -10,6 +10,7 @@ html, body {
 
 body > .container-fluid {
   margin-top: 51px;
+  height: 100%;
 }
 
 .container {
@@ -30,6 +31,7 @@ body > .container-fluid {
   }
 }
 
+@import 'player';
 @import 'show';
 @import 'shows';
 @import 'song';

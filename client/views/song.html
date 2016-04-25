@@ -6,7 +6,7 @@
 
   <h3>Performances</h3>
   <md-list>
-    <md-list-item ng-repeat='performance in song.performances'>
+    <md-list-item ng-repeat='performance in song.performances' ng-click='playSong(song)'>
       <p>{{performance.date | date:'MM/dd/yyyy'}}</p>
       <p>{{performance.venue_name}}</p>
       <p>{{performance.location}}</p>
