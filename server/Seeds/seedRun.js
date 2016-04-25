@@ -1,6 +1,8 @@
 var Seeds = require('./PHISH.IN-seed')
 var db = require('../db');
 
+console.log('inside seedRun')
+
 
 
 db.select('*').from('shows').limit(1).then(function(x){

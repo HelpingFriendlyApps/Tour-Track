@@ -41,6 +41,7 @@ exports.up = function(knex, Promise) {
             table.string('set');
             table.integer('position');
             table.integer('duration');
+            table.string('mp3');
             table.integer('song_id').references('id').inTable('songs');
             table.integer('show_id').references('id').inTable('shows');
             table.timestamps();
@@ -57,6 +58,7 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
+    console.log('about to drop tables')
 
     return Promise.all([
         knex.schema.dropTable('usershows'),
