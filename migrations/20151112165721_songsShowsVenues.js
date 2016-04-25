@@ -58,7 +58,6 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-    console.log('about to drop tables')
 
     return Promise.all([
         knex.schema.dropTable('usershows'),

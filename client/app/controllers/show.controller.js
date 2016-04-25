@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, $mdDialog) {
+app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;

@@ -10,14 +10,10 @@ angular.module('Tour-Track')
   }
 
   PlayerFactory.addToPlaylist = function(song) {
-    // $rootScope.playerPlaylist = $rootScope.playerPlaylist || [];
-    // $rootScope.playerPlaylist.push(song);
     $rootScope.addToPlaylist = song;
   }
 
   PlayerFactory.addToUpNext = function(song) {
-    // $rootScope.playerPlaylist = $rootScope.playerPlaylist || [];
-    // $rootScope.playerPlaylist.unshift(song);
     $rootScope.addToUpNext = song;
   }
 

@@ -9,7 +9,6 @@ var db = require('../db');
 
 
 function seedSongs(){
-    console.log('seeding songs')
     ph.getSongs(null, ['per_page=2000']).then(function(x){
         var data = JSON.parse(x).data;
         return data.map( (song) => {
@@ -23,7 +22,6 @@ function seedSongs(){
     });
 }
 function seedTours(){
-    console.log('seeding tours')
     ph.getTours(null, ['per_page=1000']).then(function(x){
         var data = JSON.parse(x).data;
         data.map( (tour) => {
@@ -40,7 +38,6 @@ function seedTours(){
 }
 
 function seedVenues(){
-    console.log('seeding venues')
     ph.getVenues(null, ['per_page=3000']).then(function(x){
         var data = JSON.parse(x).data;
         data.map( (venue) => {
@@ -58,7 +55,6 @@ function seedVenues(){
 }
 
 function seedShows(){
-    console.log('seeding shows')
     ph.getShows(null, ['per_page=3000']).then(function(x){
         var data = JSON.parse(x).data;
         data.map( (show) => {
@@ -76,12 +72,10 @@ function seedShows(){
 }
 
 function seedTracks(){
-    console.log('seeding tracks')
     for(var i = 1000; i > 0; i--){   
         ph.getSongs(i).then(function(x){
             var data = JSON.parse(x).data;
             data.tracks.map( (song) => {
-                console.log('song', song)
 
                 var trackModel = {
                         id: song.id,
@@ -100,7 +94,6 @@ function seedTracks(){
 }
 
 function fillSongsPlayed(){
-    console.log('inside fillSongsPlayed')
     db('songplayed').count('id').then(function(total) {
         if(total[0].count !== '29085'){
             seedTracks();
