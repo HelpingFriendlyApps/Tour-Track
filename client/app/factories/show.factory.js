@@ -69,8 +69,10 @@ angular.module('Tour-Track')
       var years = [];
       return $http.get('/tours').then(function(tours) {
         tours.data.forEach(function(tour) {
-          var year = tour.starts_on.slice(0,4);
-          if(years.indexOf(year) < 0) years.push(year);
+          var startYear = tour.starts_on.slice(0,4);
+          if(years.indexOf(startYear) < 0) years.push(startYear);
+          var endYear = tour.ends_on.slice(0,4);
+          if(years.indexOf(endYear) < 0) years.push(endYear);
         });
         return years;
       });
