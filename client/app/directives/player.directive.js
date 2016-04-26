@@ -17,6 +17,7 @@ app.directive('player', function($mdDialog, $sessionStorage) {
       $sessionStorage.playlist = $sessionStorage.playlist || [];
       scope.playlist = $sessionStorage.playlist;
       scope.progress = 0;
+      scope.volume = 100 * audio.volume;
 
       scope.$watch('playerSong', function(song) {
         if(!song) return;
@@ -36,6 +37,11 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         $sessionStorage.playlist.unshift(song);
         $sessionStorage.playlist = scope.playlist;
         console.log('PLAYLIST SONG IN PLAYER', song)
+      });
+
+      scope.$watch('volume', function(volume) {
+        if(!volume) return;
+        audio.volume = volume / 100;
       });
 
       scope.start = function(song) {

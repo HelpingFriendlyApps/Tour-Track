@@ -13,6 +13,16 @@
 
   <md-progress-linear class='song-progress' md-mode="determinate" value="{{ getProgress() }}"></md-progress-linear>
 
+  <md-slider-container>
+    <md-slider min='0' max='100' ng-model='volume'>
+
+    </md-slider>
+  </md-slider-container>
+
+
+
+
+
   <md-menu md-position-mode="target-right target">
     <md-button ng-show='playlist.length' ng-click="openSongControls($mdOpenMenu, $event)">
       <md-icon md-menu-origin='' class="material-icons">list</md-icon>
