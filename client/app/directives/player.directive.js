@@ -64,7 +64,10 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         scope.$digest();
       });
 
-
+      $('.song-progress').click(function(e) {
+        var seekTo = (e.pageX - $(this).offset().left) / $(this).width();
+        audio.currentTime = seekTo * audio.duration;
+      });
 
       scope.openSongControls = function($mdOpenMenu, ev) {
         $mdOpenMenu(ev);
