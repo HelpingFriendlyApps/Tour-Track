@@ -16,29 +16,19 @@
   <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
 
   <md-slider-container>
-    <md-slider min='0' max='100' ng-model='volume'>
-
-    </md-slider>
+    <md-slider min='0' max='100' ng-model='volume'></md-slider>
   </md-slider-container>
 
-
-
-
-
-  <md-menu md-position-mode="target-right target">
-    <md-button ng-show='playlist.length' ng-click="openSongControls($mdOpenMenu, $event)">
-      <md-icon md-menu-origin='' class="material-icons">list</md-icon>
-    </md-button>
-    <md-menu-content width='3'>
-      
-      <md-menu-item ng-repeat='song in playlist track by $index'>
+  <div class="dropup">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+      PLAYLIST YO
+    </button>
+    <div class="dropdown-menu">
+      <div ng-repeat='song in playlist track by $index'>
         <span>{{ song.title }}</span>
         <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
-      </md-menu-item>
-      
-    </md-menu-content>
-  </md-menu>
-
-
+      </div>
+    </div>
+  </div>
 
 </div>
