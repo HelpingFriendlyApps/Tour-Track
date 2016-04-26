@@ -69,7 +69,7 @@ var Shows = module.exports = {
     },
 
     getSetlistById: function(showId){
-        return db('shows').select('songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songs.title')
+        return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title')
         .where('shows.id', showId)
         .join('songplayed', 'songplayed.show_id', 'shows.id')
         .join('songs', 'songplayed.song_id', 'songs.id')
@@ -78,7 +78,7 @@ var Shows = module.exports = {
     },
 
     getSetlistByDate: function(date) {
-      return db('shows').select('songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songs.title')
+      return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title')
       .whereBetween('date', date)
       .join('songplayed', 'songplayed.show_id', 'shows.id')
       .join('songs', 'songplayed.song_id', 'songs.id')

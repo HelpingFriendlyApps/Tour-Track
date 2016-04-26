@@ -31,7 +31,7 @@
     </md-button>
     <md-menu-content width='3'>
       
-      <md-menu-item ng-repeat='song in playlist'>
+      <md-menu-item ng-repeat='song in playlist track by $index'>
         <span>{{ song.title }}</span>
         <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
       </md-menu-item>

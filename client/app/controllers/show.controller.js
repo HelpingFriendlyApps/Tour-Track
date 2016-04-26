@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout) {
+app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, PlayerFactory) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -48,6 +48,22 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
       }, 800);
     } else $scope.showFullscreenInfo = false;
   }
+
+
+
+  $scope.hoverIn = function() {
+    this.hover = true;
+  }
+
+  $scope.hoverOut = function() {
+    this.hover = false;
+  }
+
+
+  $scope.playSong = PlayerFactory.playSong;
+  $scope.addToPlaylist = PlayerFactory.addToPlaylist;
+  $scope.addToUpNext = PlayerFactory.addToUpNext;
+
 
 });
 

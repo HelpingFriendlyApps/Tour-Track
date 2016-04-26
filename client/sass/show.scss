@@ -17,6 +17,9 @@
     width: 100%;
     position: fixed;
     height: 300px;
+    
+    // overflow: hidden;
+
     #map {
       height: 100%;
     }
@@ -47,27 +50,37 @@
     left: 0;
     right: 0;
     box-shadow: 0 0 1em #111;
+
+    overflow: hidden;
   }
 
   md-list {
     background: white;
     border: 1px solid black;
     padding: 0;
+    min-height: 400px;
+    max-height: 80%;
+    overflow-y: scroll;
     md-list-item {
       min-height: 100%;
       padding: 0;
       .md-subheader {
+        height: 48px;
         background: rgba(0,0,0,0.1);
       }
       .show-info {
         max-height: 30px;
-        padding: 4px 16px;;
+        height: 30px;
+        padding: 4px 16px;
+        md-icon {
+          position: relative;
+        }
       }
     }
   }
 }
 
-
+// Added to .show-container when fullscreen toggled
 .map-fullscreen {
   .map-container {
     height: 100%;
@@ -76,6 +89,7 @@
   .container-fluid { top: 100%; }
 }
 
+// Added to .show-container when switching into show from fullscreened show
 .already-fullscreen {
   .map-container, .map-container > button, .container-fluid {
     -webkit-transition: all 0s ease-in;
