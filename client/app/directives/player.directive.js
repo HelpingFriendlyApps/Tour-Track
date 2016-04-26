@@ -21,7 +21,6 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       scope.$watch('playerSong', function(song) {
         if(!song) return;
-        console.log('SONG IN PLAYER', song)
         scope.start(song);
       });
 
@@ -29,14 +28,12 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         if(!song) return;
         $sessionStorage.playlist.push(song);
         $sessionStorage.playlist = scope.playlist;
-        console.log('PLAYLIST SONG IN PLAYER', song)
       });
 
       scope.$watch('addToUpNext', function(song) {
         if(!song) return;
         $sessionStorage.playlist.unshift(song);
         $sessionStorage.playlist = scope.playlist;
-        console.log('PLAYLIST SONG IN PLAYER', song)
       });
 
       scope.$watch('volume', function(volume) {
@@ -76,7 +73,6 @@ app.directive('player', function($mdDialog, $sessionStorage) {
       audio.addEventListener('timeupdate', function () {
         scope.progress = audio.currentTime / audio.duration;
         scope.currentTime = audio.currentTime;
-        console.log('typeof scope.currentTime', typeof scope.currentTime)
         scope.duration = audio.duration;
         scope.$digest();
       });
@@ -85,7 +81,6 @@ app.directive('player', function($mdDialog, $sessionStorage) {
       audio.addEventListener('ended', function () {
         scope.next()
       });
-
 
       $('.song-progress').click(function(e) {
         var seekTo = (e.pageX - $(this).offset().left) / $(this).width();

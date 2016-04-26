@@ -11,9 +11,9 @@
     <md-icon class="material-icons">skip_next</md-icon>
   </md-button>
 
-  <span>{{ currentTime }}</span>
+  <span ng-show='isPlaying && currentTime' >{{ currentTime | secondsToDate | date:'m:ss'}}</span>
   <md-progress-linear class='song-progress' md-mode="determinate" value="{{ getProgress() }}"></md-progress-linear>
-  <span>{{ duration }}</span>
+  <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
 
   <md-slider-container>
     <md-slider min='0' max='100' ng-model='volume'>
