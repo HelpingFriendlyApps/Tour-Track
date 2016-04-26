@@ -42,6 +42,7 @@ app.directive('player', function($mdDialog, $sessionStorage) {
       });
 
       scope.start = function(song) {
+        audio.pause();
         audio.src = song.mp3;
         audio.load();
         audio.play();
