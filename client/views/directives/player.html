@@ -1,9 +1,31 @@
 <div class='player-container' layout="row" layout-align="center center">
   <audio></audio>
   <md-button class="md-icon-button">
+    <md-icon class="material-icons">skip_previous</md-icon>
+  </md-button>
+  <md-button class="md-icon-button">
     <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
     <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
   </md-button>
+  <md-button class="md-icon-button">
+    <md-icon class="material-icons">skip_next</md-icon>
+  </md-button>
+
+  <md-progress-linear md-mode="determinate" value="30"></md-progress-linear>
+
+  <md-menu md-position-mode="target-right target">
+    <md-button ng-show='playlist.length' ng-click="openSongControls($mdOpenMenu, $event)">
+      <md-icon md-menu-origin='' class="material-icons">list</md-icon>
+    </md-button>
+    <md-menu-content width='3'>
+      
+      <md-menu-item ng-repeat='song in playlist'>
+        <span>{{ song.title }}</span>
+        <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+      </md-menu-item>
+      
+    </md-menu-content>
+  </md-menu>
 
 
 
