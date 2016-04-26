@@ -1,17 +1,19 @@
 <div class='player-container' layout="row" layout-align="center center">
   <audio></audio>
-  <md-button class="md-icon-button">
+  <md-button ng-click='prev()' class="md-icon-button">
     <md-icon class="material-icons">skip_previous</md-icon>
   </md-button>
   <md-button class="md-icon-button">
     <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
     <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
   </md-button>
-  <md-button class="md-icon-button">
+  <md-button ng-click='next()' class="md-icon-button">
     <md-icon class="material-icons">skip_next</md-icon>
   </md-button>
 
+  <span>{{ currentTime }}</span>
   <md-progress-linear class='song-progress' md-mode="determinate" value="{{ getProgress() }}"></md-progress-linear>
+  <span>{{ duration }}</span>
 
   <md-slider-container>
     <md-slider min='0' max='100' ng-model='volume'>

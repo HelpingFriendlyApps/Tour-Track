@@ -61,14 +61,31 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         scope.isPlaying = true;
       }
 
+      scope.next = function() {
+        scope.start($sessionStorage.playlist.shift());
+      }
+
+      scope.prev = function() {
+        audio.currentTime = 0;
+      }
+
       scope.getProgress = function() {
         return 100 * scope.progress;
       }
 
       audio.addEventListener('timeupdate', function () {
         scope.progress = audio.currentTime / audio.duration;
+        scope.currentTime = audio.currentTime;
+        console.log('typeof scope.currentTime', typeof scope.currentTime)
+        scope.duration = audio.duration;
         scope.$digest();
       });
+
+
+      audio.addEventListener('ended', function () {
+        scope.next()
+      });
+
 
       $('.song-progress').click(function(e) {
         var seekTo = (e.pageX - $(this).offset().left) / $(this).width();

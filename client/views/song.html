@@ -7,24 +7,25 @@
   <h3>Performances</h3>
   <md-list>
     <md-list-item ng-repeat='performance in song.performances' ng-dblclick='playSong(performance)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
-      <p>{{performance.date | date:'MM/dd/yyyy'}}</p>
+      <p>{{performance.date | date:'MM/dd/yyyy'}}
+        
+        <md-menu md-position-mode="target target">
+          <md-button class="md-icon-button" ng-show='hover' ng-click="openSongControls($mdOpenMenu, $event)">
+            <md-icon md-menu-origin='' class="material-icons">more_horiz</md-icon>
+          </md-button>
+          <md-menu-content width='3'>
+            
+            <md-menu-item>
+              <md-button ng-click='addToUpNext(performance)'><md-icon class="material-icons">playlist_play</md-icon>Play Next</md-button>
+            </md-menu-item>
+            
+            <md-menu-item>
+              <md-button ng-click='addToPlaylist(performance)'><md-icon class="material-icons">playlist_add</md-icon>Add to Playlist</md-button>
+            </md-menu-item>
 
-      <md-menu md-position-mode="target-right target">
-        <md-button ng-show='hover' ng-click="openSongControls($mdOpenMenu, $event)">
-          <md-icon md-menu-origin='' class="material-icons">more_horiz</md-icon>
-        </md-button>
-        <md-menu-content width='3'>
-          
-          <md-menu-item>
-            <md-button ng-click='addToUpNext(performance)'><md-icon class="material-icons">playlist_play</md-icon>Play Next</md-button>
-          </md-menu-item>
-          
-          <md-menu-item>
-            <md-button ng-click='addToPlaylist(performance)'><md-icon class="material-icons">playlist_add</md-icon>Add to Playlist</md-button>
-          </md-menu-item>
-
-        </md-menu-content>
-      </md-menu>
+          </md-menu-content>
+        </md-menu>
+      </p>
 
       <p>{{performance.venue_name}}</p>
       <p>{{performance.location}}</p>
