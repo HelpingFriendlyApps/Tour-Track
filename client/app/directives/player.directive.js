@@ -83,7 +83,7 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         scope.next()
       });
 
-      $('.song-progress').click(function(e) {
+      $('.progress-bar').click(function(e) {
         var seekTo = (e.pageX - $(this).offset().left) / $(this).width();
         audio.currentTime = seekTo * audio.duration;
       });

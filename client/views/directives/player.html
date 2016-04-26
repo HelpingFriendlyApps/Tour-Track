@@ -1,34 +1,43 @@
 <div class='player-container' layout="row" layout-align="center center">
-  <audio></audio>
-  <md-button ng-click='prev()' class="md-icon-button">
-    <md-icon class="material-icons">skip_previous</md-icon>
-  </md-button>
-  <md-button class="md-icon-button">
-    <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
-    <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
-  </md-button>
-  <md-button ng-click='next()' class="md-icon-button">
-    <md-icon class="material-icons">skip_next</md-icon>
-  </md-button>
+  <div class='player-box' layout="column" layout-align="end center">
 
-  <span ng-show='isPlaying && currentTime' >{{ currentTime | secondsToDate | date:'m:ss'}}</span>
-  <md-progress-linear class='song-progress' md-mode="determinate" value="{{ getProgress() }}"></md-progress-linear>
-  <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
+    <div layout="row" layout-align="center center">
+      <md-button ng-click='prev()' class="md-icon-button">
+        <md-icon class="material-icons">skip_previous</md-icon>
+      </md-button>
+      <md-button class="md-icon-button">
+        <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
+        <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
+      </md-button>
+      <md-button ng-click='next()' class="md-icon-button">
+        <md-icon class="material-icons">skip_next</md-icon>
+      </md-button>
 
-  <md-slider-container>
-    <md-slider min='0' max='100' ng-model='volume'></md-slider>
-  </md-slider-container>
+      <span ng-show='isPlaying && currentTime' >{{ currentTime | secondsToDate | date:'m:ss'}}</span>
 
-  <div class="dropup">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-      PLAYLIST YO
-    </button>
-    <div class="dropdown-menu">
-      <div ng-repeat='song in playlist track by $index'>
-        <span>{{ song.title }}</span>
-        <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+      <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
+
+      <!-- <md-slider-container>
+        <md-slider min='0' max='100' ng-model='volume'></md-slider>
+      </md-slider-container> -->
+
+      <div class="dropup">
+        <md-button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+          <md-icon class="material-icons">list</md-icon>
+        </md-button>
+        <div class="dropdown-menu">
+          <div ng-repeat='song in playlist track by $index'>
+            <span>{{ song.title }}</span>
+            <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
+
+    <div class='progress-bar-container' layout="row" layout-align="center center">
+      <md-progress-linear class='progress-bar' md-mode="determinate" value="{{ getProgress() }}"></md-progress-linear>
+    </div>
+    
+  </div>
 </div>
