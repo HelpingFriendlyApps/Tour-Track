@@ -14,10 +14,9 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       var audio = document.createElement('audio');
       scope.isPlaying = false;
-      // scope.playlist = [];
       $sessionStorage.playlist = $sessionStorage.playlist || [];
       scope.playlist = $sessionStorage.playlist;
-      console.log('scope.playlist', scope.playlist)
+      scope.progress = 0;
 
       scope.$watch('playerSong', function(song) {
         if(!song) return;
@@ -55,6 +54,15 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         audio.play();
         scope.isPlaying = true;
       }
+
+      scope.getProgress = function() {
+        return 100 * scope.progress;
+      }
+
+      audio.addEventListener('timeupdate', function () {
+        scope.progress = audio.currentTime / audio.duration;
+        scope.$digest();
+      });
 
 
 
