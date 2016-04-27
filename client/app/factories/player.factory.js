@@ -5,16 +5,22 @@ angular.module('Tour-Track')
 
   var PlayerFactory = {};
 
-  PlayerFactory.playSong = function(song) {
-    $rootScope.playSong = song;
+  $rootScope.player = {};
+
+  PlayerFactory.play = function(song, showSongsList) {
+    console.log('argument', arguments)
+    $rootScope.player.song = song;
+    if(showSongsList) $rootScope.player.showSongsList = showSongsList;
   }
 
-  PlayerFactory.addToPlaylist = function(song) {
-    $rootScope.addToPlaylist = song;
+  PlayerFactory.upNext = function(song) {
+    console.log('song', song)
+    $rootScope.player.upNext = song;
   }
 
   PlayerFactory.addToUpNext = function(song) {
-    $rootScope.addToUpNext = song;
+    console.log('song', song)
+    $rootScope.player.addToUpNext = song;
   }
 
   return PlayerFactory;
