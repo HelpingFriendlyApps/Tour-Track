@@ -1,49 +1,76 @@
-<div class='player-container' layout="row" layout-align="center center">
-  <div class='player-box' layout="column" layout-align="end center">
+<div class='player-container' layout="row" layout-align="space-around center">
 
-    <div layout="row" layout-align="center center">
-      <md-button ng-click='prev()' class="md-icon-button">
-        <md-icon class="material-icons">skip_previous</md-icon>
-      </md-button>
-      <md-button class="md-icon-button">
-        <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
-        <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
-      </md-button>
-      <md-button ng-click='next()' class="md-icon-button">
-        <md-icon class="material-icons">skip_next</md-icon>
-      </md-button>
 
-      <span ng-show='isPlaying && currentTime' >{{ currentTime | secondsToDate | date:'m:ss'}}</span>
+  <div flex='33' layout="row" layout-align="center center">
+    <md-button ng-click='prev()' class="md-icon-button">
+      <md-icon class="material-icons">skip_previous</md-icon>
+    </md-button>
+    <md-button class="md-icon-button">
+      <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
+      <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
+    </md-button>
+    <md-button ng-click='next()' class="md-icon-button">
+      <md-icon class="material-icons">skip_next</md-icon>
+    </md-button>
+  </div>
 
-      <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
 
-      <!-- <md-slider-container>
-        <md-slider min='0' max='100' ng-model='volume'></md-slider>
-      </md-slider-container> -->
+  <div flex='33' class='player-box' layout="column" layout-align="end center">
+    <div flex='100' layout="row" layout-align="space-between center">
 
-      <div class="dropup">
-        <md-button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
-          <md-icon class="material-icons">list</md-icon>
+      <div layout="row" layout-align="start center">
+        <md-button class="md-icon-button">
+          <md-icon class="material-icons">shuffle</md-icon>
         </md-button>
-        <div class="dropdown-menu">
-          <p>Up Next:</p>
-          <div ng-repeat='song in upNextList track by $index'>
-            <span>{{ song.title }}</span>
-            <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
-          </div>
-          <p>Back to:</p>
-          <div ng-repeat='song in showSongsList track by $index'>
-            <span>{{ song.title }}</span>
-            <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+      </div>
+
+      <div layout="row" layout-align="center center">
+        <div>{{ currentSong.title }}</div>
+      </div>
+
+      <div layout="row" layout-align="end center">
+        <div class="dropup">
+          <md-button class="dropdown-toggle" type="button" data-toggle="dropdown">
+            <md-icon class="material-icons">list</md-icon>
+          </md-button>
+          <div class="dropdown-menu">
+            <p>Up Next:</p>
+            <div ng-repeat='song in upNextList track by $index'>
+              <span>{{ song.title }}</span>
+              <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+            </div>
+            <p>Back to:</p>
+            <div ng-repeat='song in showSongsList track by $index'>
+              <span>{{ song.title }}</span>
+              <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+            </div>
           </div>
         </div>
       </div>
+
     </div>
 
+    <div flex='100' layout="row" layout-align="space-between center">
+      <span>{{ currentTime | secondsToDate | date:'m:ss'}}</span>
+      <span>{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
+    </div>
 
     <div class='progress-bar-container' layout="row" layout-align="center center">
       <md-progress-linear class='progress-bar' md-mode="determinate" value="{{ getProgress() }}"></md-progress-linear>
     </div>
-    
   </div>
+
+
+  <div flex='33'>
+    <p>Boobies</p>
+  </div>
+
+
+      <!-- <span ng-show='isPlaying && currentTime' >{{ currentTime | secondsToDate | date:'m:ss'}}</span> -->
+
+      <!-- <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span> -->
+
+      <!-- <md-slider-container>
+        <md-slider min='0' max='100' ng-model='volume'></md-slider>
+      </md-slider-container> -->
 </div>

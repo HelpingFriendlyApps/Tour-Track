@@ -12,11 +12,15 @@
     width: 600px;
     // background: rgba(220,221,216,0.25);
     background: #5D5D5B;
+    .flex-100 {
+      width: 100%;
+    }
   }
 
   .md-button {
     height: 36px;
     width: 36px;
+    min-width: 36px;
     line-height: 36px;
     padding: 0;
     outline: none;
