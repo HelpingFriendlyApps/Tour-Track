@@ -1,19 +1,47 @@
 .player-container {
-  height: 70px;
+  height: 55px;
   width: 100%;
   position: fixed;
   bottom: 0;
-  // background: rgba(51,51,50,0.8);
   background: #434342;
   z-index: 1;
+
+  md-slider-container {
+    width: 100px;
+    margin: 0 10px;
+  }
 
   .player-box {
     height: 100%;
     width: 600px;
-    // background: rgba(220,221,216,0.25);
     background: #5D5D5B;
+    color: #DCDDD8;
     .flex-100 {
       width: 100%;
+    }
+    strong.song-title {
+      margin-top: 7px;
+    }
+    p {
+      margin: 0 6px;
+    }
+    .md-button {
+      margin: 0;
+    }
+    .dropdown-menu {
+      width: 300px;
+    }
+    .progress-bar-container {
+      width: 100%;
+      md-progress-linear {
+        width: 100%;
+        .md-container {
+          background: #DCDDD8;
+        }
+        .md-bar {
+          background: #D74B4B;
+        }
+      }
     }
   }
 
@@ -29,27 +57,4 @@
     }
   }
 
-  .dropdown-menu {
-    width: 300px;
-  }
-
-  .progress-bar-container {
-    width: 100%;
-    md-progress-linear {
-      width: 100%;
-      // background: #DCDDD8;
-      .md-container {
-        background: #DCDDD8;
-      }
-      .md-bar {
-        background: #D74B4B;
-      }
-    }
-  }
-
-
-  md-slider-container {
-    width: 50px;
-    margin: 0 10px;
-  }
 }

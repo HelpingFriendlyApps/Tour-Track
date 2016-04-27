@@ -12,20 +12,23 @@
     <md-button ng-click='next()' class="md-icon-button">
       <md-icon class="material-icons">skip_next</md-icon>
     </md-button>
+    <md-slider-container>
+      <md-slider min='0' max='100' ng-model='volume'></md-slider>
+    </md-slider-container>
   </div>
 
 
   <div flex='33' class='player-box' layout="column" layout-align="end center">
     <div flex='100' layout="row" layout-align="space-between center">
 
-      <div layout="row" layout-align="start center">
+      <div layout="row" layout-align="start end">
         <md-button class="md-icon-button">
           <md-icon class="material-icons">shuffle</md-icon>
         </md-button>
       </div>
 
-      <div layout="row" layout-align="center center">
-        <div>{{ currentSong.title }}</div>
+      <div layout="row" layout-align="center end">
+        <strong class='song-title'>{{ currentSong.title }}</strong>
       </div>
 
       <div layout="row" layout-align="end center">
@@ -50,9 +53,14 @@
 
     </div>
 
-    <div flex='100' layout="row" layout-align="space-between center">
-      <span>{{ currentTime | secondsToDate | date:'m:ss'}}</span>
-      <span>{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span>
+    <div flex='100' layout="row" layout-align="space-between start">
+      <p>{{ currentTime | secondsToDate | date:'m:ss'}}</p>
+      <div>
+        <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+        <span>{{ song.venue_name }}</span>
+        <span>{{ song.location }}</span>
+      </div>
+      <p>-{{ duration - currentTime | secondsToDate | date:'m:ss'}}</p>
     </div>
 
     <div class='progress-bar-container' layout="row" layout-align="center center">
@@ -62,15 +70,8 @@
 
 
   <div flex='33'>
-    <p>Boobies</p>
+    <p>Thing</p>
   </div>
 
 
-      <!-- <span ng-show='isPlaying && currentTime' >{{ currentTime | secondsToDate | date:'m:ss'}}</span> -->
-
-      <!-- <span ng-show='isPlaying && duration' >{{ duration - currentTime | secondsToDate | date:'m:ss'}}</span> -->
-
-      <!-- <md-slider-container>
-        <md-slider min='0' max='100' ng-model='volume'></md-slider>
-      </md-slider-container> -->
 </div>
