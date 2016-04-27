@@ -60,8 +60,6 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
   }
 
 
-  // $scope.playSong = PlayerFactory.playSong;
-
   $scope.play = function(song, index) {
     PlayerFactory.play(song, $scope.show.setlist.slice(++index, $scope.show.setlist.length));
   }

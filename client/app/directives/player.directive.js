@@ -15,17 +15,11 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       var audio = document.createElement('audio');
       scope.isPlaying = false;
-      // $sessionStorage.upNextList = $sessionStorage.upNextList || [];
       scope.upNextList = $sessionStorage.upNextList || [];
-      
-      // $sessionStorage.showSongsList = $sessionStorage.showSongsList || [];
       scope.showSongsList = $sessionStorage.showSongsList || [];
-      
       scope.playlist = scope.upNextList.concat(scope.showSongsList);
-
       scope.progress = 0;
       scope.volume = 100 * audio.volume;
-
 
       scope.$watch('song', function(song) {
         if(!song) return;
@@ -40,14 +34,12 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       scope.$watch('upNext', function(song) {
         if(!song) return;
-        console.log('song in upNext', song)
         scope.upNextList.push(song);
         updatePlaylist();
       });
 
       scope.$watch('addToUpNext', function(song) {
         if(!song) return;
-        console.log('song in addToUpNext', song)
         scope.upNextList.unshift(song);
         updatePlaylist();
       });
@@ -76,7 +68,6 @@ app.directive('player', function($mdDialog, $sessionStorage) {
       }
 
       scope.next = function() {
-        // scope.start($sessionStorage.playlist.shift());
         if(!scope.playlist.length) return;
         if($sessionStorage.upNextList.length) scope.start($sessionStorage.upNextList.length.shift());
         else scope.start($sessionStorage.showSongsList.length.shift());
