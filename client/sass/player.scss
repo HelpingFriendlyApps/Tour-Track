@@ -6,6 +6,11 @@
   background: #434342;
   z-index: 1;
 
+  md-icon:focus {
+    border: 0;
+    outline: none;
+  }
+
   .controls {
     padding-right: 2.5%;
     .md-button {
