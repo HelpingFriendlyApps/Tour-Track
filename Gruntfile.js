@@ -12,7 +12,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'client/app',
           src: ['**/*.js'],
-          dest: 'client/dist'
+          dest: 'client/dist/'
         }]
       }
     }
