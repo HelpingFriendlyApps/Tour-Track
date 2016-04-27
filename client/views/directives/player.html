@@ -1,13 +1,12 @@
 <div class='player-container' layout="row" layout-align="space-around center">
 
-
-  <div flex='33' layout="row" layout-align="center center">
+  <div flex='33' class='controls' layout="row" layout-align="end center">
     <md-button ng-click='prev()' class="md-icon-button">
       <md-icon class="material-icons">skip_previous</md-icon>
     </md-button>
     <md-button class="md-icon-button">
-      <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_circle_outline</md-icon>
-      <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause_circle_outline</md-icon>
+      <md-icon ng-click='resume()' ng-hide='isPlaying' class="material-icons">play_arrow</md-icon>
+      <md-icon ng-click='pause()' ng-show='isPlaying' class="material-icons">pause</md-icon>
     </md-button>
     <md-button ng-click='next()' class="md-icon-button">
       <md-icon class="material-icons">skip_next</md-icon>
@@ -31,36 +30,47 @@
         <strong class='song-title'>{{ currentSong.title }}</strong>
       </div>
 
+
+
       <div layout="row" layout-align="end center">
         <div class="dropup">
           <md-button class="dropdown-toggle" type="button" data-toggle="dropdown">
             <md-icon class="material-icons">list</md-icon>
           </md-button>
           <div class="dropdown-menu">
-            <p>Up Next:</p>
-            <div ng-repeat='song in upNextList track by $index'>
-              <span>{{ song.title }}</span>
-              <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+            <div class='up-next-list'>
+              <strong>Up Next: <span ng-show='upNextList.length'>{{ upNextList.length }} songs</span></strong>
+              <div class="dropdown-divider"></div>
+              <span ng-hide='upNextList.length'>No upcoming songs.</span>
+              <div ng-repeat='song in upNextList track by $index' class='song-item'>
+                <strong>{{ song.title }}</strong>
+                <small>{{ song.date | date:'MM/dd/yyyy' }} {{ song.venue_name }} {{ song.location }}</small>
+              </div>
             </div>
-            <p>Back to:</p>
-            <div ng-repeat='song in showSongsList track by $index'>
-              <span>{{ song.title }}</span>
-              <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
+            <div ng-show='showSongsList.length' class='show-songs-list'>
+              <strong>Back to:</strong>
+              <div class="dropdown-divider"></div>
+              <div ng-repeat='song in showSongsList track by $index' class='song-item'>
+                <strong>{{ song.title }}</strong>
+                <small>{{ song.date | date:'MM/dd/yyyy' }} {{ song.venue_name }} {{ song.location }}</small>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
+
+
     </div>
 
     <div flex='100' layout="row" layout-align="space-between start">
-      <p>{{ currentTime | secondsToDate | date:'m:ss'}}</p>
-      <div>
-        <span>{{ song.date | date:'MM/dd/yyyy' }}</span>
-        <span>{{ song.venue_name }}</span>
-        <span>{{ song.location }}</span>
+      <p class='time'>{{ (currentTime || 0) | secondsToDate | date:'m:ss'}}</p>
+      <div ng-show='currentSong' class='current-song-stats'>
+        <span>{{ currentSong.date | date:'MM/dd/yyyy' }}</span>
+        <span>{{ currentSong.venue_name }},</span>
+        <span>{{ currentSong.location }}</span>
       </div>
-      <p>-{{ duration - currentTime | secondsToDate | date:'m:ss'}}</p>
+      <p class='time'>-{{ duration - currentTime | secondsToDate | date:'m:ss'}}</p>
     </div>
 
     <div class='progress-bar-container' layout="row" layout-align="center center">
@@ -68,10 +78,6 @@
     </div>
   </div>
 
-
-  <div flex='33'>
-    <p>Thing</p>
-  </div>
-
+  <div flex='33'></div>
 
 </div>

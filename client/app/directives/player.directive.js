@@ -71,8 +71,8 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       scope.next = function() {
         if(!scope.playlist.length) return;
-        if($sessionStorage.upNextList.length) scope.start($sessionStorage.upNextList.length.shift());
-        else scope.start($sessionStorage.showSongsList.length.shift());
+        if($sessionStorage.upNextList.length) scope.start($sessionStorage.upNextList.shift());
+        else scope.start($sessionStorage.showSongsList.shift());
         updatePlaylist();
       }
 
