@@ -64,6 +64,7 @@
     md-list-item {
       min-height: 100%;
       padding: 0;
+      outline: none;
       .md-subheader {
         height: 48px;
         background: rgba(0,0,0,0.1);
@@ -72,8 +73,12 @@
         max-height: 30px;
         height: 30px;
         padding: 4px 16px;
-        md-icon {
-          position: relative;
+        .md-button {
+          width: 28px;
+          min-width: 28px;
+          margin-left: 10px;
+          background: none;
+          opacity: 0.75;
         }
       }
     }

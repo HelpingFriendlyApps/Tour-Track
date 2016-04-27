@@ -23,7 +23,6 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       scope.$watch('song', function(song) {
         if(!song) return;
-        console.log('song', song)
         scope.start(song);
       });
 
@@ -90,7 +89,6 @@ app.directive('player', function($mdDialog, $sessionStorage) {
         scope.duration = audio.duration;
         scope.$digest();
       });
-
 
       audio.addEventListener('ended', function () {
         scope.next()
