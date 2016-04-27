@@ -69,19 +69,21 @@ var Shows = module.exports = {
     },
 
     getSetlistById: function(showId){
-        return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title')
+        return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title', 'venues.name as venue_name', 'venues.location')
         .where('shows.id', showId)
         .join('songplayed', 'songplayed.show_id', 'shows.id')
         .join('songs', 'songplayed.song_id', 'songs.id')
+        .join('venues', 'venues.id', 'shows.venue_id')
         .orderBy('set', 'asc')
         .orderBy('position', 'asc');
     },
 
     getSetlistByDate: function(date) {
-      return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title')
+      return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title', 'venues.name as venue_name', 'venues.location')
       .whereBetween('date', date)
       .join('songplayed', 'songplayed.show_id', 'shows.id')
       .join('songs', 'songplayed.song_id', 'songs.id')
+      .join('venues', 'venues.id', 'shows.venue_id')
       .orderBy('set', 'asc')
       .orderBy('position', 'asc');
     },
