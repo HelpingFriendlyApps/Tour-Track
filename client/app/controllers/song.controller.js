@@ -55,7 +55,7 @@ angular.module('Tour-Track')
         this.hover = false;
       }
 
-      $scope.playSong = PlayerFactory.playSong;
+      $scope.play = PlayerFactory.play;
       $scope.addToPlaylist = PlayerFactory.addToPlaylist;
       $scope.addToUpNext = PlayerFactory.addToUpNext;
 

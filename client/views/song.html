@@ -7,7 +7,7 @@
 
   <h3>Performances</h3>
   <md-list>
-    <md-list-item ng-repeat='performance in song.performances' ng-dblclick='playSong(performance)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
+    <md-list-item ng-repeat='performance in song.performances' ng-dblclick='play(performance)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
       <p>{{performance.date | date:'MM/dd/yyyy'}}
         
         <md-menu md-position-mode="target target">
