@@ -10,6 +10,8 @@ app.directive('map', function(mapboxToken, $interval) {
     },
     link: function(scope, element, attrs) {
 
+      scope.coordinates = ['-104.89', '39.81'];
+
       scope.$watch('fullscreen', function(fullscreen) {
         if(fullscreen) {
           map.dragPan.enable();
@@ -52,19 +54,19 @@ app.directive('map', function(mapboxToken, $interval) {
           }
         };
 
-        map.addSource('show', geoJson);
+        // map.addSource('show', geoJson);
 
-        map.addLayer({
-          id: 'something',
-          // interactive: true,
-          interactive: false,
-          type: 'circle',
-          source: 'show',
-          paint: {
-            'circle-radius': 30,
-            'circle-color': 'black'
-          }
-        });
+        // map.addLayer({
+        //   id: 'something',
+        //   // interactive: true,
+        //   interactive: false,
+        //   type: 'circle',
+        //   source: 'show',
+        //   paint: {
+        //     'circle-radius': 30,
+        //     'circle-color': 'black'
+        //   }
+        // });
 
         map.dragPan.disable();
         map.scrollZoom.disable();

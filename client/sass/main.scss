@@ -1,19 +1,41 @@
 html, body {
   height: 100%;
-  background-image: url('assets/background-texture.jpg');
+  // background-image: url('assets/background-texture.jpg');
+  // background: lightblue;
+  background: none;
 }
 
-.container, .container-fluid {
+// .container, .container-fluid {
+//   height: 100%;
+//   padding: 0;
+// }
+
+// body > .container-fluid {
+//   padding-top: 51px;
+//   height: 100%;
+// }
+
+body > .container {
   height: 100%;
-  padding: 0;
+  padding-top: 73px;
 }
 
-body > .container-fluid {
-  padding-top: 51px;
+map {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100%;
+  width: 100%;
+  #map {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .container {
+
+  border: 1px solid black;
+
   &__profilestats {
     overflow-y: auto;
     max-height: 400px;

@@ -16,7 +16,8 @@ var app = angular.module('Tour-Track', [
 
     $stateProvider.state('base', {
       abstract: true,
-      template: '<navbar id="navbar"></navbar><ui-view></ui-view>'
+      // template: '<navbar id="navbar"></navbar><ui-view></ui-view>'
+      template: '<ui-view></ui-view>'
     });
 
     // $locationProvider.html5Mode(true);
