@@ -2,19 +2,17 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- <base href="/"> -->
     <title>Tour Track</title>
   </head>
   
   <body ng-app="Tour-Track">
     <navbar id="navbar"></navbar>
     <map></map>
-    <!-- <div class="container-fluid" ui-view></div> -->
     <div class="container" ui-view></div>
+    <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
   </body>
 
   <footer>
-    <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
 
 
     <script src="./lib/angular/angular.js"></script>

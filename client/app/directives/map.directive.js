@@ -16,11 +16,11 @@ app.directive('map', function(mapboxToken, $interval) {
         if(fullscreen) {
           map.dragPan.enable();
           map.scrollZoom.enable();
-          $('body').css('overflow', 'hidden');
+          // $('body').css('overflow', 'hidden');
         } else {
           // map.dragPan.disable();
           map.scrollZoom.disable();
-          $('body').css('overflow', 'auto');
+          // $('body').css('overflow', 'auto');
         }
         $interval( () => {
           map.resize();
