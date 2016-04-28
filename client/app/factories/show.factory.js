@@ -76,6 +76,12 @@ angular.module('Tour-Track')
         });
         return years;
       });
+    },
+
+    getRandomShow: function() {
+      return $http.get('/shows/random').then(function(show) {
+        return show.data;
+      });
     }
 
   }
