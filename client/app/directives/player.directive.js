@@ -23,23 +23,27 @@ app.directive('player', function($rootScope, $mdDialog, $sessionStorage) {
 
       scope.$watch('song', function(song) {
         if(!song) return;
+        console.log('song', song)
         scope.start(song);
       });
 
       scope.$watch('showSongsList', function(showSongsList) {
         if(!showSongsList) return;
+        console.log('showSongsList', showSongsList)
         scope.showSongsList = showSongsList;
         updatePlaylist();
       });
 
       scope.$watch('upNext', function(song) {
         if(!song) return;
+        console.log('song', song)
         scope.upNextList.push(song);
         updatePlaylist();
       });
 
       scope.$watch('addToUpNext', function(song) {
         if(!song) return;
+        console.log('song', song)
         scope.upNextList.unshift(song);
         updatePlaylist();
       });

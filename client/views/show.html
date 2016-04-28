@@ -24,10 +24,10 @@
       <p>{{show.location}}</p>
       
       <md-list>
-        <md-list-item ng-repeat='song in show.setlist' class='md-2-line' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
+        <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
           <div class='md-list-item-text' layout='column'>
             <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
-            <div class='show-info' layout='row' layout-align='space-between center'>
+            <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
               
               <div>
                 <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>

@@ -15,10 +15,10 @@
             <md-icon ng-show='currentSong.id === performance.id' class="current-song-icon material-icons">volume_mute</md-icon>
             <span ui-sref='base.show({date: performance.date})'>{{performance.date | date:'MM/dd/yyyy'}}</span>
             <span ng-show='hover'>
-              <md-button ng-click='upNext(song)'>
+              <md-button ng-click='upNext(performance)'>
                 <md-icon class="material-icons">playlist_play</md-icon>
               </md-button>
-              <md-button ng-click='addToUpNext(song)'>
+              <md-button ng-click='addToUpNext(performance)'>
                 <md-icon class="material-icons">playlist_add</md-icon>
               </md-button>
             </span>
