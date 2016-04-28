@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('player', function($rootScope, $mdDialog, $sessionStorage) {
+app.directive('player', function($rootScope, $sessionStorage) {
   return {
     replace: true,
     restrict: 'E',
@@ -98,10 +98,6 @@ app.directive('player', function($rootScope, $mdDialog, $sessionStorage) {
         var seekTo = (e.pageX - $(this).offset().left) / $(this).width();
         audio.currentTime = seekTo * audio.duration;
       });
-
-      scope.openSongControls = function($mdOpenMenu, ev) {
-        $mdOpenMenu(ev);
-      }
 
       function updatePlaylist() {
         $sessionStorage.upNextList = scope.upNextList;
