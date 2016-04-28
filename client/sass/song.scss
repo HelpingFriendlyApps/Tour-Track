@@ -12,17 +12,31 @@
   }
 
   md-list-item {
-    height: 32px;
+    height: 30px;
     min-height: 100%;
-    padding: 0;
+    padding: 0 15px;
     outline: none;
-    a.md-button {
+    .md-list-item-text {
+      width: 100%;
+    }
+    p {
       margin: 0;
-      padding: 0;
     }
-    .md-list-item-inner {
-      padding: 4px 16px;
+    .current-song-icon {
+      font-size: 2rem;
+      line-height: 1.25em;
     }
+    .md-button {
+      width: 28px;
+      min-width: 28px;
+      margin-left: 10px;
+      background: none;
+      // opacity: 0.75;
+    }
+    // a.md-button {
+    //   margin: 0;
+    //   padding: 0;
+    // }
   }
 
   #barChart {
