@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('map', function(mapboxToken, $interval) {
+app.directive('map', function(mapboxToken, $interval, $state) {
   return {
     restrict: 'E',
     replace: true,
@@ -15,6 +15,11 @@ app.directive('map', function(mapboxToken, $interval) {
         scope.fullscreen = !scope.fullscreen;
         scope.fullscreen ? $('.main').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('animated bounceInRight');
       }
+
+      scope.$watch('coordinates', function(coordinates) {
+        console.log('coordinates', coordinates)
+        console.log('$state', $state)
+      });
 
 
       scope.coordinates = ['-104.89', '39.81'];
@@ -37,7 +42,7 @@ app.directive('map', function(mapboxToken, $interval) {
       mapboxgl.accessToken = mapboxToken;
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/luismartins/cijroc9jb006t90lx8ehn9k2v',
+        style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',
         center: scope.coordinates,
         zoom: 10,
         attributionControl: false

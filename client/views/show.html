@@ -30,7 +30,7 @@
             <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
               <div>
                 <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>
-                <span ui-sref='base.song({songId: song.song_id})'>{{song.title}}</span>
+                <span ui-sref='song({songId: song.song_id})'>{{song.title}}</span>
                 <span ng-show='hover'>
                   <md-button ng-click='upNext(song)'>
                     <md-icon class="material-icons">playlist_play</md-icon>

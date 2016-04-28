@@ -4,6 +4,8 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
 
   $scope.show = show;
   $scope.show.setlist = setlist;
+  console.log('$scope.show', $scope.show)
+  $rootScope.map.coordinates = [$scope.show.longitude, $scope.show.latitude];
 
   var sets = [];
   $scope.show.setlist.forEach( (song) => {
