@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('player', function($mdDialog, $sessionStorage) {
+app.directive('player', function($rootScope, $mdDialog, $sessionStorage) {
   return {
     replace: true,
     restrict: 'E',
@@ -51,7 +51,7 @@ app.directive('player', function($mdDialog, $sessionStorage) {
 
       scope.start = function(song) {
         audio.pause();
-        scope.currentSong = song;
+        $rootScope.currentSong = scope.currentSong = song;
         audio.src = song.mp3;
         audio.load();
         audio.play();
