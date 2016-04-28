@@ -2,6 +2,17 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    express: {
+      options: {
+        port: process.env.PORT || 4000
+      },
+      dev: {
+        options: {
+          script: 'server/index.js',
+          debug: true
+        }
+      },
+    },
     babel: {
       options: {
         sourceMap: true,
@@ -15,10 +26,19 @@ module.exports = function(grunt) {
           dest: 'client/dist/'
         }]
       }
+    },
+    watch: {
+      scripts: {
+        files: ['client/app/**/*.js'],
+        tasks: ['babel']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-babel');
-  grunt.registerTask('default', ['babel']);
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-express-server');
+
+  grunt.registerTask('default', ['babel', 'express', 'watch']);
   
 };
