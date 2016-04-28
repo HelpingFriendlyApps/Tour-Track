@@ -8,7 +8,6 @@
   <h3>Performances</h3>
   <md-list>
     <md-list-item ng-repeat='performance in song.performances' ng-dblclick='play(performance)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
-
       <div class='md-list-item-text' layout='column'>
         <div flex layout='row' layout-align='space-between center'>
           <p flex='33'>
@@ -23,15 +22,10 @@
               </md-button>
             </span>
           </p>
-
           <p flex='33'>{{performance.venue_name}}</p>
           <p flex='33' class='pull-right'>{{performance.location}}</p>
         </div>
-        
       </div>
-
-
-
       <md-divider></md-divider>
     </md-list-item>
   </md-list>

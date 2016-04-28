@@ -6,7 +6,7 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
   $scope.show.setlist = setlist;
 
   var sets = [];
-  $scope.show.setlist.forEach(function(song) {
+  $scope.show.setlist.forEach( (song) => {
     if(sets.indexOf(song.set) < 0) {
       song.firstOfSet = true;
       sets.push(song.set);
@@ -18,18 +18,11 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
     return 'Encore';
   }
 
-  $scope.timeParser = function(ms) {
-    var min = Math.floor(ms / 60000);
-    var sec = Math.floor(ms / 1000 % 60);
-    if(sec < 10) sec = '0' + sec;
-    return min + ':' + sec;
-  }
-
-  ShowFactory.getNextShowByDate($scope.show.date).then(function(nextShow) {
+  ShowFactory.getNextShowByDate($scope.show.date).then( (nextShow) => {
     $scope.nextShow = nextShow;
   });
 
-  ShowFactory.getPrevShowByDate($scope.show.date).then(function(prevShow) {
+  ShowFactory.getPrevShowByDate($scope.show.date).then( (prevShow) => {
     $scope.prevShow = prevShow;
   });
 
@@ -37,7 +30,7 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
   $scope.showFullscreenInfo = $scope.alreadyFullscreen = $rootScope.fullscreen;
 
   $scope.toggleFullscreen = function() {
-    $document.scrollTop(0, 800).then(function() {
+    $document.scrollTop(0, 800).then( () => {
       $rootScope.fullscreen = !$rootScope.fullscreen;
       if(!$rootScope.fullscreen) $scope.alreadyFullscreen = false;
     });
@@ -48,16 +41,8 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
     } else $scope.showFullscreenInfo = false;
   }
 
-
-
-  $scope.hoverIn = function() {
-    this.hover = true;
-  }
-
-  $scope.hoverOut = function() {
-    this.hover = false;
-  }
-
+  $scope.hoverIn = function() { this.hover = true; }
+  $scope.hoverOut = function() { this.hover = false; }
 
   $scope.play = function(song, index) {
     PlayerFactory.play(song, $scope.show.setlist.slice(++index, $scope.show.setlist.length));
@@ -65,7 +50,6 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
 
   $scope.upNext = PlayerFactory.upNext;
   $scope.addToUpNext = PlayerFactory.addToUpNext;
-
 
 });
 
