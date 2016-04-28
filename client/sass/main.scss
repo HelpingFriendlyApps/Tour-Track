@@ -18,6 +18,10 @@ html, body {
 body > .container {
   height: 100%;
   padding-top: 73px;
+  padding-bottom: 75px;
+  
+  border: 1px solid black;
+  background: yellow;
 }
 
 map {
@@ -33,8 +37,6 @@ map {
 }
 
 .container {
-
-  border: 1px solid black;
 
   &__profilestats {
     overflow-y: auto;

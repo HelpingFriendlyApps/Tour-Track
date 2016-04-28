@@ -18,7 +18,7 @@ app.directive('map', function(mapboxToken, $interval) {
           map.scrollZoom.enable();
           $('body').css('overflow', 'hidden');
         } else {
-          map.dragPan.disable();
+          // map.dragPan.disable();
           map.scrollZoom.disable();
           $('body').css('overflow', 'auto');
         }
@@ -68,7 +68,7 @@ app.directive('map', function(mapboxToken, $interval) {
         //   }
         // });
 
-        map.dragPan.disable();
+        // map.dragPan.disable();
         map.scrollZoom.disable();
 
       });
