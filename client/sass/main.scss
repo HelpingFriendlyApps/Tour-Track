@@ -15,6 +15,16 @@ body > .container {
   
   border: 1px solid black;
   background-image: url('assets/background-texture.jpg');
+
+  display: flex;
+  flex-direction: column;
+
+  ui-view {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
+  }
 }
 
 map {
