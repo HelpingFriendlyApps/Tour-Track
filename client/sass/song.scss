@@ -31,43 +31,29 @@
       min-width: 28px;
       margin-left: 10px;
       background: none;
-      // opacity: 0.75;
     }
-    // a.md-button {
-    //   margin: 0;
-    //   padding: 0;
-    // }
   }
 
   #barChart {
     border: 1px solid black;
-
     .bar {
       fill: steelblue;
     }
-
     .bar:hover {
       fill: brown;
     }
-
     .axis {
       font: 10px sans-serif;
     }
-
     .axis path,
     .axis line {
       fill: none;
       stroke: #000;
       shape-rendering: crispEdges;
     }
-
     .x.axis path {
       display: none;
     }
   }
-
-
-
-
 
 }
