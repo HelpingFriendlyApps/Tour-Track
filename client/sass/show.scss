@@ -2,54 +2,61 @@
   height: 100%;
   max-height: 100%;
 
+  // .navigation-buttons {
+  //   position: fixed;
+  //   width: 100%;
+  //   top: 45%;
+  //   z-index: 1;
+  //   pointer-events: none;
+  // }
+
   .navigation-buttons {
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 45%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .map-container {
-    -webkit-transition: height 1s ease-in;
-    -moz-transition: height 1s ease-in;
-    -o-transition: height 1s ease-in;
-    transition: height 1s ease-in;
-    width: 100%;
-    position: fixed;
-    height: 300px;
-    #map {
-      height: 100%;
-    }
-    button {
-      -webkit-transition: margin-top 1s ease-in;
-      -moz-transition: margin-top 1s ease-in;
-      -o-transition: margin-top 1s ease-in;
-      transition: margin-top 1s ease-in;
-      float: right;
-      margin-top: -60px;
-      margin-right: 20px;
-      font-size: 28px;
-      i:nth-child(2n) {
-        vertical-align: top;
-        line-height: 1.3em;
-      }
-    }
-  }
-
-  .container-fluid {
-    -webkit-transition: top 1s ease-in;
-    -moz-transition: top 1s ease-in;
-    -o-transition: top 1s ease-in;
-    transition: top 1s ease-in;
-    background-image: url('assets/background-texture.jpg');
-    position: absolute;
-    top: 300px;
     left: 0;
-    right: 0;
-    box-shadow: 0 0 1em #111;
-    overflow: hidden;
   }
+
+  // .map-container {
+  //   -webkit-transition: height 1s ease-in;
+  //   -moz-transition: height 1s ease-in;
+  //   -o-transition: height 1s ease-in;
+  //   transition: height 1s ease-in;
+  //   width: 100%;
+  //   position: fixed;
+  //   height: 300px;
+  //   #map {
+  //     height: 100%;
+  //   }
+  //   button {
+  //     -webkit-transition: margin-top 1s ease-in;
+  //     -moz-transition: margin-top 1s ease-in;
+  //     -o-transition: margin-top 1s ease-in;
+  //     transition: margin-top 1s ease-in;
+  //     float: right;
+  //     margin-top: -60px;
+  //     margin-right: 20px;
+  //     font-size: 28px;
+  //     i:nth-child(2n) {
+  //       vertical-align: top;
+  //       line-height: 1.3em;
+  //     }
+  //   }
+  // }
+
+  // .container-fluid {
+  //   -webkit-transition: top 1s ease-in;
+  //   -moz-transition: top 1s ease-in;
+  //   -o-transition: top 1s ease-in;
+  //   transition: top 1s ease-in;
+  //   background-image: url('assets/background-texture.jpg');
+  //   position: absolute;
+  //   top: 300px;
+  //   left: 0;
+  //   right: 0;
+  //   box-shadow: 0 0 1em #111;
+  //   overflow: hidden;
+  // }
 
   md-list {
     background: white;
