@@ -31,7 +31,7 @@
               
               <div>
                 <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>
-                <span>{{song.title}}</span>
+                <span ui-sref='base.song({songId: song.song_id})'>{{song.title}}</span>
                 <span ng-show='hover'>
                   <md-button ng-click='upNext(song)'>
                     <md-icon class="material-icons">playlist_play</md-icon>
@@ -40,23 +40,10 @@
                     <md-icon class="material-icons">playlist_add</md-icon>
                   </md-button>
                 </span>
-              </div>
-
-              <!-- <p ui-sref='base.song({songId: song.song_id})'>
-                <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>
-                {{song.title}}
-                <span ng-show='hover'>
-                  <md-button ng-click='upNext(song)'>
-                    <md-icon class="material-icons">playlist_play</md-icon>
-                  </md-button>
-                  <md-button ng-click='addToUpNext(song)'>
-                    <md-icon class="material-icons">playlist_add</md-icon>
-                  </md-button>
-                </span>
-              </p> -->
-              
+              </div>              
 
               <p>{{timeParser(song.duration)}}</p>
+
             </div>
           </div>
           <md-divider></md-divider>
