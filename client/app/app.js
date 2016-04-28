@@ -6,7 +6,8 @@ var app = angular.module('Tour-Track', [
   'ngMaterial',
   'ngMessages',
   'ngAnimate',
-  'duScroll'
+  'duScroll',
+  'ngStorage'
 ])
 
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {

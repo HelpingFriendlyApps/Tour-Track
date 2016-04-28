@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('SongCtrl', function($scope, song, TrackFactory, ShowFactory) {
+.controller('SongCtrl', function($scope, song, TrackFactory, ShowFactory, $mdDialog, PlayerFactory) {
 
   $scope.song = song;
   TrackFactory.getTracksBySongId($scope.song.id).then( (tracks) => {
@@ -40,10 +40,19 @@ angular.module('Tour-Track')
           }
           return a + b.length;
         }, 0) / year.lengths.length);
-
       });
+
+      $scope.openSongControls = function($mdOpenMenu, ev) {
+        $mdOpenMenu(ev);
+      }
+
+      $scope.hoverIn = function() { this.hover = true; }
+      $scope.hoverOut = function() { this.hover = false; }
+
+      $scope.play = PlayerFactory.play;
+      $scope.addToPlaylist = PlayerFactory.addToPlaylist;
+      $scope.addToUpNext = PlayerFactory.addToUpNext;
 
     });
   });
-
 });

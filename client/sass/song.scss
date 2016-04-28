@@ -12,47 +12,48 @@
   }
 
   md-list-item {
-    height: 32px;
+    height: 30px;
     min-height: 100%;
-    padding: 0;
-    a.md-button {
-      margin: 0;
-      padding: 0;
+    padding: 0 15px;
+    outline: none;
+    .md-list-item-text {
+      width: 100%;
     }
-    .md-list-item-inner {
-      padding: 4px 16px;
+    p {
+      margin: 0;
+    }
+    .current-song-icon {
+      font-size: 2rem;
+      line-height: 1.25em;
+    }
+    .md-button {
+      width: 28px;
+      min-width: 28px;
+      margin-left: 10px;
+      background: none;
     }
   }
 
   #barChart {
     border: 1px solid black;
-
     .bar {
       fill: steelblue;
     }
-
     .bar:hover {
       fill: brown;
     }
-
     .axis {
       font: 10px sans-serif;
     }
-
     .axis path,
     .axis line {
       fill: none;
       stroke: #000;
       shape-rendering: crispEdges;
     }
-
     .x.axis path {
       display: none;
     }
   }
-
-
-
-
 
 }

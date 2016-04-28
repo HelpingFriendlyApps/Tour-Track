@@ -9,13 +9,11 @@ html, body {
 }
 
 body > .container-fluid {
-  margin-top: 51px;
+  padding-top: 51px;
+  height: 100%;
 }
 
 .container {
-  // background: cyan;
-  // height: 100%;
-
   &__profilestats {
     overflow-y: auto;
     max-height: 400px;
@@ -30,6 +28,7 @@ body > .container-fluid {
   }
 }
 
+@import 'player';
 @import 'show';
 @import 'shows';
 @import 'song';

@@ -84,6 +84,7 @@ function seedTracks(){
                         song_id: data.id,
                         position:  song.position,
                         duration: song.duration,
+                        mp3: song.mp3,
                         created_at: new Date()
                     }
                 Tracks.updateOrCreate(trackModel);
@@ -94,7 +95,7 @@ function seedTracks(){
 
 function fillSongsPlayed(){
     db('songplayed').count('id').then(function(total) {
-        if(total[0].count !== '29004'){
+        if(total[0].count !== '29085'){
             seedTracks();
             setTimeout(fillSongsPlayed, 30000);
         }

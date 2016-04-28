@@ -7,6 +7,7 @@
     width: 100%;
     top: 45%;
     z-index: 1;
+    pointer-events: none;
   }
 
   .map-container {
@@ -47,26 +48,44 @@
     left: 0;
     right: 0;
     box-shadow: 0 0 1em #111;
+    overflow: hidden;
   }
 
   md-list {
     background: white;
     border: 1px solid black;
     padding: 0;
+    min-height: 400px;
+    max-height: 80%;
+    overflow-y: scroll;
     md-list-item {
       min-height: 100%;
       padding: 0;
+      outline: none;
       .md-subheader {
+        height: 48px;
         background: rgba(0,0,0,0.1);
       }
       .show-info {
-        padding: 4px 16px;;
+        max-height: 30px;
+        height: 30px;
+        padding: 4px 16px;
+        .current-song-icon {
+          font-size: 2rem;
+          line-height: 1.25em;
+        }
+        .md-button {
+          width: 28px;
+          min-width: 28px;
+          margin-left: 10px;
+          background: none;
+        }
       }
     }
   }
 }
 
-
+// Added to .show-container when fullscreen toggled
 .map-fullscreen {
   .map-container {
     height: 100%;
@@ -75,6 +94,7 @@
   .container-fluid { top: 100%; }
 }
 
+// Added to .show-container when switching into show from fullscreened show
 .already-fullscreen {
   .map-container, .map-container > button, .container-fluid {
     -webkit-transition: all 0s ease-in;

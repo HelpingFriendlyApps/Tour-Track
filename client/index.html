@@ -11,6 +11,9 @@
   </body>
 
   <footer>
+    <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
+
+
     <script src="./lib/angular/angular.js"></script>
     <script src="./lib/angular-animate/angular-animate.js"></script>
     <script src="./lib/angular-cookies/angular-cookies.js"></script>
@@ -25,6 +28,11 @@
     <script src="./lib/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="./lib/jquery-ui/jquery-ui.min.js"></script>
     <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./lib/ngstorage/ngstorage.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
     <link rel="stylesheet" href="./lib/jquery-ui/themes/smoothness/jquery-ui.css">
@@ -57,10 +65,12 @@
     <script src="dist/directives/barChart.directive.js"></script>
     <script src="dist/directives/map.directive.js"></script>
     <script src="dist/directives/navbar.directive.js"></script>
+    <script src="dist/directives/player.directive.js"></script>
     <script src="dist/directives/scrollTo.directive.js"></script>
     <script src="dist/directives/songLengthsPerByear.directive.js"></script>
     <script src="dist/directives/throbber.directive.js"></script>
 
+    <script src="dist/factories/player.factory.js"></script>
     <script src="dist/factories/profile.factory.js"></script>
     <script src="dist/factories/show.factory.js"></script>
     <script src="dist/factories/song.factory.js"></script>
@@ -69,6 +79,7 @@
     <script src="dist/factories/venue.factory.js"></script>
     
     <script src="dist/filters/millisecondsToDate.filter.js"></script>
+    <script src="dist/filters/secondsToDate.filter.js"></script>
 
     <script src="dist/states/home.state.js"></script>
     <script src="dist/states/login.state.js"></script>

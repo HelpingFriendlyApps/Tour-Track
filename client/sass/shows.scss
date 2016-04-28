@@ -1,22 +1,18 @@
 .shows-state {
   height: 100%;
-  background: purple;
 
   md-list {
-    height: 100%;
-    background: lightgrey;
-
-    #map {
-      height: 48px;
-      width: 100%;
-      opacity: 0.1;
-    }
+    height: 90%;
     
     md-virtual-repeat-container {
       height: 100%;
       width: 100%;
       background: white;
       border: 1px solid black;
+    }
+
+    .md-list-item-inner {
+      min-height: 36px;
     }
 
     md-list-item {
@@ -29,11 +25,15 @@
     }
 
     .md-subheader {
+      height: 36px;
       background: rgba(0,0,0,0.1);
+      .md-subheader-inner {
+        padding: 10px;
+      }
     }
 
     .show-info {
-      height: 40px;
+      height: 36px;
       p {
         padding-left: 10px;
       }
