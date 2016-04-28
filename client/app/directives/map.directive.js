@@ -3,29 +3,36 @@
 app.directive('map', function(mapboxToken, $interval) {
   return {
     restrict: 'E',
-    template: '<div id="map"></div>',
+    replace: true,
+    templateUrl: '../views/directives/map.html',
     scope: {
       coordinates: '=',
       fullscreen: '='
     },
     link: function(scope, element, attrs) {
 
+      scope.toggleFullscreen = function() {
+        scope.fullscreen = !scope.fullscreen;
+        scope.fullscreen ? $('.main').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('animated bounceInRight');
+      }
+
+
       scope.coordinates = ['-104.89', '39.81'];
 
-      scope.$watch('fullscreen', function(fullscreen) {
-        if(fullscreen) {
-          map.dragPan.enable();
-          map.scrollZoom.enable();
-          // $('body').css('overflow', 'hidden');
-        } else {
-          // map.dragPan.disable();
-          map.scrollZoom.disable();
-          // $('body').css('overflow', 'auto');
-        }
-        $interval( () => {
-          map.resize();
-        }, 10, 200);
-      });
+      // scope.$watch('fullscreen', function(fullscreen) {
+      //   if(fullscreen) {
+      //     map.dragPan.enable();
+      //     map.scrollZoom.enable();
+      //     // $('body').css('overflow', 'hidden');
+      //   } else {
+      //     // map.dragPan.disable();
+      //     map.scrollZoom.disable();
+      //     // $('body').css('overflow', 'auto');
+      //   }
+      //   $interval( () => {
+      //     map.resize();
+      //   }, 10, 200);
+      // });
 
       mapboxgl.accessToken = mapboxToken;
       var map = new mapboxgl.Map({

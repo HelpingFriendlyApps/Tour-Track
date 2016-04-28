@@ -27,20 +27,21 @@ body > .container {
   }
 }
 
-map {
+.map-container {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  z-index: -1;
   #map {
     height: 100%;
     width: 100%;
+    z-index: -1;
   }
 }
 
 
+@import 'map';
 @import 'player';
 @import 'profile';
 @import 'show';

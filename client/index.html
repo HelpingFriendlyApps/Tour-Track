@@ -7,8 +7,8 @@
   
   <body ng-app="Tour-Track">
     <navbar id="navbar"></navbar>
-    <map></map>
-    <div class="container" ui-view></div>
+    <map fullscreen='fullscreen'></map>
+    <div class="container main" ui-view></div>
     <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
   </body>
 
@@ -31,6 +31,7 @@
     <script src="./lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./lib/ngstorage/ngstorage.min.js"></script>
 
+    <link rel="stylesheet" href="./lib/animate.css/animate.min.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
