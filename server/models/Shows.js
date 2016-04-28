@@ -88,6 +88,10 @@ var Shows = module.exports = {
       .orderBy('position', 'asc');
     },
 
+    getRandomShowId: function() {
+        return db('shows').first().min('shows.id').max('shows.id');
+    },
+
     updateOrCreate : function(attrs){
         return Shows.update(attrs).catch(Shows.create(attrs));
     },

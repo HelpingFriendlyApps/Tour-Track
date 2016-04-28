@@ -39,6 +39,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express-server');
 
-  grunt.registerTask('default', ['babel', 'express', 'watch']);
+  // grunt.registerTask('default', ['babel', 'express', 'watch']);
+  grunt.registerTask('default', ['babel']);
   
 };

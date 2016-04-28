@@ -17,12 +17,60 @@ app.directive('map', function(mapboxToken, $interval, $state) {
       }
 
       scope.$watch('coordinates', function(coordinates) {
+        if(!coordinates) scope.coordinates = ['-104.89', '39.81'];
         console.log('coordinates', coordinates)
         console.log('$state', $state)
+        
+
+        mapboxgl.accessToken = mapboxToken;
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',
+          center: scope.coordinates,
+          zoom: 10,
+          attributionControl: false
+        });
+
+        map.on('style.load', function() {
+          var geoJson = {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [{
+                type: 'Feature',
+                properties: {
+                  // whatever i want
+                },
+                geometry: {
+                  type: 'Point',
+                  coordinates: scope.coordinates
+                }
+              }]
+            }
+          };
+
+          // map.addSource('show', geoJson);
+
+          // map.addLayer({
+          //   id: 'something',
+          //   // interactive: true,
+          //   interactive: false,
+          //   type: 'circle',
+          //   source: 'show',
+          //   paint: {
+          //     'circle-radius': 30,
+          //     'circle-color': 'black'
+          //   }
+          // });
+
+          // map.dragPan.disable();
+          map.scrollZoom.disable();
+
+
+
       });
 
 
-      scope.coordinates = ['-104.89', '39.81'];
 
       // scope.$watch('fullscreen', function(fullscreen) {
       //   if(fullscreen) {
@@ -39,49 +87,6 @@ app.directive('map', function(mapboxToken, $interval, $state) {
       //   }, 10, 200);
       // });
 
-      mapboxgl.accessToken = mapboxToken;
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',
-        center: scope.coordinates,
-        zoom: 10,
-        attributionControl: false
-      });
-
-      map.on('style.load', function() {
-        var geoJson = {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: [{
-              type: 'Feature',
-              properties: {
-                // whatever i want
-              },
-              geometry: {
-                type: 'Point',
-                coordinates: scope.coordinates
-              }
-            }]
-          }
-        };
-
-        // map.addSource('show', geoJson);
-
-        // map.addLayer({
-        //   id: 'something',
-        //   // interactive: true,
-        //   interactive: false,
-        //   type: 'circle',
-        //   source: 'show',
-        //   paint: {
-        //     'circle-radius': 30,
-        //     'circle-color': 'black'
-        //   }
-        // });
-
-        // map.dragPan.disable();
-        map.scrollZoom.disable();
 
       });
 
