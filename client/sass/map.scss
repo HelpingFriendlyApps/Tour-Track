@@ -1,6 +1,26 @@
 .map-container {
+  -webkit-transition: background 1s ease-in;
+  -moz-transition: background 1s ease-in;
+  -o-transition: background 1s ease-in;
+  transition: background 1s ease-in;
+
+  background: rgba(67,67,66,0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  #map {
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+  }
   button {
     position: absolute;
     top: 60%;
   }
+}
+
+.fullscreen {
+  background: transparent;
 }
