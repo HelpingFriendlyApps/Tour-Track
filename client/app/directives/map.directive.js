@@ -8,14 +8,20 @@ app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", functi
     scope: {
       coordinates: '=',
       fullscreen: '=',
+      toggleFullscreen: '&',
       token: '='
     },
     link: function(scope, element, attrs) {
       
-      scope.toggleFullscreen = function() {
-        scope.fullscreen = !scope.fullscreen;
-        scope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
-      }
+      // scope.toggleFullscreen = function() {
+      //   $rootScope.fullscreen = !$rootScope.fullscreen;
+      //   $rootScope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+      // }
+
+      scope.$watch('fullscreen', function(fullscreen) {
+        console.log('fullscreen watch', fullscreen)
+        $rootScope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+      }, true);
 
       mapboxgl.accessToken = scope.token;
       var map = new mapboxgl.Map({
@@ -27,10 +33,10 @@ app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", functi
         attributionControl: false
       });
 
-      // map.off('style.error', map.onError);
-      // map.off('source.error', map.onError);
-      // map.off('tile.error', map.onError);
-      // map.off('layer.error', map.onError);
+      map.off('style.error', map.onError);
+      map.off('source.error', map.onError);
+      map.off('tile.error', map.onError);
+      map.off('layer.error', map.onError);
 
 
       scope.$watch('coordinates', function(coordinates) {
@@ -61,9 +67,22 @@ app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", functi
         map.flyTo({center: scope.coordinates, zoom: 13, minZoom: 10, speed: 1.2});
       }
 
-      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-        if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
-      });
+
+
+      // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      //   console.log('state change started', arguments)
+      //   // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+      //   $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+      // });
+
+
+
+      // $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+      //   // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+      //   console.log('inside stateChangeSuccess')
+      //   if(scope.fullscreen) scope.toggleFullscreen();
+      // });
+
 
 
 

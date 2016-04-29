@@ -27,6 +27,18 @@ body > .container {
   }
 }
 
+#masterUI {
+  transition: all 1s;
+}
+
+#mainUI {
+  transition: all 1s;
+}
+
+#mainUI.ng-enter, #mainUI.ng-enter-active {
+  background: purple;
+}
+
 
 @import 'map';
 @import 'player';

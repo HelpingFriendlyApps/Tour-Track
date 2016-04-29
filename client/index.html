@@ -6,11 +6,11 @@
   </head>
   
   <body ng-app="Tour-Track" ng-controller="RootController">
-    <navbar id="navbar"></navbar>
-    <div ng-if="mapboxToken.length > 0">
-        <map token='mapboxToken' coordinates='map.coordinates' 
-        fullscreen='fullscreen'></map>
-    </div>
+    <navbar id="navbar" fullscreen='$parent.fullscreen'></navbar>
+    <!-- <div ng-if="mapboxToken.length > 0"> -->
+        <map ng-if="mapboxToken.length > 0" token='mapboxToken' coordinates='map.coordinates' 
+        toggle-fullscreen='toggleFullscreen()' fullscreen='fullscreen'></map>
+    <!-- </div> -->
     <div class="container main" ui-view></div>
     <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
   </body>
