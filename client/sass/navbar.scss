@@ -1,0 +1,26 @@
+.navbar {
+  background: #434342;
+  border: none;
+
+  -moz-box-shadow: inset 0 0 15px #333332;
+  -webkit-box-shadow: inset 0 0 15px #333332;
+  box-shadow: inset 0 0 15px #333332;
+
+  .navbar-header > a, .nav > li > a {
+    color: #DCDDD8;
+  }
+  .nav > li.active > a {
+    // background: #5D5D5B;
+    background: #CF3628;
+    // -moz-box-shadow: inset 0 0 15px rgba(51,51,50,0.3);
+    // -webkit-box-shadow: inset 0 0 15px rgba(51,51,50,0.3);
+    // box-shadow: inset 0 0 15px rgba(51,51,50,0.3);
+
+    // -moz-box-shadow: inset 0 0 15px #333332;
+    // -webkit-box-shadow: inset 0 0 15px #333332;
+    // box-shadow: inset 0 0 15px #333332;
+    // color: #DCDDD8;
+    color: #18161B;
+    
+  }
+}
