@@ -16,30 +16,82 @@ app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFa
         scope.fullscreen ? $('.main').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('animated bounceInRight');
       }
 
-      ShowFactory.getRandomShow().then(function(show) {
-        console.log('show', show)
+      mapboxgl.accessToken = mapboxToken;
+      scope.map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',
+        // center: scope.coordinates,
+        center: [-98.35, 39.5],
+        zoom: 5,
+        // zoom: 13,
+        attributionControl: false
       });
 
-
-
-      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
-          console.log('STATE CHANGED', $state)
-      });
 
       scope.$watch('coordinates', function(coordinates) {
-        if(!coordinates) scope.coordinates = ['-104.89', '39.81'];
-        console.log('coordinates', coordinates)
-        // console.log('$state', $state)
-        
+        if($state.current.name === 'show') return renderCurrentShow();
+        renderRandomShows();
+      });
 
-        mapboxgl.accessToken = mapboxToken;
-        var map = new mapboxgl.Map({
-          container: 'map',
-          style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',
-          center: scope.coordinates,
-          zoom: 10,
-          attributionControl: false
+      function renderRandomShows() {
+        console.log('inside renderRandomShows')
+        $interval.cancel(scope.randomShowInterval);
+        var currentDate;
+
+        ShowFactory.getRandomShow().then(function(show) {
+          console.log('random show', show)
+          currentDate = show.date;
+          scope.map.flyTo({center: [show.longitude, show.latitude], zoom: 13, minZoom: 10, speed: 0.5});
         });
+
+        scope.randomShowInterval = $interval(function() {
+          console.log('currentDate', currentDate)
+          ShowFactory.getNextShowByDate(currentDate).then(function(show) {
+            console.log('interval running')
+            currentDate = show.date;
+            // scope.map.setCenter([show.longitude, show.latitude]);
+            // scope.map.easeTo({center: [show.longitude, show.latitude], zoom: 13});
+            scope.map.flyTo({center: [show.longitude, show.latitude], zoom: 13, minZoom: 10, speed: 0.5});
+            // scope.map.panTo([show.longitude, show.latitude], {duration: 2000});
+          });
+        }, 3000);
+
+        // scope.randomShowInterval = $interval(function() {
+        //   ShowFactory.getRandomShow().then(function(show) {
+        //     console.log('interval running')
+        //     // scope.map.setCenter([show.longitude, show.latitude]);
+        //     // scope.map.easeTo({center: [show.longitude, show.latitude], zoom: 13});
+        //     scope.map.flyTo({center: [show.longitude, show.latitude], zoom: 13, minZoom: 10, speed: 0.5});
+        //     // scope.map.panTo([show.longitude, show.latitude], {duration: 2000});
+        //   });
+        // }, 20000);
+
+
+      }
+
+      function renderCurrentShow() {
+        if(!scope.coordinates) return renderRandomShows();
+        console.log('inside renderCurrentShow')
+        $interval.cancel(scope.randomShowInterval);
+        // scope.map.setCenter(scope.coordinates);
+        // scope.map.easeTo({center: scope.coordinates, zoom: 13});
+        scope.map.flyTo({center: scope.coordinates, zoom: 13, minZoom: 10, speed: 0.5});
+        // scope.map.panTo(scope.coordinates);
+      }
+
+
+
+      // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+          // console.log('STATE CHANGED', toState)
+          // console.log('fromState', fromState)
+          if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+
+      });
+
+
+
+
 
         // map.on('style.load', function() {
         //   var geoJson = {
@@ -98,7 +150,6 @@ app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFa
       // });
 
 
-      });
 
     }
   };
