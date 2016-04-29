@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.factory('ShowFactory', function($http, $sce) {
+.factory('ShowFactory', ["$http", "$sce", function($http, $sce) {
 
   return {
 
@@ -83,7 +83,6 @@ angular.module('Tour-Track')
         return show.data;
       });
     }
-
   }
 
-});
+}]);

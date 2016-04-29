@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').directive('throbber', function() {
+angular.module('Tour-Track').directive('throbber', [function() {
   return {
     restrict: "E",
     scope: {
@@ -17,4 +17,4 @@ angular.module('Tour-Track').directive('throbber', function() {
         })
     }
   };
-});
+}]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.factory('SongFactory', function($http, $sce) {
+.factory('SongFactory', ["$http", "$sce", function($http, $sce) {
 
   return {
 
@@ -18,4 +18,4 @@ angular.module('Tour-Track')
     }
   }
 
-});
+}]);

@@ -127,4 +127,4 @@ app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFa
 
     }
   };
-});
+}]);

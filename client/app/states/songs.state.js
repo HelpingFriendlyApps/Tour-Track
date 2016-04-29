@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
+angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('songs', {
     url: '/songs',
@@ -13,4 +13,4 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     }
   });
 
-});
+}]);

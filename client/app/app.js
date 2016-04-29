@@ -9,8 +9,8 @@ var app = angular.module('Tour-Track', [
   'duScroll',
   'ngStorage'
 ])
-
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  
+  .config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
 
@@ -21,6 +21,5 @@ var app = angular.module('Tour-Track', [
     // });
 
     // $locationProvider.html5Mode(true);
-
-     
-});
+ 
+}]);

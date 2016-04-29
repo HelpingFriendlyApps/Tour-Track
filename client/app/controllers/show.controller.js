@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, PlayerFactory) {
+app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "$document", "$timeout", "PlayerFactory", function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, PlayerFactory) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -54,7 +54,7 @@ app.controller('ShowCtrl', function($scope, $rootScope, show, setlist, ShowFacto
   $scope.upNext = PlayerFactory.upNext;
   $scope.addToUpNext = PlayerFactory.addToUpNext;
 
-});
+}]);
 
 
 

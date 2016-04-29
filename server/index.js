@@ -6,9 +6,6 @@ var sass = require('node-sass-endpoint');
 var session = require('cookie-session');
 require('./Seeds/seedRun')
 
-
-
-
 //
 //route to your index.html
 //

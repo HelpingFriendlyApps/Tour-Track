@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').directive('scrollTo', function() {
+angular.module('Tour-Track').directive('scrollTo', [function() {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
@@ -19,4 +19,4 @@ angular.module('Tour-Track').directive('scrollTo', function() {
 
     }
   };
-});
+}]);

@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('songLengthsPerYear', function($q, ShowFactory) {
+app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFactory) {
   return {
     restrict: 'E',
     template: '<div id="chart"></div>',
@@ -83,4 +83,4 @@ app.directive('songLengthsPerYear', function($q, ShowFactory) {
 
     }
   };
-});
+}]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.factory('TrackFactory', function($http, $sce) {
+.factory('TrackFactory', ["$http", "$sce", function($http, $sce) {
 
   return {
 
@@ -16,7 +16,6 @@ angular.module('Tour-Track')
         return tracks.data;
       });
     }
-
   }
 
-});
+}]);

@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
+angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('profile', {
     url: '/profile/',
@@ -9,4 +9,4 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     resolve: {}
   });
 
-});
+}]);

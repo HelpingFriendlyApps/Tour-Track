@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
+angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
   $stateProvider.state('show', {
     url: '/show/:date',
@@ -17,4 +17,4 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     }
   });
 
-});
+}]);
