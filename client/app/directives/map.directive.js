@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('map', function(mapboxToken, $interval, $state) {
+app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFactory) {
   return {
     restrict: 'E',
     replace: true,
@@ -16,10 +16,20 @@ app.directive('map', function(mapboxToken, $interval, $state) {
         scope.fullscreen ? $('.main').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('animated bounceInRight');
       }
 
+      ShowFactory.getRandomShow().then(function(show) {
+        console.log('show', show)
+      });
+
+
+
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){ 
+          console.log('STATE CHANGED', $state)
+      });
+
       scope.$watch('coordinates', function(coordinates) {
         if(!coordinates) scope.coordinates = ['-104.89', '39.81'];
         console.log('coordinates', coordinates)
-        console.log('$state', $state)
+        // console.log('$state', $state)
         
 
         mapboxgl.accessToken = mapboxToken;
@@ -31,23 +41,23 @@ app.directive('map', function(mapboxToken, $interval, $state) {
           attributionControl: false
         });
 
-        map.on('style.load', function() {
-          var geoJson = {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [{
-                type: 'Feature',
-                properties: {
-                  // whatever i want
-                },
-                geometry: {
-                  type: 'Point',
-                  coordinates: scope.coordinates
-                }
-              }]
-            }
-          };
+        // map.on('style.load', function() {
+        //   var geoJson = {
+        //     type: 'geojson',
+        //     data: {
+        //       type: 'FeatureCollection',
+        //       features: [{
+        //         type: 'Feature',
+        //         properties: {
+        //           // whatever i want
+        //         },
+        //         geometry: {
+        //           type: 'Point',
+        //           coordinates: scope.coordinates
+        //         }
+        //       }]
+        //     }
+        //   };
 
           // map.addSource('show', geoJson);
 
@@ -64,11 +74,11 @@ app.directive('map', function(mapboxToken, $interval, $state) {
           // });
 
           // map.dragPan.disable();
-          map.scrollZoom.disable();
+          // map.scrollZoom.disable();
 
 
 
-      });
+      // });
 
 
 

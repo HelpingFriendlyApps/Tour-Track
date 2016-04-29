@@ -14,8 +14,9 @@ var Shows = module.exports = {
     },
 
     getShowById: function(showId) {
-        return db('shows').first('*')
-        .where('shows.id', showId);
+        return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
+        .where('shows.id', showId)
+        .join('venues', 'venues.id', 'shows.venue_id');
     },
 
     getShowByDate: function(date) {
