@@ -25,10 +25,10 @@ app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFa
         attributionControl: false
       });
 
-      map.off('style.error', map.onError);
-      map.off('source.error', map.onError);
-      map.off('tile.error', map.onError);
-      map.off('layer.error', map.onError);
+      // map.off('style.error', map.onError);
+      // map.off('source.error', map.onError);
+      // map.off('tile.error', map.onError);
+      // map.off('layer.error', map.onError);
 
 
       scope.$watch('coordinates', function(coordinates) {
@@ -60,7 +60,7 @@ app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFa
       }
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-          if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+        if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
       });
 
 
