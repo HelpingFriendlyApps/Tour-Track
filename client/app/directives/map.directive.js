@@ -14,15 +14,16 @@ app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", functi
       
       scope.toggleFullscreen = function() {
         scope.fullscreen = !scope.fullscreen;
-        scope.fullscreen ? $('.main').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('animated bounceInRight');
+        scope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
       }
 
       mapboxgl.accessToken = scope.token;
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',
+        style: 'mapbox://styles/luismartins/cinlzt02m0019b6nlyaq6pfwt',
         center: [-98.35, 39.5],
         zoom: 5,
+        // zoom: 10,
         attributionControl: false
       });
 
