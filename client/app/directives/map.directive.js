@@ -1,22 +1,23 @@
 'use strict'
 
-app.directive('map', function($rootScope, mapboxToken, $interval, $state, ShowFactory) {
+app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", function($rootScope, $interval, $state, ShowFactory) {
   return {
     restrict: 'E',
     replace: true,
     templateUrl: '../views/directives/map.html',
     scope: {
       coordinates: '=',
-      fullscreen: '='
+      fullscreen: '=',
+      token: '='
     },
     link: function(scope, element, attrs) {
-
+      
       scope.toggleFullscreen = function() {
         scope.fullscreen = !scope.fullscreen;
         scope.fullscreen ? $('.main').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('animated bounceInRight');
       }
 
-      mapboxgl.accessToken = mapboxToken;
+      mapboxgl.accessToken = scope.token;
       var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/luismartins/cin8guzrr0042agm8p2oszfz3',

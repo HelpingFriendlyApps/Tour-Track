@@ -5,9 +5,12 @@
     <title>Tour Track</title>
   </head>
   
-  <body ng-app="Tour-Track">
+  <body ng-app="Tour-Track" ng-controller="RootController">
     <navbar id="navbar"></navbar>
-    <map coordinates='map.coordinates' fullscreen='fullscreen'></map>
+    <div ng-if="mapboxToken.length > 0">
+        <map token='mapboxToken' coordinates='map.coordinates' 
+        fullscreen='fullscreen'></map>
+    </div>
     <div class="container main" ui-view></div>
     <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
   </body>
@@ -63,6 +66,8 @@
     <script src="dist/controllers/shows.controller.js"></script>
     <script src="dist/controllers/song.controller.js"></script>
     <script src="dist/controllers/songs.controller.js"></script>
+    <script src="dist/controllers/root.controller.js"></script>
+
 
     <script src="dist/directives/barChart.directive.js"></script>
     <script src="dist/directives/map.directive.js"></script>
@@ -79,6 +84,7 @@
     <script src="dist/factories/tour.factory.js"></script>
     <script src="dist/factories/track.factory.js"></script>
     <script src="dist/factories/venue.factory.js"></script>
+    <script src="dist/factories/creds.factory.js"></script>
     
     <script src="dist/filters/millisecondsToDate.filter.js"></script>
     <script src="dist/filters/secondsToDate.filter.js"></script>
