@@ -1,52 +1,40 @@
 <div class="show-container" ng-class='{"map-fullscreen": fullscreen, "already-fullscreen": alreadyFullscreen}'>
 
-  <!-- <div class='map-container'>
-    <map coordinates="[show.longitude, show.latitude]" fullscreen='fullscreen'></map>
-    <md-button class="md-fab md-mini" ng-click='toggleFullscreen()' aria-label="toggleFullscreen">
-      <i ng-hide='fullscreen' class="fa fa-angle-down" aria-hidden="true"></i>
-      <i ng-show='fullscreen' class="fa fa-angle-up" aria-hidden="true"></i>
-    </md-button>
-  </div> -->
-
-  <div class='navigation-buttons' layout='row' layout-align='space-between start'>    
+  <!-- <div class='navigation-buttons' layout='row' layout-align='space-between start'>    
     <md-button class="md-raised" ui-sref='show({date: nextShow.date})' aria-label="nextShow">
       <i class="fa fa-angle-left"></i>
     </md-button>
     <md-button class="md-raised" ui-sref='show({date: prevShow.date})' aria-label="prevShow">
       <i class="fa fa-angle-right"></i>
     </md-button>
-  </div>
+  </div> -->
 
-  <!-- <div class='container-fluid'> -->
-    <!-- <div class='container'> -->
-      <p>{{show.date | date:'EEEE, MM/dd/yyyy'}}</p>
-      <p>{{show.venue_name}}</p>
-      <p>{{show.location}}</p>
-      
-      <md-list>
-        <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
-          <div class='md-list-item-text' layout='column'>
-            <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
-            <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
-              <div>
-                <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>
-                <span ui-sref='song({songId: song.song_id})'>{{song.title}}</span>
-                <span ng-show='hover'>
-                  <md-button ng-click='upNext(song)'>
-                    <md-icon class="material-icons">playlist_play</md-icon>
-                  </md-button>
-                  <md-button ng-click='addToUpNext(song)'>
-                    <md-icon class="material-icons">playlist_add</md-icon>
-                  </md-button>
-                </span>
-              </div>              
-              <p>{{ song.duration | millisecondsToDate | date:'m:ss' }}</p>
-            </div>
-          </div>
-          <md-divider></md-divider>
-        </md-list-item>
-      </md-list>
-    <!-- </div> -->
-  <!-- </div> -->
+  <p>{{show.date | date:'EEEE, MM/dd/yyyy'}}</p>
+  <p>{{show.venue_name}}</p>
+  <p>{{show.location}}</p>
+  
+  <md-list>
+    <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
+      <div class='md-list-item-text' layout='column'>
+        <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
+        <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
+          <div>
+            <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>
+            <span ui-sref='song({songId: song.song_id})'>{{song.title}}</span>
+            <span ng-show='hover'>
+              <md-button ng-click='upNext(song)'>
+                <md-icon class="material-icons">playlist_play</md-icon>
+              </md-button>
+              <md-button ng-click='addToUpNext(song)'>
+                <md-icon class="material-icons">playlist_add</md-icon>
+              </md-button>
+            </span>
+          </div>              
+          <p>{{ song.duration | millisecondsToDate | date:'m:ss' }}</p>
+        </div>
+      </div>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
 
 </div>

@@ -10,7 +10,11 @@
     color: #DCDDD8;
   }
   .nav > li.active > a {
-    background: #CF3628;
-    color: #434342;
+    background: #5D5D5B;
+    color: #DCDDD8;
+    &:hover {
+      background: #D74B4B;
+      color: #434342;
+    }
   }
 }

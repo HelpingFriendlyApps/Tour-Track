@@ -6,7 +6,7 @@
   </head>
   
   <body ng-app="Tour-Track" ng-controller="RootController">
-    <navbar id="navbar" fullscreen='$parent.fullscreen'></navbar>
+    <navbar id="navbar" fullscreen='fullscreen'></navbar>
     <map ng-if="mapboxToken.length > 0"
         token='mapboxToken'
         coordinates='map.coordinates'
