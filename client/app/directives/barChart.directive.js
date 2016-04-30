@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('barChart', function(mapboxToken, $interval) {
+app.directive('barChart', ["$interval", function($interval) {
   return {
     restrict: 'E',
     template: '<div id="barChart"></div>',
@@ -68,4 +68,4 @@ app.directive('barChart', function(mapboxToken, $interval) {
 
     }
   };
-});
+}]);

@@ -7,7 +7,7 @@ var Users   = module.exports = {
     getAllFriends : function(){
         return db('friends').select('*')
         .then(function (data) {
-            console.log("All Friends in user table: ", data)
+            //console.log("All Friends in user table: ", data)
             return data;
         })
     },

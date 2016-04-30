@@ -1,34 +1,37 @@
 html, body {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+body > .container {
+  height: 100%;
+  margin-top: 75px;
+  margin-bottom: 75px;
+  padding: 10px;
+  overflow: auto;
+  
+  border: 1px solid black;
   background-image: url('assets/background-texture.jpg');
-}
 
-.container, .container-fluid {
-  height: 100%;
-  padding: 0;
-}
+  display: flex;
+  flex-direction: column;
+  z-index: 0;
 
-body > .container-fluid {
-  padding-top: 51px;
-  height: 100%;
-}
-
-.container {
-  &__profilestats {
-    overflow-y: auto;
-    max-height: 400px;
-  }
-  &__profilestats:hover {
-    border-radius: 3px;
-    background: red; /* For browsers that do not support gradients */    
-    background: -webkit-linear-gradient(left, #dcdcdc , lightblue); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(right,  #dcdcdc , lightblue); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(right, #dcdcdc , lightblue); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to right,  #dcdcdc , lightblue); /* Standard syntax (must be last) */
+  ui-view {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    height: 100%;
   }
 }
 
+
+@import 'map';
+@import 'navbar';
 @import 'player';
+@import 'profile';
 @import 'show';
 @import 'shows';
 @import 'song';

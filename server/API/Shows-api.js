@@ -6,6 +6,21 @@ var ph = require('../models/Phish').Phishin();
 
 var router = module.exports = express.Router();
 
+function getRandomShow(res) {
+    Shows.getRandomShowId().then( (x) => {
+        var randomId = Math.floor(Math.random() * x.max) + x.min;
+        Shows.getShowById(randomId).then( (x) => {
+            if(!x) throw err;
+            res.send(x);
+        }).catch(function() {
+            return getRandomShow(res);
+        });
+    });
+}
+
+router.get('/random', function(req, res, next) {
+    getRandomShow(res);
+});
 
 router.get('/', function(req, res, next) {
     Shows.getAllShows().then( (x) => {

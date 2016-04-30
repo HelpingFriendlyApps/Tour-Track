@@ -6,6 +6,10 @@
   background: #434342;
   z-index: 1;
 
+  -moz-box-shadow: inset 0 0 15px #333332;
+  -webkit-box-shadow: inset 0 0 15px #333332;
+  box-shadow: inset 0 0 15px #333332;
+
   md-icon:focus {
     border: 0;
     outline: none;

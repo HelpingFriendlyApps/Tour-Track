@@ -1,8 +1,8 @@
 'use strict'
 
-angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
+angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('base.shows', {
+  $stateProvider.state('shows', {
     url: '/shows',
     templateUrl: '../views/shows.html',
     controller: 'ShowsCtrl',
@@ -13,4 +13,4 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     }
   });
 
-});
+}]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-.factory('PlayerFactory', function($rootScope) {
+.factory('PlayerFactory', ["$rootScope", function($rootScope) {
 
   var PlayerFactory = {};
 
@@ -22,4 +22,4 @@ angular.module('Tour-Track')
 
   return PlayerFactory;
 
-});
+}]);

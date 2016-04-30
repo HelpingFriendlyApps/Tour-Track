@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-  .factory('Profile', function($http, $sce) {
+  .factory('Profile', ["$http", "$sce", function($http, $sce) {
 
   return {
     userObject : function(){
@@ -26,7 +26,6 @@ angular.module('Tour-Track')
     addPhishAccountDetails : function(accountDetails){
       return $http.post('/users/phishNETaccount/' + accountDetails.uid, accountDetails);
     }
-
   }
 
-});
+}]);

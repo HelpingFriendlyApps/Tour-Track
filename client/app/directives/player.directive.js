@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('player', function($rootScope, $sessionStorage) {
+app.directive('player', ["$rootScope", "$sessionStorage", function($rootScope, $sessionStorage) {
   return {
     replace: true,
     restrict: 'E',
@@ -107,4 +107,4 @@ app.directive('player', function($rootScope, $sessionStorage) {
 
     }
   };
-});
+}]);

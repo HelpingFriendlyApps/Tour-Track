@@ -6,9 +6,6 @@ var sass = require('node-sass-endpoint');
 var session = require('cookie-session');
 require('./Seeds/seedRun')
 
-
-
-
 //
 //route to your index.html
 //
@@ -18,7 +15,6 @@ routes.use(express.static(assetFolder));
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
-
 
 routes.get('/api/tags-example', function(req, res) {
   res.send(['node', 'express', 'angular'])
@@ -38,7 +34,6 @@ if(process.env.NODE_ENV !== 'test') {
 
   // Parse incoming request bodies as JSON
   app.use( require('body-parser').json() );
-
 
   // This compiles your Sass files
   // Remember to change file paths or directories
@@ -60,7 +55,6 @@ if(process.env.NODE_ENV !== 'test') {
 
   // Mount our main router
   app.use('/', routes);
-  
 
   // Start the server!
   var port = process.env.PORT || 4000;
@@ -76,6 +70,7 @@ if(process.env.NODE_ENV !== 'test') {
 
   //pass the server to Passport
   require('./Auth').mount(app, host);
+  routes.use('/creds', require('./API/Creds-api.js'))
   routes.use('/users', require('./API/Users-api.js'));
   routes.use('/shows', require('./API/Shows-api.js'));
   routes.use('/songs', require('./API/Songs-api.js'));
@@ -83,11 +78,6 @@ if(process.env.NODE_ENV !== 'test') {
   routes.use('/venues', require('./API/Venues-api.js'));
   routes.use('/friends', require('./API/Friends-api.js'));
   routes.use('/tracks', require('./API/Tracks-api.js'));
-
-
-
-
-
 
   // routes.get('/*', function(req, res){
   //   res.sendFile( assetFolder + '/index.html' )

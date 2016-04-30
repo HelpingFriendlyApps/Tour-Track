@@ -1,8 +1,8 @@
 'use strict'
 
-angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider) {
+angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('base.song', {
+  $stateProvider.state('song', {
     url: '/song/:songId',
     templateUrl: '../views/song.html',
     controller: 'SongCtrl',
@@ -13,4 +13,4 @@ angular.module('Tour-Track').config(function($stateProvider, $urlRouterProvider)
     }
   });
 
-});
+}]);
