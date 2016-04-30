@@ -11,9 +11,7 @@ angular.module('Tour-Track').directive('navbar', ['$rootScope', function($rootSc
     link: function(scope, element, attrs) {
 
       scope.fullscreenToFalse = function() {
-        console.log('IN FULLSCREEN TO FALSE')
         if($rootScope.fullscreen) $rootScope.fullscreen = false;
-        console.log('$rootScope.fullscreen', $rootScope.fullscreen)
       }
 
     }

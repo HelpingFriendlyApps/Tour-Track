@@ -7,27 +7,17 @@
   
   <body ng-app="Tour-Track" ng-controller="RootController">
     <navbar id="navbar" fullscreen='$parent.fullscreen'></navbar>
-    <!-- <div ng-if="mapboxToken.length > 0"> -->
-        <map ng-if="mapboxToken.length > 0" token='mapboxToken' coordinates='map.coordinates' fullscreen='fullscreen'></map>
-    <!-- </div> -->
-    
-    <!-- <div class="container main" ng-class='{
-        animated: fullscreen || pageLoaded,
-        bounceOutRight: fullscreen,
-        bounceInRight: !fullscreen && pageLoaded
-    }' ui-view></div> -->
-
-    <!-- <div class="container main" ui-view></div> -->
+    <map ng-if="mapboxToken.length > 0"
+        token='mapboxToken'
+        coordinates='map.coordinates'
+        fullscreen='fullscreen'></map>
     <div class="container main">
         <ui-view></ui-view>
     </div>
-    <!-- <div class="container main" ui-view ng-class='{out: fullscreen, in: !fullscreen && pageLoaded}'></div> -->
-
     <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
   </body>
 
   <footer>
-
     <script src="./lib/angular/angular.js"></script>
     <script src="./lib/angular-animate/angular-animate.js"></script>
     <script src="./lib/angular-cookies/angular-cookies.js"></script>

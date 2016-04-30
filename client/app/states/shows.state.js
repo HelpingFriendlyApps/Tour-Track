@@ -6,9 +6,6 @@ angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", fun
     url: '/shows',
     templateUrl: '../views/shows.html',
     controller: 'ShowsCtrl',
-    // onEnter: function($state) {
-    //   console.log('entering shows onEnter', arguments)
-    // },
     resolve: {
       allShows: function(ShowFactory) {
         return ShowFactory.getAllShows();

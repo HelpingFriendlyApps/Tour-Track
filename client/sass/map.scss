@@ -37,11 +37,22 @@
     height: 100%;
     width: 100%;
     z-index: -1;
+    background: white;
   }
-  button {
+  .md-button {
+    height: 70px;
+    width: 70px;
+    line-height: 70px;
     position: absolute;
-    top: 60%;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 60px;
     z-index: 1;
+    md-icon {
+      transform: translate(-30%, -75%);
+      font-size: 3em;
+      color: #DCDDD8;
+    }
   }
 }
 

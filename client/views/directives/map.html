@@ -1,5 +1,8 @@
 <div class='map-container' ng-class='{fullscreen: fullscreen}'>
   <div id="map"></div>
   <div class='cover'></div>
-  <button ng-click='toggleFullscreen()'></button>
+  <md-button ng-click='toggleFullscreen()' class="md-icon-button">
+    <md-icon ng-hide='fullscreen' class="material-icons">arrow_forward</md-icon>
+    <md-icon ng-show='fullscreen' class="material-icons">arrow_back</md-icon>
+  </md-button>
 </div>
