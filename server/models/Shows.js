@@ -4,7 +4,6 @@ var request = require('request-promise');
 var Users   = require('./Users')
 var ph = require('./Phish').Phishin();
 
-
 var Shows = module.exports = {
 
     getAllShows : function(){
@@ -26,6 +25,12 @@ var Shows = module.exports = {
         .join('tours', 'tours.id', 'shows.tour_id');
     },
 
+    getRandomShowOnTodaysDate: function() {
+         return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location', 'tours.name as tour_name', 'tours.starts_on as tour_starts_on', 'tours.ends_on as tour_ends_on')
+        .where(db.raw("EXTRACT(DAY FROM date) = EXTRACT(DAY FROM NOW()) AND EXTRACT(MONTH FROM date) = EXTRACT(MONTH FROM NOW())"))
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id');
+    },
 
     getNextShowByDate: function(date) {
         return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location', 'tours.name as tour_name', 'tours.starts_on as tour_starts_on', 'tours.ends_on as tour_ends_on')

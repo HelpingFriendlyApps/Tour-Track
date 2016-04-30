@@ -28,6 +28,16 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/randomFromToday', function(req, res, next) {
+    Shows.getRandomShowOnTodaysDate().then( (x) => {
+        if(x === undefined){
+            getRandomShow(res);
+        } else {
+           res.send(x);
+        }
+    });
+});
+
 router.get('/:showId', function(req, res, next) {
     Shows.getShowById(req.params.showId).then( (x) => {
         res.send(x);
