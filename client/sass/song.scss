@@ -1,23 +1,40 @@
 .song-container {
+
+  h1 {
+    margin: 0;
+  }
+  
   .flex-100 {
     width: 100%;
   }
 
+  .flex-33 {
+    width: calc(100% / 3);
+  }
+
+  .flex-66 {
+    width: calc(2 * 100% / 3);
+  }
+
+  .row {
+    flex-direction: column;
+    margin: 0;
+  }
+
   section {
-    height: 400px;
-    margin: 10px;
+    flex: 1;
+    height: 100%;
+    width: 100%;
     padding: 10px;
-    border: 1px solid #434342;
-    background: white;
+    background: rgba(220,221,216,0.9);
+    border-radius: 1px;
   }
 
   md-list {
-    height: 400px;
-    min-height: 400px;
-    max-height: 80%;
+    max-height: 560px;
     overflow-y: scroll;
     border: 1px solid black;
-    background: white;
+    background: rgba(220,221,216,0.9);
     padding: 0;
   }
 

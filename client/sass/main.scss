@@ -34,8 +34,7 @@ body > .container-fluid {
     flex-direction: column;
     flex-grow: 1;
     height: 100%;
-    overflow: auto;
-    border: 1px solid black;
+    overflow-y: auto;
   }
 }
 
