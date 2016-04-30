@@ -19,13 +19,65 @@ body > .container {
   flex-direction: column;
   z-index: 0;
 
+
+
   ui-view {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     height: 100%;
   }
+
 }
+
+// .ng-enter, .ng-enter-active, .ng-leave, .ng-leave-active {
+//   // transition-delay: 3.0s;
+//   background-image: none;
+//   background: purple;
+// }
+
+// .fullscreen {
+//   .animated
+//   .bounceOutRight
+// }
+
+// .full-opacity {
+//   opacity: 1;
+// }
+
+// .zero-opacity {
+//   opacity: 0.1;
+// }
+
+
+.transistion {
+  -webkit-transition: transform 1s ease-in;
+  -moz-transition: transform 1s ease-in;
+  -o-transition: transform 1s ease-in;
+  transition: transform 1s ease-in;
+}
+
+.out {
+  // .out-transistion {
+  //   -webkit-transition: transform 1s ease-in;
+  //   -moz-transition: transform 1s ease-in;
+  //   -o-transition: transform 1s ease-in;
+  //   transition: transform 1s ease-in;
+  // }
+  transform: translate(150%);
+}
+
+.in {
+  // .in-transistion {
+  //   -webkit-transition: transform 1s ease-in;
+  //   -moz-transition: transform 1s ease-in;
+  //   -o-transition: transform 1s ease-in;
+  //   transition: transform 1s ease-in;
+  // }
+  transform: translate(0);
+}
+
+
 
 
 @import 'map';

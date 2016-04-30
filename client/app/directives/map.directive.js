@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", function($rootScope, $interval, $state, ShowFactory) {
+app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFactory", function($rootScope, $interval, $timeout, $state, ShowFactory) {
   return {
     restrict: 'E',
     replace: true,
@@ -8,19 +8,71 @@ app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", functi
     scope: {
       coordinates: '=',
       fullscreen: '=',
-      toggleFullscreen: '&',
       token: '='
     },
     link: function(scope, element, attrs) {
       
-      // scope.toggleFullscreen = function() {
-      //   $rootScope.fullscreen = !$rootScope.fullscreen;
-      //   $rootScope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
-      // }
+      scope.toggleFullscreen = function() {
+        $rootScope.fullscreen = !$rootScope.fullscreen;
+      }
 
-      scope.$watch('fullscreen', function(fullscreen) {
-        console.log('fullscreen watch', fullscreen)
-        $rootScope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+      scope.$watch('fullscreen', function(newVal, oldVal) {
+        $rootScope.fullscreen ? $('.main').removeClass('bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('bounceInRight');
+
+
+        // // THIS WORKS
+        // if($rootScope.fullscreen) {
+        //   // $('.main').addClass('out').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', doSomething);
+        //   // $('.main').addClass('out').one('transform', doSomething);
+        //   $('.main').addClass('out transistion').removeClass('ui-view');
+        //   $timeout(function() {
+        //     console.log('HELLO')
+        //     $('.main').removeClass('in transistion');
+        //   }, 1500);
+        // }
+        // if(!$rootScope.fullscreen) {
+        //   $('.main').addClass('in transistion');
+        //   $timeout(function() {
+        //     $('.main').removeClass('in out transistion');
+        //   }, 1500);
+        // } // STOP HERE
+
+
+
+        // $('.main').one('out', doSomething);
+
+        // function doSomething() {
+        //   console.log('do something', $rootScope.fullscreen)
+        //   // if($rootScope.fullscreen) return;
+        //   $('.main').removeClass('-webkit-transition -moz-transition -o-transition transform');
+        //   console.log('did something')
+        // }
+
+
+
+
+        // console.log('adding animation')
+        
+        // var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+
+        // if($rootScope.fullscreen) {
+        //   console.log('adding FULLSCREEN animation')
+        //   $('.main').removeClass('bounceInRight').addClass('animated bounceOutRight').one(animationEnd, function() {
+        //     console.log('inside one')
+        //     if(!$rootScope.fullscreen) return;
+        //     console.log('passed one')
+        //     $(this).addClass('zero-opacity');
+        //   });
+        // }
+
+        // if(!$rootScope.fullscreen) {
+        //   console.log('adding NOT FULLSCREEN animation')
+        //   $('.main').removeClass('zero-opacity bounceOutRight').addClass('bounceInRight');
+        //   // $('.main').removeClass('bounceOutRight').addClass('bounceInRight').one(animationEnd, function() {
+        //   //   $(this).removeClass('zero-opacity');
+        //   // });
+        // }
+
       }, true);
 
       mapboxgl.accessToken = scope.token;
@@ -69,19 +121,32 @@ app.directive('map', ["$rootScope", "$interval", "$state", "ShowFactory", functi
 
 
 
-      // $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-      //   console.log('state change started', arguments)
-      //   // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
-      //   $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
-      // });
+      $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+        console.log('inside stateChangeStart')
+        // if($rootScope.fullscreen) $rootScope.fullscreen = false;
+
+        // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+        // $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+      });
 
 
 
-      // $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-      //   // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
-      //   console.log('inside stateChangeSuccess')
-      //   if(scope.fullscreen) scope.toggleFullscreen();
-      // });
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+        console.log('inside stateChangeSuccess')
+        // if($rootScope.fullscreen) $rootScope.fullscreen = false;
+        if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+
+        // if($rootScope.fullscreen) {
+        //   $timeout(function() {
+        //     $rootScope.fullscreen = false;
+        //   }, 3000);
+        // }
+
+        // if(!scope.pageLoaded) return scope.pageLoaded = true;
+        // console.log('adding animation')
+        // $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+        // if(scope.fullscreen) scope.toggleFullscreen();
+      });
 
 
 

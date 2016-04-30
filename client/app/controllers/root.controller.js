@@ -14,9 +14,12 @@ angular.module('Tour-Track')
         $scope.mapboxToken = token;
     });
 
-    $rootScope.toggleFullscreen = function() {
-      $rootScope.fullscreen = !$rootScope.fullscreen;
-      $rootScope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
-    }
+    // $rootScope.fullscreen = false;
+    // $rootScope.pageLoaded = false;
+    // $rootScope.toggleFullscreen = function() {
+    //   $rootScope.pageLoaded = true;
+    //   $rootScope.fullscreen = !$rootScope.fullscreen;
+    //   // $rootScope.fullscreen ? $('.main').removeClass('animated bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('animated bounceOutRight').addClass('animated bounceInRight');
+    // }
 
 }]);

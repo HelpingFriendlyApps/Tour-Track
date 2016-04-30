@@ -45,6 +45,6 @@ angular.module('Tour-Track')
   };
 
   $scope.shows = new Shows();
-  console.log('$scope.shows', $scope.shows)
+  // console.log('$scope.shows', $scope.shows)
 
 }]);
