@@ -1,20 +1,23 @@
-<div class='song-container' layout="column" layout-align="start center">
-  <h1>{{song.title}}</h1>
-  <p>Debut: {{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
+<div class='song-container' layout="column" layout-align="start start">
 
-  <div flex='100' layout="row" layout-align="center start">
-    <section>
-      <bar-chart flex='50' data='playsPerYear'></bar-chart>
+  <div flex="100" layout="row" layout-align="center start">
+    <section flex="50">
+      <h1>{{song.title}}</h1>
+      <p>Debut: {{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
     </section>
-    <section>
-      <song-lengths-per-year flex='50' data='lengthsByYear'></song-lengths-per-year>
+
+    <!-- <section flex="50">
+      <bar-chart data='playsPerYear'></bar-chart>
+    </section> -->
+    <section flex="50">
+      <song-lengths-per-year data='lengthsByYear'></song-lengths-per-year>
     </section>
   </div>
 
-  <div flex='100' layout="row" layout-align="center start">
-    <!-- <section> -->
-      <h3>Performances</h3>
-      <md-list>
+
+    <!-- <div> -->
+      <!-- <h3>Performances</h3> -->
+      <!-- <md-list>
         <md-list-item ng-repeat='performance in song.performances' ng-dblclick='play(performance)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
           <div class='md-list-item-text' layout='column'>
             <div flex layout='row' layout-align='space-between center'>
@@ -36,9 +39,8 @@
           </div>
           <md-divider></md-divider>
         </md-list-item>
-      </md-list>
-    <!-- </section> -->
-  </div>
+      </md-list> -->
+    <!-- </div> -->
 
 
 </div>
