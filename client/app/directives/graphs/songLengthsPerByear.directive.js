@@ -45,9 +45,9 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
         });
 
         var chart = c3.generate({
-          size: {
-            height: 400
-          },
+          // size: {
+          //   height: 400
+          // },
           data: {
             columns: columns,
             type: 'spline'
