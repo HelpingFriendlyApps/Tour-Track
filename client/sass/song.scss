@@ -1,8 +1,18 @@
 .song-container {
   height: 100%;
   min-height: 100%;
+  display: flex;
+
+  section {
+    width: 50%;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #434342;
+    background: white;
+  }
 
   md-list {
+    height: 400px;
     min-height: 400px;
     max-height: 80%;
     overflow-y: scroll;

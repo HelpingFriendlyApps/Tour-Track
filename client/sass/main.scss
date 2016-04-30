@@ -5,19 +5,42 @@ html, body {
   overflow: hidden;
 }
 
-body > .container {
+// body > .container {
+body > .container-fluid {
   height: 100%;
-  margin-top: 75px;
-  margin-bottom: 75px;
-  padding: 10px;
+  
+  // margin-top: 75px;
+  // margin-bottom: 75px;
+
+  margin: 75px 30px;
+  margin-bottom: 55px;
+
+  padding: 20px;
   overflow: auto;
   
-  border: 1px solid black;
-  background-image: url('assets/background-texture.jpg');
+  // border: 1px solid black;
+  // background-image: url('assets/background-texture.jpg');
 
   display: flex;
   flex-direction: column;
   z-index: 0;
+
+  // background: #434342;
+  // background: rgba(67,67,66, 0.5);
+  background: rgba(220,221,216,0.1);
+
+  &:before {
+    content: '';
+    background: url('http://api.thumbr.it/whitenoise-361x370.png?');
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    opacity: 0.2;
+    z-index: -1;
+  }
+
 
   ui-view {
     display: flex;
