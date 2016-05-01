@@ -6,6 +6,7 @@ angular.module('Tour-Track')
   $scope.song = song;
   TrackFactory.getTracksBySongId($scope.song.id).then( (tracks) => {
     $scope.song.performances = tracks;
+    console.log('$scope.song', $scope.song)
 
     ShowFactory.getAllShowYears().then( (years) => {
       $scope.playsPerYear = [];
@@ -18,9 +19,9 @@ angular.module('Tour-Track')
 
       $scope.song.performances.forEach( (performance) => {
         var year = performance.date.slice(0,4);
-        var index = years.indexOf(year);
-        $scope.playsPerYear[index].count++;
-        $scope.lengthsByYear[index].lengths.push({ showId: performance.show_id, length:  performance.duration });
+        var yearIdx = years.indexOf(year);
+        $scope.playsPerYear[yearIdx].count++;
+        $scope.lengthsByYear[yearIdx].lengths.push({ showId: performance.show_id, length:  performance.duration });
       });
 
       $scope.lengthsByYear.forEach( (year) => {

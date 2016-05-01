@@ -5,6 +5,12 @@ html, body {
   overflow: hidden;
 }
 
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
 body > .container-fluid {
   height: 100%;
   margin: 75px 30px;

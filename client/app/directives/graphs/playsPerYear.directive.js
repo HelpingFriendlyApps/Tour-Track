@@ -49,7 +49,7 @@ app.directive('playsPerYear', [function() {
               }
             }
           }
-        })
+        });
 
       });
 

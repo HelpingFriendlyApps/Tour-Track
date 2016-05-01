@@ -3,7 +3,8 @@
     <div flex="100" class='row' layout="row" layout-align="start start" layout-padding>
       <section>
         <h1>{{song.title}}</h1>
-        <p>Debut: {{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
+        <p><strong>Debut: </strong>{{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
+        <p><strong>Last Played: </strong>{{song.performances[song.performances.length - 1].date | date:'MM/dd/yyyy'}}</p>
       </section>
     </div>
     <div flex="100" class='row' layout="row" layout-align="start stretch" layout-padding>
@@ -48,12 +49,12 @@
   </div>
   <div flex="60" class="column" layout="column" layout-align="start center">
     <div flex="100" class='row' layout="row" layout-align="start start" layout-padding>
-      <section>
+      <section class="graph">
         <plays-per-year data='playsPerYear'></plays-per-year>
       </section>
     </div>
     <div flex="100" class='row' layout="row" layout-align="start start" layout-padding>
-      <section>
+      <section class="graph">
         <song-lengths-per-year data='lengthsByYear'></song-lengths-per-year>
       </section>
     </div>
