@@ -5,6 +5,13 @@
         <h1>{{song.title}}</h1>
         <p><strong>Debut: </strong>{{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
         <p><strong>Last Played: </strong>{{song.performances[song.performances.length - 1].date | date:'MM/dd/yyyy'}}</p>
+        <p>
+          <strong>Biggest Gap: </strong>
+          {{biggestGap.gap}} shows 
+          <small>({{biggestGap.from.date | date:'MM/dd/yyyy'}}</small>
+          <i class="biggest-gap material-icons">arrow_forward</i>
+          <small>{{biggestGap.to.date | date:'MM/dd/yyyy'}})</small>
+        </p>
       </section>
     </div>
     <div flex="100" class='row' layout="row" layout-align="start stretch" layout-padding>

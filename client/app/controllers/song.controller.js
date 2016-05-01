@@ -17,9 +17,25 @@ angular.module('Tour-Track')
         $scope.lengthsByYear.push({ year: year, lengths: [] });
       });
 
+      $scope.biggestGap = {gap: 0, from: null, to: null};
+      var prevPerformance;
+
       $scope.song.performances.forEach( (performance) => {
         var year = performance.date.slice(0,4);
         var yearIdx = years.indexOf(year);
+
+        prevPerformance = prevPerformance || performance;
+        $scope.biggestGap.from = $scope.biggestGap.from || performance;
+
+        var gap = performance.show_number - prevPerformance.show_number;
+        if(gap > $scope.biggestGap.gap) {
+          $scope.biggestGap.gap = gap;
+          $scope.biggestGap.from = prevPerformance;
+          $scope.biggestGap.to = performance;
+        }
+
+        prevPerformance = performance;
+
         $scope.playsPerYear[yearIdx].count++;
         $scope.lengthsByYear[yearIdx].lengths.push({ showId: performance.show_id, length:  performance.duration });
       });
