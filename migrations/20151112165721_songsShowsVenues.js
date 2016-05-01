@@ -23,10 +23,10 @@ exports.up = function(knex, Promise) {
         knex.schema.createTable('shows', function(table){
             table.integer('id').primary();
             table.dateTime('date');
+            table.integer('show_number');
             table.integer('duration');
             table.integer('venue_id').references('id').inTable('venues');
             table.integer('tour_id').references('id').inTable('tours');
-
             table.timestamps();
         }),
 
