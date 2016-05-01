@@ -9,7 +9,6 @@ angular.module('Tour-Track')
     console.log('$scope.song', $scope.song)
 
     ShowFactory.getAllShowYears().then( (years) => {
-      console.log('years', years)
       $scope.playsPerYear = [];
       $scope.lengthsByYear = [];
 

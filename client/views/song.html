@@ -3,18 +3,26 @@
     <div flex="100" class='row' layout="row" layout-align="start start" layout-padding>
       <section class="song-info">
         <h1>{{song.title}}</h1>
-        <p><strong>Debut: </strong>{{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
+        <p>
+          <strong>Debut: </strong>
+          <a ui-sref="show({date: song.performances[0].date})">{{song.performances[0].date | date:'MM/dd/yyyy'}}</a>
+        </p>
         <p>
           <strong>Last Played: </strong>
-          {{song.performances[song.performances.length - 1].date | date:'MM/dd/yyyy'}}
+          <a ui-sref="show({date: song.performances[song.performances.length - 1].date})">{{song.performances[song.performances.length - 1].date | date:'MM/dd/yyyy'}}</a>
           <small>({{lastShow.show_number - song.performances[song.performances.length - 1].show_number}} shows since)</small>
         </p>
         <p>
           <strong>Biggest Gap: </strong>
-          {{biggestGap.gap}} shows 
-          <small>({{biggestGap.from.date | date:'MM/dd/yyyy'}}</small>
+          <span>{{biggestGap.gap}}</span>
+          <small>shows</small>
+          <small>
+            <a ui-sref="show({date: biggestGap.from.date})">({{biggestGap.from.date | date:'MM/dd/yyyy'}}</a>
+          </small>
           <i class="biggest-gap material-icons">arrow_forward</i>
-          <small>{{biggestGap.to.date | date:'MM/dd/yyyy'}})</small>
+          <small>
+            <a ui-sref="show({date: biggestGap.to.date})">{{biggestGap.to.date | date:'MM/dd/yyyy'}})</a>
+          </small>
         </p>
       </section>
     </div>
@@ -26,7 +34,8 @@
             <div class='md-list-item-text' layout='column'>
               <div flex layout='row' layout-align='start center'>
                 <p flex='30'>
-                  <span ui-sref='show({date: performance.date})'>{{performance.date | date:'MM/dd/yyyy'}}</span>
+                  <span>
+                    <a ui-sref='show({date: performance.date})'>{{performance.date | date:'MM/dd/yyyy'}}</span></a>
                   <md-menu>
                     <md-button ng-show="hover" class="md-icon-button" ng-click="openSongControls($mdOpenMenu, $event)">
                       <md-icon md-menu-origin="">more_horiz</md-icon>

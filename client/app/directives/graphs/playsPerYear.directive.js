@@ -20,8 +20,6 @@ app.directive('playsPerYear', [function() {
           counts.push(d.count);
         });
 
-        // console.log('years', years)
-
         var chart = c3.generate({
           bindto: '#barChart',
           data: {
@@ -42,10 +40,7 @@ app.directive('playsPerYear', [function() {
             x: {
               type: 'category',
               categories: years.map(function(y) {
-                var num = "'" + y.slice(2,4)
-                // console.log('num', num)
-                // console.log('typeof num', typeof num)
-                return num;
+                return "'" + y.slice(2,4);
               }),
               tick: {
                 culling: true,
