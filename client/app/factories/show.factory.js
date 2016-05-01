@@ -82,7 +82,20 @@ angular.module('Tour-Track')
       return $http.get('/shows/random').then(function(show) {
         return show.data;
       });
+    },
+
+    getRandomShowOnTodaysDate: function() {
+      return $http.get('/shows/randomFromToday').then(function(show) {
+        return show.data;
+      });
+    },
+
+    getLastShow: function() {
+      return $http.get('/shows/lastShow').then(function(show) {
+        return show.data;
+      });
     }
+
   }
 
 }]);

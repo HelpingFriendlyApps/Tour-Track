@@ -20,6 +20,7 @@ angular.module('Tour-Track')
       $scope.biggestGap = {gap: 0, from: null, to: null};
       var prevPerformance;
 
+
       $scope.song.performances.forEach( (performance) => {
         var year = performance.date.slice(0,4);
         var yearIdx = years.indexOf(year);
@@ -40,6 +41,7 @@ angular.module('Tour-Track')
         $scope.lengthsByYear[yearIdx].lengths.push({ showId: performance.show_id, length:  performance.duration });
       });
 
+
       $scope.lengthsByYear.forEach( (year) => {
         if(!year.lengths.length) return;
         year.avg = Math.floor(year.lengths.reduce( (a, b, i) => {
@@ -59,17 +61,23 @@ angular.module('Tour-Track')
         }, 0) / year.lengths.length);
       });
 
-      $scope.openSongControls = function($mdOpenMenu, ev) {
-        $mdOpenMenu(ev);
-      }
-
-      $scope.hoverIn = function() { this.hover = true; }
-      $scope.hoverOut = function() { this.hover = false; }
-
-      $scope.play = PlayerFactory.play;
-      $scope.upNext = PlayerFactory.upNext;
-      $scope.addToUpNext = PlayerFactory.addToUpNext;
-
     });
   });
+
+  ShowFactory.getLastShow().then( (lastShow) => {
+    $scope.lastShow = lastShow;
+  });
+
+  $scope.openSongControls = function($mdOpenMenu, ev) {
+    $mdOpenMenu(ev);
+  }
+
+  $scope.hoverIn = function() { this.hover = true; }
+  $scope.hoverOut = function() { this.hover = false; }
+
+  $scope.play = PlayerFactory.play;
+  $scope.upNext = PlayerFactory.upNext;
+  $scope.addToUpNext = PlayerFactory.addToUpNext;
+
+
 }]);

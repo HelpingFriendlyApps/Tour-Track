@@ -4,7 +4,11 @@
       <section>
         <h1>{{song.title}}</h1>
         <p><strong>Debut: </strong>{{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
-        <p><strong>Last Played: </strong>{{song.performances[song.performances.length - 1].date | date:'MM/dd/yyyy'}}</p>
+        <p>
+          <strong>Last Played: </strong>
+          {{song.performances[song.performances.length - 1].date | date:'MM/dd/yyyy'}}
+          <small>({{lastShow.show_number - song.performances[song.performances.length - 1].show_number}} shows since)</small>
+        </p>
         <p>
           <strong>Biggest Gap: </strong>
           {{biggestGap.gap}} shows 
