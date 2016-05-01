@@ -4,7 +4,7 @@ app.directive('playsPerYear', [function() {
   return {
     replace: true,
     restrict: 'E',
-    template: '<div id="barchart"></div>',
+    template: '<div id="barChart"></div>',
     scope: {
       data: '='
     },
@@ -12,7 +12,6 @@ app.directive('playsPerYear', [function() {
 
       scope.$watch('data', function(data) {
         if(!data) return;
-        console.log('data', data)
         var years = [];
         var counts = [];
 
@@ -21,13 +20,16 @@ app.directive('playsPerYear', [function() {
           counts.push(d.count);
         });
 
-        var barchart = c3.generate({
-          bindto: '#barchart',
+        var chart = c3.generate({
+          bindto: '#barChart',
           data: {
             columns: [
               ['Plays'].concat(counts)
             ],
-            type: 'bar'
+            type: 'bar',
+            colors: {
+              Plays: '#475F77'
+            }
           },
           bar: {
             width: {

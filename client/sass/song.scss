@@ -1,6 +1,4 @@
 .song-container {
-  // height: 100%;
-  // min-height: 100%;
 
   h1 {
     margin: 0;
@@ -10,16 +8,7 @@
     width: 100%;
   }
 
-  .flex-33 {
-    width: calc(100% / 3);
-  }
-
-  .flex-66 {
-    width: calc(2 * 100% / 3);
-  }
-
   .column {
-    // height: 100%;
     max-height: 100%;
     min-height: 100%;
   }
@@ -27,15 +16,6 @@
   .row {
     flex-direction: column;
     margin: 0;
-    // display: block;
-    margin-bottom: 10px;
-
-    // display: flex;
-    // height: 100%;
-
-
-    // flex-wrap: wrap;
-    // display: block;
   }
 
   section {
@@ -49,55 +29,37 @@
 
   md-list {
     height: 100%;
-    max-height: 600px;
+    max-height: 560px;
     overflow-y: scroll;
-    border: 1px solid black;
-    background: rgba(220,221,216,0.9);
     padding: 0;
   }
 
   md-list-item {
     height: 30px;
     min-height: 100%;
-    padding: 0 15px;
+    padding: 0 10px;
     outline: none;
+    .current-song-icon {
+      margin-left: -10px;
+      margin-right: 5px;
+      color: #5D5D5B;
+      font-size: 2rem;
+      line-height: 1.25em;
+    }
     .md-list-item-text {
       width: 100%;
     }
     p {
       margin: 0;
-    }
-    .current-song-icon {
-      font-size: 2rem;
-      line-height: 1.25em;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
     }
     .md-button {
       width: 28px;
       min-width: 28px;
       margin-left: 10px;
       background: none;
-    }
-  }
-
-  #barChart {
-    border: 1px solid black;
-    .bar {
-      fill: steelblue;
-    }
-    .bar:hover {
-      fill: brown;
-    }
-    .axis {
-      font: 10px sans-serif;
-    }
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
-    }
-    .x.axis path {
-      display: none;
     }
   }
 

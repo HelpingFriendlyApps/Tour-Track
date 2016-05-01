@@ -4,7 +4,7 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
   return {
     replace: true,
     restrict: 'E',
-    template: '<div id="chart"></div>',
+    template: '<div id="splineGraph"></div>',
     scope: {
       data: '='
     },
@@ -45,12 +45,15 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
         });
 
         var chart = c3.generate({
-          // size: {
-          //   height: 400
-          // },
+          bindto: '#splineGraph',
           data: {
             columns: columns,
-            type: 'spline'
+            type: 'spline',
+            colors: {
+              Longest: '#475F77',
+              Average: '#D74B4B',
+              Shortest: '#158A36'
+            }
           },
           axis: {
             x: {
