@@ -39,7 +39,12 @@ app.directive('playsPerYear', [function() {
               type: 'category',
               categories: years.map(function(y) {
                 return "'" + y.slice(2,4);
-              })
+              }),
+              tick: {
+                culling: true,
+                rotate: 60,
+                outer: false
+              }
             }
           }
         })

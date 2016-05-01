@@ -1,8 +1,8 @@
 <div class='song-container' layout="row" layout-align="start stretch">
 
-  <div flex="40" layout="column" layout-align="space-between center">
+  <div flex="40" class="column" layout="column" layout-align="start center">
     
-    <div flex="100" class='row' layout="row" layout-align="start stretch" layout-padding>
+    <div flex="100" class='row' layout="row" layout-align="start start" layout-padding>
       <section>
         <h1>{{song.title}}</h1>
         <p>Debut: {{song.performances[0].date | date:'MM/dd/yyyy'}}</p>
@@ -15,7 +15,7 @@
         <md-list>
           <md-list-item ng-repeat='performance in song.performances' ng-dblclick='play(performance)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()'>
             <div class='md-list-item-text' layout='column'>
-              <div flex layout='row' layout-align='space-between center'>
+              <div flex layout='row' layout-align='start center'>
                 <p flex='30'>
                   <md-icon ng-show='currentSong.id === performance.id' class="current-song-icon material-icons">volume_mute</md-icon>
                   <span ui-sref='show({date: performance.date})'>{{performance.date | date:'MM/dd/yyyy'}}</span>
@@ -41,7 +41,7 @@
 
   </div>
 
-  <div flex="60" layout="column" layout-align="start center">
+  <div flex="60" class="column" layout="column" layout-align="start center">
     <div flex="100" class='row' layout="row" layout-align="start start" layout-padding>
       <section>
         <plays-per-year data='playsPerYear'></plays-per-year>

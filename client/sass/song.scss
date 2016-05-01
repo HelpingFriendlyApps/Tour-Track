@@ -1,4 +1,6 @@
 .song-container {
+  // height: 100%;
+  // min-height: 100%;
 
   h1 {
     margin: 0;
@@ -16,9 +18,24 @@
     width: calc(2 * 100% / 3);
   }
 
+  .column {
+    // height: 100%;
+    max-height: 100%;
+    min-height: 100%;
+  }
+
   .row {
     flex-direction: column;
     margin: 0;
+    // display: block;
+    margin-bottom: 10px;
+
+    // display: flex;
+    // height: 100%;
+
+
+    // flex-wrap: wrap;
+    // display: block;
   }
 
   section {
@@ -31,7 +48,8 @@
   }
 
   md-list {
-    max-height: 560px;
+    height: 100%;
+    max-height: 600px;
     overflow-y: scroll;
     border: 1px solid black;
     background: rgba(220,221,216,0.9);
