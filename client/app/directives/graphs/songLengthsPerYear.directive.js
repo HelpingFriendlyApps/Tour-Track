@@ -7,23 +7,23 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function ($q, ShowFact
     scope: {
       data: '='
     },
-    link: function link(scope, element, attrs) {
+    link: function(scope, element, attrs) {
 
       scope.$watch('data', (data) => {
-        if (!data) return;
+        if(!data) return;
         var lengthTypes = ['longestLength', 'avg', 'shortestLength'],
-            legendTypes = ['Longest', 'Average', 'Shortest'],
-            years = [],
-            showIds = { longest: [], shortest: [] },
-            shows = { longest: [], shortest: [] };
+          legendTypes = ['Longest', 'Average', 'Shortest'],
+          years = [],
+          showIds = { longest: [], shortest: [] },
+          shows = { longest: [], shortest: [] };
 
         var columns = lengthTypes.map( (type, i) => {
           var col = [legendTypes[i]];
           
           data.some( (yearObj, i) => {
-            if (!yearObj.avg) return;
+            if(!yearObj.avg) return;
 
-            if (i >= years.length) {
+            if(i >= years.length) {
               years.push(yearObj.year);
               showIds.longest.push(yearObj.longestShowId);
               showIds.shortest.push(yearObj.shortestShowId);
@@ -60,7 +60,7 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function ($q, ShowFact
             },
             y: {
               tick: {
-                format: function format(y) {
+                format: (y) => {
                   var min = Math.floor(y / 60000);
                   var sec = Math.floor(y / 1000 % 60);
                   sec = sec < 10 ? '0' + sec : sec;
@@ -71,17 +71,19 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function ($q, ShowFact
           },
           tooltip: {
             format: {
-              name: function name(_name, ratio, id, index) {
-                if (['Longest', 'Shortest'].indexOf(_name) > -1) {
-                  var date = shows[_name.toLowerCase()][index].date.slice(5, 10).replace('-', '/');
-                  if (date[0] === '0') date = date.slice(1, date.length);
+              name: (name, ratio, id, index) => {
+                if(['Longest', 'Shortest'].indexOf(name) > -1) {
+                  var date = shows[name.toLowerCase()][index].date.slice(5, 10).replace('-', '/');
+                  if(date[0] === '0') date = date.slice(1, date.length);
                   return date;
                 } else return 'Average';
               }
             }
           }
         });
+
       }, true);
+      
     }
   };
 }]);
