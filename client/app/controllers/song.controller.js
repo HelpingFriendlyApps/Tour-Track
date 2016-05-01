@@ -6,6 +6,7 @@ angular.module('Tour-Track')
   $scope.song = song;
   TrackFactory.getTracksBySongId($scope.song.id).then( (tracks) => {
     $scope.song.performances = tracks;
+    console.log('$scope.song', $scope.song)
 
     ShowFactory.getAllShowYears().then( (years) => {
       $scope.playsPerYear = [];
@@ -16,12 +17,30 @@ angular.module('Tour-Track')
         $scope.lengthsByYear.push({ year: year, lengths: [] });
       });
 
+      $scope.biggestGap = {gap: 0, from: null, to: null};
+      var prevPerformance;
+
+
       $scope.song.performances.forEach( (performance) => {
         var year = performance.date.slice(0,4);
-        var index = years.indexOf(year);
-        $scope.playsPerYear[index].count++;
-        $scope.lengthsByYear[index].lengths.push({ showId: performance.show_id, length:  performance.duration });
+        var yearIdx = years.indexOf(year);
+
+        prevPerformance = prevPerformance || performance;
+        $scope.biggestGap.from = $scope.biggestGap.from || performance;
+
+        var gap = performance.show_number - prevPerformance.show_number;
+        if(gap > $scope.biggestGap.gap) {
+          $scope.biggestGap.gap = gap;
+          $scope.biggestGap.from = prevPerformance;
+          $scope.biggestGap.to = performance;
+        }
+
+        prevPerformance = performance;
+
+        $scope.playsPerYear[yearIdx].count++;
+        $scope.lengthsByYear[yearIdx].lengths.push({ showId: performance.show_id, length:  performance.duration });
       });
+
 
       $scope.lengthsByYear.forEach( (year) => {
         if(!year.lengths.length) return;
@@ -42,17 +61,23 @@ angular.module('Tour-Track')
         }, 0) / year.lengths.length);
       });
 
-      $scope.openSongControls = function($mdOpenMenu, ev) {
-        $mdOpenMenu(ev);
-      }
-
-      $scope.hoverIn = function() { this.hover = true; }
-      $scope.hoverOut = function() { this.hover = false; }
-
-      $scope.play = PlayerFactory.play;
-      $scope.addToPlaylist = PlayerFactory.addToPlaylist;
-      $scope.addToUpNext = PlayerFactory.addToUpNext;
-
     });
   });
+
+  ShowFactory.getLastShow().then( (lastShow) => {
+    $scope.lastShow = lastShow;
+  });
+
+  $scope.openSongControls = function($mdOpenMenu, ev) {
+    $mdOpenMenu(ev);
+  }
+
+  $scope.hoverIn = function() { this.hover = true; }
+  $scope.hoverOut = function() { this.hover = false; }
+
+  $scope.play = PlayerFactory.play;
+  $scope.upNext = PlayerFactory.upNext;
+  $scope.addToUpNext = PlayerFactory.addToUpNext;
+
+
 }]);

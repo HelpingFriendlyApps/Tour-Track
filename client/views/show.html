@@ -13,7 +13,7 @@
   <p>{{show.venue_name}}</p>
   <p>{{show.location}}</p>
   
-  <md-list>
+  <md-list flex='35'>
     <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
       <div class='md-list-item-text' layout='column'>
         <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>

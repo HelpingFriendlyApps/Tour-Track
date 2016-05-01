@@ -12,10 +12,6 @@ app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFact
     },
     link: function(scope, element, attrs) {
       
-      scope.toggleFullscreen = function() {
-        $rootScope.fullscreen = !$rootScope.fullscreen;
-      }
-
       scope.$watch('fullscreen', function(newVal, oldVal) {
         $rootScope.fullscreen ? $('.main').removeClass('bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('bounceInRight');
       }, true);
@@ -35,6 +31,13 @@ app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFact
       });
 
       function renderRandomShows() {
+
+        // For testing purposes
+        map.setCenter([-98.35, 39.5]);
+        return;
+
+        
+
         $interval.cancel(scope.randomShowInterval);
         var currentDate;
 
