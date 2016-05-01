@@ -4,8 +4,6 @@ var request = require('request-promise');
 var Users   = require('./Users')
 var ph = require('./Phish').Phishin();
 
-
-
 var Tours = module.exports = {
 
     getAllTours: function () {
