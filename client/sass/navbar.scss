@@ -17,4 +17,14 @@
       color: #434342;
     }
   }
+  .fullscreen-button {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    .md-button {
+      md-icon {
+        color: #DCDDD8;
+      }
+    }
+  }
 }

@@ -56,6 +56,14 @@
         </li> -->
       </ul>
 
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
+
+  <div class="fullscreen-button">
+    <md-button ng-click='toggleFullscreen()' class="md-icon-button">
+      <md-icon ng-hide="fullscreen" class="material-icons">layers</md-icon>
+      <md-icon ng-show="fullscreen" class="material-icons">layers_clear</md-icon>
+    </md-button>
+  </div>
+
 </nav>
