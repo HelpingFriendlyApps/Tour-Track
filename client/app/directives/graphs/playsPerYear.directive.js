@@ -10,12 +10,12 @@ app.directive('playsPerYear', [function() {
     },
     link: function(scope, element, attrs) {
 
-      scope.$watch('data', function(data) {
+      scope.$watch('data', (data) => {
         if(!data) return;
         var years = [];
         var counts = [];
 
-        data.forEach(function(d) {
+        data.forEach( (d) => {
           years.push(d.year);
           counts.push(d.count);
         });
@@ -39,7 +39,7 @@ app.directive('playsPerYear', [function() {
           axis: {
             x: {
               type: 'category',
-              categories: years.map(function(y) {
+              categories: years.map( (y) => {
                 return "'" + y.slice(2,4);
               }),
               tick: {

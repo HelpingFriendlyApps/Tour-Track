@@ -1,38 +1,40 @@
-'use strict'
+'use strict';
 
-app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFactory) {
+app.directive('songLengthsPerYear', ["$q", "ShowFactory", function ($q, ShowFactory) {
   return {
-    replace: true,
     restrict: 'E',
-    template: '<div id="splineGraph"></div>',
+    template: '<div id="splineChart"></div>',
     scope: {
       data: '='
     },
-    link: function(scope, element, attrs) {
+    link: function link(scope, element, attrs) {
 
       scope.$watch('data', (data) => {
-        if(!data) return;
+        if (!data) return;
         var lengthTypes = ['longestLength', 'avg', 'shortestLength'],
-          legendTypes = ['Longest', 'Average', 'Shortest'],
-          years = [],
-          showIds = {longest: [], shortest: []},
-          shows = {longest: [], shortest: []};
+            legendTypes = ['Longest', 'Average', 'Shortest'],
+            years = [],
+            showIds = { longest: [], shortest: [] },
+            shows = { longest: [], shortest: [] };
 
         var columns = lengthTypes.map( (type, i) => {
           var col = [legendTypes[i]];
+          
           data.some( (yearObj, i) => {
-            if(!yearObj.avg) return;
-            if(i >= years.length) {
+            if (!yearObj.avg) return;
+
+            if (i >= years.length) {
               years.push(yearObj.year);
               showIds.longest.push(yearObj.longestShowId);
               showIds.shortest.push(yearObj.shortestShowId);
             }
-            col.push(yearObj[type] || 0)
+            col.push(yearObj[type] || 0);
           });
           return col;
         });
 
         ['longest', 'shortest'].forEach( (key) => {
+          
           $q.all(showIds[key].map( (showId) => {
             var deffered = $q.defer();
             ShowFactory.getShowById(showId).then( (show) => {
@@ -42,18 +44,14 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
           })).then( (all) => {
             shows[key] = all;
           });
+
         });
 
         var chart = c3.generate({
-          bindto: '#splineGraph',
+          bindto: '#splineChart',
           data: {
             columns: columns,
-            type: 'spline',
-            colors: {
-              Longest: '#475F77',
-              Average: '#D74B4B',
-              Shortest: '#158A36'
-            }
+            type: 'spline'
           },
           axis: {
             x: {
@@ -62,7 +60,7 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
             },
             y: {
               tick: {
-                format: (y) => {
+                format: function format(y) {
                   var min = Math.floor(y / 60000);
                   var sec = Math.floor(y / 1000 % 60);
                   sec = sec < 10 ? '0' + sec : sec;
@@ -73,21 +71,17 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
           },
           tooltip: {
             format: {
-              name: function(name, ratio, id, index) {
-                if(['Longest', 'Shortest'].indexOf(name) > -1) {
-                  var date = (shows[name.toLowerCase()][index].date).slice(5,10).replace('-','/');
-                  if(date[0] === '0') date = date.slice(1, date.length);
+              name: function name(_name, ratio, id, index) {
+                if (['Longest', 'Shortest'].indexOf(_name) > -1) {
+                  var date = shows[_name.toLowerCase()][index].date.slice(5, 10).replace('-', '/');
+                  if (date[0] === '0') date = date.slice(1, date.length);
                   return date;
-                }
-                else return 'Average';
+                } else return 'Average';
               }
             }
           }
         });
-
-
       }, true);
-
     }
   };
 }]);

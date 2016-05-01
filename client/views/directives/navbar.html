@@ -1,6 +1,5 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -11,7 +10,6 @@
       <a class="navbar-brand" ui-sref='home'>Home</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li ui-sref-active="active"><a ui-sref="profile" ng-click='fullscreenToFalse()'>Profile <span class="sr-only">(current)</span></a></li>
@@ -54,16 +52,15 @@
             <li><a href="#">Separated link</a></li>
           </ul>
         </li> -->
+
+        <li>
+          <md-button ng-click='toggleFullscreen()' class="fullscreen-btn md-icon-button">
+            <md-icon ng-hide="fullscreen" class="material-icons">layers</md-icon>
+            <md-icon ng-show="fullscreen" class="material-icons">layers_clear</md-icon>
+          </md-button>
+        </li>
       </ul>
 
     </div>
   </div>
-
-  <div class="fullscreen-button">
-    <md-button ng-click='toggleFullscreen()' class="md-icon-button">
-      <md-icon ng-hide="fullscreen" class="material-icons">layers</md-icon>
-      <md-icon ng-show="fullscreen" class="material-icons">layers_clear</md-icon>
-    </md-button>
-  </div>
-
 </nav>
