@@ -1,5 +1,16 @@
 <div class='shows-state'>
 
+  <div>
+    <md-input-container>
+      <label>Show Venue</label>
+      <input ng-model="filter.venue"></input>
+    </md-input-container>
+    <md-input-container>
+      <label>Show Location</label>
+      <input ng-model="filter.location"></input>
+    </md-input-container>
+  </div>
+
   <md-list>
     <md-virtual-repeat-container>
       <md-list-item md-virtual-repeat='show in shows' class='md-2-line' ng-click='null' ui-sref='show({date: show.date})' md-on-demand='' aria-label='goToShow' ng-mouseenter='showMap=true' ng-mouseleave='showMap=false'>
