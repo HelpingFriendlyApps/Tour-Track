@@ -68,11 +68,16 @@ angular.module('Tour-Track')
     getAllShowYears: function() {
       var years = [];
       return $http.get('/tours').then(function(tours) {
-        tours.data.forEach(function(tour) {
+        tours.data.forEach( (tour) => {
           var startYear = tour.starts_on.slice(0,4);
-          if(years.indexOf(startYear) < 0) years.push(startYear);
           var endYear = tour.ends_on.slice(0,4);
+
+          if(years.indexOf(startYear) < 0) years.push(startYear);
           if(years.indexOf(endYear) < 0) years.push(endYear);
+
+          years.sort( (a,b) => {
+            return a - b;
+          });
         });
         return years;
       });
