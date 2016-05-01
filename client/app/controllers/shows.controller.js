@@ -4,21 +4,20 @@ angular.module('Tour-Track')
 .controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', 'VenueFactory', '$timeout', function($scope, allShows, ShowFactory, VenueFactory, $timeout) {
 
   var years = [];
+  $scope.filter = { date: "", venue: "", location: "" };
 
-  console.log('allShows', allShows)
-
-  $scope.filter = { venue: "", location: "" };
-
-  $scope.$watch('filter', function(filter) {
-    console.log('filter', filter)
+  $scope.$watch('filter', (filter) => {
     years = [];
 
-    var filteredShows = allShows.filter(function(show) {
-      return show.location.toLowerCase().indexOf(filter.location.toLowerCase()) > -1 && show.venue_name.toLowerCase().indexOf(filter.venue.toLowerCase()) > -1;
+    var dateString = filter.date ? filter.date.toISOString().slice(0,10) : ""
+
+    var filteredShows = allShows.filter( (show) => {
+      return show.date.slice(0,10).indexOf(dateString) > -1 
+        && show.location.toLowerCase().indexOf(filter.location.toLowerCase()) > -1 
+        && show.venue_name.toLowerCase().indexOf(filter.venue.toLowerCase()) > -1;
     });
 
     $scope.shows = new Shows(filteredShows);
-    console.log('$scope.shows', $scope.shows)
   }, true);
 
 

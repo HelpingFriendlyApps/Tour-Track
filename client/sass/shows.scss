@@ -1,6 +1,11 @@
 .shows-state {
   height: 100%;
 
+  md-datepicker {
+    margin-top: 13px;
+    background: none;
+  }
+
   md-list {
     height: 600px;
     height: 100%;
