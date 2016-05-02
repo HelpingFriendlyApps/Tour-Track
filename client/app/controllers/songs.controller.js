@@ -3,7 +3,7 @@
 angular.module('Tour-Track')
 .controller('SongsCtrl', ['$scope', 'allSongs', '$timeout', function($scope, allSongs, $timeout) {
 
-  $scope.$watch('filter', (filter) => {
+  $scope.$watch('songFilter', (filter) => {
     filter = filter || "";
     var filteredSongs = allSongs.filter( (song) => {
       return song.title.toLowerCase().indexOf(filter.toLowerCase()) > -1;
