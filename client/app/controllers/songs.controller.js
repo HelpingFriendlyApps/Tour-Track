@@ -39,9 +39,7 @@ angular.module('Tour-Track')
   };
 
   Songs.prototype.fetchNumItems = function() {
-    $timeout(angular.noop, 300).then(angular.bind(this, function() {
-      this.numItems = this.songCollection.length;
-    }));
+    this.numItems = this.songCollection.length;
   };
 
 }]);
