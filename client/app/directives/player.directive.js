@@ -45,7 +45,6 @@ app.directive('player', ["$rootScope", "$sessionStorage", function($rootScope, $
       });
 
       scope.$watch('volume', function(volume) {
-        if(!volume) return;
         audio.volume = volume / 100;
       });
 
