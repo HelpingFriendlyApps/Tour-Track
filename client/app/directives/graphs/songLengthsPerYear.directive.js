@@ -1,9 +1,9 @@
-'use strict'
+'use strict';
 
-app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFactory) {
+app.directive('songLengthsPerYear', ["$q", "ShowFactory", function ($q, ShowFactory) {
   return {
     restrict: 'E',
-    template: '<div id="chart"></div>',
+    template: '<div id="splineChart"></div>',
     scope: {
       data: '='
     },
@@ -14,24 +14,27 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
         var lengthTypes = ['longestLength', 'avg', 'shortestLength'],
           legendTypes = ['Longest', 'Average', 'Shortest'],
           years = [],
-          showIds = {longest: [], shortest: []},
-          shows = {longest: [], shortest: []};
+          showIds = { longest: [], shortest: [] },
+          shows = { longest: [], shortest: [] };
 
         var columns = lengthTypes.map( (type, i) => {
           var col = [legendTypes[i]];
+          
           data.some( (yearObj, i) => {
             if(!yearObj.avg) return;
+
             if(i >= years.length) {
               years.push(yearObj.year);
               showIds.longest.push(yearObj.longestShowId);
               showIds.shortest.push(yearObj.shortestShowId);
             }
-            col.push(yearObj[type] || 0)
+            col.push(yearObj[type] || 0);
           });
           return col;
         });
 
         ['longest', 'shortest'].forEach( (key) => {
+          
           $q.all(showIds[key].map( (showId) => {
             var deffered = $q.defer();
             ShowFactory.getShowById(showId).then( (show) => {
@@ -41,9 +44,11 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
           })).then( (all) => {
             shows[key] = all;
           });
+
         });
 
         var chart = c3.generate({
+          bindto: '#splineChart',
           data: {
             columns: columns,
             type: 'spline'
@@ -66,21 +71,19 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function($q, ShowFacto
           },
           tooltip: {
             format: {
-              name: function(name, ratio, id, index) {
+              name: (name, ratio, id, index) => {
                 if(['Longest', 'Shortest'].indexOf(name) > -1) {
-                  var date = (shows[name.toLowerCase()][index].date).slice(5,10).replace('-','/');
+                  var date = shows[name.toLowerCase()][index].date.slice(5, 10).replace('-', '/');
                   if(date[0] === '0') date = date.slice(1, date.length);
                   return date;
-                }
-                else return 'Average';
+                } else return 'Average';
               }
             }
           }
         });
 
-
       }, true);
-
+      
     }
   };
 }]);

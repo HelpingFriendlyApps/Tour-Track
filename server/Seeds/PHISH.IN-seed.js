@@ -55,20 +55,26 @@ function seedVenues(){
 }
 
 function seedShows(){
-    ph.getShows(null, ['per_page=3000']).then(function(x){
-        var data = JSON.parse(x).data;
-        data.map( (show) => {
-            var showModel = {
-                    date: show.date,
-                    id: show.id,
-                    tour_id: show.tour_id,
-                    venue_id:  show.venue_id,
-                    duration: show.duration,
-                    created_at: new Date()
-                }
-            Shows.updateOrCreate(showModel);
-        })
+  ph.getShows(null, ['per_page=3000']).then(function(x){
+    var data = JSON.parse(x).data;
+
+    data.sort( (a,b) => {
+      return new Date(a.date) - new Date(b.date);
+    });
+    
+    data.map( (show, index) => {
+      var showModel = {
+        date: show.date,
+        id: show.id,
+        show_number: ++index,
+        tour_id: show.tour_id,
+        venue_id:  show.venue_id,
+        duration: show.duration,
+        created_at: new Date()
+      }
+      Shows.updateOrCreate(showModel);
     })
+  })
 }
 
 function seedTracks(){

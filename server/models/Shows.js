@@ -25,6 +25,12 @@ var Shows = module.exports = {
         .join('tours', 'tours.id', 'shows.tour_id');
     },
 
+    getLastShow: function(){
+        return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location')
+        .orderBy('date', 'desc')
+        .join('venues', 'venues.id', 'shows.venue_id');
+    },
+
     getRandomShowOnTodaysDate: function() {
          return db('shows').first('shows.*', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location', 'tours.name as tour_name', 'tours.starts_on as tour_starts_on', 'tours.ends_on as tour_ends_on')
         .where(db.raw("EXTRACT(DAY FROM date) = EXTRACT(DAY FROM NOW()) AND EXTRACT(MONTH FROM date) = EXTRACT(MONTH FROM NOW())"))

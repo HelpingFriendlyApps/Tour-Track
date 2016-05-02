@@ -5,19 +5,27 @@ html, body {
   overflow: hidden;
 }
 
-body > .container {
+body > .container-fluid {
   height: 100%;
-  margin-top: 75px;
-  margin-bottom: 75px;
-  padding: 10px;
-  overflow: auto;
-  
-  border: 1px solid black;
-  background-image: url('assets/background-texture.jpg');
-
+  margin: 75px 30px 55px 30px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   z-index: 0;
+  background: rgba(220,221,216,0.1);
+  overflow-y: auto;
+
+  &:before {
+    content: '';
+    background: url('http://api.thumbr.it/whitenoise-361x370.png?');
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    opacity: 0.2;
+    z-index: -1;
+  }
 
   ui-view {
     display: flex;
@@ -25,6 +33,10 @@ body > .container {
     flex-grow: 1;
     height: 100%;
   }
+}
+
+md-menu-content {
+  padding: 0;
 }
 
 
