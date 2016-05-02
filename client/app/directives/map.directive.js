@@ -35,6 +35,11 @@ app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFact
       });
 
       function renderRandomShows() {
+
+        // For testing purposes
+        map.setCenter([-98.35, 39.5]);
+        return;
+
         $interval.cancel(scope.randomShowInterval);
         var currentDate;
 
