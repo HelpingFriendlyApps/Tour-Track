@@ -11,7 +11,7 @@
         token='mapboxToken'
         coordinates='map.coordinates'
         fullscreen='fullscreen'></map>
-    <div class="container main">
+    <div class="container-fluid main">
         <ui-view></ui-view>
     </div>
     <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
@@ -49,8 +49,6 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
 
-    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-
     <link href="./lib/c3/c3.css" rel="stylesheet" type="text/css">
     <script src="./lib/d3/d3.min.js" charset="utf-8"></script>
     <script src="./lib/c3/c3.min.js"></script>
@@ -68,14 +66,14 @@
     <script src="dist/controllers/songs.controller.js"></script>
     <script src="dist/controllers/root.controller.js"></script>
 
-
-    <script src="dist/directives/barChart.directive.js"></script>
     <script src="dist/directives/map.directive.js"></script>
     <script src="dist/directives/navbar.directive.js"></script>
     <script src="dist/directives/player.directive.js"></script>
     <script src="dist/directives/scrollTo.directive.js"></script>
-    <script src="dist/directives/songLengthsPerByear.directive.js"></script>
     <script src="dist/directives/throbber.directive.js"></script>
+    
+    <script src="dist/directives/graphs/playsPerYear.directive.js"></script>
+    <script src="dist/directives/graphs/songLengthsPerYear.directive.js"></script>
 
     <script src="dist/factories/player.factory.js"></script>
     <script src="dist/factories/profile.factory.js"></script>
