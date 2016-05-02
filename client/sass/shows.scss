@@ -1,6 +1,32 @@
 .shows-state {
   height: 100%;
 
+  .md-inline-form {
+    height: 70px;
+  }
+
+  md-datepicker {
+    margin-top: 22px;
+    margin-right: 20px;
+    background: none;
+    padding: 0;
+    .md-datepicker-button {
+      display: none;
+    }
+    .md-datepicker-input-container, .md-datepicker-invalid {
+      border-bottom-color: #DCDDD8;
+    }
+  }
+
+  md-input-container {
+    margin-right: 20px;
+    input, label {
+      font-family: Roboto,"Helvetica Neue",sans-serif;
+      font-weight: 400;
+      border-color: #DCDDD8;
+    }
+  }
+
   md-list {
     height: 600px;
     height: 100%;
@@ -38,6 +64,9 @@
       height: 36px;
       p {
         padding-left: 10px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
