@@ -6,6 +6,13 @@ var ph = require('../models/Phish').Phishin();
 
 var router = module.exports = express.Router();
 
+
+router.get('/', function(req, res, next) {
+    Shows.getAllShows().then( (x) => {
+        res.send(x);
+    });
+});
+
 function getRandomShow(res) {
     Shows.getRandomShowId().then( (x) => {
         var randomId = Math.floor(Math.random() * x.max) + x.min;
@@ -22,12 +29,6 @@ router.get('/random', function(req, res, next) {
     getRandomShow(res);
 });
 
-router.get('/', function(req, res, next) {
-    Shows.getAllShows().then( (x) => {
-        res.send(x);
-    });
-});
-
 router.get('/randomFromToday', function(req, res, next) {
     Shows.getRandomShowOnTodaysDate().then( (x) => {
         if(x === undefined){
@@ -35,6 +36,12 @@ router.get('/randomFromToday', function(req, res, next) {
         } else {
            res.send(x);
         }
+    });
+});
+
+router.get('/lastShow', function(req, res, next) {
+    Shows.getLastShow().then( (x) => {
+        res.send(x);
     });
 });
 

@@ -6,9 +6,14 @@
   -webkit-box-shadow: inset 0 0 15px #333332;
   box-shadow: inset 0 0 15px #333332;
 
+  .container-fluid {
+    padding: 0 30px;
+  }
+
   .navbar-header > a, .nav > li > a {
     color: #DCDDD8;
   }
+
   .nav > li.active > a {
     background: #5D5D5B;
     color: #DCDDD8;
@@ -17,4 +22,12 @@
       color: #434342;
     }
   }
+
+  .fullscreen-btn {
+    margin-top: 5px;
+    md-icon {
+      color: #DCDDD8;
+    }
+  }
+
 }
