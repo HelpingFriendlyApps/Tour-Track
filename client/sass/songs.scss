@@ -13,31 +13,14 @@
       border: 1px solid black;
     }
 
-    // .md-list-item-inner {
-    //   min-height: 36px;
-    // }
+    .md-list-item-inner {
+      min-height: 36px;
+    }
+
+    md-list-item {
+      height: 36px;
+      min-height: 36px;
+    }
   }
-
-  // md-list {
-  //   min-height: 400px;
-  //   max-height: 80%;
-  //   overflow-y: scroll;
-  //   border: 1px solid black;
-  //   background: white;
-  //   padding: 0;
-  // }
-
-  // md-list-item {
-  //   height: 32px;
-  //   min-height: 100%;
-  //   padding: 0;
-  //   a.md-button {
-  //     margin: 0;
-  //     padding: 0;
-  //   }
-  //   .md-list-item-inner {
-  //     padding: 4px 16px;
-  //   }
-  // }
 
 }

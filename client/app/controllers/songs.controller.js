@@ -3,17 +3,18 @@
 angular.module('Tour-Track')
 .controller('SongsCtrl', ['$scope', 'allSongs', '$timeout', function($scope, allSongs, $timeout) {
 
-  // $scope.songs = allSongs;
-
-  console.log('allSongs', allSongs)
-
-
+  $scope.$watch('filter', (filter) => {
+    filter = filter || "";
+    var filteredSongs = allSongs.filter( (song) => {
+      return song.title.toLowerCase().indexOf(filter.toLowerCase()) > -1;
+    });
+    $scope.songs = new Songs(filteredSongs);
+  });
 
 
   var Songs = function(songCollection) {
     this.loadedPages = {};
     this.numItems = 0;
-    // this.pageSize = 50;
     this.pageSize = (songCollection.length < 50) ? songCollection.length : 50;
     this.songCollection = songCollection;
     this.fetchNumItems();
@@ -34,17 +35,13 @@ angular.module('Tour-Track')
   Songs.prototype.fetchPage = function(pageNumber) {
     var self = this.loadedPages[pageNumber] = [];
     var songChunk = this.songCollection.slice(pageNumber * this.pageSize, ++pageNumber * this.pageSize);
-    console.log('songChunk', songChunk)
     self.push(...songChunk);
   };
 
   Songs.prototype.fetchNumItems = function() {
     $timeout(angular.noop, 300).then(angular.bind(this, function() {
       this.numItems = this.songCollection.length;
-      console.log('this.numItems', this.numItems)
     }));
   };
-
-  $scope.songs = new Songs(allSongs);
 
 }]);
