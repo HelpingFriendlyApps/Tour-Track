@@ -8,7 +8,6 @@ angular.module('Tour-Track')
 
   $scope.$watch('filter', (filter) => {
     years = [];
-
     var dateString = filter.date ? filter.date.toISOString().slice(0,10) : ""
 
     var filteredShows = allShows.filter( (show) => {
