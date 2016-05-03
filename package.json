@@ -38,7 +38,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "bower install",
-    "start": "grunt && ./node_modules/.bin/nodemon server/index.js --ignore client/ --ignore node_modules/",
+    "start": "grunt",
     "test": "./test/run.sh"
   },
   "bugs": {
