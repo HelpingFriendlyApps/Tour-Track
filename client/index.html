@@ -6,7 +6,7 @@
   </head>
   
   <body ng-app="Tour-Track" ng-controller="RootController">
-    <navbar id="navbar" fullscreen='fullscreen'></navbar>
+    <navbar id="navbar"></navbar>
     <map ng-if="mapboxToken.length > 0"
         token='mapboxToken'
         coordinates='map.coordinates'
@@ -73,6 +73,7 @@
     <script src="dist/directives/throbber.directive.js"></script>
     
     <script src="dist/directives/graphs/playsPerYear.directive.js"></script>
+    <script src="dist/directives/graphs/showsPerYear.directive.js"></script>
     <script src="dist/directives/graphs/songLengthsPerYear.directive.js"></script>
 
     <script src="dist/factories/player.factory.js"></script>
