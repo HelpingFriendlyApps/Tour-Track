@@ -12,8 +12,27 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/prev/:name', function(req, res, next){
+  var songName = req.params.name;
+  getNeighboringShowByname(songName, 'DESC').then( (song) => {
+    if(song){
+      res.send(song);
+    }
+  });
+});
+
+router.get('/next/:name', function(req, res, next){
+  var songName = req.params.name;
+  getNeighboringShowByname(songName, 'ASC').then( (song) => {
+    if(song){
+      res.send(song);
+    }
+  });
+});
+
 router.get('/:songId', function(req, res, next) {
   Songs.getSongById(req.params.songId).then(function(x) {
     res.send(x)
   });
+
 });
