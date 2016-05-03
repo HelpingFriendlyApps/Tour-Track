@@ -13,14 +13,14 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/prev/:name', function(req, res, next){
-  var songName = req.params.name;
+  const songName = req.params.name;
   Songs.getNeighboringShowByname(songName, 'prev').then( (song) => {
       res.send(song);
   });
 });
 
 router.get('/next/:name', function(req, res, next){
-  var songName = req.params.name;
+  const songName = req.params.name;
   Songs.getNeighboringShowByname(songName, 'next').then( (song) => {
       res.send(song);
   });

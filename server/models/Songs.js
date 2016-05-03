@@ -28,8 +28,8 @@ var Songs = module.exports = {
 
 
     getNeighboringShowByname: function(name, dir) {
-        var greaterLess = dir === "next" ? ">" : "<";
-        var orderDirection = dir === "next" ? "ASC" : "DESC";
+        const greaterLess = dir === "next" ? ">" : "<";
+        const orderDirection = dir === "next" ? "ASC" : "DESC";
         return db.raw("SELECT * FROM songs WHERE title " + greaterLess + " '" + name  + "' ORDER BY title " + orderDirection + " LIMIT 1");
     },
 
