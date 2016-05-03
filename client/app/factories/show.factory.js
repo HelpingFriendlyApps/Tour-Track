@@ -17,6 +17,18 @@ angular.module('Tour-Track')
       });
     },
 
+    getNextShowByName: function(showName) {
+      return $http.get('/shows/next/' + showName).then(function(show) {
+        return show.data;
+      });
+    },
+
+    getPrevShowByName: function(showName) {
+      return $http.get('/shows/prev/' + showName).then(function(show) {
+        return show.data;
+      });
+    },
+
     getShowByDate: function(date) {
       return $http.get('/shows/date/' + date.slice(0,10)).then(function(show) {
         return show.data;
