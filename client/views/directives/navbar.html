@@ -38,9 +38,9 @@
       </form> -->
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-show='user'><a href="logout">Logout</a></li>
-        <li ng-show='user'><a href="#">Signed in as: {{user.name}}</a></li>
         <li ng-show='!user'><a ui-sref="login">Login</a></li>
+        <li ng-show='user'><a ui-sref="profile">Signed in as: {{user.name}}</a></li>
+        <li ng-show='user'><a href="logout">Logout</a></li>
 
         <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>

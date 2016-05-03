@@ -5,9 +5,6 @@ angular.module('Tour-Track').directive('navbar', ['$rootScope', function($rootSc
     replace: true,
     restrict: 'E',
     templateUrl: '../views/directives/navbar.html',
-    scope: {
-      fullscreen: '='
-    },
     link: function(scope, element, attrs) {
 
       scope.toggleFullscreen = function() {

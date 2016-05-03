@@ -19,7 +19,7 @@ angular.module('Tour-Track')
 
     userSongs : function(id){
       return $http.get('/users/shows/songs/' + id).then(function(x){
-        return x;
+        return x.data;
       });
     },
 

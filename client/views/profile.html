@@ -1,4 +1,87 @@
 <div class="profile-state">
+  <div layout="column" layout-align="start start">
+    
+    <div flex="100" layout="row" layout-align="start start" layout-padding>
+      <section>
+        <form ng-submit="submitPhishAccountDeets(user.uid)">
+          <md-input-container>
+            <label>Phish.net Username</label>
+            <input ng-model="phishNetUsername"></input>
+          </md-input-container>
+          <md-button type="submit">Submit</md-button>
+        </form>
+      </section>
+    </div>
+
+    <div flex="100" layout="row" layout-align="start start">
+      
+      <div flex="50" layout="column" layout-align="start start" layout-padding>
+        <section>
+        <h3>Your Shows</h2>
+          <md-list>
+            <md-list-item ng-repeat="show in userShows track by $index">
+              <div flex layout='row' layout-align='start center'>
+                <p flex="33">
+                  <a ui-sref="show({date: song.performances[0].date})">{{ show.showdate | date:'MM/dd/yyyy' }}</a>
+                </p>
+                <p flex="33">{{ show.venuename }}</p>
+                <p flex="33">
+                  <span>{{ show.city }}, </span>
+                  <span>{{ show.state }}<span ng-show="show.country !== 'USA'">,</span></span>
+                  <span ng-show="show.country !== 'USA'">{{ show.country }}</span>
+                </p>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </section>
+      </div>
+
+      <div flex="50" layout="column" layout-align="start start" layout-padding>
+        <section>
+          <h3>Your Songs</h2>
+            <md-list>
+              <md-list-item ng-repeat="song in userSongs track by $index">
+                <div flex layout='row' layout-align='start center'>
+                  <p flex="50">{{song[0]}}</p>
+                  <p flex="50">{{song[1]}}</p>
+                </div>
+                <md-divider></md-divider>
+              </md-list-item>
+            </md-list>
+        </section>
+      </div>
+    </div>
+
+    <div flex="100" layout="row" layout-align="start start" layout-padding>
+      <section>
+        <shows-per-month all-shows="allShows" user-shows="userShows"></shows-per-month>
+      </section>
+    </div>
+    
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class="profile-state">
+
+<div class="col-md-12">
+  <form ng-submit="submitPhishAccountDeets(user.uid)">
+    <md-input-container>
+      <label>Phish.net Username</label>
+      <input ng-model="phishNetUsername"></input>
+    </md-input-container>
+    <md-button type="submit">Submit</md-button>
+  </form>
+</div>
+
   <div class='user col-md-1'>
     {{user.name}}
     <br>
@@ -54,4 +137,4 @@
       </tbody>
     </table>
   </div>
-</div>
+</div> -->

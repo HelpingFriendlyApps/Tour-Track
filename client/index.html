@@ -6,7 +6,7 @@
   </head>
   
   <body ng-app="Tour-Track" ng-controller="RootController">
-    <navbar id="navbar" fullscreen='fullscreen'></navbar>
+    <navbar id="navbar"></navbar>
     <map ng-if="mapboxToken.length > 0"
         token='mapboxToken'
         coordinates='map.coordinates'
@@ -54,46 +54,47 @@
     <script src="./lib/c3/c3.min.js"></script>
 
 
-    <script src="dist/app.js"></script>
-    <script src="dist/config.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/config.js"></script>
 
-    <script src="dist/controllers/home.controller.js"></script>
-    <script src="dist/controllers/login.controller.js"></script>
-    <script src="dist/controllers/profile.controller.js"></script>
-    <script src="dist/controllers/show.controller.js"></script>
-    <script src="dist/controllers/shows.controller.js"></script>
-    <script src="dist/controllers/song.controller.js"></script>
-    <script src="dist/controllers/songs.controller.js"></script>
-    <script src="dist/controllers/root.controller.js"></script>
+    <script src="app/controllers/home.controller.js"></script>
+    <script src="app/controllers/login.controller.js"></script>
+    <script src="app/controllers/profile.controller.js"></script>
+    <script src="app/controllers/show.controller.js"></script>
+    <script src="app/controllers/shows.controller.js"></script>
+    <script src="app/controllers/song.controller.js"></script>
+    <script src="app/controllers/songs.controller.js"></script>
+    <script src="app/controllers/root.controller.js"></script>
 
-    <script src="dist/directives/map.directive.js"></script>
-    <script src="dist/directives/navbar.directive.js"></script>
-    <script src="dist/directives/player.directive.js"></script>
-    <script src="dist/directives/scrollTo.directive.js"></script>
-    <script src="dist/directives/throbber.directive.js"></script>
+    <script src="app/directives/map.directive.js"></script>
+    <script src="app/directives/navbar.directive.js"></script>
+    <script src="app/directives/player.directive.js"></script>
+    <script src="app/directives/scrollTo.directive.js"></script>
+    <script src="app/directives/throbber.directive.js"></script>
     
-    <script src="dist/directives/graphs/playsPerYear.directive.js"></script>
-    <script src="dist/directives/graphs/songLengthsPerYear.directive.js"></script>
+    <script src="app/directives/graphs/playsPerYear.directive.js"></script>
+    <script src="app/directives/graphs/showsPerMonth.directive.js"></script>
+    <script src="app/directives/graphs/songLengthsPerYear.directive.js"></script>
 
-    <script src="dist/factories/player.factory.js"></script>
-    <script src="dist/factories/profile.factory.js"></script>
-    <script src="dist/factories/show.factory.js"></script>
-    <script src="dist/factories/song.factory.js"></script>
-    <script src="dist/factories/tour.factory.js"></script>
-    <script src="dist/factories/track.factory.js"></script>
-    <script src="dist/factories/venue.factory.js"></script>
-    <script src="dist/factories/creds.factory.js"></script>
+    <script src="app/factories/player.factory.js"></script>
+    <script src="app/factories/profile.factory.js"></script>
+    <script src="app/factories/show.factory.js"></script>
+    <script src="app/factories/song.factory.js"></script>
+    <script src="app/factories/tour.factory.js"></script>
+    <script src="app/factories/track.factory.js"></script>
+    <script src="app/factories/venue.factory.js"></script>
+    <script src="app/factories/creds.factory.js"></script>
     
-    <script src="dist/filters/millisecondsToDate.filter.js"></script>
-    <script src="dist/filters/secondsToDate.filter.js"></script>
+    <script src="app/filters/millisecondsToDate.filter.js"></script>
+    <script src="app/filters/secondsToDate.filter.js"></script>
 
-    <script src="dist/states/home.state.js"></script>
-    <script src="dist/states/login.state.js"></script>
-    <script src="dist/states/profile.state.js"></script>
-    <script src="dist/states/show.state.js"></script>
-    <script src="dist/states/shows.state.js"></script>
-    <script src="dist/states/song.state.js"></script>
-    <script src="dist/states/songs.state.js"></script>
+    <script src="app/states/home.state.js"></script>
+    <script src="app/states/login.state.js"></script>
+    <script src="app/states/profile.state.js"></script>
+    <script src="app/states/show.state.js"></script>
+    <script src="app/states/shows.state.js"></script>
+    <script src="app/states/song.state.js"></script>
+    <script src="app/states/songs.state.js"></script>
 
     <link rel="stylesheet" type="text/css" href="main.css">
   </footer>

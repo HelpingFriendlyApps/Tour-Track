@@ -6,7 +6,11 @@ angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", fun
     url: '/profile/',
     templateUrl: '../views/profile.html',
     controller: 'ProfileCtrl',
-    resolve: {}
+    resolve: {
+      allShows: function(ShowFactory) {
+        return ShowFactory.getAllShows();
+      }
+    }
   });
 
 }]);
