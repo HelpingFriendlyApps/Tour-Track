@@ -14,14 +14,14 @@ router.get('/', function(req, res, next) {
 
 router.get('/prev/:name', function(req, res, next){
   var songName = req.params.name;
-  Songs.getNeighboringShowByname(songName, 'DESC').then( (song) => {
+  Songs.getNeighboringShowByname(songName, 'prev').then( (song) => {
       res.send(song);
   });
 });
 
 router.get('/next/:name', function(req, res, next){
   var songName = req.params.name;
-  Songs.getNeighboringShowByname(songName, 'ASC').then( (song) => {
+  Songs.getNeighboringShowByname(songName, 'next').then( (song) => {
       res.send(song);
   });
 });
