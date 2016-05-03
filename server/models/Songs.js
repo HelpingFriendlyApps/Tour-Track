@@ -26,6 +26,14 @@ var Songs = module.exports = {
         return tempObj;
     },
 
+
+    getNeighboringShowByName: function(name, dir) {
+        const greaterLess = dir === "next" ? ">" : "<";
+        const orderDirection = dir === "next" ? "ASC" : "DESC";
+        
+        return db.raw("SELECT * FROM songs WHERE title " + greaterLess + " '" + name  + "' ORDER BY title " + orderDirection + " LIMIT 1");
+    },
+
     updateOrCreate : function(attrs){
         return Songs.update(attrs).catch(Songs.create(attrs));
     },
