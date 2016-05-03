@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     },
     watch: {
       scripts: {
-        files: ['client/app/**/*.js'],
+        files: ['client/app/**/*.js', 'server/**/*.js'],
         tasks: ['babel']
       }
     }
