@@ -28,7 +28,8 @@ var Songs = module.exports = {
 
 
     getNeighboringShowByname: function(name, dir) {
-        return db.raw("SELECT * FROM shows WHERE title < '" + name  + "' ORDER BY title " + dir + " LIMIT 1");
+        var greaterLess = dir === "ASC" ? ">" : "<";
+        return db.raw("SELECT * FROM songs WHERE title " + greaterLess + " '" + name  + "' ORDER BY title " + dir + " LIMIT 1");
     },
 
     updateOrCreate : function(attrs){
