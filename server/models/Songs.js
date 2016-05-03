@@ -26,6 +26,11 @@ var Songs = module.exports = {
         return tempObj;
     },
 
+
+    getNeighboringShowByname: function(name, dir) {
+        return db.raw("SELECT * FROM shows WHERE title < '" + name  + "' ORDER BY title " + dir + " LIMIT 1");
+    },
+
     updateOrCreate : function(attrs){
         return Songs.update(attrs).catch(Songs.create(attrs));
     },
