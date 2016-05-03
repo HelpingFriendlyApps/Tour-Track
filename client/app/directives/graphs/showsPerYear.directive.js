@@ -26,32 +26,23 @@ app.directive('showsPerYear', [function() {
           bindto: '#showsPerYear',
           data: {
             columns: [
-              ['all'].concat(allShowsPerYear.map( (year) => {
-                return year.count;
-              })),
-              ['user'].concat(yearDiff).concat(userShowsPerYear.map( (year) => {
-                return year.count;
-              }))
+              ['all'].concat(allShowsPerYear.map( (year) => { return year.count; })),
+              ['user'].concat(yearDiff).concat(userShowsPerYear.map( (year) => { return year.count; }))
             ],
             type: 'area-spline'
           }
         });
 
-
-
       }, true);
 
 
-
       function parser(shows) {
-        var showsPerYear = [];
+        var showsPerYear = [], prevYear, yearObj;
 
         var YearObj = function(year) {
           this.year = year,
           this.count = 0
         }
-
-        var prevYear, yearObj;
 
         shows.forEach( (show, i) => {
           if(show.showdate) show.showdate += 'T05:00:00.000Z';
@@ -64,21 +55,16 @@ app.directive('showsPerYear', [function() {
             while(++prevYear < currYear) {
               showsPerYear.push(new YearObj(prevYear));
             }
-
             yearObj = new YearObj(currYear);
           }
-
+          
           yearObj.count++;
           prevYear = currYear;
           if(i === shows.length - 1) showsPerYear.push(yearObj);
-
         });
 
         return showsPerYear;
-
       }
-
-
 
     }
   };
