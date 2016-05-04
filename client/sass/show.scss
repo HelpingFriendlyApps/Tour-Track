@@ -18,7 +18,6 @@
     md-list-item {
       min-height: 100%;
       padding: 0;
-      outline: none;
       .md-subheader {
         height: 48px;
         background: rgba(0,0,0,0.1);
@@ -27,9 +26,12 @@
         max-height: 30px;
         height: 30px;
         padding: 4px 16px;
+        outline: none;
         .current-song-icon {
+          color: #5D5D5B;
           font-size: 2rem;
           line-height: 1.25em;
+          vertical-align: middle;
         }
         .md-button {
           width: 28px;
