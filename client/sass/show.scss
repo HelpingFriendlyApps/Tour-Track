@@ -1,6 +1,4 @@
 .show-container {
-  // height: 100%;
-  // max-height: 100%;
 
   section {
     &.list {
@@ -10,12 +8,6 @@
 
   md-list {
     max-height: 100%;
-    // background: white;
-    // border: 1px solid black;
-    // padding: 0;
-    // min-height: 400px;
-    // max-height: 80%;
-    // overflow-y: scroll;
     md-list-item {
       min-height: 100%;
       padding: 0;
