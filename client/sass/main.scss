@@ -7,13 +7,13 @@ html, body {
 
 body > .container-fluid {
   height: 100%;
-  margin: 75px 30px 55px 30px;
-  padding: 0;
+  margin: 75px 30px;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   z-index: 0;
   background: rgba(220,221,216,0.1);
-  overflow-y: auto;
+  overflow-y: hidden;
 
   &:before {
     content: '';
@@ -32,6 +32,10 @@ body > .container-fluid {
     flex-direction: column;
     flex-grow: 1;
     height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
   }
 }
 
@@ -47,12 +51,17 @@ h1, h3 {
   width: 100%;
 }
 
+.layout-padding {
+  padding: 5px;
+}
+
 section {
   height: 100%;
   width: 100%;
   padding: 10px;
   background: rgba(220,221,216,0.9);
   border-radius: 1px;
+  border-top: 5px solid rgba(151,53,53,0.7);
   &.song-info {
     p { margin: 0 0 3px; }
     strong { margin-right: 3px; }
@@ -65,7 +74,7 @@ section {
 
 md-list {
   height: 100%;
-  max-height: 560px;
+  max-height: 510px;
   overflow-y: scroll;
   padding: 0;
 }
@@ -75,6 +84,9 @@ md-list-item {
   min-height: 100%;
   padding: 0 10px;
   outline: none;
+  &:nth-of-type(odd) {
+    background: rgba(67,67,66,0.05);
+  }
   p {
     margin: 0;
     white-space: nowrap;
