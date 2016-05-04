@@ -1,12 +1,10 @@
 'use strict';
 
-app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "$document", "$timeout", "PlayerFactory", function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, PlayerFactory) {
+app.controller('ShowCtrl', ["$scope", "show", "setlist", "ShowFactory", "PlayerFactory", "$mdDialog", function($scope, show, setlist, ShowFactory, PlayerFactory, $mdDialog) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
   console.log('$scope.show', $scope.show)
-  $rootScope.map = $rootScope.map || {};
-  $rootScope.map.coordinates = [$scope.show.longitude, $scope.show.latitude];
 
   var sets = [];
   $scope.show.setlist.forEach( (song) => {
@@ -29,19 +27,9 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
     $scope.prevShow = prevShow;
   });
 
-  $rootScope.fullscreen = $rootScope.fullscreen ? $rootScope.fullscreen : false;
-  $scope.showFullscreenInfo = $scope.alreadyFullscreen = $rootScope.fullscreen;
 
-  $scope.toggleFullscreen = function() {
-    $document.scrollTop(0, 800).then( () => {
-      $rootScope.fullscreen = !$rootScope.fullscreen;
-      if(!$rootScope.fullscreen) $scope.alreadyFullscreen = false;
-    });
-    if(!$scope.showFullscreenInfo) {
-      $timeout(function() {
-        $scope.showFullscreenInfo = true;
-      }, 800);
-    } else $scope.showFullscreenInfo = false;
+  $scope.openSongControls = function($mdOpenMenu, ev) {
+    $mdOpenMenu(ev);
   }
 
   $scope.hoverIn = function() { this.hover = true; }

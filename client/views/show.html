@@ -20,7 +20,7 @@
                 <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
                   <p>
                     <span>
-                      <a ui-sref='song({songId: song.id})'>{{song.title}}</a>
+                      <a ui-sref='song({songId: song.song_id})'>{{song.title}}</a>
                     </span>
                     <md-menu>
                       <md-button ng-show="hover" class="md-icon-button" ng-click="openSongControls($mdOpenMenu, $event)">
@@ -28,14 +28,14 @@
                       </md-button>
                       <md-menu-content width="2">
                         <md-menu-item>
-                          <md-button ng-click='upNext(performance)'>
+                          <md-button ng-click='upNext(song)'>
                             <md-icon md-menu-align-target="">playlist_play</md-icon>
                             Play Next
                           </md-button>
                         </md-menu-item>
                         <md-menu-divider style='margin: 0;'></md-menu-divider>
                         <md-menu-item>
-                          <md-button ng-click='addToUpNext(performance)'>
+                          <md-button ng-click='addToUpNext(song)'>
                             <md-icon>playlist_add</md-icon>
                             Add to Up Next
                           </md-button>
