@@ -1,15 +1,97 @@
-<div class="show-container" ng-class='{"map-fullscreen": fullscreen, "already-fullscreen": alreadyFullscreen}'>
+<div class="show-container">
 
-  <!-- <div class='navigation-buttons' layout='row' layout-align='space-between start'>    
-    <md-button class="md-raised" ui-sref='show({date: nextShow.date})' aria-label="nextShow">
-      <i class="fa fa-angle-left"></i>
-    </md-button>
-    <md-button class="md-raised" ui-sref='show({date: prevShow.date})' aria-label="prevShow">
-      <i class="fa fa-angle-right"></i>
-    </md-button>
-  </div> -->
+  <div layout="row" layout-align="start start">
 
-  <p>{{show.date | date:'EEEE, MM/dd/yyyy'}}</p>
+    <div flex ="35" layout="column" layout-align="start center">
+      <div flex="100" layout="row" layout-align="start start" layout-padding>
+        <section>
+          <p>{{show.date | date:'MM/dd/yyyy, EEEE'}}</p>
+          <p>{{show.venue_name}}</p>
+          <p>{{show.location}}</p>
+        </section>
+      </div>
+      <div flex="100" layout="row" layout-align="start start" layout-padding>
+        <section class="list">
+          <md-list>
+            <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
+              <div class='md-list-item-text' layout='column'>
+                <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
+
+                <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
+                  <p>
+                    <span>
+                      <a ui-sref='song({songId: song.id})'>{{song.title}}</a>
+                    </span>
+                    <md-menu>
+                      <md-button ng-show="hover" class="md-icon-button" ng-click="openSongControls($mdOpenMenu, $event)">
+                        <md-icon md-menu-origin="">more_horiz</md-icon>
+                      </md-button>
+                      <md-menu-content width="2">
+                        <md-menu-item>
+                          <md-button ng-click='upNext(performance)'>
+                            <md-icon md-menu-align-target="">playlist_play</md-icon>
+                            Play Next
+                          </md-button>
+                        </md-menu-item>
+                        <md-menu-divider style='margin: 0;'></md-menu-divider>
+                        <md-menu-item>
+                          <md-button ng-click='addToUpNext(performance)'>
+                            <md-icon>playlist_add</md-icon>
+                            Add to Up Next
+                          </md-button>
+                        </md-menu-item>
+                      </md-menu-content>
+                    </md-menu>
+                  </p>
+                  <p>{{ song.duration | millisecondsToDate | date:'m:ss' }}</p>
+
+                  <!-- <div>
+                    <md-icon ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_mute</md-icon>
+                    <span ui-sref='song({songId: song.song_id})'>{{song.title}}</span>
+                    
+                    <span ng-show='hover'>
+                      <md-button ng-click='upNext(song)'>
+                        <md-icon class="material-icons">playlist_play</md-icon>
+                      </md-button>
+                      <md-button ng-click='addToUpNext(song)'>
+                        <md-icon class="material-icons">playlist_add</md-icon>
+                      </md-button>
+                    </span>
+
+                  </div>              
+                  <p>{{ song.duration | millisecondsToDate | date:'m:ss' }}</p> -->
+
+                </div>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </section>
+      </div>
+    </div>
+
+    <div flex ="65" layout="column" layout-align="start center">
+      <div flex="100" layout="row" layout-align="start start" layout-padding>
+        <section>Test3</section>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <p>{{show.date | date:'EEEE, MM/dd/yyyy'}}</p>
   <p>{{show.venue_name}}</p>
   <p>{{show.location}}</p>
   
@@ -35,6 +117,6 @@
       </div>
       <md-divider></md-divider>
     </md-list-item>
-  </md-list>
+  </md-list> -->
 
 </div>

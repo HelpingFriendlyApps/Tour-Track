@@ -9,11 +9,21 @@
     }
   }
 
+  section {
+    &.song-info {
+      p { margin: 0 0 3px; }
+      strong { margin-right: 3px; }
+    }
+  }
+
   i.biggest-gap {
     font-size: 0.65em;
   }
 
   md-list-item {
+    &:nth-of-type(odd) {
+      background: rgba(67,67,66,0.05);
+    }
     .current-song-icon {
       margin-left: -10px;
       margin-right: 5px;
