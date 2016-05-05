@@ -6,8 +6,14 @@
       <div flex="100" layout="row" layout-align="start start" layout-padding>
         <section>
           <p>{{show.date | date:'MM/dd/yyyy, EEEE'}}</p>
-          <p>{{show.venue_name}}</p>
-          <p>{{show.location}}</p>
+          <p>{{show.venue_name}}, {{show.location}}</p>
+          <p>
+            <span>{{getOrdinal(xShowPlayedAtVenue)}}</span>
+            <small>show at this venue</small>
+            <span>({{totalShowsAtVenue.length}}</span>
+            <small>shows total)</small>
+          </p>
+          <p>Biggest Song Gap: {{biggestGapOfShow}}</p>
         </section>
       </div>
       <div flex="100" layout="row" layout-align="start start" layout-padding>

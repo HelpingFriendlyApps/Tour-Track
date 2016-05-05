@@ -91,7 +91,7 @@ var Shows = module.exports = {
     },
 
     getSetlistByDate: function(date) {
-      return db('shows').select('shows.date', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title', 'venues.name as venue_name', 'venues.location')
+      return db('shows').select('shows.date', 'shows.show_number', 'songplayed.id', 'songplayed.set', 'songplayed.position', 'songplayed.duration', 'songplayed.song_id', 'songplayed.mp3', 'songs.title', 'venues.name as venue_name', 'venues.location')
       .whereBetween('date', date)
       .join('songplayed', 'songplayed.show_id', 'shows.id')
       .join('songs', 'songplayed.song_id', 'songs.id')

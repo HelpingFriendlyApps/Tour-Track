@@ -40,10 +40,10 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
             bindto: '#songDebutsPerYear',
             data: {
               columns: [
-                ['debuts', ...debutsPerYear.map( (year) => { return year.debuts; })]
+                ['Debuts', ...debutsPerYear.map( (year) => { return year.debuts; })]
               ],
               colors: {
-                'debuts': '#475F77'
+                'Debuts': '#475F77'
               },
               type: 'bar'
             },

@@ -51,7 +51,12 @@ app.directive('songLengthsPerYear', ["$q", "ShowFactory", function ($q, ShowFact
           bindto: '#splineChart',
           data: {
             columns: columns,
-            type: 'spline'
+            type: 'spline',
+            colors: {
+              'Longest': '#D74B4B',
+              'Average': '#158A36 ',
+              'Shortest': '#475F77'
+            },
           },
           axis: {
             x: {

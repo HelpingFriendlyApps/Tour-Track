@@ -43,6 +43,14 @@ var Songs = module.exports = {
         return db.raw("SELECT * FROM songs WHERE title " + greaterLess + " '" + name  + "' ORDER BY title " + orderDirection + " LIMIT 1");
     },
 
+    getPrevTimePlayed: function(songId, timeRange) {
+        return db('songplayed').first('songplayed.*', 'shows.date', 'shows.show_number')
+        .where('songplayed.song_id', songId)
+        .whereNotBetween('shows.date', timeRange)
+        .orderBy('date', 'desc')
+        .join('shows', 'shows.id', 'songplayed.show_id');
+    },
+
     updateOrCreate : function(attrs){
         return Songs.update(attrs).catch(Songs.create(attrs));
     },
