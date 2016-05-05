@@ -4,6 +4,13 @@
     &.list {
       padding: 0;
     }
+    &.setlist-time-flow {
+      svg{ margin-bottom: -13px; }
+    }
+  }
+
+  .no-padding {
+    padding: 0;
   }
 
   md-list {
@@ -35,4 +42,6 @@
       }
     }
   }
+
+
 }

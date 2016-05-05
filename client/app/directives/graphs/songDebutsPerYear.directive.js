@@ -11,7 +11,6 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
     link: function(scope, element, attrs) {
 
       scope.$watch('setlist', (setlist) => {
-        console.log('setlist', setlist)
         
         var firstYear = 1983;
         var years = Array.apply(null, {length: new Date().getFullYear() - firstYear}).map( () => {
@@ -37,14 +36,15 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
             return { year: year, debuts: debuts };
           });
 
-          console.log('debutsPerYear', debutsPerYear)
-          
           var chart = c3.generate({
             bindto: '#songDebutsPerYear',
             data: {
               columns: [
                 ['debuts', ...debutsPerYear.map( (year) => { return year.debuts; })]
               ],
+              colors: {
+                'debuts': '#475F77'
+              },
               type: 'bar'
             },
             bar: {
@@ -53,11 +53,20 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
               }
             },
             axis: {
+              x: {
+                type: 'category',
+                categories: years,
+                tick: {
+                  multiline: false,
+                  culling: true
+                }
+              },
               y: {
                 show: false
               }
             }
           });
+
 
         });
 
