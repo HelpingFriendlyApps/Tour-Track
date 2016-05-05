@@ -40,10 +40,10 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
             bindto: '#songDebutsPerYear',
             data: {
               columns: [
-                ['Debuts', ...debutsPerYear.map( (year) => { return year.debuts; })]
+                ['Song Debut Years', ...debutsPerYear.map( (year) => { return year.debuts; })]
               ],
               colors: {
-                'Debuts': '#475F77'
+                'Song Debut Years': '#475F77'
               },
               type: 'bar'
             },
@@ -63,6 +63,13 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
               },
               y: {
                 show: false
+              }
+            },
+            tooltip: {
+              format: {
+                name: function(name, ratio, id, index) {
+                  return 'Songs';
+                }
               }
             }
           });
