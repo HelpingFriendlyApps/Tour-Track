@@ -104,9 +104,7 @@ app.directive('setlistTimeFlow', [function() {
 
         });
         
-      })
-
-
+      });
 
     }
   };

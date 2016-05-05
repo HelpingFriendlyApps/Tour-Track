@@ -59,7 +59,6 @@ app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFact
       }
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-        // if(toState.name === 'show') renderCurrentShow();
         if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
       });
 

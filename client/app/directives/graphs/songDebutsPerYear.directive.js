@@ -67,11 +67,9 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
             }
           });
 
-
         });
 
       });
-
 
     }
   };
