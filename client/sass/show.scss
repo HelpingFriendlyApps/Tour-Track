@@ -1,6 +1,10 @@
 .show-container {
 
   section {
+    &.show-info {
+      p { margin: 0 0 3px; }
+      strong { margin-right: 3px; }
+    }
     &.list {
       padding: 0;
     }

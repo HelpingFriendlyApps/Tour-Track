@@ -4,16 +4,18 @@
 
     <div flex ="35" layout="column" layout-align="start center">
       <div flex="100" layout="row" layout-align="start start" layout-padding>
-        <section>
-          <p>{{show.date | date:'MM/dd/yyyy, EEEE'}}</p>
-          <p>{{show.venue_name}}, {{show.location}}</p>
+        <section class="show-info">
+          <h1>{{show.date | date:'MM/dd/yyyy'}}</h1>
+          <h4>{{show.venue_name}}, {{show.location}}</h4>
           <p>
-            <span>{{getOrdinal(xShowPlayedAtVenue)}}</span>
-            <small>show at this venue</small>
-            <span>({{totalShowsAtVenue.length}}</span>
-            <small>shows total)</small>
+            <span>Shows at Venue:</span>
+            <span>{{totalShowsAtVenue.length}}</span>
+            <small>shows ({{getOrdinal(xShowPlayedAtVenue)}} time played here)</small>
           </p>
-          <p>Biggest Song Gap: {{biggestGapOfShow}}</p>
+          <p>
+            <span>Biggest Song Gap: {{songWithBiggestGap.gap}}</span>
+            <small>(<a ui-sref='song({songId: songWithBiggestGap.song_id})'>{{songWithBiggestGap.title}}</a>)</small>
+          </p>
         </section>
       </div>
       <div flex="100" layout="row" layout-align="start start" layout-padding>

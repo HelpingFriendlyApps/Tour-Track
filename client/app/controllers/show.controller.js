@@ -23,10 +23,14 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
     });
     return deffered.promise;
   })).then( (prevTimesPlayed) => {
-    $scope.biggestGapOfShow = 0;
+
+    var biggestGap  = 0;
     $scope.show.setlist.forEach( (song, i) => {
-      song.currentSongGap = song.show_number - prevTimesPlayed[i].show_number;
-      if(song.currentSongGap > $scope.biggestGapOfShow) $scope.biggestGapOfShow = song.currentSongGap;
+      song.gap = song.show_number - prevTimesPlayed[i].show_number;
+      if(song.gap > biggestGap) {
+        biggestGap = song.gap;
+        $scope.songWithBiggestGap = song;
+      }
     });
   });
 
@@ -76,15 +80,3 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
   $scope.addToUpNext = PlayerFactory.addToUpNext;
 
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
