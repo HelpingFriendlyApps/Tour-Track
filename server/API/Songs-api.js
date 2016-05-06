@@ -26,21 +26,8 @@ router.get('/next/:name', function(req, res, next){
   });
 });
 
-router.get('/prevPlayed/:songId/:date', function(req, res, next) {
-  var timeRange = [req.params.date, new Date()];
-  Songs.getPrevTimePlayed(req.params.songId, timeRange).then( (x) => {
-    res.send(x);
-  });
-});
-
 router.get('/:songId', function(req, res, next) {
   Songs.getSongById(req.params.songId).then(function(x) {
     res.send(x)
-  });
-});
-
-router.get('/:songId/debut', function(req, res, next) {
-  Songs.getSongDebut(req.params.songId).then( (song) => {
-    res.send(song);
   });
 });

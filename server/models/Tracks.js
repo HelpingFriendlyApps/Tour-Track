@@ -22,6 +22,24 @@ var Tracks = module.exports = {
         .join('tours', 'tours.id', 'shows.tour_id');
     },
 
+    getSongDebut: function(songId) {
+        return db('songplayed').first('songplayed.*', 'shows.date', 'shows.venue_id', 'shows.tour_id', 'shows.show_number', 'songs.title', 'venues.name as venue_name', 'venues.latitude', 'venues.longitude', 'venues.location', 'tours.name as tour_name', 'tours.starts_on as tour_starts_on', 'tours.ends_on as tour_ends_on')
+        .where('songplayed.song_id', songId)
+        .orderBy('date', 'asc')
+        .join('shows', 'shows.id', 'songplayed.show_id')
+        .join('songs', 'songs.id', 'songplayed.song_id')
+        .join('venues', 'venues.id', 'shows.venue_id')
+        .join('tours', 'tours.id', 'shows.tour_id');
+    },
+
+    getPrevTimePlayed: function(songId, timeRange) {
+        return db('songplayed').first('songplayed.*', 'shows.date', 'shows.show_number')
+        .where('songplayed.song_id', songId)
+        .whereNotBetween('shows.date', timeRange)
+        .orderBy('date', 'desc')
+        .join('shows', 'shows.id', 'songplayed.show_id');
+    },
+
     updateOrCreate : function(attrs){
         return Tracks.update(attrs).catch(Tracks.create(attrs));
     },

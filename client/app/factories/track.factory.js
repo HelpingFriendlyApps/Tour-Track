@@ -15,7 +15,20 @@ angular.module('Tour-Track')
       return $http.get('/tracks/' + songId).then(function(tracks) {
         return tracks.data;
       });
+    },
+
+    getSongDebut: function(songId) {
+      return $http.get('/tracks/' + songId + '/debut').then(function(song) {
+        return song.data;
+      });
+    },
+
+    getPrevTimePlayed: function(songId, date) {
+      return $http.get('/tracks/' + songId + '/prevPlayed/' + date).then(function(song) {
+        return song.data;
+      });
     }
+
   }
 
 }]);

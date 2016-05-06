@@ -27,18 +27,6 @@ angular.module('Tour-Track')
       return $http.get('/songs/next/' + songName).then(function(song) {
         return song.data;
       });
-    },
-
-    getSongDebut: function(songId) {
-      return $http.get('/songs/' + songId + '/debut').then(function(song) {
-        return song.data;
-      });
-    },
-
-    getPrevTimePlayed: function(songId, date) {
-      return $http.get('/songs/prevPlayed/' + songId + '/' + date).then(function(song) {
-        return song.data;
-      });
     }
 
   }

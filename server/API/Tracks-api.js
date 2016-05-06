@@ -17,3 +17,16 @@ router.get('/:songId', function(req, res, next) {
     res.send(x);
   });
 });
+
+router.get('/:songId/debut', function(req, res, next) {
+  Tracks.getSongDebut(req.params.songId).then( (song) => {
+    res.send(song);
+  });
+});
+
+router.get('/:songId/prevPlayed/:date', function(req, res, next) {
+  var timeRange = [req.params.date, new Date()];
+  Tracks.getPrevTimePlayed(req.params.songId, timeRange).then( (x) => {
+    res.send(x);
+  });
+});

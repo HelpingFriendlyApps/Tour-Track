@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactory) {
+app.directive('songDebutsPerYear', ["$q", "TrackFactory", function($q, TrackFactory) {
   return {
     replace: true,
     restrict: 'E',
@@ -19,7 +19,7 @@ app.directive('songDebutsPerYear', ["$q", "SongFactory", function($q, SongFactor
 
         $q.all(setlist.map( (song) => {
           var deffered = $q.defer();
-          SongFactory.getSongDebut(song.song_id).then( (debut) => {
+          TrackFactory.getSongDebut(song.song_id).then( (debut) => {
             deffered.resolve(debut);
           });
           return deffered.promise;

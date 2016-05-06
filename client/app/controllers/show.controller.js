@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "PlayerFactory", "SongFactory", "$mdDialog", "$q", function($scope, $rootScope, show, setlist, ShowFactory, PlayerFactory, SongFactory, $mdDialog, $q) {
+app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "PlayerFactory", "TrackFactory", "$mdDialog", "$q", function($scope, $rootScope, show, setlist, ShowFactory, PlayerFactory, TrackFactory, $mdDialog, $q) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
@@ -18,7 +18,7 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
 
   $q.all($scope.show.setlist.map( (song) => {
     var deffered = $q.defer();
-    SongFactory.getPrevTimePlayed(song.song_id, song.date).then( (prevTimePlayed) => {
+    TrackFactory.getPrevTimePlayed(song.song_id, song.date).then( (prevTimePlayed) => {
       deffered.resolve(prevTimePlayed);
     });
     return deffered.promise;
