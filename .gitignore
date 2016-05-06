@@ -3,4 +3,5 @@ node_modules/
 client/lib/
 client/app/config.js
 client/dist/
+client/main.css
 client/main.css.map
