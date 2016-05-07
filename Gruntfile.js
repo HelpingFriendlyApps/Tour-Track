@@ -8,8 +8,7 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          script: 'server/index.js',
-          debug: true
+          script: 'server/index.js'
         }
       },
     },
@@ -27,10 +26,29 @@ module.exports = function(grunt) {
         }]
       }
     },
+    sass: {
+      dist: {
+        files: {
+          'client/main.css': 'client/sass/main.scss'
+        }
+      }
+    },
     watch: {
-      scripts: {
-        files: ['client/app/**/*.js', 'server/**/*.js'],
+      client: {
+        files: 'client/app/**/*.js',
         tasks: ['babel']
+      },
+      server: {
+        files: 'server/**/*.js',
+        tasks: ['express:dev'],
+        options: {
+          livereload: true,
+          nospawn: true
+        }
+      },
+      css: {
+        files: 'client/sass/**/*.scss',
+        tasks: ['sass']
       }
     }
   });
@@ -38,7 +56,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-babel');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 
-  grunt.registerTask('default', ['babel', 'express', 'watch']);
+  grunt.registerTask('default', ['babel', 'sass', 'express', 'watch']);
   
 };

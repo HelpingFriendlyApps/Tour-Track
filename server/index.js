@@ -2,7 +2,6 @@ var express = require('express');
 var Path = require('path');
 var routes = express.Router();
 var db = require('./db');
-var sass = require('node-sass-endpoint');
 var session = require('cookie-session');
 require('./Seeds/seedRun')
 
@@ -34,24 +33,6 @@ if(process.env.NODE_ENV !== 'test') {
 
   // Parse incoming request bodies as JSON
   app.use( require('body-parser').json() );
-
-  // This compiles your Sass files
-  // Remember to change file paths or directories
-  app.get(
-    '/main.css',
-    sass.serve('./client/sass/main.scss', {
-
-      // (dev only) defaults to parent folder of scss file.
-      // Any sass file changes in this directory will clear the output cache.
-      watchDir: './client/sass/',
-
-      // defaults to parent folder of scss file
-      includePaths: ['./client/sass/'],
-
-      // defaults to false
-      debug: false
-    })
-  )
 
   // Mount our main router
   app.use('/', routes);
