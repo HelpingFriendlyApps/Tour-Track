@@ -1,18 +1,27 @@
 .show-container {
-  height: 100%;
-  max-height: 100%;
+
+  section {
+    &.show-info {
+      p { margin: 0 0 3px; }
+      strong { margin-right: 3px; }
+    }
+    &.list {
+      padding: 0;
+    }
+    &.setlist-time-flow {
+      svg{ margin-bottom: -13px; }
+    }
+  }
+
+  .no-padding {
+    padding: 0;
+  }
 
   md-list {
-    background: white;
-    border: 1px solid black;
-    padding: 0;
-    min-height: 400px;
-    max-height: 80%;
-    overflow-y: scroll;
+    max-height: 100%;
     md-list-item {
       min-height: 100%;
       padding: 0;
-      outline: none;
       .md-subheader {
         height: 48px;
         background: rgba(0,0,0,0.1);
@@ -21,9 +30,12 @@
         max-height: 30px;
         height: 30px;
         padding: 4px 16px;
+        outline: none;
         .current-song-icon {
+          color: #5D5D5B;
           font-size: 2rem;
           line-height: 1.25em;
+          vertical-align: middle;
         }
         .md-button {
           width: 28px;
@@ -34,4 +46,6 @@
       }
     }
   }
+
+
 }

@@ -39,11 +39,11 @@ body > .container-fluid {
   }
 }
 
-h1, h3, p, a {
+h1, h2, h3, h4, p, a {
   color: #434342;
 }
 
-h1, h3 {
+h1, h2, h3, h4 {
   margin: 0 0 10px;
 }
 
@@ -59,14 +59,9 @@ section {
   height: 100%;
   width: 100%;
   padding: 10px;
-  background: rgba(220,221,216,0.9);
+  background: rgba(220,221,216,0.93);
   border-radius: 1px;
   border-top: 5px solid rgba(151,53,53,0.7);
-  &.song-info {
-    p { margin: 0 0 3px; }
-    strong { margin-right: 3px; }
-    small { margin-left: 3px; }
-  }
   &.graph {
     padding: 5px;
   }
@@ -84,9 +79,6 @@ md-list-item {
   min-height: 100%;
   padding: 0 10px;
   outline: none;
-  &:nth-of-type(odd) {
-    background: rgba(67,67,66,0.05);
-  }
   p {
     margin: 0;
     white-space: nowrap;

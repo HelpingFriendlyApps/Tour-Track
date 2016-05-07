@@ -26,8 +26,7 @@ var Songs = module.exports = {
         return tempObj;
     },
 
-
-    getNeighboringShowByName: function(name, dir) {
+    getNeighboringSongByName: function(name, dir) {
         const greaterLess = dir === "next" ? ">" : "<";
         const orderDirection = dir === "next" ? "ASC" : "DESC";
         

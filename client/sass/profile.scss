@@ -1,3 +1,7 @@
 .profile-state {
-
+  md-list-item {
+    &:nth-of-type(odd) {
+      background: rgba(67,67,66,0.05);
+    }
+  }
 }

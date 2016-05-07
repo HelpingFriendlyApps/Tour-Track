@@ -1,12 +1,38 @@
 'use strict';
 
-app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "$document", "$timeout", "PlayerFactory", function($scope, $rootScope, show, setlist, ShowFactory, $document, $timeout, PlayerFactory) {
+app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "PlayerFactory", "TrackFactory", "$mdDialog", "$q", function($scope, $rootScope, show, setlist, ShowFactory, PlayerFactory, TrackFactory, $mdDialog, $q) {
 
   $scope.show = show;
   $scope.show.setlist = setlist;
   console.log('$scope.show', $scope.show)
   $rootScope.map = $rootScope.map || {};
   $rootScope.map.coordinates = [$scope.show.longitude, $scope.show.latitude];
+
+  ShowFactory.getShowsByVenueId($scope.show.venue_id).then( (showsAtVenue) => {
+    $scope.totalShowsAtVenue = showsAtVenue;
+    $scope.totalShowsAtVenue.some( (show, i) => {
+      if(show.id === $scope.show.id) $scope.xShowPlayedAtVenue = i + 1;
+      return show.id === $scope.show.id;
+    });
+  });
+
+  $q.all($scope.show.setlist.map( (song) => {
+    var deffered = $q.defer();
+    TrackFactory.getPrevTimePlayed(song.song_id, song.date).then( (prevTimePlayed) => {
+      deffered.resolve(prevTimePlayed);
+    });
+    return deffered.promise;
+  })).then( (prevTimesPlayed) => {
+
+    var biggestGap  = 0;
+    $scope.show.setlist.forEach( (song, i) => {
+      song.gap = song.show_number - prevTimesPlayed[i].show_number;
+      if(song.gap > biggestGap) {
+        biggestGap = song.gap;
+        $scope.songWithBiggestGap = song;
+      }
+    });
+  });
 
   var sets = [];
   $scope.show.setlist.forEach( (song) => {
@@ -21,6 +47,15 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
     return 'Encore';
   }
 
+  $scope.getOrdinal = function(n) {
+    if(parseFloat(n) === parseInt(n) && !isNaN(n)) {
+      var s = ["th", "st", "nd", "rd"],
+        v = n % 100;
+      return n + (s[(v - 20) % 10] || s[v] || s[0]);
+    }
+    return n;     
+  }
+
   ShowFactory.getNextShowByDate($scope.show.date).then( (nextShow) => {
     $scope.nextShow = nextShow;
   });
@@ -29,19 +64,9 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
     $scope.prevShow = prevShow;
   });
 
-  $rootScope.fullscreen = $rootScope.fullscreen ? $rootScope.fullscreen : false;
-  $scope.showFullscreenInfo = $scope.alreadyFullscreen = $rootScope.fullscreen;
 
-  $scope.toggleFullscreen = function() {
-    $document.scrollTop(0, 800).then( () => {
-      $rootScope.fullscreen = !$rootScope.fullscreen;
-      if(!$rootScope.fullscreen) $scope.alreadyFullscreen = false;
-    });
-    if(!$scope.showFullscreenInfo) {
-      $timeout(function() {
-        $scope.showFullscreenInfo = true;
-      }, 800);
-    } else $scope.showFullscreenInfo = false;
+  $scope.openSongControls = function($mdOpenMenu, ev) {
+    $mdOpenMenu(ev);
   }
 
   $scope.hoverIn = function() { this.hover = true; }
@@ -55,15 +80,3 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
   $scope.addToUpNext = PlayerFactory.addToUpNext;
 
 }]);
-
-
-
-
-
-
-
-
-
-
-
-
