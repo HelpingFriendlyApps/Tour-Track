@@ -8,7 +8,7 @@ html, body {
 body > .container-fluid {
   height: 100%;
   margin: 75px 30px;
-  padding: 5px;
+  padding: 10px 10px 15px 10px;
   display: flex;
   flex-direction: column;
   z-index: 0;
@@ -31,15 +31,18 @@ body > .container-fluid {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    height: 100%;
-    max-height: 100%;
     overflow-y: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
   }
 }
 
-h1, h2, h3, h4, p, a {
+.center-container > .container-fluid {
+  width: 95%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1, h2, h3, h4, p, a, label {
   color: #434342;
 }
 

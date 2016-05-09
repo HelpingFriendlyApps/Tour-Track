@@ -5,7 +5,7 @@
     <title>Tour Track</title>
   </head>
   
-  <body ng-app="Tour-Track" ng-controller="RootController">
+  <body ng-app="Tour-Track" ng-controller="RootController" ng-class="{'center-container': centerContainer}">
     <navbar id="navbar"></navbar>
     <map ng-if="mapboxToken.length > 0"
         token='mapboxToken'
