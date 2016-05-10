@@ -103,6 +103,43 @@ md-menu-content {
   padding: 0;
 }
 
+md-input-container:not(.md-input-invalid).md-input-focused {
+  label {
+    color: rgba(0,0,0,0.54);
+  }
+  .md-input {
+    border-color: rgba(151,53,53,0.55);
+  }
+}
+
+.md-select-menu-container {
+  top: 55px !important;
+  width: 100px;
+}
+
+md-select {
+  &:not([disabled]):focus .md-select-value {
+    border-bottom-color: rgba(151,53,53,0.55);
+  }
+}
+
+md-select-menu {
+  & > md-content {
+    background: #E9EAE4;
+    md-option {
+      height: 40px;
+      color: #434342;
+    }
+    md-option[selected] {
+      color: #434342 !important;
+    }
+    md-divider {
+      border-color: #434342;
+      opacity: 0.2;
+    }
+  }
+}
+
 
 @import 'map';
 @import 'navbar';

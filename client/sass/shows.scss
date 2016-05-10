@@ -1,44 +1,82 @@
 .shows-state {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  section {
+    margin: 5px 0;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    &.list {
+      padding: 0;
+    }
+  }
 
   .md-inline-form {
     height: 70px;
   }
 
+  md-input-container {
+    margin-left: 5px;
+    margin-right: 5px;
+    md-select-value {
+      border-color: rgba(0,0,0,0.25);
+      &.md-select-value > span {
+        -webkit-transform: translate3d(0,-2px,0);
+        transform: translate3d(0,-2px,0);
+      }
+      &.md-select-placeholder, .md-select-icon {
+        color: rgba(0,0,0,0.54);
+      }
+    }
+    input, label {
+      font-family: Roboto,"Helvetica Neue",sans-serif;
+      font-weight: 400;
+      color: rgba(0,0,0,0.54);
+      border-color: rgba(0,0,0,0.25);
+    }
+    &.md-undefined-select {
+      label {
+        transform: translate3d(0, 30px, 0) scale(1) !important;
+      }
+      .md-text {
+        opacity: 0;
+      }
+    }
+  }
+
   md-datepicker {
-    margin-top: 22px;
-    margin-right: 18px;
+    margin: 22px 7px 0 0;
+    padding: 0;
     background: none;
+
+    ::-webkit-input-placeholder { color: rgba(0,0,0,0.54); }
+    :-moz-placeholder { color: rgba(0,0,0,0.54); }
+    ::-moz-placeholder { color: rgba(0,0,0,0.54); }
+    :-ms-input-placeholder { color: rgba(0,0,0,0.54); }
+
     .md-datepicker-button {
       display: none;
     }
     .md-datepicker-input-container, .md-datepicker-invalid {
-      border-bottom-color: #DCDDD8;
+      border-bottom-color: rgba(0,0,0,0.25);
     }
-  }
-
-  md-input-container {
-    input, label {
-      font-family: Roboto,"Helvetica Neue",sans-serif;
-      font-weight: 400;
-      color: #5D5D5B;
-      border-color: #5D5D5B;
+    .md-datepicker-triangle-button {
+      top: 3px;
+    }
+    .md-datepicker-expand-triangle {
+      border-top: 6px solid rgba(0,0,0,0.54);
     }
   }
 
   md-list {
-    height: 460px;
-    
-    md-virtual-repeat-container {
-      height: 100%;
-      border: 1px solid black;
-    }
-
     .md-list-item-inner {
       min-height: 36px;
     }
 
     md-list-item {
+      padding: 0;
       min-height: 0;
       a.md-button {
         min-height: 0;
@@ -52,11 +90,32 @@
       background: rgba(0,0,0,0.1);
       .md-subheader-inner {
         padding: 10px;
+        font-weight: 600;
+        text-align: center;
+        &:before {
+          content: '';
+          height: 100%;
+          width: 5%;
+          position: absolute;
+          top: -16px;
+          left: 42%;
+          border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
+        &:after {
+          content: '';
+          height: 100%;
+          width: 5%;
+          position: absolute;
+          top: -16px;
+          right: 42%;
+          border-bottom: 1px solid rgba(0,0,0,0.2);
+        }
       }
     }
 
     .show-info {
       height: 36px;
+      padding: 0 5px;
       p {
         padding-left: 10px;
         white-space: nowrap;
