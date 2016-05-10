@@ -55,10 +55,12 @@ app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFact
       function renderCurrentShow() {
         if(!scope.coordinates) return renderRandomShows();
         $interval.cancel(scope.randomShowInterval);
-        map.flyTo({center: scope.coordinates, zoom: 13, minZoom: 10, speed: 1.2});
+
+        // For testing purposes
+        // map.flyTo({center: scope.coordinates, zoom: 13, minZoom: 10, speed: 1.2});
       }
 
-      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
       });
 

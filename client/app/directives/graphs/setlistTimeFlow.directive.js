@@ -59,6 +59,7 @@ app.directive('setlistTimeFlow', [function() {
           return ['Set ' + set.number, 0, ...vals, 0];
         });
 
+        
         var chart = c3.generate({
           bindto: '#setlistTimeFlow',
           data: {
@@ -103,6 +104,10 @@ app.directive('setlistTimeFlow', [function() {
           }
 
         });
+
+        setTimeout(function() {
+          chart.flush();
+        }, 300);
         
       });
 
