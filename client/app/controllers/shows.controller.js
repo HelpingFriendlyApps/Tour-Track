@@ -3,6 +3,8 @@
 angular.module('Tour-Track')
 .controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', '$timeout', function($scope, allShows, ShowFactory, $timeout) {
 
+  $scope.allShows = allShows;
+
   var years = [];
   $scope.filter = { year: "", date: "", venue: "", location: "" };
   
@@ -14,14 +16,14 @@ angular.module('Tour-Track')
     years = [];
     var dateString = filter.date ? filter.date.toISOString().slice(0,10) : ""
 
-    var filteredShows = allShows.filter( (show) => {
+    $scope.filteredShows = allShows.filter( (show) => {
       return show.date.slice(0,4).indexOf(filter.year) > -1
         && show.date.slice(0,10).indexOf(dateString) > -1 
         && show.location.toLowerCase().indexOf(filter.location.toLowerCase()) > -1 
         && show.venue_name.toLowerCase().indexOf(filter.venue.toLowerCase()) > -1;
     });
 
-    $scope.shows = new Shows(filteredShows);
+    $scope.shows = new Shows($scope.filteredShows);
   }, true);
 
 
