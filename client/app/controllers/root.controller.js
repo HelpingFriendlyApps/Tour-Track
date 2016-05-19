@@ -13,9 +13,4 @@ angular.module('Tour-Track')
       $scope.mapboxToken = token;
     });
 
-    // $scope.centerContainer = false;
-    // $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-    //   $scope.centerContainer = ['shows', 'songs'].indexOf(toState.name) > -1 ? true : false;
-    // });
-
 }]);
