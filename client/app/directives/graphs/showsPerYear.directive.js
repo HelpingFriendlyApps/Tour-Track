@@ -16,7 +16,7 @@ app.directive('showsPerYear', [function() {
 
         var allShowsPerYear = parser(shows[0]);
         var userShowsPerYear = parser(shows[1]);
-        
+
         var firstYear = allShowsPerYear[0].year;
         var firstUserYear = userShowsPerYear[0].year;
 

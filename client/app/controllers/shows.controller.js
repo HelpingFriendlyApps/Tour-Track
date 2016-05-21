@@ -1,22 +1,29 @@
 'use strict';
 
 angular.module('Tour-Track')
-.controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', 'VenueFactory', '$timeout', function($scope, allShows, ShowFactory, VenueFactory, $timeout) {
+.controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', '$timeout', function($scope, allShows, ShowFactory, $timeout) {
+
+  $scope.allShows = allShows;
 
   var years = [];
-  $scope.filter = { date: "", venue: "", location: "" };
+  $scope.showsFilter = { year: "", date: "", venue: "", location: "" };
+  
+  ShowFactory.getAllShowYears().then( (showYears) => {
+    $scope.showYears = showYears;
+  });
 
-  $scope.$watch('filter', (filter) => {
+  $scope.$watch('showsFilter', (showsFilter) => {
     years = [];
-    var dateString = filter.date ? filter.date.toISOString().slice(0,10) : ""
+    var dateString = showsFilter.date ? showsFilter.date.toISOString().slice(0,10) : ""
 
-    var filteredShows = allShows.filter( (show) => {
-      return show.date.slice(0,10).indexOf(dateString) > -1 
-        && show.location.toLowerCase().indexOf(filter.location.toLowerCase()) > -1 
-        && show.venue_name.toLowerCase().indexOf(filter.venue.toLowerCase()) > -1;
+    $scope.filteredShows = allShows.filter( (show) => {
+      return show.date.slice(0,4).indexOf(showsFilter.year) > -1
+        && show.date.slice(0,10).indexOf(dateString) > -1 
+        && show.location.toLowerCase().indexOf(showsFilter.location.toLowerCase()) > -1 
+        && show.venue_name.toLowerCase().indexOf(showsFilter.venue.toLowerCase()) > -1;
     });
 
-    $scope.shows = new Shows(filteredShows);
+    $scope.shows = new Shows($scope.filteredShows);
   }, true);
 
 

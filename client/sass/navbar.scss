@@ -14,12 +14,10 @@
     color: #DCDDD8;
   }
 
-  .nav > li.active > a {
-    background: #5D5D5B;
-    color: #DCDDD8;
-    &:hover {
+  .navbar-nav > .active {
+    a, a:focus, a:hover {
       background: #D74B4B;
-      color: #434342;
+      color: #DCDDD8;
     }
   }
 

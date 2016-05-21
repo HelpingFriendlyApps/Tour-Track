@@ -8,7 +8,7 @@ html, body {
 body > .container-fluid {
   height: 100%;
   margin: 75px 30px;
-  padding: 5px;
+  padding: 10px 10px 15px 10px;
   display: flex;
   flex-direction: column;
   z-index: 0;
@@ -31,15 +31,11 @@ body > .container-fluid {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
-    height: 100%;
-    max-height: 100%;
     overflow-y: auto;
-    margin-top: 5px;
-    margin-bottom: 5px;
   }
 }
 
-h1, h2, h3, h4, p, a {
+h1, h2, h3, h4, p, a, label {
   color: #434342;
 }
 
@@ -98,6 +94,43 @@ md-list-item {
 
 md-menu-content {
   padding: 0;
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused {
+  label {
+    color: rgba(0,0,0,0.54);
+  }
+  .md-input {
+    border-color: rgba(151,53,53,0.55);
+  }
+}
+
+.md-select-menu-container {
+  top: 55px !important;
+  width: 100px;
+}
+
+md-select {
+  &:not([disabled]):focus .md-select-value {
+    border-bottom-color: rgba(151,53,53,0.55);
+  }
+}
+
+md-select-menu {
+  & > md-content {
+    background: #E9EAE4;
+    md-option {
+      height: 40px;
+      color: #434342;
+    }
+    md-option[selected] {
+      color: #434342 !important;
+    }
+    md-divider {
+      border-color: #434342;
+      opacity: 0.2;
+    }
+  }
 }
 
 
