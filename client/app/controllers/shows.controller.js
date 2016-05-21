@@ -6,21 +6,21 @@ angular.module('Tour-Track')
   $scope.allShows = allShows;
 
   var years = [];
-  $scope.filter = { year: "", date: "", venue: "", location: "" };
+  $scope.showsFilter = { year: "", date: "", venue: "", location: "" };
   
   ShowFactory.getAllShowYears().then( (showYears) => {
     $scope.showYears = showYears;
   });
 
-  $scope.$watch('filter', (filter) => {
+  $scope.$watch('showsFilter', (showsFilter) => {
     years = [];
-    var dateString = filter.date ? filter.date.toISOString().slice(0,10) : ""
+    var dateString = showsFilter.date ? showsFilter.date.toISOString().slice(0,10) : ""
 
     $scope.filteredShows = allShows.filter( (show) => {
-      return show.date.slice(0,4).indexOf(filter.year) > -1
+      return show.date.slice(0,4).indexOf(showsFilter.year) > -1
         && show.date.slice(0,10).indexOf(dateString) > -1 
-        && show.location.toLowerCase().indexOf(filter.location.toLowerCase()) > -1 
-        && show.venue_name.toLowerCase().indexOf(filter.venue.toLowerCase()) > -1;
+        && show.location.toLowerCase().indexOf(showsFilter.location.toLowerCase()) > -1 
+        && show.venue_name.toLowerCase().indexOf(showsFilter.venue.toLowerCase()) > -1;
     });
 
     $scope.shows = new Shows($scope.filteredShows);

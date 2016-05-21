@@ -4,23 +4,23 @@
     <section layout="column" layout-align="start center">
       <div class="md-inline-form" layout-gt-xs="row" layout-align="space-around start">
 
-        <md-input-container ng-class="{ 'md-undefined-select': filter.year === ''}">
+        <md-input-container ng-class="{ 'md-undefined-select': showsFilter.year === ''}">
           <label>Year</label>
-          <md-select ng-model="filter.year">
+          <md-select ng-model="showsFilter.year">
             <md-option value="">All</md-option>
             <md-divider></md-divider>
             <md-option ng-repeat="year in showYears">{{year}}</md-option>
           </md-select>
         </md-input-container>
 
-        <md-datepicker ng-model="filter.date" md-placeholder="Date"></md-datepicker>
+        <md-datepicker ng-model="showsFilter.date" md-placeholder="Date"></md-datepicker>
         <md-input-container>
           <label>Venue</label>
-          <input ng-model="filter.venue"></input>
+          <input ng-model="showsFilter.venue"></input>
         </md-input-container>
         <md-input-container>
           <label>Location</label>
-          <input ng-model="filter.location"></input>
+          <input ng-model="showsFilter.location"></input>
         </md-input-container>
       </div>
     </section>
@@ -31,7 +31,7 @@
           <md-list-item md-virtual-repeat='show in shows' class='md-2-line' ng-click='null' ui-sref='show({date: show.date})' md-on-demand='' aria-label='goToShow' ng-mouseenter='showMap=true' ng-mouseleave='showMap=false'>
 
             <div class='md-list-item-text' layout='column'>
-              <md-subheader ng-if='show.firstOfYear && !filter.date' class="md-no-sticky">{{show.date | date:'yyyy'}}</md-subheader>
+              <md-subheader ng-if='show.firstOfYear && !showsFilter.date' class="md-no-sticky">{{show.date | date:'yyyy'}}</md-subheader>
               <div class='show-info' layout='row' layout-align='space-between center'>
                 <p flex='30'>{{show.date | date:'yyyy/MM/dd'}}</p>
                 <p flex='45'>{{show.venue_name}}</p>
