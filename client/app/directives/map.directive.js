@@ -16,10 +16,12 @@ app.directive('map', ["$rootScope", "$interval", "$timeout", "$state", "ShowFact
         $rootScope.fullscreen ? $('.main').removeClass('bounceInRight').addClass('animated bounceOutRight') : $('.main').removeClass('bounceOutRight').addClass('bounceInRight');
       }, true);
 
-      mapboxgl.accessToken = scope.token;
+      // mapboxgl.accessToken = scope.token;
+      mapboxgl.accessToken = "pk.eyJ1IjoibHVpc21hcnRpbnMiLCJhIjoiY2loZ2xsNnpwMG0xcnZia2x2Mnp3ZzYzMCJ9.huypgaYnUDo8wKLThRmyVQ";
       var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/luismartins/cinlzt02m0019b6nlyaq6pfwt',
+        // style: 'mapbox://styles/luismartins/cinlzt02m0019b6nlyaq6pfwt',
+        style: 'mapbox://styles/luismartins/ciohlmagz000yaunty3tmlj5e',
         center: [-98.35, 39.5],
         zoom: 5,
         attributionControl: false
