@@ -17,12 +17,4 @@ angular.module('Tour-Track')
     });
   });
 
-
-  $scope.doIt = function() {
-    // console.log('$scope.user', $scope.user)
-    // Profile.userShows($scope.user.uid).then(function(shows) {
-    //   console.log('shows', shows)
-    // });
-  }
-
 }]);

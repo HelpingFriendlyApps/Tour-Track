@@ -1,0 +1,8 @@
+<div class="mapLeft">
+  <map ng-if="mapboxToken.length > 0"
+      token='mapboxToken'
+      coordinates='map.coordinates'
+      fullscreen='fullscreen'>
+  </map>
+  <div ui-view></div>
+</div>

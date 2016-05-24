@@ -1,46 +1,65 @@
 .shows-state {
+  flex: 1 1 auto;
   display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-
-  section {
-    margin: 5px 0;
-    &:first-of-type {
-      margin-top: 0;
-    }
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-    &.list {
-      padding: 0;
+  flex-direction: column;
+  padding: 0 40px;
+  width: 100%;
+  & > * {
+    flex: 1 1 auto;
+    &:not(:last-child) {
+      // margin-bottom: 10px;
     }
   }
 
-  .md-inline-form {
-    height: 70px;
+  .form {
+    display: flex;
+    flex: 0;
+    background: #F6F6F4;
+    border-top: 10px solid rgba(118,118,118,0.7);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin-top: 10px;
+    justify-content: center;
+    height: 75px;
+    min-height: 75px;
+
+    .md-inline-form {
+      display: flex;
+      width: 700px;
+      max-width: 700px;
+      justify-content: space-around;
+    }
   }
+
+
 
   md-input-container {
-    margin-left: 5px;
-    margin-right: 5px;
+    maegin: 0 5px;
     md-select-value {
-      border-color: rgba(0,0,0,0.25);
+      border-color: #404040;
       &.md-select-value > span {
         -webkit-transform: translate3d(0,-2px,0);
         transform: translate3d(0,-2px,0);
       }
       &.md-select-placeholder, .md-select-icon {
-        color: rgba(0,0,0,0.54);
+        color: #404040;
       }
     }
     input, label {
       font-family: Roboto,"Helvetica Neue",sans-serif;
       font-weight: 400;
-      color: rgba(0,0,0,0.54);
-      border-color: rgba(0,0,0,0.25);
+      color: #404040 !important;
+      border-color: #404040;
     }
+
+    &.md-input-focused, &.md-input-has-value {
+      label {
+        display: none;
+      }
+    }
+
     &.md-undefined-select {
       label {
+        display: inline;
         transform: translate3d(0, 30px, 0) scale(1) !important;
       }
       .md-text {
@@ -54,26 +73,50 @@
     padding: 0;
     background: none;
 
-    ::-webkit-input-placeholder { color: rgba(0,0,0,0.54); }
-    :-moz-placeholder { color: rgba(0,0,0,0.54); }
-    ::-moz-placeholder { color: rgba(0,0,0,0.54); }
-    :-ms-input-placeholder { color: rgba(0,0,0,0.54); }
+    ::-webkit-input-placeholder { color: #404040; }
+    :-moz-placeholder { color: #404040; }
+    ::-moz-placeholder { color: #404040; }
+    :-ms-input-placeholder { color: #404040; }
 
     .md-datepicker-button {
       display: none;
     }
     .md-datepicker-input-container, .md-datepicker-invalid {
-      border-bottom-color: rgba(0,0,0,0.25);
+      border-bottom-color: #404040;
     }
     .md-datepicker-triangle-button {
       top: 3px;
     }
     .md-datepicker-expand-triangle {
-      border-top: 6px solid rgba(0,0,0,0.54);
+      border-top: 6px solid #404040;
     }
   }
 
+
+  all-shows-per-season {
+    display: flex;
+    min-height: 100px;
+    max-height: 100px;
+    #allShowsPerSeason {
+      bottom: -8px;
+    }
+    .c3-area {
+      opacity: 0.5;
+    }
+  }
+
+
   md-list {
+    display: flex;
+    padding: 0;
+    background: #F6F6F4;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    z-index: 1;
+
+    & > * {
+      flex: 1 1 auto;
+    }
+
     .md-list-item-inner {
       min-height: 36px;
     }
@@ -90,11 +133,12 @@
 
     .md-subheader {
       height: 36px;
-      background: rgba(0,0,0,0.1);
+      background: rgba(118,118,118,0.7);
       .md-subheader-inner {
         padding: 10px;
         font-weight: 600;
         text-align: center;
+        color: #F6F6F4;
         &:before {
           content: '';
           height: 100%;
@@ -102,7 +146,7 @@
           position: absolute;
           top: -16px;
           left: 42%;
-          border-bottom: 1px solid rgba(0,0,0,0.2);
+          border-bottom: 1px solid #F6F6F4;
         }
         &:after {
           content: '';
@@ -111,7 +155,7 @@
           position: absolute;
           top: -16px;
           right: 42%;
-          border-bottom: 1px solid rgba(0,0,0,0.2);
+          border-bottom: 1px solid #F6F6F4;
         }
       }
     }
@@ -126,6 +170,7 @@
         text-overflow: ellipsis;
       }
     }
+
   }
 
 }

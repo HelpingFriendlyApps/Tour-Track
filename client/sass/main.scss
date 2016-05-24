@@ -3,45 +3,27 @@ body {
   flex-direction: column;
 }
 
-.top {
-  background: red;
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+navbar {
   flex: 0 0 50px;
 }
 
 .content {
   flex: 1 1 auto;
-  background: yellow;
   overflow-y: scroll;
-
   display: flex;
+  & > * {
+    flex: 1 1 auto;
+  }
 }
 
-.content > * {
-  flex: 1 1 auto;
-}
-
-
-.left {
-  background: mistyrose;
-  display: flex;
-}
-
-.right {
-  background: goldenrod;
-}
-
-.player {
+player {
   flex: 0 0 55px;
-  background: green;
 }
-
-
-
-p {
-  font-size: 50px;
-}
-
-
 
 
 
@@ -190,9 +172,10 @@ p {
 @import 'map';
 @import 'navbar';
 @import 'player';
+@import 'mapLeft';
 // @import 'profile';
 // @import 'show';
-// @import 'shows';
+@import 'shows';
 // @import 'song';
 // @import 'songs';
 // @import 'ui-misc';

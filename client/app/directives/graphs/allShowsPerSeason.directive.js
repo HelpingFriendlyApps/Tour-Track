@@ -2,7 +2,6 @@
 
 app.directive('allShowsPerSeason', [function() {
   return {
-    replace: true,
     restrict: 'E',
     template: '<div id="allShowsPerSeason"></div>',
     scope: {
@@ -23,11 +22,20 @@ app.directive('allShowsPerSeason', [function() {
             columns: [
               ['all', ...scope.allShowsPerSeason.map( (season) => { return season.count; })]
             ],
-            type: 'area-spline'
+            type: 'area-spline',
+            colors: {
+              'all': '#F73E3E',
+              'filtered': '#FFD573'
+            }
           },
           axis: {
+            x: {
+              show: false,
+              padding: { left: 0, right: 0 }
+            },
             y: {
-              show: false
+              show: false,
+              padding: { top: 0, bottom: 0 }
             }
           },
           legend: {

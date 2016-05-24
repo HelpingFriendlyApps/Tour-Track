@@ -7,39 +7,10 @@
 	
 	<body ng-app="Tour-Track" ng-controller="RootController">
 		
-		<div class="top">
-			<navbar id="navbar"></navbar>
-		</div>
-		<div class="content">
-			<div class="left">
-				<map ng-if="mapboxToken.length > 0"
-						token='mapboxToken'
-						coordinates='map.coordinates'
-						fullscreen='fullscreen'>
-				</map>
-			</div>
-			<div class="right"></div>
-			<!-- <p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p>
-			<p>TOP</p> -->
-		</div>
-		<div class="player">
-			<player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
-		</div>
-
-		<!-- <div class="container-fluid main">
-				<ui-view></ui-view>
-		</div> -->
+		<navbar id="navbar"></navbar>
+		<div class="content" ui-view></div>
+		<player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
+		
 	</body>
 
 	<footer>
@@ -84,6 +55,7 @@
 
 		<script src="dist/controllers/home.controller.js"></script>
 		<script src="dist/controllers/login.controller.js"></script>
+		<script src="dist/controllers/mapLeft.controller.js"></script>
 		<script src="dist/controllers/profile.controller.js"></script>
 		<script src="dist/controllers/show.controller.js"></script>
 		<script src="dist/controllers/shows.controller.js"></script>
@@ -118,6 +90,7 @@
 
 		<script src="dist/states/home.state.js"></script>
 		<script src="dist/states/login.state.js"></script>
+		<script src="dist/states/mapLeft.state.js"></script>
 		<script src="dist/states/profile.state.js"></script>
 		<script src="dist/states/show.state.js"></script>
 		<script src="dist/states/shows.state.js"></script>
