@@ -24,8 +24,10 @@ app.directive('allShowsPerSeason', [function() {
             ],
             type: 'area-spline',
             colors: {
-              'all': '#F73E3E',
-              'filtered': '#FFD573'
+              // 'all': '#F73E3E',
+              'all': '#E04462',
+              // 'filtered': '#FFD573'
+              'filtered': '#F9C535'
             }
           },
           axis: {

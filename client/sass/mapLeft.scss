@@ -1,6 +1,9 @@
 .mapLeft {
-$primary: #DCDCDB;
-$secondary: #B6B6B5;
+// $primary: #DCDCDB;
+// $secondary: #B6B6B5;
+
+$primary: #EFECEA;
+// $secondary: #B6B6B5;
 
   display: flex;
   & > * {
@@ -9,10 +12,10 @@ $secondary: #B6B6B5;
     max-width: 50%;
     justify-content: center;
     background: $primary;
-    background: -webkit-radial-gradient($primary , $secondary);
-    background: -o-radial-gradient($primary, $secondary);
-    background: -moz-radial-gradient($primary, $secondary);
-    background: radial-gradient($primary , $secondary);
+    // background: -webkit-radial-gradient($primary , $secondary);
+    // background: -o-radial-gradient($primary, $secondary);
+    // background: -moz-radial-gradient($primary, $secondary);
+    // background: radial-gradient($primary , $secondary);
 
     &:last-child {
       z-index: 1;
