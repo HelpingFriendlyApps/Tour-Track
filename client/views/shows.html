@@ -13,20 +13,20 @@
       <md-datepicker ng-model="showsFilter.date" md-placeholder="Date"></md-datepicker>
       <md-input-container>
         <label>Venue</label>
-        <input ng-model="showsFilter.venue"></input>
+        <input ng-model="showsFilter.venue" ng-model-options="{debounce: 250}"></input>
       </md-input-container>
       <md-input-container>
         <label>Location</label>
-        <input ng-model="showsFilter.location"></input>
+        <input ng-model="showsFilter.location" ng-model-options="{debounce: 250}"></input>
       </md-input-container>
     </div>
   </div>
 
-  <all-shows-per-season all-shows="allShows" filtered-shows="filteredShows"></all-shows-per-season>
+  <all-shows-per-season all-shows="shows.allShows" filtered-shows="shows.filteredShows"></all-shows-per-season>
 
   <md-list>
     <md-virtual-repeat-container>
-      <md-list-item md-virtual-repeat='show in shows' class='md-2-line' ng-click='null' ui-sref='show({date: show.date})' md-on-demand='' aria-label='goToShow' ng-mouseenter='showMap=true' ng-mouseleave='showMap=false'>
+      <md-list-item md-virtual-repeat='show in deferredShows' class='md-2-line' ng-click='null' ui-sref='mapLeft.show({date: show.date})' md-on-demand='' aria-label='goToShow' ng-mouseenter='showMap=true' ng-mouseleave='showMap=false'>
 
         <div class='md-list-item-text' layout='column'>
           <md-subheader ng-if='show.firstOfYear && !showsFilter.date' class="md-no-sticky">{{show.date | date:'yyyy'}}</md-subheader>

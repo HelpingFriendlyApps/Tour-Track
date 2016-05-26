@@ -18,16 +18,17 @@ app.directive('allShowsPerSeason', [function() {
 
         chart = c3.generate({
           bindto: '#allShowsPerSeason',
+          size: {
+            height: 80
+          },
           data: {
             columns: [
               ['all', ...scope.allShowsPerSeason.map( (season) => { return season.count; })]
             ],
             type: 'area-spline',
             colors: {
-              // 'all': '#F73E3E',
-              'all': '#E04462',
-              // 'filtered': '#FFD573'
-              'filtered': '#F9C535'
+              'all': '#F25F5C',
+              'filtered': '#FFE066'
             }
           },
           axis: {

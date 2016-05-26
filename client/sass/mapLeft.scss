@@ -1,9 +1,10 @@
 .mapLeft {
-// $primary: #DCDCDB;
-// $secondary: #B6B6B5;
+  $primary: #E8EAE4;
+  $secondary: #DBDDD8;
 
-$primary: #EFECEA;
-// $secondary: #B6B6B5;
+  button {
+    z-index: 10;
+  }
 
   display: flex;
   & > * {
@@ -12,10 +13,10 @@ $primary: #EFECEA;
     max-width: 50%;
     justify-content: center;
     background: $primary;
-    // background: -webkit-radial-gradient($primary , $secondary);
-    // background: -o-radial-gradient($primary, $secondary);
-    // background: -moz-radial-gradient($primary, $secondary);
-    // background: radial-gradient($primary , $secondary);
+    background: -webkit-radial-gradient($primary , $secondary);
+    background: -o-radial-gradient($primary, $secondary);
+    background: -moz-radial-gradient($primary, $secondary);
+    background: radial-gradient($primary , $secondary);
 
     &:last-child {
       z-index: 1;
@@ -28,7 +29,8 @@ $primary: #EFECEA;
         height: 100%;
         width: 50%;
         background: url('assets/noise.png');
-        opacity: 0.2;
+        // opacity: 0.2;
+        opacity: 0.5;
         z-index: -1;
       }
     }
