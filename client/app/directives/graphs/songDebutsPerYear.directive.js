@@ -38,18 +38,21 @@ app.directive('songDebutsPerYear', ["$q", "TrackFactory", function($q, TrackFact
 
           var chart = c3.generate({
             bindto: '#songDebutsPerYear',
+            size: {
+              height: 80
+            },
             data: {
               columns: [
                 ['Song Debut Years', ...debutsPerYear.map( (year) => { return year.debuts; })]
               ],
               colors: {
-                'Song Debut Years': '#475F77'
+                'Song Debut Years': '#F25F5C'
               },
               type: 'bar'
             },
             bar: {
               width: {
-                ratio: 0.5
+                ratio: 0.75
               }
             },
             axis: {
@@ -63,6 +66,14 @@ app.directive('songDebutsPerYear', ["$q", "TrackFactory", function($q, TrackFact
               },
               y: {
                 show: false
+              }
+            },
+            legend: {
+              position: 'inset',
+              inset: {
+                anchor: 'top-right',
+                x: 20,
+                y: 10
               }
             },
             tooltip: {

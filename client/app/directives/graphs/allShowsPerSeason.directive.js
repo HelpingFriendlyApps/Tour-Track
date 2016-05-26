@@ -56,6 +56,8 @@ app.directive('allShowsPerSeason', [function() {
 
 
       scope.$watch('filteredShows', (filteredShows) => {
+        if(!filteredShows || !filteredShows.length) return;
+        
         if(filteredShows.length === scope.allShows.length) {
           chart.load({
             unload: ['filtered']

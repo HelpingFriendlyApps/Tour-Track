@@ -1,38 +1,57 @@
-.show-container {
-
-  section {
-    &.show-info {
-      p { margin: 0 0 3px; }
-      strong { margin-right: 3px; }
-    }
-    &.list {
-      padding: 0;
-    }
-    &.setlist-time-flow {
-      svg{ margin-bottom: -13px; }
-    }
+.show-state {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  // padding: 0 40px;
+  padding: 0 80px;
+  width: 100%;
+  & > * {
+    flex: 1 1 auto;
   }
 
-  .no-padding {
-    padding: 0;
+  .show-info {
+    flex: 0;
+    background: #F5F7F0;
+    border-top: 12px solid #6A6A68;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin-top: 10px;
+    padding: 10px;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    h2 { margin-top: 0; }
+    p { margin: 0 0 3px; }
+  }
+
+  song-debuts-per-year {
+    display: flex;
+    min-height: 80px;
+    max-height: 80px;
   }
 
   md-list {
+    overflow-y: scroll;
+    background: #F5F7F0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
     max-height: 100%;
     md-list-item {
       min-height: 100%;
       padding: 0;
       .md-subheader {
         height: 48px;
-        background: rgba(0,0,0,0.1);
+        background: #6A6A68;
+        span {
+          color: #F5F7F0;
+        }
       }
-      .show-info {
+      .song-info {
         max-height: 30px;
         height: 30px;
         padding: 4px 16px;
         outline: none;
         .current-song-icon {
-          color: #5D5D5B;
+          color: #6A6A68;
           font-size: 2rem;
           line-height: 1.25em;
           vertical-align: middle;
@@ -46,6 +65,60 @@
       }
     }
   }
-
-
 }
+
+
+
+
+
+// .show-state {
+
+//   section {
+//     &.show-info {
+//       p { margin: 0 0 3px; }
+//       strong { margin-right: 3px; }
+//     }
+//     &.list {
+//       padding: 0;
+//     }
+//     &.setlist-time-flow {
+//       svg{ margin-bottom: -13px; }
+//     }
+//   }
+
+//   .no-padding {
+//     padding: 0;
+//   }
+
+//   md-list {
+//     max-height: 100%;
+//     md-list-item {
+//       min-height: 100%;
+//       padding: 0;
+//       .md-subheader {
+//         height: 48px;
+//         background: rgba(0,0,0,0.1);
+//       }
+//       .show-info {
+//         max-height: 30px;
+//         height: 30px;
+//         padding: 4px 16px;
+//         outline: none;
+//         .current-song-icon {
+//           color: #5D5D5B;
+//           font-size: 2rem;
+//           line-height: 1.25em;
+//           vertical-align: middle;
+//         }
+//         .md-button {
+//           width: 28px;
+//           min-width: 28px;
+//           margin-left: 10px;
+//           background: none;
+//         }
+//       }
+//     }
+//   }
+
+
+// }

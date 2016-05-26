@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('map', ["$state", "MapFactory", "VenueFactory", function($state, MapFactory, VenueFactory) {
+app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", function($rootScope, $state, MapFactory, VenueFactory) {
   return {
     restrict: 'E',
     replace: true,
@@ -8,10 +8,11 @@ app.directive('map', ["$state", "MapFactory", "VenueFactory", function($state, M
     scope: {
       token: '=',
       allShows: '=',
-      filteredShows: '='
+      filteredShows: '=',
+      currentShow: '='
     },
     link: function(scope, element, attrs) {
-      
+
       mapboxgl.accessToken = scope.token;
       var map = new mapboxgl.Map({
         container: 'map',
@@ -23,21 +24,45 @@ app.directive('map', ["$state", "MapFactory", "VenueFactory", function($state, M
 
       VenueFactory.getAllVenues().then( (venues) => {
         let allVenues = venues;
+        // console.log('about to add allVenues')
         MapFactory.addMapSource('allVenues', map, MapFactory.createVenueFeatures(allVenues));
       });
 
       scope.$watch('filteredShows', function(filteredShows) {
+        console.log('filteredShows', filteredShows)
+        if(!filteredShows) return;
+        // if(!filteredShows || !filteredShows.length || filteredShows.length === scope.allShows.length) {
+        if(!filteredShows.length || filteredShows.length === scope.allShows.length) {
+          MapFactory.removeMapSourceIfExists(map, 'filteredShows');
+          map.flyTo({ center: [-96.5, 39.5], zoom: 3 });
+          dimAllVenues();
+          return;
+        }
+
         if(filteredShows.length !== scope.allShows.length) {
           MapFactory.addMapSource('filteredShows', map, MapFactory.createShowFeatures(filteredShows), true);
           map.setPaintProperty('allVenues', 'circle-opacity', 0.5);
-        } else if(map.loaded()) {
-          if(map.getSource('filteredShows')) {
-            map.removeLayer('filteredShows').removeSource('filteredShows');
-          }
-          map.flyTo({ center: [-96.5, 39.5], zoom: 3 });
-          map.setPaintProperty('allVenues', 'circle-opacity', 1);
-        }
+        } 
+
       });
+
+      scope.$watch('currentShow', function(currentShow) {
+        console.log('currentShow', currentShow)
+        if(!currentShow) return;
+        // MapFactory.removeMapSourceIfExists(map, 'filteredShows');
+        MapFactory.addMapSource('currentShow', map, MapFactory.createShowFeatures([currentShow]), true);
+        dimAllVenues();
+      });
+
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        console.log('arguments', arguments)
+        MapFactory.removeActiveSources(map);
+        // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
+      });
+
+      function dimAllVenues() {
+        if(map.getSource('allVenues')) map.setPaintProperty('allVenues', 'circle-opacity', 1);
+      }
 
     }
 

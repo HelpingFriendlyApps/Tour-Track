@@ -1,82 +1,61 @@
-<div class="show-container">
+<div class="show-state">
 
-  <div layout="row" layout-align="start start">
-
-    <div flex ="35" layout="column" layout-align="start center">
-      <div flex="100" layout="row" layout-align="start start" layout-padding>
-        <section class="show-info">
-          <h1>{{show.date | date:'MM/dd/yyyy'}}</h1>
-          <h4>{{show.venue_name}}, {{show.location}}</h4>
-          <p>
-            <span>Shows at Venue:</span>
-            <span>{{totalShowsAtVenue.length}}</span>
-            <small>shows ({{getOrdinal(xShowPlayedAtVenue)}} time played here)</small>
-          </p>
-          <p>
-            <span>Biggest Song Gap: {{songWithBiggestGap.gap}}</span>
-            <small>(<a ui-sref='song({songId: songWithBiggestGap.song_id})'>{{songWithBiggestGap.title}}</a>)</small>
-          </p>
-        </section>
-      </div>
-      <div flex="100" layout="row" layout-align="start start" layout-padding>
-        <section class="list">
-          <md-list>
-            <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
-
-              <div class='md-list-item-text' layout='column'>
-                <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
-
-                <div class='show-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
-                  <p>
-                    <i ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_up</i>
-                    <span>
-                      <a ui-sref='song({songId: song.song_id})'>{{song.title}}</a>
-                    </span>
-                    <md-menu>
-                      <md-button ng-show="hover" class="md-icon-button" ng-click="openSongControls($mdOpenMenu, $event)">
-                        <md-icon md-menu-origin="">more_horiz</md-icon>
-                      </md-button>
-                      <md-menu-content width="2">
-                        <md-menu-item>
-                          <md-button ng-click='upNext(song)'>
-                            <md-icon md-menu-align-target="">playlist_play</md-icon>
-                            Play Next
-                          </md-button>
-                        </md-menu-item>
-                        <md-menu-divider style='margin: 0;'></md-menu-divider>
-                        <md-menu-item>
-                          <md-button ng-click='addToUpNext(song)'>
-                            <md-icon>playlist_add</md-icon>
-                            Add to Up Next
-                          </md-button>
-                        </md-menu-item>
-                      </md-menu-content>
-                    </md-menu>
-                  </p>
-                  <p>{{ song.duration | millisecondsToDate | date:'m:ss' }}</p>
-
-                </div>
-              </div>
-              <md-divider></md-divider>
-            </md-list-item>
-          </md-list>
-        </section>
-      </div>
-    </div>
-
-    <div flex ="65" layout="column" layout-align="start center">
-      <div flex="100" layout="row" layout-align="start start" layout-padding>
-        <section>
-          <song-debuts-per-year setlist="show.setlist" ></song-debuts-per-year>
-        </section>
-      </div>
-      <div flex="100" layout="row" layout-align="start start" layout-padding>
-        <section class="no-padding setlist-time-flow">
-          <setlist-time-flow setlist="show.setlist" ></setlist-time-flow>
-        </section>
-      </div>
-    </div>
-
+  <div class="show-info">
+    <h2>{{show.date | date:'MM/dd/yyyy'}}</h2>
+    <h4>{{show.venue_name}}, {{show.location}}</h4>
+    <p>
+      <span>Shows at Venue: {{totalShowsAtVenue.length}}</span>
+      <small>shows ({{getOrdinal(xShowPlayedAtVenue)}} time played here)</small>
+    </p>
+    <p>
+      <span>Biggest Song Gap: {{songWithBiggestGap.gap}}</span>
+      <small>(<a ui-sref='song({songId: songWithBiggestGap.song_id})'>{{songWithBiggestGap.title}}</a>)</small>
+    </p>
   </div>
+  
+  <song-debuts-per-year setlist="show.setlist" ></song-debuts-per-year>
+
+  <!-- <setlist-time-flow setlist="show.setlist" ></setlist-time-flow> -->
+
+  <md-list>
+    <md-list-item ng-repeat='song in show.setlist' class='md-2-line'>
+
+      <div class='md-list-item-text' layout='column'>
+        <md-subheader ng-if='song.firstOfSet' class="md-no-sticky">{{setParser(song.set)}}</md-subheader>
+
+        <div class='song-info' ng-dblclick='play(song, $index)' ng-mouseenter='hoverIn()' ng-mouseleave='hoverOut()' layout='row' layout-align='space-between center'>
+          <p>
+            <i ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_up</i>
+            <span>
+              <a ui-sref='song({songId: song.song_id})'>{{song.title}}</a>
+            </span>
+            <md-menu>
+              <md-button ng-show="hover" class="md-icon-button" ng-click="openSongControls($mdOpenMenu, $event)">
+                <md-icon md-menu-origin="">more_horiz</md-icon>
+              </md-button>
+              <md-menu-content width="2">
+                <md-menu-item>
+                  <md-button ng-click='upNext(song)'>
+                    <md-icon md-menu-align-target="">playlist_play</md-icon>
+                    Play Next
+                  </md-button>
+                </md-menu-item>
+                <md-menu-divider style='margin: 0;'></md-menu-divider>
+                <md-menu-item>
+                  <md-button ng-click='addToUpNext(song)'>
+                    <md-icon>playlist_add</md-icon>
+                    Add to Up Next
+                  </md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+          </p>
+          <p>{{ song.duration | millisecondsToDate | date:'m:ss' }}</p>
+
+        </div>
+      </div>
+      <md-divider></md-divider>
+    </md-list-item>
+  </md-list>
 
 </div>

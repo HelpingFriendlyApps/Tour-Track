@@ -4,6 +4,7 @@ body {
 }
 
 * {
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -24,6 +25,69 @@ navbar {
 player {
   flex: 0 0 55px;
 }
+
+
+
+a {
+  color: #50514F;
+  &:hover {
+    color: #D85552;
+  }
+}
+
+md-list {
+  padding: 0;
+}
+
+
+
+
+.md-datepicker-calendar-pane {
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  .md-datepicker-input-mask {
+    display: none;
+  }
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused {
+  label {
+    // color: rgba(0,0,0,0.54);
+  }
+  .md-input {
+    border-color: #D85552;
+  }
+}
+
+.md-select-menu-container {
+  top: 55px !important;
+  width: 100px;
+}
+
+md-select {
+  &:not([disabled]):focus .md-select-value {
+    border-bottom-color: #D85552;
+  }
+}
+
+md-select-menu {
+  & > md-content {
+    background: #F5F7F0;
+    md-option {
+      height: 40px;
+      color: #6A6A68;
+    }
+    md-option[selected] {
+      color: #6A6A68 !important;
+    }
+    md-divider {
+      border-color: #6A6A68;
+      opacity: 0.2;
+    }
+  }
+}
+
 
 
 
@@ -174,7 +238,7 @@ player {
 @import 'player';
 @import 'mapLeft';
 // @import 'profile';
-// @import 'show';
+@import 'show';
 @import 'shows';
 // @import 'song';
 // @import 'songs';
