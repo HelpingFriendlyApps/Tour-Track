@@ -2,6 +2,9 @@ angular.module('Tour-Track')
 .factory('MapFactory', [function() {
 
   let MapFactory = {};
+  let map;
+  let mapLoaded = false;
+  let activeSources = [];
 
   let sourceOptions = {
     allVenues: {
@@ -17,9 +20,8 @@ angular.module('Tour-Track')
     }
   };
 
-  let activeSources = [];
 
-  function getFitBounds(features) {
+  function getBounds(features) {
     let longitudes = [], latitudes = [];
     features.forEach( (feature) => {
       longitudes.push(feature.geometry.coordinates[0]);
@@ -29,6 +31,17 @@ angular.module('Tour-Track')
       [Math.min(...longitudes) - 0.01, Math.min(...latitudes) - 0.01],
       [Math.max(...longitudes) + 0.01, Math.max(...latitudes) + 0.01]
     ];
+  }
+  
+  function updateStyles() {
+    if(activeSources.includes('allVenues')) {
+      map.setPaintProperty('allVenues', 'circle-opacity', 1);
+      if(activeSources.includes('filteredShows') || activeSources.includes('currentShow')) map.setPaintProperty('allVenues', 'circle-opacity', 0.5);
+    }
+  }
+
+  MapFactory.setMap = function(mapObj) {
+    map = mapObj;
   }
 
   MapFactory.createVenueFeatures = function(venues) {
@@ -60,18 +73,20 @@ angular.module('Tour-Track')
     });
   }
 
-  // let queuedSources = [];
+  MapFactory.addMapSource = function(sourceName, features, options) {
+    let params = arguments,
+      fitBounds = options && options.fitBounds ? options.fitBounds : false,
+      beforeId = options && options.beforeId ? options.beforeId : "";
 
-  MapFactory.addMapSource = function(sourceName, map, features, fitBounds) {
-    console.log('arguments', arguments, map.loaded())
-    fitBounds = fitBounds || false;
-    if(!map.loaded()) {
+
+    if(!mapLoaded && !map.loaded()) {
       return map.on('load', function() {
-        MapFactory.addMapSource(sourceName, map, features, fitBounds)
+        mapLoaded = true;
+        MapFactory.addMapSource(...params);
       });
     }
 
-    console.log('arguments BELOW', arguments)
+    if(activeSources.indexOf(sourceName) < 0) activeSources.push(sourceName);
 
     if(map.getSource(sourceName)) {
       map.removeLayer(sourceName).removeSource(sourceName);
@@ -94,22 +109,21 @@ angular.module('Tour-Track')
         'circle-radius': sourceOptions[sourceName].radius || 5,
         'circle-color': sourceOptions[sourceName].color
       }
-    });
+    }, beforeId);
 
-    if(sourceName !== 'allVenues') activeSources.push(sourceName);
-
-    fitBounds ? map.fitBounds(getFitBounds(features)) : map.flyTo({ center: [-96.5, 39.5], zoom: 3 });
-    // if(fitBounds) map.fitBounds(getFitBounds(features));
+    updateStyles();
+    if(fitBounds) map.fitBounds(getBounds(features));
   }
 
-  MapFactory.removeMapSourceIfExists = function(map, id) {
+  MapFactory.removeMapSourceIfExists = function(id) {
     if(map.getSource(id)) {
       map.removeLayer(id).removeSource(id);
-    }
-  }
 
-  MapFactory.removeActiveSources = function(map) {
-    console.log('activeSources', activeSources)
+      var index = activeSources.indexOf(id);
+      activeSources.splice(index, 1);
+
+      updateStyles();
+    }
   }
 
   return MapFactory;

@@ -5,8 +5,4 @@ angular.module('Tour-Track')
 
   $scope.shows = {};
 
-  $scope.doIt = function() {
-    console.log('$scope.shows', $scope.shows)
-  }
-
 }]);

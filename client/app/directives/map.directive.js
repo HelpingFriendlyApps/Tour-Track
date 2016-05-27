@@ -21,48 +21,42 @@ app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", func
         zoom: 3,
         attributionControl: false
       });
+      MapFactory.setMap(map);
 
       VenueFactory.getAllVenues().then( (venues) => {
         let allVenues = venues;
-        // console.log('about to add allVenues')
-        MapFactory.addMapSource('allVenues', map, MapFactory.createVenueFeatures(allVenues));
+        MapFactory.addMapSource('allVenues', MapFactory.createVenueFeatures(allVenues), {beforeId: 'currentShow'});
       });
 
       scope.$watch('filteredShows', function(filteredShows) {
-        console.log('filteredShows', filteredShows)
         if(!filteredShows) return;
-        // if(!filteredShows || !filteredShows.length || filteredShows.length === scope.allShows.length) {
         if(!filteredShows.length || filteredShows.length === scope.allShows.length) {
-          MapFactory.removeMapSourceIfExists(map, 'filteredShows');
+          MapFactory.removeMapSourceIfExists('filteredShows');
           map.flyTo({ center: [-96.5, 39.5], zoom: 3 });
-          dimAllVenues();
           return;
         }
 
         if(filteredShows.length !== scope.allShows.length) {
-          MapFactory.addMapSource('filteredShows', map, MapFactory.createShowFeatures(filteredShows), true);
+          MapFactory.addMapSource('filteredShows', MapFactory.createShowFeatures(filteredShows), {fitBounds: true});
           map.setPaintProperty('allVenues', 'circle-opacity', 0.5);
         } 
 
       });
 
       scope.$watch('currentShow', function(currentShow) {
-        console.log('currentShow', currentShow)
-        if(!currentShow) return;
-        // MapFactory.removeMapSourceIfExists(map, 'filteredShows');
-        MapFactory.addMapSource('currentShow', map, MapFactory.createShowFeatures([currentShow]), true);
-        dimAllVenues();
+        if(!currentShow) return MapFactory.removeMapSourceIfExists('currentShow');
+        MapFactory.addMapSource('currentShow', MapFactory.createShowFeatures([currentShow]), {fitBounds: true});
       });
 
       $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-        console.log('arguments', arguments)
-        MapFactory.removeActiveSources(map);
-        // if(fromState.name ==='show' && toState.name !== 'show') renderRandomShows();
-      });
+        switch(toState.name) {
+          case "mapLeft.show":
+            scope.filteredShows = [];
+          case "mapLeft.shows":
+            scope.currentShow = null;
+        }
 
-      function dimAllVenues() {
-        if(map.getSource('allVenues')) map.setPaintProperty('allVenues', 'circle-opacity', 1);
-      }
+      });
 
     }
 

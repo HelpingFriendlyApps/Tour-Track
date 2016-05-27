@@ -6,7 +6,6 @@ app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFact
 
   $scope.show = show;
   $scope.show.setlist = setlist;
-  console.log('$scope.show', $scope.show)
 
   ShowFactory.getShowsByVenueId($scope.show.venue_id).then( (showsAtVenue) => {
     $scope.totalShowsAtVenue = showsAtVenue;
