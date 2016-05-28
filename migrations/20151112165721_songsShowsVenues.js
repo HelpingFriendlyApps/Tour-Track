@@ -17,6 +17,7 @@ exports.up = function(knex, Promise) {
             table.string('latitude');
             table.string('longitude');
             table.string('location');
+            table.integer('location_id');
             table.timestamps();
         }),
 
