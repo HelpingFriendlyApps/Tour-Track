@@ -9,7 +9,8 @@ app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", func
       token: '=',
       allShows: '=',
       filteredShows: '=',
-      currentShow: '='
+      currentShow: '=',
+      currentSongPerformances: '='
     },
     link: function(scope, element, attrs) {
 
@@ -48,14 +49,39 @@ app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", func
         MapFactory.addMapSource('currentShow', MapFactory.createShowFeatures([currentShow]), {fitBounds: true});
       });
 
-      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-        switch(toState.name) {
-          case "mapLeft.show":
-            scope.filteredShows = [];
-          case "mapLeft.shows":
-            scope.currentShow = null;
-        }
+      scope.$watch('currentSongPerformances', function(currentSongPerformances) {
+        console.log('currentSongPerformances', currentSongPerformances)
+        if(!currentSongPerformances) return MapFactory.removeMapSourceIfExists('currentSongPerformances');
+        MapFactory.addMapSource('currentSongPerformances', MapFactory.createShowFeatures(currentSongPerformances), {fitBounds: true});
+      });
 
+      $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
+        if(toState.name !== "mapLeft.shows") {
+          scope.filteredShows = [];
+        }
+        if(toState.name !== "mapLeft.show") {
+          scope.currentShow = null;
+        }
+        if(toState.name !== "mapLeft.song") {
+          scope.currentSongPerformances = null;
+        }
+      });
+
+      map.on('click', function(e) {
+        let features = map.queryRenderedFeatures(e.point, {layers: ['currentSongPerformances']});
+
+        if(!features.length) return;
+        let feature = features[0];
+
+        var popup = new mapboxgl.Popup()
+          .setLngLat(feature.geometry.coordinates)
+          .setHTML('<div>Poop</div>')
+          .addTo(map);
+      });
+
+      map.on('mousemove', function(e) {
+        var features = map.queryRenderedFeatures(e.point, {layers: ['currentSongPerformances']});
+        map.getCanvas().style.cursor = features.length ? 'pointer' : '';
       });
 
     }

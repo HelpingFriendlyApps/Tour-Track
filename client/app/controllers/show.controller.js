@@ -2,7 +2,7 @@
 
 app.controller('ShowCtrl', ["$scope", "$rootScope", "show", "setlist", "ShowFactory", "PlayerFactory", "TrackFactory", "$mdDialog", "$q", function($scope, $rootScope, show, setlist, ShowFactory, PlayerFactory, TrackFactory, $mdDialog, $q) {
 
-  $scope.shows.currentShow = show; // Passing up to parent
+  $scope.mapFeatures.currentShow = show; // Passing up to parent
 
   $scope.show = show;
   $scope.show.setlist = setlist;

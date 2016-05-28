@@ -1,9 +1,10 @@
 <div class="mapLeft">
   <map ng-if="mapboxToken.length > 0"
       token="mapboxToken"
-      all-shows="shows.allShows"
-      filtered-shows="shows.filteredShows"
-      current-show="shows.currentShow">
+      all-shows="mapFeatures.allShows"
+      filtered-shows="mapFeatures.filteredShows"
+      current-show="mapFeatures.currentShow"
+      current-song-performances="mapFeatures.currentSongPerformances">
   </map>
   <div ui-view></div>
 </div>

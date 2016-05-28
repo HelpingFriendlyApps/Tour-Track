@@ -9,7 +9,7 @@
     </p>
     <p>
       <span>Biggest Song Gap: {{songWithBiggestGap.gap}}</span>
-      <small>(<a ui-sref='song({songId: songWithBiggestGap.song_id})'>{{songWithBiggestGap.title}}</a>)</small>
+      <small>(<a ui-sref='mapLeft.song({songId: songWithBiggestGap.song_id})'>{{songWithBiggestGap.title}}</a>)</small>
     </p>
   </div>
   
@@ -27,7 +27,7 @@
           <p>
             <i ng-show='currentSong.id === song.id' class="current-song-icon material-icons">volume_up</i>
             <span>
-              <a ui-sref='song({songId: song.song_id})'>{{song.title}}</a>
+              <a ui-sref='mapLeft.song({songId: song.song_id})'>{{song.title}}</a>
             </span>
             <md-menu>
               <md-button ng-show="hover" class="md-icon-button" ng-click="openSongControls($mdOpenMenu, $event)">

@@ -17,6 +17,10 @@ angular.module('Tour-Track')
     currentShow: {
       color: '#FFE066',
       radius: 7
+    },
+    currentSongPerformances: {
+      color: '#FFE066',
+      radius: 7
     }
   };
 
@@ -36,7 +40,8 @@ angular.module('Tour-Track')
   function updateStyles() {
     if(activeSources.includes('allVenues')) {
       map.setPaintProperty('allVenues', 'circle-opacity', 1);
-      if(activeSources.includes('filteredShows') || activeSources.includes('currentShow')) map.setPaintProperty('allVenues', 'circle-opacity', 0.5);
+      // if(activeSources.includes('filteredShows') || activeSources.includes('currentShow')) map.setPaintProperty('allVenues', 'circle-opacity', 0.5);
+      if(activeSources.length > 1) map.setPaintProperty('allVenues', 'circle-opacity', 0.5);
     }
   }
 

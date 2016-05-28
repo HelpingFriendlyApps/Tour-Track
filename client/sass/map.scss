@@ -2,12 +2,17 @@
   flex: 1;
   display: flex;
   min-width: 50%;
-  // border-right: 1px solid #7F7F7F;
+  & > * {
+    flex: 1 1 auto;
+  }
+
+  .mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  }
+  
 }
 
-.map-container > * {
-  flex: 1 1 auto;
-}
 
 
 

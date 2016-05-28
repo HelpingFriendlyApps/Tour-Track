@@ -3,7 +3,7 @@
 angular.module('Tour-Track')
 .controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', '$timeout', function($scope, allShows, ShowFactory, $timeout) {
 
-  $scope.shows.allShows = allShows;
+  $scope.mapFeatures.allShows = allShows;
 
   var years = [];
   $scope.showsFilter = { year: "", date: "", venue: "", location: "" };
@@ -16,14 +16,14 @@ angular.module('Tour-Track')
     years = [];
     var dateString = showsFilter.date ? showsFilter.date.toISOString().slice(0,10) : ""
 
-    $scope.shows.filteredShows = allShows.filter( (show) => {
+    $scope.mapFeatures.filteredShows = allShows.filter( (show) => {
       return show.date.slice(0,4).indexOf(showsFilter.year) > -1
         && show.date.slice(0,10).indexOf(dateString) > -1 
         && show.location.toLowerCase().indexOf(showsFilter.location.toLowerCase()) > -1 
         && show.venue_name.toLowerCase().indexOf(showsFilter.venue.toLowerCase()) > -1;
     });
 
-    $scope.deferredShows = new Shows($scope.shows.filteredShows);
+    $scope.deferredShows = new Shows($scope.mapFeatures.filteredShows);
   }, true);
 
 

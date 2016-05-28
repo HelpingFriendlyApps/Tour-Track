@@ -6,6 +6,7 @@ angular.module('Tour-Track')
   $scope.song = song;
   TrackFactory.getTracksBySongId($scope.song.id).then( (tracks) => {
     $scope.song.performances = tracks;
+    $scope.mapFeatures.currentSongPerformances = tracks; // Passing up to parent
     console.log('$scope.song', $scope.song)
 
     ShowFactory.getAllShowYears().then( (years) => {
