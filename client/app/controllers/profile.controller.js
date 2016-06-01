@@ -11,11 +11,13 @@ angular.module('Tour-Track')
     Profile.userShows($scope.user.uid).then(function(shows) {
       $scope.showsLoading = false;
       $scope.userShows = shows;
+      console.log('$scope.userShows', $scope.userShows)
     });
 
     Profile.userSongs($scope.user.uid).then(function(songs) {
       $scope.songsLoading = false;
       $scope.userSongs = songs;
+      console.log('$scope.userSongs', $scope.userSongs)
     });
   });
 
