@@ -2,10 +2,6 @@
   $primary: #E8EAE4;
   $secondary: #DBDDD8;
 
-  // button {
-  //   z-index: 10;
-  // }
-
   display: flex;
   & > * {
     flex: 1 1 auto;
@@ -33,6 +29,64 @@
         z-index: -1;
       }
     }
+  }
+
+  .mapboxgl-popup {
+    &.mapboxgl-popup-anchor-bottom, &.mapboxgl-popup-anchor-bottom-left, &.mapboxgl-popup-anchor-bottom-right { .mapboxgl-popup-tip { border-top-color: #6A6A68; }}
+    &.mapboxgl-popup-anchor-top, &.mapboxgl-popup-anchor-top-left, &.mapboxgl-popup-anchor-top-right { .mapboxgl-popup-tip { border-bottom-color: #6A6A68; }}
+    &.mapboxgl-popup-anchor-left { .mapboxgl-popup-tip { border-right-color: #6A6A68; }}
+    &.mapboxgl-popup-anchor-right { .mapboxgl-popup-tip { border-left-color: #6A6A68; }}
+    .mapboxgl-popup-content {
+      background: #6A6A68;
+      color: white;
+      .map-popup-wrapper {
+        max-width: 160px;
+        display: flex;
+        flex-direction: column;
+        & > * { flex: 1; }
+        
+        strong {
+          font-size: 13px;
+          text-align: center;
+          line-height: 1.4em;
+        }
+
+        .venue-info {
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          small {
+            font-size: 95%;
+          }
+        }
+
+        ul {
+          max-height: 198px;
+          overflow-y: scroll;
+          padding: 0;
+          margin: 0;
+          background: #F5F7F0;
+          color: #373736;
+          li {
+            padding: 1px 6px;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            &:nth-of-type(even) {
+              background: #DBDDD8;
+            }
+            &:hover, &:nth-of-type(even):hover {
+              background: #C2C3BF;
+            }
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
 
   }
+
 }

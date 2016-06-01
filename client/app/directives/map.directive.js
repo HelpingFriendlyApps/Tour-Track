@@ -1,6 +1,6 @@
 'use strict'
 
-app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", function($rootScope, $state, MapFactory, VenueFactory) {
+app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", "ShowFactory", "$compile", function($rootScope, $state, MapFactory, VenueFactory, ShowFactory, $compile) {
   return {
     restrict: 'E',
     replace: true,
@@ -50,7 +50,6 @@ app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", func
       });
 
       scope.$watch('currentSongPerformances', function(currentSongPerformances) {
-        console.log('currentSongPerformances', currentSongPerformances)
         if(!currentSongPerformances) return MapFactory.removeMapSourceIfExists('currentSongPerformances');
         MapFactory.addMapSource('currentSongPerformances', MapFactory.createShowFeatures(currentSongPerformances), {fitBounds: true});
       });
@@ -68,19 +67,23 @@ app.directive('map', ["$rootScope", "$state", "MapFactory", "VenueFactory", func
       });
 
       map.on('click', function(e) {
-        let features = map.queryRenderedFeatures(e.point, {layers: ['currentSongPerformances']});
+        let features = map.queryRenderedFeatures(e.point, {layers: ['allVenues']});
 
         if(!features.length) return;
         let feature = features[0];
 
+        scope.popupProperties = feature.properties;
+
+        var elem = $compile('<map-popup data="popupProperties"></popup>')(scope)[0];
+
         var popup = new mapboxgl.Popup()
           .setLngLat(feature.geometry.coordinates)
-          .setHTML('<div>Poop</div>')
+          .setDOMContent(elem)
           .addTo(map);
       });
 
       map.on('mousemove', function(e) {
-        var features = map.queryRenderedFeatures(e.point, {layers: ['currentSongPerformances']});
+        var features = map.queryRenderedFeatures(e.point, {layers: ['allVenues']});
         map.getCanvas().style.cursor = features.length ? 'pointer' : '';
       });
 

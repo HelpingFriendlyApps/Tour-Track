@@ -1,0 +1,13 @@
+<div class="map-popup-wrapper">
+  <strong>{{venue.name}}</strong>
+  <div class="venue-info">
+    <small>{{venue.location}}</small>
+    <small>({{shows.length}} shows)</small>
+  </div>
+  <ul>
+    <li ng-repeat="show in shows" ui-sref="mapLeft.show({date: show.date})">
+      <p>{{show.date | date:'yyyy/MM/dd'}}</p>
+      <small>{{show.date | date:'EEEE'}}</small>
+    </li>
+  </ul>
+</div>

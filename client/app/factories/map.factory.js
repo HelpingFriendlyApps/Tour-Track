@@ -52,7 +52,10 @@ angular.module('Tour-Track')
   MapFactory.createVenueFeatures = function(venues) {
     let VenueObj = function(venue) {
       this.type = 'Feature',
-      this.properties = { venue_id: venue.id, venue_name: venue.name },
+      this.properties = {
+        venue_id: venue.id,
+        venue_name: venue.name
+      },
       this.geometry = { type: 'Point', coordinates: [venue.longitude, venue.latitude] }
     }
 
