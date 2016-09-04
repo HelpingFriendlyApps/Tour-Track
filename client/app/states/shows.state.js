@@ -2,7 +2,7 @@
 
 angular.module('Tour-Track').config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider.state('mapLeft.shows', {
+  $stateProvider.state('shows', {
     url: '/shows',
     templateUrl: '../views/shows.html',
     controller: 'ShowsCtrl',

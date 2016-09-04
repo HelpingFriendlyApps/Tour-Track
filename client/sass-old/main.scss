@@ -1,0 +1,245 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+navbar {
+  flex: 0 0 50px;
+}
+
+.content {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  display: flex;
+  & > * {
+    flex: 1 1 auto;
+  }
+}
+
+player {
+  flex: 0 0 55px;
+}
+
+
+
+a {
+  color: #50514F;
+  &:hover {
+    color: #D85552;
+  }
+}
+
+md-list {
+  padding: 0;
+}
+
+
+
+
+.md-datepicker-calendar-pane {
+  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  .md-datepicker-input-mask {
+    display: none;
+  }
+}
+
+md-input-container:not(.md-input-invalid).md-input-focused {
+  label {
+    // color: rgba(0,0,0,0.54);
+  }
+  .md-input {
+    border-color: #D85552;
+  }
+}
+
+.md-select-menu-container {
+  top: 55px !important;
+  width: 100px;
+}
+
+md-select {
+  &:not([disabled]):focus .md-select-value {
+    border-bottom-color: #D85552;
+  }
+}
+
+md-select-menu {
+  & > md-content {
+    background: #F5F7F0;
+    md-option {
+      height: 40px;
+      color: #6A6A68;
+    }
+    md-option[selected] {
+      color: #6A6A68 !important;
+    }
+    md-divider {
+      border-color: #6A6A68;
+      opacity: 0.2;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+// html, body {
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   overflow: hidden;
+// }
+
+// body > .container-fluid {
+//   height: 100%;
+//   margin: 75px 30px;
+//   padding: 10px 10px 15px 10px;
+//   display: flex;
+//   flex-direction: column;
+//   z-index: 0;
+//   background: rgba(220,221,216,0.1);
+//   overflow-y: hidden;
+
+//   &:before {
+//     content: '';
+//     background: url('http://api.thumbr.it/whitenoise-361x370.png?');
+//     position: absolute;
+//     top: 0; 
+//     left: 0;
+//     width: 100%; 
+//     height: 100%;
+//     opacity: 0.2;
+//     z-index: -1;
+//   }
+
+//   ui-view {
+//     display: flex;
+//     flex-direction: column;
+//     flex-grow: 1;
+//     overflow-y: auto;
+//   }
+// }
+
+// h1, h2, h3, h4, p, a, label {
+//   color: #434342;
+// }
+
+// h1, h2, h3, h4 {
+//   margin: 0 0 10px;
+// }
+
+// .flex-100 {
+//   width: 100%;
+// }
+
+// .layout-padding {
+//   padding: 5px;
+// }
+
+// section {
+//   height: 100%;
+//   width: 100%;
+//   padding: 10px;
+//   background: rgba(220,221,216,0.93);
+//   border-radius: 1px;
+//   border-top: 5px solid rgba(151,53,53,0.7);
+//   &.graph {
+//     padding: 5px;
+//   }
+// }
+
+// md-list {
+//   height: 100%;
+//   max-height: 510px;
+//   overflow-y: scroll;
+//   padding: 0;
+// }
+
+// md-list-item {
+//   height: 30px;
+//   min-height: 100%;
+//   padding: 0 10px;
+//   outline: none;
+//   p {
+//     margin: 0;
+//     white-space: nowrap;
+//     overflow-x: hidden;
+//     text-overflow: ellipsis;
+//   }
+// }
+
+// .md-datepicker-calendar-pane {
+//   box-sizing: content-box;
+//   -webkit-box-sizing: content-box;
+//   -moz-box-sizing: content-box;
+//   .md-datepicker-input-mask {
+//     display: none;
+//   }
+// }
+
+// md-menu-content {
+//   padding: 0;
+// }
+
+// md-input-container:not(.md-input-invalid).md-input-focused {
+//   label {
+//     color: rgba(0,0,0,0.54);
+//   }
+//   .md-input {
+//     border-color: rgba(151,53,53,0.55);
+//   }
+// }
+
+// .md-select-menu-container {
+//   top: 55px !important;
+//   width: 100px;
+// }
+
+// md-select {
+//   &:not([disabled]):focus .md-select-value {
+//     border-bottom-color: rgba(151,53,53,0.55);
+//   }
+// }
+
+// md-select-menu {
+//   & > md-content {
+//     background: #E9EAE4;
+//     md-option {
+//       height: 40px;
+//       color: #434342;
+//     }
+//     md-option[selected] {
+//       color: #434342 !important;
+//     }
+//     md-divider {
+//       border-color: #434342;
+//       opacity: 0.2;
+//     }
+//   }
+// }
+
+
+@import 'map';
+@import 'navbar';
+@import 'player';
+@import 'mapLeft';
+@import 'profile';
+@import 'show';
+@import 'shows';
+@import 'song';
+@import 'songs';
+// @import 'ui-misc';

@@ -1,171 +1,41 @@
-.shows-state {
+.shows-container {
+  // background: mistyrose;
   display: flex;
   flex-direction: column;
-  padding: 0 40px;
-  width: 100%;
-  & > * {
-    flex: 1 1 auto;
-  }
 
-  .form {
+  .map-container {
+    background: grey;
+    flex: 0 0 300px;
     display: flex;
-    flex: 0;
-    background: #F5F7F0;
-    border-top: 12px solid #6A6A68;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    margin-top: 10px;
-    justify-content: center;
-    height: 75px;
-    min-height: 75px;
+    flex-direction: column;
 
-    .md-inline-form {
-      display: flex;
-      width: 700px;
-      max-width: 700px;
-      justify-content: space-around;
+    .map {
+      flex: 1;
+    }
+
+    .search-bar {
+      flex: 0 0 70px;
+      background: rgba(0,0,0,0.5);
     }
   }
 
-  md-input-container {
-    md-select-value {
-      border-color: #404040;
-      &.md-select-value > span {
-        -webkit-transform: translate3d(0,-2px,0);
-        transform: translate3d(0,-2px,0);
-      }
-      &.md-select-placeholder, .md-select-icon {
-        color: #404040;
-      }
-    }
-    input, label {
-      font-family: Roboto,"Helvetica Neue",sans-serif;
-      font-weight: 400;
-      color: #404040 !important;
-      border-color: #404040;
-    }
-
-    &.md-input-focused, &.md-input-has-value {
-      label {
-        display: none;
-      }
-    }
-
-    &.md-undefined-select {
-      label {
-        display: inline;
-        transform: translate3d(0, 30px, 0) scale(1) !important;
-      }
-      .md-text {
-        opacity: 0;
-      }
-    }
-  }
-
-  md-datepicker {
-    margin: 22px 7px 0 0;
-    padding: 0;
-    background: none;
-
-    ::-webkit-input-placeholder { color: #404040; }
-    :-moz-placeholder { color: #404040; }
-    ::-moz-placeholder { color: #404040; }
-    :-ms-input-placeholder { color: #404040; }
-
-    .md-datepicker-button {
-      display: none;
-    }
-    .md-datepicker-input-container, .md-datepicker-invalid {
-      border-bottom-color: #404040;
-    }
-    .md-datepicker-triangle-button {
-      top: 3px;
-    }
-    .md-datepicker-expand-triangle {
-      border-top: 6px solid #404040;
-    }
-  }
-
-
-  all-shows-per-season {
-    display: flex;
-    min-height: 80px;
-    max-height: 80px;
-    #allShowsPerSeason {
-      height: 100%;
-      bottom: -8px;
-    }
-    .c3-area {
-      opacity: 0.7;
-    }
-  }
-
-
-  md-list {
-    display: flex;
-    padding: 0;
-    background: #F5F7F0;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    z-index: 1;
-
-    & > * {
-      flex: 1 1 auto;
-    }
-
-    .md-list-item-inner {
-      min-height: 36px;
-    }
-
-    md-list-item {
+  .shows {
+    ul {
+      margin: 0;
       padding: 0;
-      min-height: 0;
-      a.md-button {
-        min-height: 0;
-        padding: 0;
-        margin: 0;
-      }
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
     }
 
-    .md-subheader {
-      height: 36px;
-      background: #6A6A68;
-      .md-subheader-inner {
-        padding: 10px;
-        font-weight: 600;
-        text-align: center;
-        color: #F5F7F0;
-        &:before {
-          content: '';
-          height: 100%;
-          width: 5%;
-          position: absolute;
-          top: -16px;
-          left: 42%;
-          border-bottom: 1px solid #F5F7F0;
-        }
-        &:after {
-          content: '';
-          height: 100%;
-          width: 5%;
-          position: absolute;
-          top: -16px;
-          right: 42%;
-          border-bottom: 1px solid #F5F7F0;
-        }
-      }
+    li {
+      flex: 1;
+      list-style: none;
+      min-height: 220px;
+      min-width: 220px;
+      margin: 10px;
+      background: tomato;
     }
-
-    .show-info {
-      height: 36px;
-      padding: 0 5px;
-      p {
-        color: #50514F !important;
-        padding-left: 10px;
-        white-space: nowrap;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-      }
-    }
-
   }
 
 }

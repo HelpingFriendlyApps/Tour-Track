@@ -1,0 +1,143 @@
+.player-container {
+  height: 55px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background: #50514F;
+  z-index: 1;
+
+  -moz-box-shadow: inset 0 0 10px #373736;
+  -webkit-box-shadow: inset 0 0 10px #373736;
+  box-shadow: inset 0 0 10px #373736;
+
+  md-icon:focus {
+    border: 0;
+    outline: none;
+  }
+
+  .controls {
+    padding-right: 2.5%;
+    .md-button {
+      width: 4.0rem;
+      height: 4.0rem;
+      margin: 0;
+      padding: 6px 8px 8px 8px;
+      md-icon {
+        width: 2.8rem;
+        height: 2.8rem;
+        font-size: 2.8rem;
+        color: #F5F7F0;
+      }
+    }
+    md-slider-container {
+      width: 90px;
+      margin: 0 10px;
+      .md-track {
+        background: #F5F7F0;
+      }
+      .md-thumb {
+        background: none;
+        &:after {
+          background: #F25F5C;
+          border-color: #F25F5C;
+        }
+      }
+      .md-focus-ring {
+        background: #F5F7F0;
+      }
+      .md-track-ticks {
+        display: none;
+      }
+      .md-sign {
+        display: none;
+      }
+    }
+  }
+
+  .player-box {
+    height: 100%;
+    width: 500px;
+    max-width: 560px;
+    background: #5D5E5B;
+    color: #F5F7F0;
+    .flex-100 {
+      width: 100%;
+    }
+    strong.song-title {
+      margin-top: 7px;
+    }
+    p {
+      margin: 0 6px;
+      color: #F5F7F0;
+      &.time {
+        font-size: 0.85em;
+        padding-top: 5px;
+      }
+    }
+    .md-button {
+      height: 30px;
+      width: 30px;
+      min-width: 30px;
+      line-height: 30px;
+      margin: 0;
+      padding: 0;
+      outline: none;
+      md-icon {
+        font-size: 2.1rem;
+        padding-top: 3px;
+        color: #F5F7F0;
+      }
+    }
+
+    .dropdown-toggle { background: none; }
+    .dropdown-menu {
+      max-height: 500px;
+      width: 200px;
+      background: #6A6A67;
+      color: #F5F7F0;
+      border: 1px solid #5D5D5B;
+      padding: 5px 10px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      .dropdown-divider {
+        background: #F5F7F0;
+        height: 1px;
+        margin: 5px 0;
+        opacity: 0.75;
+      }
+      .show-songs-list {
+        margin-top: 10px;
+      }
+      .song-item {
+        padding: 5px;
+        line-height: 1.2em;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        strong, small {
+          display: inline;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    .current-song-stats {
+      span {
+        font-size: 0.9em;
+      }
+    }
+    .progress-bar-container {
+      width: 100%;
+      md-progress-linear {
+        width: 100%;
+        .md-container {
+          background: #F5F7F0;
+        }
+        .md-bar {
+          background: #F25F5C;
+        }
+      }
+    }
+  }
+
+}
