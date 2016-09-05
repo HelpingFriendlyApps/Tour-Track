@@ -1,0 +1,8 @@
+.show-container {
+  background: pink;
+
+  .container > * {
+    border: 1px solid black;
+  }
+
+}

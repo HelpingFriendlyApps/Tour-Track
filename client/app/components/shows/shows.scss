@@ -1,0 +1,38 @@
+.shows-container {
+  display: flex;
+  flex-direction: column;
+
+  .map-container {
+    background: grey;
+    flex: 0 0 300px;
+    display: flex;
+    flex-direction: column;
+
+    .map {
+      flex: 1;
+    }
+
+    .search-bar {
+      flex: 0 0 70px;
+      background: rgba(0,0,0,0.5);
+    }
+  }
+
+  .shows {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: goldenrod;
+
+    .show-box {
+      min-height: 220px;
+      height: 220px;
+      min-width: 220px;
+      margin: 10px;
+      background: tomato;
+    }
+  }
+
+}

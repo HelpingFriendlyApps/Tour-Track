@@ -1,0 +1,8 @@
+<div class="songs-container">
+  <div class="container" infinite-scroll="loadMoreSongs()">
+    <div ng-repeat="song in songs track by $index">
+      <song-box song="song"></song-box>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,16 @@
+<div class="show-container">
+  <div class="container">
+    <div class="show-info col-md-12">
+      <div>{{show.tour_name}}</div>
+      <div>{{show.venue_name}}</div>
+      <div>{{show.location}}</div>
+    </div>
+    <div class="setlist col-md-6">
+      <ul>
+        <li ng-repeat="song in setlist">{{song.title}}</li>
+      </ul>
+    </div>
+    <map class="map col-md-6"></map>
+    <div class="tour-shows col-md-6">Tour Shows</div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="shows-container">
+
+  <div class="map-container">
+    <map class="map"></map>
+    <div class="search-bar">Search Bar</div>
+  </div>
+
+  <div class="container" infinite-scroll="loadMoreShows()" infinite-scroll-distance="0">
+    <div class="shows">
+      <div ng-repeat="show in shows track by $index">
+        <show-box class="show-box" show="show"></show-box>
+      </div>
+    </div>
+  </div>
+  
+</div>
