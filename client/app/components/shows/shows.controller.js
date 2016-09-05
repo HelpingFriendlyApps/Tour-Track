@@ -10,7 +10,7 @@ angular.module('Tour-Track')
   });
 
   $scope.$watch('currentShowYear', (currentShowYear) => {
-    $scope.showsByYear = allShows.filter(show => show.date.slice(0,4) === $scope.currentShowYear);
+    $scope.showsByYear = allShows.filter(show => moment(show.date).year() == $scope.currentShowYear);
     $scope.showList = $scope.showsByYear.slice(0,4);
   });
 

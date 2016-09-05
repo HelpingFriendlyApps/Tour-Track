@@ -8,7 +8,8 @@ var app = angular.module('Tour-Track', [
   'ngAnimate',
   'duScroll',
   'ngStorage',
-  'infinite-scroll'
+  'infinite-scroll',
+  'angularMoment'
 ])
   
   .config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider) {

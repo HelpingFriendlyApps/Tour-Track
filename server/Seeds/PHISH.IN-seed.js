@@ -5,6 +5,7 @@ var Songs = require('../models/Songs');
 var Venues = require('../models/Venues');
 var Tracks = require('../models/Tracks');
 var Promise = require('bluebird');
+var moment = require('moment');
 var db = require('../db');
 
 
@@ -29,8 +30,8 @@ function seedTours() {
       var tourModel = {
         name: tour.name,
         id: tour.id,
-        starts_on: tour.starts_on,
-        ends_on: tour.ends_on,
+        starts_on: moment(tour.starts_on),
+        ends_on: moment(tour.ends_on),
         created_at: new Date()
       }
       Tours.updateOrCreate(tourModel);
@@ -75,7 +76,8 @@ function seedShows() {
     
     data.map( (show, index) => {
       var showModel = {
-        date: show.date,
+        // date: show.date,
+        date: moment(show.date),
         id: show.id,
         show_number: ++index,
         tour_id: show.tour_id,
@@ -92,6 +94,7 @@ function seedTracks() {
   for(var i = 1000; i > 0; i--) {   
     ph.getSongs(i).then(function(x) {
       var data = JSON.parse(x).data;
+      
       data.tracks.map( (song) => {
         var trackModel = {
           id: song.id,
