@@ -1,97 +1,26 @@
 'use strict';
 
 angular.module('Tour-Track')
-// .controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', '$timeout', function($scope, allShows, ShowFactory, $timeout) {
-.controller('ShowsCtrl', ['$scope', 'allShows', function($scope, allShows) {
+.controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', function($scope, allShows, ShowFactory) {
 
-  $scope.shows = allShows.slice(0,3);
+  $scope.currentShowYear = '2016';
+  
+  ShowFactory.getAllShowYears().then(years => {
+    $scope.showYears = years;
+  });
+
+  $scope.$watch('currentShowYear', (currentShowYear) => {
+    $scope.showsByYear = allShows.filter(show => show.date.slice(0,4) === $scope.currentShowYear);
+    $scope.showList = $scope.showsByYear.slice(0,4);
+  });
 
   $scope.loadMoreShows = function() {
     for(let i = 0; i < 4; i++) {
-      let nextShow = allShows[$scope.shows.length];
-      $scope.shows.push(nextShow);
+      if($scope.showList.length === $scope.showsByYear.length) return;
+
+      let nextShow = $scope.showsByYear[$scope.showList.length];
+      $scope.showList.push(nextShow);
     }
   }
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  // $scope.mapFeatures.allShows = allShows;
-
-  // var years = [];
-  // $scope.showsFilter = { year: "", date: "", venue: "", location: "" };
-  
-  // ShowFactory.getAllShowYears().then( (showYears) => {
-  //   $scope.showYears = showYears;
-  // });
-
-  // $scope.$watch('showsFilter', (showsFilter) => {
-  //   years = [];
-  //   var dateString = showsFilter.date ? showsFilter.date.toISOString().slice(0,10) : ""
-
-  //   $scope.mapFeatures.filteredShows = allShows.filter( (show) => {
-  //     return show.date.slice(0,4).indexOf(showsFilter.year) > -1
-  //       && show.date.slice(0,10).indexOf(dateString) > -1 
-  //       && show.location.toLowerCase().indexOf(showsFilter.location.toLowerCase()) > -1 
-  //       && show.venue_name.toLowerCase().indexOf(showsFilter.venue.toLowerCase()) > -1;
-  //   });
-
-  //   $scope.deferredShows = new Shows($scope.mapFeatures.filteredShows);
-  // }, true);
-
-
-  // var Shows = function(showCollection) {
-  //   this.loadedPages = {};
-  //   this.numItems = 0;
-  //   this.pageSize = (showCollection.length < 50) ? showCollection.length : 50;
-  //   this.showCollection = showCollection;
-  //   this.fetchNumItems();
-  // };
-
-  // Shows.prototype.getItemAtIndex = function(index) {
-  //   var pageNumber = Math.floor(index / this.pageSize);
-  //   var page = this.loadedPages[pageNumber];
-
-  //   if(page) return page[index % this.pageSize];
-  //   else this.fetchPage(pageNumber);
-  // };
-
-  // Shows.prototype.getLength = function() {
-  //   return this.numItems;
-  // };
-
-  // Shows.prototype.fetchPage = function(pageNumber) {
-  //   var self = this.loadedPages[pageNumber] = [];
-  //   var showChunk = this.showCollection.slice(pageNumber * this.pageSize, ++pageNumber * this.pageSize);
-
-  //   showChunk.forEach(function(show) {
-  //     var year = show.date.slice(0,4);
-  //     if(years.indexOf(year) < 0) {
-  //       show.firstOfYear = true;
-  //       years.push(year);
-  //     }
-  //     self.push(show);
-  //   });
-  // };
-
-  // Shows.prototype.fetchNumItems = function() {
-  //   $timeout(angular.noop, 300).then(angular.bind(this, function() {
-  //     this.numItems = this.showCollection.length;
-  //   }));
-  // };
 
 }]);

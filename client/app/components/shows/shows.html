@@ -2,12 +2,16 @@
 
   <div class="map-container">
     <map class="map"></map>
-    <div class="search-bar">Search Bar</div>
+    <div class="search-bar">
+      <select ng-model="currentShowYear">
+        <option ng-repeat="year in showYears">{{year}}</option>
+      </select>
+    </div>
   </div>
 
   <div class="container" infinite-scroll="loadMoreShows()" infinite-scroll-distance="0">
     <div class="shows">
-      <div ng-repeat="show in shows track by $index">
+      <div ng-repeat="show in showList track by $index">
         <show-box class="show-box" show="show"></show-box>
       </div>
     </div>
