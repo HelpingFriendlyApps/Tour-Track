@@ -11,10 +11,10 @@ nav {
   height: 30px;
   width: 100%;
   background: rgba(0,0,0,0.5);
+  z-index: 1;
 }
 
 .content {
-  background: pink;
   height: 100%;
   display: flex;
   flex-direction: column;

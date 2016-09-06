@@ -2,11 +2,7 @@
 
   <div class="map-container">
     <map class="map"></map>
-    <div class="search-bar">
-      <select ng-model="currentShowYear">
-        <option ng-repeat="year in showYears">{{year}}</option>
-      </select>
-    </div>
+    <shows-search-bar></shows-search-bar>
   </div>
 
   <div class="container" infinite-scroll="loadMoreShows()" infinite-scroll-distance="2">
