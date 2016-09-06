@@ -10,8 +10,6 @@ angular.module('Tour-Track').directive('map', [function() {
     },
     link: function(scope, element, attrs) {
 
-      console.log('scope.token', scope.token)
-
       mapboxgl.accessToken = scope.token;
       var map = new mapboxgl.Map({
         container: 'map',

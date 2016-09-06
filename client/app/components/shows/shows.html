@@ -5,9 +5,9 @@
     <shows-search-bar></shows-search-bar>
   </div>
 
-  <div class="container" infinite-scroll="loadMoreShows()" infinite-scroll-distance="2">
-    <div class="shows-container">
-      <div class="show-item" ng-repeat="show in showList">
+  <div class="container">
+    <div class="show-items" infinite-scroll="loadMoreShows()" infinite-scroll-distance="2">
+      <div class="show-item" ng-repeat="show in showList track by $index">
         <show-box show="show"></show-box>
       </div>
     </div>

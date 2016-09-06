@@ -1,4 +1,30 @@
 .songs-container {
   display: flex;
   flex-direction: column;
+
+  .song-items {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+
+  .song-item {
+    margin: 10px;
+    background: tomato;
+    flex: 1 1 220px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &:after {
+      content: "";
+      padding-bottom: 100%;
+    }
+  }
+
+  .song-box-container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
 }
