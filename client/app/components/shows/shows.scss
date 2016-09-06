@@ -18,20 +18,41 @@
     }
   }
 
-  .shows {
+  .container {
+    background: mistyrose;
+  }
+
+  .custom-container {
+    margin: 0 auto;
+    max-width: 70em;
+  }
+
+  .shows-container {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
+    flex-flow: row wrap;
     justify-content: center;
-    background: goldenrod;
+    background: rgba(0,0,0,0.5);
 
-    .show-box {
-      min-height: 220px;
-      height: 220px;
-      min-width: 220px;
+    .show-item {
       margin: 10px;
       background: tomato;
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      &:after {
+        content: "";
+        padding-bottom: 100%; // THIS IS WHAT I'VE BEEN WAITING FOR
+      }
+    }
+
+    .show-box-container {
+      position: absolute;
+      height: 100%;
+      width: 100%;
     }
   }
 

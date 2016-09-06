@@ -5,9 +5,9 @@ angular.module('Tour-Track').directive('showBox', [function() {
     replace: true,
     restrict: 'E',
     templateUrl: 'app/components/shows/show-box.html',
-    // scope: {
-    //   show: '='
-    // },
+    scope: {
+      show: '='
+    },
     link: function(scope, element, attrs) {
 
     }

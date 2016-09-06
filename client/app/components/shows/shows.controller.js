@@ -4,6 +4,7 @@ angular.module('Tour-Track')
 .controller('ShowsCtrl', ['$scope', 'allShows', 'ShowFactory', function($scope, allShows, ShowFactory) {
 
   $scope.currentShowYear = '2016';
+  let reverseOrder = true;
   
   ShowFactory.getAllShowYears().then(years => {
     $scope.showYears = years;
@@ -11,7 +12,10 @@ angular.module('Tour-Track')
 
   $scope.$watch('currentShowYear', (currentShowYear) => {
     $scope.showsByYear = allShows.filter(show => moment(show.date).year() == $scope.currentShowYear);
-    $scope.showList = $scope.showsByYear.slice(0,4);
+    if(reverseOrder) $scope.showsByYear.reverse();
+
+    $scope.showList = $scope.showsByYear.slice(0,12);
+    reverseOrder = false;
   });
 
   $scope.loadMoreShows = function() {

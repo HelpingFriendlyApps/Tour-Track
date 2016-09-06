@@ -9,10 +9,10 @@
     </div>
   </div>
 
-  <div class="container" infinite-scroll="loadMoreShows()" infinite-scroll-distance="0">
-    <div class="shows">
-      <div ng-repeat="show in showList track by $index">
-        <show-box class="show-box" show="show"></show-box>
+  <div class="container" infinite-scroll="loadMoreShows()" infinite-scroll-distance="2">
+    <div class="shows-container">
+      <div class="show-item" ng-repeat="show in showList">
+        <show-box show="show"></show-box>
       </div>
     </div>
   </div>
