@@ -2,18 +2,22 @@
   display: flex;
   flex-direction: column;
 
-  .map-container {
-    flex: 0 0 300px;
+  .top-container {
+    flex: 0 0 370px;
     display: flex;
     flex-direction: column;
 
-    .map {
+    map {
       flex: 1;
+    }
+
+    #map {
+      height: 300px;
     }
 
     .shows-search-bar {
       flex: 0 0 70px;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.8);
       width: 100%;
       height: 70px;
       z-index: 1;

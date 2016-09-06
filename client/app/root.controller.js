@@ -2,16 +2,12 @@
 
 angular.module('Tour-Track')
 
-// .controller('RootController', ['$scope','CredsFactory','$rootScope', '$state', function($scope, CredsFactory, $rootScope, $state) {
-.controller('RootController', ['$scope', '$rootScope', function($scope, CredsFactory, $rootScope, $state) {
+.controller('RootController', ['$scope', 'CredsFactory', function($scope, CredsFactory) {
     
-    // $scope.mapboxToken = "";
-    // $rootScope.$watch('player', (newVal, oldVal) => {
-    //   if(!oldVal) $scope.player = $rootScope.player;
-    // });
+    $scope.mapboxToken = "";
 
-    // CredsFactory.getMapBoxToken().then( token => {
-    //   $scope.mapboxToken = token;
-    // });
+    CredsFactory.getMapBoxToken().then( token => {
+      $scope.mapboxToken = token;
+    });
 
 }]);
