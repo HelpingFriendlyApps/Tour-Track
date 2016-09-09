@@ -16,7 +16,6 @@ angular.module('Tour-Track').directive('songBox', ['TrackFactory', function(Trac
 
       TrackFactory.getSongDebut(scope.song.id).then(debut => {
         scope.debut = debut;
-        console.log('scope.debut', scope.debut)
       })
 
     }

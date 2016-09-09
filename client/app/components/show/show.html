@@ -1,16 +1,31 @@
 <div class="show-container">
   <div class="container">
-    <div class="show-info col-md-12">
-      <div>{{show.tour_name}}</div>
-      <div>{{show.venue_name}}</div>
-      <div>{{show.location}}</div>
+
+    <div class="show-info">
+      <div class="date">
+        <div>{{ showMonth }}</div>
+        <div>{{ show.date.month() }}</div>
+        <div>{{ show.date.year() }}</div>
+      </div>
+      <div>{{ show.tour_name }}</div>
+      <div>{{ show.venue_name }}</div>
+      <div>{{ show.location }}</div>
     </div>
-    <div class="setlist col-md-6">
+
+    <div class="setlist">
       <ul>
-        <li ng-repeat="song in setlist">{{song.title}}</li>
+        <li ng-repeat="song in setlist">{{ song.title }}</li>
       </ul>
     </div>
-    <map class="map col-md-6"></map>
-    <div class="tour-shows col-md-6">Tour Shows</div>
+
+    <map class="map" token="mapboxToken" lng-lat="[show.longitude, show.latitude]"></map>
+
+    <div class="tour-shows">
+      <h3>Tour Shows</h3>
+      <div ng-repeat="showThisTour in showsThisTour">
+        <div>{{ showThisTour.date }}</div>
+      </div>
+    </div>
+
   </div>
 </div>

@@ -5,4 +5,41 @@
     border: 1px solid black;
   }
 
+
+  .container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    & > * {
+      flex: 1 100%;
+      padding: 10px;
+      margin: 10px;
+    }
+  }
+
+  @media all and (min-width: 600px) {
+    .setlist {
+      flex: 0 0 calc(60% - 20px);
+    }
+
+    .map, .tour-shows {
+      flex: 0 0 calc(40% - 20px);
+    }
+  }
+
+  @media all and (min-width: 800px) {
+
+  }
+  
+  .map {
+
+    #map {
+      height: 400px;
+    }
+
+  }
+
+
 }
