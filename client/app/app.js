@@ -9,7 +9,8 @@ var app = angular.module('Tour-Track', [
   'duScroll',
   'ngStorage',
   'infinite-scroll',
-  'angularMoment'
+  'angularMoment',
+  'ui.bootstrap'
 ])
   
   .config(["$stateProvider", "$urlRouterProvider", "$locationProvider", function($stateProvider, $urlRouterProvider, $locationProvider) {

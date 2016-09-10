@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').directive('map', [function() {
+angular.module('Tour-Track').directive('map', ['$uibModal', function($uibModal) {
   return {
     replace: true,
     restrict: 'E',
@@ -21,6 +21,33 @@ angular.module('Tour-Track').directive('map', [function() {
         zoom: 5,
         attributionControl: false
       });
+
+
+
+
+      $scope.openModal = function(size) {
+        var modalInstance = $uibModal.open({
+          animation: true,
+          ariaLabelledBy: 'modal-title',
+          ariaDescribedBy: 'modal-body',
+          templateUrl: 'myModalContent.html',
+          controller: 'ModalInstanceCtrl',
+          // controllerAs: '$ctrl',
+          // size: size,
+          // resolve: {
+          //   items: function () {
+          //     return $ctrl.items;
+          //   }
+          // }
+        });
+
+        modalInstance.result.then(selectedItem => {
+          $scope.selected = selectedItem;
+        }, function() {
+          console.log('modal dismissed at: ', new Date());
+        });
+
+      }
 
     }
   };
