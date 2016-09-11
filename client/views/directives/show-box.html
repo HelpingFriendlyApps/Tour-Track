@@ -1,15 +1,24 @@
 <div class="show-box-container">
 
   <div class="show-info">
-    <div class="date">
-      <div>{{ month }}</div>
+    <div class="show-date" ui-sref='show({date: show.date})'>
+      <div class="month">{{ show.date | date: 'MMM' }}</div>
+      <div class="date">{{ show.date | date: 'dd' }}</div>
+      <div class="year">{{ show.date | date: 'yyyy' }}</div>
     </div>
-    <!-- <div ui-sref='show({date: show.date})'>{{ show.date }}</div> -->
+
+    <div class="show-details">
+      <div class="tour">{{ tourName }}</div>
+      <div class="venue">{{ show.venue_name }}</div>
+      <div class="location">{{ show.location }}</div>
+    </div>
   </div>
 
-  <div class="set" ng-repeat="set in sets">
-    <span class="set-num">{{ set[0].set | romanizeNum }}</span>
-    <span class="song" ng-repeat="song in set">{{ song.title }}{{ $index !== set.length-1 ? ',' : '' }}</span>
+  <div class="setlist">
+    <div class="set" ng-repeat="set in sets">
+      <span class="set-num">{{ set[0].set | romanizeNum }}</span>
+      <span class="song" ng-repeat="song in set">{{ song.title }}{{ $index !== set.length-1 ? ',' : '' }}</span>
+    </div>
   </div>
 
 </div>

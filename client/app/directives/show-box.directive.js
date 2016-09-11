@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('Tour-Track').directive('showBox', ['ShowFactory', function(ShowFactory) {
+angular.module('Tour-Track').directive('showBox', ['ShowFactory', 'TourFactory', function(ShowFactory, TourFactory) {
   return {
     replace: true,
     restrict: 'E',
@@ -12,14 +12,7 @@ angular.module('Tour-Track').directive('showBox', ['ShowFactory', function(ShowF
 
       console.log('scope.show', scope.show)
 
-      let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-      scope.show.date = new Date(scope.show.date);
-      scope.month = monthNames[scope.show.date.getMonth()];
-
-
       ShowFactory.getSetlistByShowId(scope.show.id).then(setlist => {
-        console.log('setlist', setlist);
-
         scope.sets = [];
         let set = [];
 
@@ -28,16 +21,14 @@ angular.module('Tour-Track').directive('showBox', ['ShowFactory', function(ShowF
             scope.sets.push(set);
             set = [];
           }
-
           set.push(song);
-
           if(i === setlist.length - 1) scope.sets.push(set);
         });
-
-        console.log('scope.sets', scope.sets)
-
       });
 
+      TourFactory.getTourById(scope.show.tour_id).then(tour => {
+        scope.tourName = tour.name;
+      });
 
     }
   };
