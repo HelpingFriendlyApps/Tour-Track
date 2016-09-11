@@ -1,0 +1,22 @@
+.modal-content {
+  background: none;
+}
+
+.map-modal-container {
+  background: rgba(0,0,0,0.5);
+  padding: 15px;
+  position: relative;
+  display: flex;
+
+  &:after {
+    content: "";
+    padding-bottom: 100%;
+  }
+
+  #map-modal {
+    position: absolute;
+    height: calc(100% - 30px);
+    width: calc(100% - 30px);
+  }
+
+}

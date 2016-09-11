@@ -11,6 +11,7 @@ angular.module('Tour-Track').directive('map', ['$uibModal', function($uibModal) 
     },
     link: function(scope, element, attrs) {
 
+      console.log('scope.token', scope.token)
       console.log('scope.lngLat', scope.lngLat)
 
       mapboxgl.accessToken = scope.token;
@@ -22,35 +23,17 @@ angular.module('Tour-Track').directive('map', ['$uibModal', function($uibModal) 
         attributionControl: false
       });
 
-
-
-
       scope.openModal = function() {
-
-        console.log('opening modal')
-
         var modalInstance = $uibModal.open({
           animation: true,
-          // ariaLabelledBy: 'modal-title',
-          // ariaDescribedBy: 'modal-body',
-          templateUrl: 'views/modals/map-modal.html',
-          // templateUrl: '../../../views/modals/map-modal.html',
-          controller: 'MapModalCtrl',
-          // controllerAs: '$ctrl',
-          // size: 'lg',
+          component: 'mapModalComponent',
+          size: 'lg',
           resolve: {
-            items: function() {
-              return [1,2,3];
+            token: function() {
+              return scope.token;
             }
           }
         });
-
-        // modalInstance.result.then(selectedItem => {
-        //   scope.selected = selectedItem;
-        // }, function() {
-        //   console.log('modal dismissed at: ', new Date());
-        // });
-
       }
 
     }
