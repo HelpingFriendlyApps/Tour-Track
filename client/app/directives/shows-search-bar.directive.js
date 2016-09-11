@@ -4,7 +4,7 @@ angular.module('Tour-Track').directive('showsSearchBar', ['$document', function(
   return {
     replace: true,
     restrict: 'E',
-    templateUrl: 'app/directives/shows-search-bar/shows-search-bar.html',
+    templateUrl: 'views/directives/shows-search-bar.html',
     link: function(scope, element, attrs) {
 
       $document.on('scroll', function() {

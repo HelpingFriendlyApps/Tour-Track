@@ -3,7 +3,7 @@
 console.log('HELLO')
 
 angular.module('Tour-Track').component('mapModalComponent', {
-  templateUrl: 'views/map-modal.html',
+  templateUrl: 'views/components/map-modal.html',
   bindings: {
     resolve: '<'
     // close: '&',

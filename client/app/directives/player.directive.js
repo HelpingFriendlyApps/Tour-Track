@@ -4,7 +4,7 @@ app.directive('player', ["$rootScope", "$sessionStorage", function($rootScope, $
   return {
     // replace: true,
     restrict: 'E',
-    templateUrl: 'app/directives/player/player.html',
+    templateUrl: 'views/directives/player.html',
     scope: {
       song: '=',
       showSongsList: '=',

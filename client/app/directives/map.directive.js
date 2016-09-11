@@ -4,7 +4,7 @@ angular.module('Tour-Track').directive('map', ['$uibModal', function($uibModal) 
   return {
     replace: true,
     restrict: 'E',
-    templateUrl: 'app/directives/map/map.html',
+    templateUrl: 'views/directives/map.html',
     scope: {
       token: '=',
       lngLat: '='
