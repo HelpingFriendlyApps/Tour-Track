@@ -13,7 +13,7 @@ angular.module('Tour-Track').directive('showBox', ['ShowFactory', function(ShowF
       console.log('scope.show', scope.show)
 
       let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
-      console.log('typeof scope.show.date', typeof scope.show.date)
+      scope.show.date = new Date(scope.show.date);
       scope.month = monthNames[scope.show.date.getMonth()];
 
 
