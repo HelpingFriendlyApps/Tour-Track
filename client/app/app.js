@@ -19,7 +19,7 @@ var app = angular.module('Tour-Track', [
 
     $stateProvider.state('shows', {
       url: '/shows',
-      templateUrl: '../app/components/shows/shows.html',
+      templateUrl: '../views/shows.html',
       controller: 'ShowsCtrl',
       resolve: {
         allShows: function(ShowFactory) {
@@ -28,7 +28,7 @@ var app = angular.module('Tour-Track', [
       }
     }).state('show', {
       url: '/show/:date',
-      templateUrl: '../app/components/show/show.html',
+      templateUrl: '../views/show.html',
       controller: 'ShowCtrl',
       resolve: {
         show: function(ShowFactory, $stateParams) {
@@ -41,7 +41,7 @@ var app = angular.module('Tour-Track', [
       }
     }).state('songs', {
       url: '/songs',
-      templateUrl: '../app/components/songs/songs.html',
+      templateUrl: '../views/songs.html',
       controller: 'SongsCtrl',
       resolve: {
         allSongs: function(SongFactory) {
@@ -49,5 +49,7 @@ var app = angular.module('Tour-Track', [
         }
       }
     });
- 
-}]);
+   
+   }
+
+ ]);

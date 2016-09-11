@@ -4,7 +4,7 @@ angular.module('Tour-Track').directive('showBox', ['ShowFactory', function(ShowF
   return {
     replace: true,
     restrict: 'E',
-    templateUrl: 'app/components/shows/show-box.html',
+    templateUrl: 'app/directives/show-box/show-box.html',
     scope: {
       show: '='
     },

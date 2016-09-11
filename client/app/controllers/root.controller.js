@@ -2,7 +2,7 @@
 
 angular.module('Tour-Track')
 
-.controller('RootController', ['$scope', 'CredsFactory', function($scope, CredsFactory) {
+.controller('RootCtrl', ['$scope', 'CredsFactory', function($scope, CredsFactory) {
     
     $scope.mapboxToken = "";
 

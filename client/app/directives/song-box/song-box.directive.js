@@ -4,7 +4,7 @@ angular.module('Tour-Track').directive('songBox', ['TrackFactory', function(Trac
   return {
     replace: true,
     restrict: 'E',
-    templateUrl: 'app/components/songs/song-box.html',
+    templateUrl: 'app/directives/song-box/song-box.html',
     scope: {
       song: '='
     },

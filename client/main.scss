@@ -1,9 +1,8 @@
-@import 'app/components/show/show.scss';
-@import 'app/components/shows/shows.scss';
-@import 'app/components/songs/songs.scss';
-
-@import 'app/directives/player/player.scss';
-@import 'app/directives/navbar/navbar.scss';
+@import 'sass/player';
+@import 'sass/navbar';
+@import 'sass/show';
+@import 'sass/shows';
+@import 'sass/songs';
 
 
 nav {

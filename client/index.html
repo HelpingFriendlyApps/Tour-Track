@@ -5,7 +5,7 @@
 		<title>Tour Track</title>
 	</head>
 	
-	<body ng-app="Tour-Track" ng-controller="RootController">
+	<body ng-app="Tour-Track" ng-controller="RootCtrl">
 		
 		<navbar id="navbar"></navbar>
 		<div class="content" ui-view></div>
@@ -32,11 +32,11 @@
 		<script src="./lib/ngstorage/ngstorage.min.js"></script>
 		<script src="./lib/moment/moment.js"></script>
 		<script src="./lib/angular-moment/angular-moment.min.js"></script>
+		<script src="./lib/angular-bootstrap/ui-bootstrap.min.js"></script>
 
-		<link rel="stylesheet" href="./lib/animate.css/animate.min.css">
+		<!-- <link rel="stylesheet" href="./lib/animate.css/animate.min.css"> -->
 
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-			rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 		<link rel="stylesheet" href="./lib/jquery-ui/themes/smoothness/jquery-ui.css">
@@ -44,96 +44,42 @@
 		<link href="./lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="./lib/fontawesome/css/font-awesome.min.css" />
 
-
-		<!-- <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script> -->
-		<!-- <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' /> -->
-
-
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.js'></script>
 		<link href='https://api.mapbox.com/mapbox-gl-js/v0.18.0/mapbox-gl.css' rel='stylesheet' />
 		        
 
-		<link href="./lib/c3/c3.css" rel="stylesheet" type="text/css">
-		<script src="./lib/d3/d3.min.js" charset="utf-8"></script>
-		<script src="./lib/c3/c3.min.js"></script>
+		<!-- <link href="./lib/c3/c3.css" rel="stylesheet" type="text/css"> -->
+		<!-- <script src="./lib/d3/d3.min.js" charset="utf-8"></script> -->
+		<!-- <script src="./lib/c3/c3.min.js"></script> -->
 
 
-		<script src="app/app.js"></script>
-		<script src="app/config.js"></script>
-		<script src="app/root.controller.js"></script>
-
-		<script src="app/components/show/show.controller.js"></script>
+		<script src="dist/app.js"></script>
+		<script src="dist/config.js"></script>
 		
-		<script src="app/components/shows/shows.controller.js"></script>
-		<script src="app/components/shows/show-box.directive.js"></script>
-		<script src="app/components/shows/shows-search-bar.directive.js"></script>
+		<script src="dist/controllers/root.controller.js"></script>
+		<script src="dist/controllers/show.controller.js"></script>
+		<script src="dist/controllers/shows.controller.js"></script>
+		<script src="dist/controllers/songs.controller.js"></script>
 		
-		<script src="app/components/songs/songs.controller.js"></script>
-		<script src="app/components/songs/song-box.directive.js"></script>
+		<script src="dist/controllers/modals/map-modal.controller.js"></script>
 
-
-		<script src="app/directives/map/map.directive.js"></script>
-		<script src="app/directives/navbar/navbar.directive.js"></script>
-		<script src="app/directives/player/player.directive.js"></script>
+		<script src="dist/directives/map/map.directive.js"></script>
+		<script src="dist/directives/navbar/navbar.directive.js"></script>
+		<script src="dist/directives/player/player.directive.js"></script>
+		<script src="dist/directives/show-box/show-box.directive.js"></script>
+		<script src="dist/directives/shows-search-bar/shows-search-bar.directive.js"></script>
+		<script src="dist/directives/song-box/song-box.directive.js"></script>
 		
-		<script src="app/factories/creds.factory.js"></script>
-		<script src="app/factories/map.factory.js"></script>
-		<script src="app/factories/player.factory.js"></script>
-		<script src="app/factories/profile.factory.js"></script>
-		<script src="app/factories/show.factory.js"></script>
-		<script src="app/factories/song.factory.js"></script>
-		<script src="app/factories/tour.factory.js"></script>
-		<script src="app/factories/track.factory.js"></script>
-		<script src="app/factories/venue.factory.js"></script>
+		<script src="dist/factories/creds.factory.js"></script>
+		<script src="dist/factories/map.factory.js"></script>
+		<script src="dist/factories/player.factory.js"></script>
+		<script src="dist/factories/profile.factory.js"></script>
+		<script src="dist/factories/show.factory.js"></script>
+		<script src="dist/factories/song.factory.js"></script>
+		<script src="dist/factories/tour.factory.js"></script>
+		<script src="dist/factories/track.factory.js"></script>
+		<script src="dist/factories/venue.factory.js"></script>
 
-
-		<!-- <script src="app/controllers/home.controller.js"></script>
-		<script src="app/controllers/login.controller.js"></script>
-		<script src="app/controllers/mapLeft.controller.js"></script>
-		<script src="app/controllers/profile.controller.js"></script>
-		<script src="app/controllers/show.controller.js"></script>
-		<script src="app/controllers/shows.controller.js"></script>
-		<script src="app/controllers/song.controller.js"></script>
-		<script src="app/controllers/songs.controller.js"></script>
-		<script src="app/controllers/root.controller.js"></script>
-
-		<script src="app/directives/map.directive.js"></script>
-		<script src="app/directives/mapPopup.directive.js"></script>
-		<script src="app/directives/navbar.directive.js"></script>
-		<script src="app/directives/player.directive.js"></script>
-		<script src="app/directives/profileMap.directive.js"></script>
-		<script src="app/directives/scrollTo.directive.js"></script>
-		<script src="app/directives/throbber.directive.js"></script>
-		
-		
-		<script src="app/directives/graphs/allShowsPerSeason.directive.js"></script>
-		<script src="app/directives/graphs/playsPerYear.directive.js"></script>
-		<script src="app/directives/graphs/setlistTimeFlow.directive.js"></script>
-		<script src="app/directives/graphs/showsPerYear.directive.js"></script>
-		<script src="app/directives/graphs/songDebutsPerYear.directive.js"></script>
-		<script src="app/directives/graphs/songLengthsPerYear.directive.js"></script>
-
-		<script src="app/factories/creds.factory.js"></script>
-		<script src="app/factories/map.factory.js"></script>
-		<script src="app/factories/player.factory.js"></script>
-		<script src="app/factories/profile.factory.js"></script>
-		<script src="app/factories/show.factory.js"></script>
-		<script src="app/factories/song.factory.js"></script>
-		<script src="app/factories/tour.factory.js"></script>
-		<script src="app/factories/track.factory.js"></script>
-		<script src="app/factories/venue.factory.js"></script>
-		
-		<script src="app/filters/millisecondsToDate.filter.js"></script>
-		<script src="app/filters/secondsToDate.filter.js"></script>
-
-		<script src="app/states/home.state.js"></script>
-		<script src="app/states/login.state.js"></script>
-		<script src="app/states/mapLeft.state.js"></script>
-		<script src="app/states/profile.state.js"></script>
-		<script src="app/states/show.state.js"></script>
-		<script src="app/states/shows.state.js"></script>
-		<script src="app/states/song.state.js"></script>
-		<script src="app/states/songs.state.js"></script> -->
 
 		<link rel="stylesheet" type="text/css" href="main.css">
 	</footer>
