@@ -13,6 +13,8 @@
 
     #map {
       height: 300px;
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
     }
 
     .shows-search-bar {
@@ -25,7 +27,7 @@
 
     .fix-search-bar {
       position: fixed;
-      top: 30px;
+      top: 50px;
     }
   }
 

@@ -1,3 +1,31 @@
 nav {
-  background: mistyrose;
+  // background: mistyrose;
+  background: white;
+
+  .container {
+    height: 100%;
+    display: flex;
+
+    & > * {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // border: 1px solid black;
+    }
+
+    .outer {
+      flex: 0;
+    }
+  }
+
+  .navbar-group > * {
+    margin: 0 5px;
+  }
+
+  .title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
 }
