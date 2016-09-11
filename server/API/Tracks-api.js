@@ -5,11 +5,10 @@ var Tracks = require('../models/Tracks');
 var router = module.exports = express.Router();
 
 
-// Get all Tracks
 router.get('/', function (req, res, next) {
-    Tracks.getAllTracks().then(function(x) {
-        res.send(x);
-    });
+  Tracks.getAllTracks().then(function(x) {
+    res.send(x);
+  });
 });
 
 router.get('/:songId', function(req, res, next) {
@@ -20,6 +19,12 @@ router.get('/:songId', function(req, res, next) {
 
 router.get('/:songId/debut', function(req, res, next) {
   Tracks.getSongDebut(req.params.songId).then( (song) => {
+    res.send(song);
+  });
+});
+
+router.get('/:songId/lastPlayed', function(req, res, next) {
+  Tracks.getLastTimePlayed(req.params.songId).then(song => {
     res.send(song);
   });
 });

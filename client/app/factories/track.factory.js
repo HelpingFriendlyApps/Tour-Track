@@ -23,7 +23,13 @@ angular.module('Tour-Track')
       });
     },
 
-    getPrevTimePlayed: function(songId, date) {
+    getLastTimePlayed: function(songId) {
+      return $http.get('/tracks/' + songId + '/lastPlayed').then(song => {
+        return song.data;
+      });
+    },
+
+    getPrevTimePlayedFromDate: function(songId, date) {
       return $http.get('/tracks/' + songId + '/prevPlayed/' + date).then(function(song) {
         return song.data;
       });

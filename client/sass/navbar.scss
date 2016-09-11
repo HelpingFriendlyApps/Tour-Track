@@ -1,6 +1,6 @@
 nav {
-  // background: mistyrose;
   background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
 
   .container {
     height: 100%;
@@ -11,7 +11,6 @@ nav {
       display: flex;
       justify-content: center;
       align-items: center;
-      // border: 1px solid black;
     }
 
     .outer {
@@ -20,7 +19,26 @@ nav {
   }
 
   .navbar-group > * {
-    margin: 0 5px;
+    padding: 0 10px;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      border-right: 1px solid rgba(0,0,0,0.25);
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: black;
+      transition: width .3s;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+
   }
 
   .title {

@@ -34,6 +34,15 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
         return SongFactory.getAllSongs();
       }
     }
+  }).state('song', {
+    url: '/song/:songId',
+    templateUrl: '../views/song.html',
+    controller: 'SongCtrl',
+    resolve: {
+      song: function(SongFactory, $stateParams) {
+        return SongFactory.getSongById($stateParams.songId);
+      }
+    }
   });
    
 }]);

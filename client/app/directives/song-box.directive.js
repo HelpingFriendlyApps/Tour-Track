@@ -14,9 +14,13 @@ angular.module('Tour-Track').directive('songBox', ['TrackFactory', function(Trac
         scope.timesPlayed = tracks.length;
       });
 
-      TrackFactory.getSongDebut(scope.song.id).then(debut => {
-        scope.debut = debut;
-      })
+      TrackFactory.getSongDebut(scope.song.id).then(track => {
+        scope.debut = track;
+      });
+
+      TrackFactory.getLastTimePlayed(scope.song.id).then(track => {
+        scope.lastPlayed = track;
+      });
 
     }
   };
