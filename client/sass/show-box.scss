@@ -1,0 +1,35 @@
+.show-box-container {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    flex: 0;
+  }
+
+  .show-info {
+    border: 1px solid white;
+
+    .date {
+      height: 120px;
+      width: 120px;
+      border: 1px solid white;
+    }
+
+  }
+
+  .set {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 15px 0;
+  }
+
+  .set-num {
+    margin-right: 5px;
+  }
+
+  .song {
+    margin-right: 5px;
+    white-space: nowrap;
+  }
+
+}

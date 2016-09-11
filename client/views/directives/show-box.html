@@ -1,3 +1,15 @@
 <div class="show-box-container">
-  <div class="insides" ui-sref='show({date: show.date})'>{{ show.date }}</div>
+
+  <div class="show-info">
+    <div class="date">
+      <div>{{ month }}</div>
+    </div>
+    <!-- <div ui-sref='show({date: show.date})'>{{ show.date }}</div> -->
+  </div>
+
+  <div class="set" ng-repeat="set in sets">
+    <span class="set-num">{{ set[0].set | romanizeNum }}</span>
+    <span class="song" ng-repeat="song in set">{{ song.title }}{{ $index !== set.length-1 ? ',' : '' }}</span>
+  </div>
+
 </div>

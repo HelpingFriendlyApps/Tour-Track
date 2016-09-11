@@ -18,10 +18,12 @@
     }
 
     .shows-search-bar {
-      flex: 0 0 70px;
-      background: rgba(0,0,0,0.8);
+      flex: 0 0 50px;
+      // background: #332D28;
+      // background: #272727;
+      background: #313131;
       width: 100%;
-      height: 70px;
+      height: 50px;
       z-index: 1;
     }
 
@@ -43,11 +45,15 @@
 
     .show-item {
       margin: 10px;
-      background: tomato;
-      flex: 1 1 220px;
+      padding: 10px;
+      // background: tomato;
+      flex: 1 1 300px;
       display: flex;
       flex-direction: column;
       position: relative;
+
+      background: #313131;
+      color: white;
 
       &:after {
         content: "";

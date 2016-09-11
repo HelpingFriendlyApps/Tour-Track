@@ -10,9 +10,34 @@ angular.module('Tour-Track').directive('showBox', ['ShowFactory', function(ShowF
     },
     link: function(scope, element, attrs) {
 
+      console.log('scope.show', scope.show)
+
+      let monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+      console.log('typeof scope.show.date', typeof scope.show.date)
+      scope.month = monthNames[scope.show.date.getMonth()];
+
+
       ShowFactory.getSetlistByShowId(scope.show.id).then(setlist => {
         console.log('setlist', setlist);
+
+        scope.sets = [];
+        let set = [];
+
+        setlist.forEach((song, i) => {
+          if(set[set.length-1] && set[set.length-1].set !== song.set) {
+            scope.sets.push(set);
+            set = [];
+          }
+
+          set.push(song);
+
+          if(i === setlist.length - 1) scope.sets.push(set);
+        });
+
+        console.log('scope.sets', scope.sets)
+
       });
+
 
     }
   };
