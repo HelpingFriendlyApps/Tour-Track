@@ -1,0 +1,30 @@
+.song-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $black;
+  color: white;
+  padding: 10px;
+
+  &:hover {
+    background: white;
+    color: $black;
+    border: 1px solid $black;
+
+    .song-details {
+      display: inline;
+    }
+    
+  }
+
+  .song-title {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .song-details {
+    display: none;
+  }
+
+}

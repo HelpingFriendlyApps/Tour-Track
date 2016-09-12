@@ -1,8 +1,12 @@
 <div class="song-box-container">
-  <div>{{ song.title }}</div>
-  <div>Times Played: {{ timesPlayed }}</div>
-  <div>Debut: 
-    <div>{{ debut.date }}</div>
-    <div>{{ debut.location }}</div>
+  <div class="song-title">{{ song.title }}</div>
+  
+  <div class="song-details">
+    <div>Times Played: {{ timesPlayed }}</div>
+    <div>Debut: 
+      <div>{{ debut.date | date: 'mmm'}}</div>
+      <div>{{ debut.location }}</div>
+    </div>
   </div>
+
 </div>

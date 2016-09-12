@@ -2,7 +2,7 @@
 
 app.directive('player', ["$rootScope", "$sessionStorage", function($rootScope, $sessionStorage) {
   return {
-    // replace: true,
+    replace: true,
     restrict: 'E',
     templateUrl: 'views/directives/player.html',
     scope: {

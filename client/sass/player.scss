@@ -1,5 +1,35 @@
-player {
-  // background: #332D28;
-  // background: #272727;
-  background: #313131;
+.player-container {
+  background: rgba(255,255,255,0.98);
+  border-top: 1px solid rgba(0,0,0,0.1);
+
+  .container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    & > * {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .controls {
+      flex: 0 0 200px;
+    }
+
+
+  }
+  
+  .scrubber {
+    background: $black;
+    height: 2px;
+    border-radius: 1px;
+    margin: 0 10px;
+
+    &.audio {
+      width: 24px;
+    }
+  }
+
 }

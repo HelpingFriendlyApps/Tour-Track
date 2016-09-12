@@ -1,3 +1,6 @@
+$black: #313131;
+
+
 @import 'sass/map';
 @import 'sass/map-modal';
 @import 'sass/navbar';
@@ -5,16 +8,13 @@
 @import 'sass/show';
 @import 'sass/show-box';
 @import 'sass/shows';
+@import 'sass/song-box';
 @import 'sass/songs';
 
 
 body {
   font-family: 'Oswald', sans-serif;
-  // letter-spacing: 3px;
-  // font-family: 'Open Sans', sans-serif;
-  // font-size: 14px;
-
-  // background: url('assets/paper_texture_10.png');
+  color: $black;
 }
 
 nav {
@@ -28,15 +28,15 @@ nav {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 50px 0 50px;
+  padding: 50px 0 40px;
   & > * {
     flex: 1;
   }
 }
 
-player {
+.player-container {
   position: fixed;
   bottom: 0;
-  height: 50px;
+  height: 40px;
   width: 100%;
 }
