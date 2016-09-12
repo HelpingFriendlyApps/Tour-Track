@@ -13,17 +13,7 @@ angular.module('Tour-Track').directive('showBox', ['ShowFactory', 'TourFactory',
       console.log('scope.show', scope.show)
 
       ShowFactory.getSetlistByShowId(scope.show.id).then(setlist => {
-        scope.sets = [];
-        let set = [];
-
-        setlist.forEach((song, i) => {
-          if(set[set.length-1] && set[set.length-1].set !== song.set) {
-            scope.sets.push(set);
-            set = [];
-          }
-          set.push(song);
-          if(i === setlist.length - 1) scope.sets.push(set);
-        });
+        scope.sets = ShowFactory.splitSetlistBySet(setlist);
       });
 
       TourFactory.getTourById(scope.show.tour_id).then(tour => {

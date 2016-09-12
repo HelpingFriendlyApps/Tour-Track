@@ -4,6 +4,22 @@ angular.module('Tour-Track')
 .factory('ShowFactory', ["$http", "$sce", function($http, $sce) {
 
   return {
+    
+    splitSetlistBySet: function(setlist) {
+      let sets = [],
+        set = [];
+
+      setlist.forEach((song, i) => {
+        if(set[set.length-1] && set[set.length-1].set !== song.set) {
+          sets.push(set);
+          set = [];
+        }
+        set.push(song);
+        if(i === setlist.length - 1) sets.push(set);
+      });
+
+      return sets;
+    },
 
     getAllShows: function() {
       return $http.get('/shows').then(function(shows) {

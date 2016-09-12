@@ -16,7 +16,7 @@
 
   <div class="setlist">
     <div class="set" ng-repeat="set in sets">
-      <span class="set-num">{{ set[0].set | romanizeNum }}</span>
+      <span class="set-num">{{ set[0].set | romanizeNum }}.</span>
       <span class="song" ng-repeat="song in set">{{ song.title }}{{ $index !== set.length-1 ? ',' : '' }}</span>
     </div>
   </div>
