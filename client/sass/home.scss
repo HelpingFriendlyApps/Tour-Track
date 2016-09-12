@@ -1,0 +1,22 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+
+  & > * {
+    flex: 0 0 auto;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    .menu-items {
+      margin: 7px;
+      font-weight: 300;
+      font-size: 16px;
+    }
+
+  }
+}

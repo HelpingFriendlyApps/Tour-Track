@@ -11,4 +11,8 @@ var app = angular.module('Tour-Track', [
   'infinite-scroll',
   'angularMoment',
   'ui.bootstrap'
-]);
+])
+
+.run(function($state, $rootScope) {
+  $rootScope.$state = $state;
+});

@@ -1,19 +1,19 @@
 <nav>
   <div class="container">
 
-    <div class="outer navbar-group">
-      <div ui-sref="shows">Shows</div>
-      <div ui-sref="songs">Songs</div>
-      <div ui-sref="tours">Tours</div>
+    <div class="outer navbar-group" ng-hide="$state.includes('home')">
+      <a ui-sref="shows">Shows</a>
+      <a ui-sref="songs">Songs</a>
+      <a ui-sref="tours">Tours</a>
     </div>
 
     <div class="title navbar-group">
-      <div>Tour Track</div>
+      <a ui-sref="home">Tour Track</a>
     </div>
 
-    <div class="outer navbar-group">
-      <div ui-sref="profile">Profile</div>
-      <div>Logout</div>
+    <div class="outer navbar-group" ng-hide="$state.includes('home')">
+      <a ui-sref="profile">Profile</a>
+      <a>Logout</a>
     </div>
 
   </div>

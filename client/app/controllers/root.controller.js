@@ -4,10 +4,10 @@ angular.module('Tour-Track')
 
 .controller('RootCtrl', ['$scope', 'CredsFactory', function($scope, CredsFactory) {
     
-    $scope.mapboxToken = "";
+  $scope.mapboxToken = "";
 
-    CredsFactory.getMapBoxToken().then( token => {
-      $scope.mapboxToken = token;
-    });
+  CredsFactory.getMapBoxToken().then( token => {
+    $scope.mapboxToken = token;
+  });
 
 }]);

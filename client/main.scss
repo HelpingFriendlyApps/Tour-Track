@@ -1,6 +1,6 @@
 $black: #313131;
 
-
+@import 'sass/home';
 @import 'sass/map';
 @import 'sass/map-modal';
 @import 'sass/navbar';
@@ -13,6 +13,7 @@ $black: #313131;
 
 
 body {
+  height: 100vh;
   font-family: 'Oswald', sans-serif;
   color: $black;
 }
@@ -39,4 +40,30 @@ nav {
   bottom: 0;
   height: 40px;
   width: 100%;
+}
+
+
+
+
+a {
+  color: $black;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: $black;
+    transition: width .3s;
+  }
+
+  &:hover {
+    color: $black;
+    text-decoration: none;
+  }
+
+  &:hover:after {
+    width: 100%;
+  }
+
 }

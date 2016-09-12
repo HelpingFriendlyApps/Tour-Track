@@ -4,7 +4,15 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
 
   $urlRouterProvider.otherwise('/');
 
-  $stateProvider.state('shows', {
+  $stateProvider
+
+  .state('home', {
+    url: '/',
+    templateUrl: '../views/home.html',
+    controller: 'HomeCtrl'
+  })
+
+  .state('shows', {
     url: '/shows',
     templateUrl: '../views/shows.html',
     controller: 'ShowsCtrl',
@@ -13,7 +21,9 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
         return ShowFactory.getAllShows();
       }
     }
-  }).state('show', {
+  })
+
+  .state('show', {
     url: '/show/:date',
     templateUrl: '../views/show.html',
     controller: 'ShowCtrl',
@@ -25,7 +35,9 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
         return ShowFactory.getSetlistByDate($stateParams.date);
       }
     }
-  }).state('songs', {
+  })
+
+  .state('songs', {
     url: '/songs',
     templateUrl: '../views/songs.html',
     controller: 'SongsCtrl',
@@ -34,7 +46,9 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
         return SongFactory.getAllSongs();
       }
     }
-  }).state('song', {
+  })
+
+  .state('song', {
     url: '/song/:songId',
     templateUrl: '../views/song.html',
     controller: 'SongCtrl',

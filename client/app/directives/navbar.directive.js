@@ -7,14 +7,6 @@ angular.module('Tour-Track').directive('navbar', ['$rootScope', function($rootSc
     templateUrl: 'views/directives/navbar.html',
     link: function(scope, element, attrs) {
 
-      // scope.toggleFullscreen = function() {
-      //   $rootScope.fullscreen = !$rootScope.fullscreen;
-      // }
-
-      // scope.fullscreenToFalse = function() {
-      //   if($rootScope.fullscreen) $rootScope.fullscreen = false;
-      // }
-
     }
   };
 }]);
