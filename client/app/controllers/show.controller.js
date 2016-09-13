@@ -4,8 +4,9 @@ angular.module('Tour-Track')
 .controller('ShowCtrl', ['$scope', 'show', 'setlist', 'ShowFactory', function($scope, show, setlist, ShowFactory) {
 
   $scope.show = show;
+  $scope.setlist = ShowFactory.splitSetlistBySet(setlist);
+
   console.log('$scope.show', $scope.show)
-  $scope.setlist = setlist;
   console.log('$scope.setlist', $scope.setlist)
 
   $scope.show.date = moment($scope.show.date);

@@ -2,9 +2,9 @@
   <div class="container">
 
     <div class="outer navbar-group" ng-hide="$state.includes('home')">
-      <a ui-sref="shows">Shows</a>
-      <a ui-sref="songs">Songs</a>
-      <a ui-sref="tours">Tours</a>
+      <a ui-sref="shows" ui-sref-active="active">Shows</a>
+      <a ui-sref="songs" ui-sref-active="active">Songs</a>
+      <a ui-sref="tours" ui-sref-active="active">Tours</a>
     </div>
 
     <div class="title navbar-group">
@@ -12,7 +12,7 @@
     </div>
 
     <div class="outer navbar-group" ng-hide="$state.includes('home')">
-      <a ui-sref="profile">Profile</a>
+      <a ui-sref="profile" ui-sref-active="active">Profile</a>
       <a>Logout</a>
     </div>
 

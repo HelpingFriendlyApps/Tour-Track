@@ -1,4 +1,5 @@
 $black: #313131;
+$red: #F15C5C;
 
 @import 'sass/home';
 @import 'sass/map';
@@ -11,6 +12,10 @@ $black: #313131;
 @import 'sass/song-box';
 @import 'sass/songs';
 
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
 
 body {
   height: 100vh;
@@ -54,11 +59,15 @@ a {
     width: 0;
     height: 2px;
     background: $black;
+    // background: $red;
     transition: width .3s;
   }
 
   &:hover {
     color: $black;
+  }
+
+  &:hover, &:active, &:focus {
     text-decoration: none;
   }
 

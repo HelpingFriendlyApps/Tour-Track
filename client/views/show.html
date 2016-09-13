@@ -13,9 +13,13 @@
     </div>
 
     <div class="setlist">
-      <ul>
-        <li ng-repeat="song in setlist">{{ song.title }}</li>
-      </ul>
+      <div ng-repeat="set in setlist">
+        <!-- <div>{{ set[0].set }}</div> -->
+        <div ng-repeat="song in set">
+          <span ng-show="$index === 0">{{ song.set }}</span>
+          {{ song.title }}
+        </div>
+      </div>
     </div>
 
     <map class="map" token="mapboxToken" lng-lat="[show.longitude, show.latitude]"></map>
