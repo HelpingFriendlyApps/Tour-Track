@@ -1,4 +1,6 @@
-$black: #313131;
+// $black: #313131;
+$black: #222;
+$white: white;
 $red: #F15C5C;
 
 @import 'sass/home';
@@ -9,6 +11,7 @@ $red: #F15C5C;
 @import 'sass/show';
 @import 'sass/show-box';
 @import 'sass/shows';
+@import 'sass/sidebar';
 @import 'sass/song-box';
 @import 'sass/songs';
 
@@ -19,14 +22,29 @@ $red: #F15C5C;
 
 body {
   height: 100vh;
-  font-family: 'Oswald', sans-serif;
   color: $black;
+  // font-family: 'Oswald', sans-serif;
+
+  line-height: 1;
+  font-family: simplon-norm,helvetica,sans-serif;
+  font-size: 12px;
 }
 
-nav {
+// nav {
+//   position: fixed;
+//   height: 50px;
+//   width: 100%;
+//   z-index: 1;
+// }
+
+sidebar {
   position: fixed;
-  height: 50px;
-  width: 100%;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background: $white;
+  border-right: 1px solid rgba(0,0,0,0.1);
   z-index: 1;
 }
 
@@ -50,29 +68,29 @@ nav {
 
 
 
-a {
-  color: $black;
+// a {
+//   color: $black;
 
-  &:after {
-    content: "";
-    display: block;
-    width: 0;
-    height: 2px;
-    background: $black;
-    // background: $red;
-    transition: width .3s;
-  }
+//   &:after {
+//     content: "";
+//     display: block;
+//     width: 0;
+//     height: 2px;
+//     background: $black;
+//     // background: $red;
+//     transition: width .3s;
+//   }
 
-  &:hover {
-    color: $black;
-  }
+//   &:hover {
+//     color: $black;
+//   }
 
-  &:hover, &:active, &:focus {
-    text-decoration: none;
-  }
+//   &:hover, &:active, &:focus {
+//     text-decoration: none;
+//   }
 
-  &:hover:after {
-    width: 100%;
-  }
+//   &:hover:after {
+//     width: 100%;
+//   }
 
-}
+// }

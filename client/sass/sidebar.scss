@@ -1,0 +1,35 @@
+.sidebar-container {
+  height: 100%;
+  width: 100%;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    white-space: nowrap;
+    margin: 15px 0;
+    position: absolute;
+
+    &:first-of-type {
+      top: 0;
+      right: 0;
+      transform: rotate(-90deg) translate(0, -100%);
+      transform-origin: 100% 0;
+    }
+
+    &:last-of-type {
+      bottom: 0;
+      left: 0;
+      transform: rotate(-90deg) translate(0, 100%);
+      transform-origin: 0 100%;
+    }
+
+  }
+
+  li {
+    line-height: 50px;
+    display: inline-block;
+    margin: 0 5px;
+  }
+
+}

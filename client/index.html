@@ -7,7 +7,8 @@
 	
 	<body ng-app="Tour-Track" ng-controller="RootCtrl">
 		
-		<navbar id="navbar"></navbar>
+		<!-- <navbar id="navbar"></navbar> -->
+		<sidebar></sidebar>
 		<div class="content" ui-view></div>
 		<player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
 		
@@ -81,6 +82,7 @@
 		<script src="app/directives/player.directive.js"></script>
 		<script src="app/directives/show-box.directive.js"></script>
 		<script src="app/directives/shows-search-bar.directive.js"></script>
+		<script src="app/directives/sidebar.directive.js"></script>
 		<script src="app/directives/song-box.directive.js"></script>
 		
 		<script src="app/factories/creds.factory.js"></script>
