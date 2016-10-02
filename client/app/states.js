@@ -12,6 +12,23 @@ app.config(["$stateProvider", "$urlRouterProvider", "$locationProvider", functio
     controller: 'HomeCtrl'
   })
 
+  .state('login', {
+    url: '/login',
+    templateUrl: '../views/login.html',
+    controller: 'LoginCtrl'
+  })
+
+  .state('profile', {
+    url: '/profile/',
+    templateUrl: '../views/profile.html',
+    controller: 'ProfileCtrl',
+    resolve: {
+      allShows: function(ShowFactory) {
+        return ShowFactory.getAllShows();
+      }
+    }
+  })
+
   .state('shows', {
     url: '/shows',
     templateUrl: '../views/shows.html',

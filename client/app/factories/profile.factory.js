@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('Tour-Track')
-  .factory('Profile', ["$http", "$sce", function($http, $sce) {
+  .factory('ProfileFactory', ["$http", "$sce", function($http, $sce) {
 
   return {
     userObject : function(){
