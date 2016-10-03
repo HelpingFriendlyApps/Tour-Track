@@ -1,8 +1,32 @@
 <div class="shows-container">
+  
+  <div class="shows-search">
+    <ul>
+      <li ng-repeat="show in showSearchList track by $index" ng-click="selectShow($event, show)">
+        <span>{{ show.date | date: 'M/dd' }}</span>
+        <span>{{ show.location }}</span>
+      </li>
+    </ul>  
+  </div>
+
+  <div class="shows-list">
+    <!-- <ul infinite-scroll="loadMoreShows()" infinite-scroll-distance="2"> -->
+    <ul infinite-scroll="loadMoreShows()" infinite-scroll-distance="2">
+    <!-- <ul infinite-scroll="loadMoreShows()"> -->
+      <li ng-repeat="show in showList track by $index">
+        <show show="show"></show>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+<!-- <div class="shows-container">
 
   <div class="top-container">
     <map token="mapboxToken"></map>
-    <!-- <shows-search-bar></shows-search-bar> -->
   </div>
 
   <div class="container">
@@ -13,4 +37,4 @@
     </div>
   </div>
   
-</div>
+</div> -->

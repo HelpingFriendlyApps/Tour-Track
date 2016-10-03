@@ -9,6 +9,7 @@ angular.module('Tour-Track').directive('songBox', ['TrackFactory', function(Trac
       song: '='
     },
     link: function(scope, element, attrs) {
+      console.log('element', element)
 
       TrackFactory.getTracksBySongId(scope.song.id).then(tracks => {
         scope.timesPlayed = tracks.length;

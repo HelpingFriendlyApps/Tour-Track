@@ -1,68 +1,134 @@
 .shows-container {
   display: flex;
-  flex-direction: column;
 
-  .top-container {
-    flex: 0 0 370px;
-    display: flex;
-    flex-direction: column;
-
-    map {
-      flex: 1;
-    }
-
-    #map {
-      height: 300px;
-      -webkit-filter: grayscale(100%);
-      filter: grayscale(100%);
-    }
-
-    .shows-search-bar {
-      flex: 0 0 50px;
-      background: $black;
-      width: 100%;
-      height: 50px;
-      z-index: 1;
-    }
-
-    .fix-search-bar {
-      position: fixed;
-      top: 50px;
-    }
+  & > * {
+    flex: 1;
+    // border: 1px solid $black;
   }
 
-  .custom-container {
-    margin: 0 auto;
-    max-width: 70em;
-  }
+  .shows-search {
+    flex: 0.3;
+    position: relative;
 
-  .show-items {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-
-    .show-item {
-      margin: 15px;
-      padding: 15px;
-      flex: 1 1 300px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border: 1px solid $black;
-      color: $black;
-
-
-      &:after {
-        content: "";
-        padding-bottom: 100%; // THIS IS WHAT I'VE BEEN WAITING FOR
-      }
-    }
-
-    .show-box-container {
+    ul {
       position: absolute;
-      height: calc(100% - 30px);
-      width: calc(100% - 30px);
+      top: 50%;
+      left: 0;
+      height: 200px;
+      white-space: nowrap;
+      transform: translate(0, -50%);
+      margin-left: 75px;
+
+      // border: 1px solid black;
+      overflow: scroll;
     }
+
+    li {
+      margin: 10px 0;
+    }
+
   }
 
+  .shows-list {
+    flex: 0.7;
+    // height: 100%;
+
+    ul, li {
+    // ul {
+      // height: 100%;
+    }
+
+    ul {
+      overflow: scroll;
+      height: 100%;
+    }
+
+    li {
+      height: 100%;
+    }
+
+    // .show-container {
+    //   height: 100%;
+    // }
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+// .shows-container {
+//   display: flex;
+//   flex-direction: column;
+
+//   .top-container {
+//     flex: 0 0 370px;
+//     display: flex;
+//     flex-direction: column;
+
+//     map {
+//       flex: 1;
+//     }
+
+//     #map {
+//       height: 300px;
+//       -webkit-filter: grayscale(100%);
+//       filter: grayscale(100%);
+//     }
+
+//     .shows-search-bar {
+//       flex: 0 0 50px;
+//       background: $black;
+//       width: 100%;
+//       height: 50px;
+//       z-index: 1;
+//     }
+
+//     .fix-search-bar {
+//       position: fixed;
+//       top: 50px;
+//     }
+//   }
+
+//   .custom-container {
+//     margin: 0 auto;
+//     max-width: 70em;
+//   }
+
+//   .show-items {
+//     display: flex;
+//     flex-flow: row wrap;
+//     justify-content: center;
+
+//     .show-item {
+//       margin: 15px;
+//       padding: 15px;
+//       flex: 1 1 300px;
+//       display: flex;
+//       flex-direction: column;
+//       position: relative;
+//       border: 1px solid $black;
+//       color: $black;
+
+
+//       &:after {
+//         content: "";
+//         padding-bottom: 100%; // THIS IS WHAT I'VE BEEN WAITING FOR
+//       }
+//     }
+
+//     .show-box-container {
+//       position: absolute;
+//       height: calc(100% - 30px);
+//       width: calc(100% - 30px);
+//     }
+//   }
+
+// }

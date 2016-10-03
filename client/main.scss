@@ -3,6 +3,8 @@ $black: #222;
 $white: white;
 $red: #F15C5C;
 
+$player-height: 40px;
+
 @import 'sass/home';
 @import 'sass/map';
 @import 'sass/map-modal';
@@ -52,7 +54,8 @@ sidebar {
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 50px 0 40px;
+  // padding: 50px 0 40px;
+  padding: 0 0 40px 50px;
   & > * {
     flex: 1;
   }
@@ -61,8 +64,18 @@ sidebar {
 .player-container {
   position: fixed;
   bottom: 0;
-  height: 40px;
+  height: $player-height;
   width: 100%;
+}
+
+
+
+
+// Misc Stuff
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 
