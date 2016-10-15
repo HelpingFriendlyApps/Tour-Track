@@ -16,7 +16,7 @@ angular.module('Tour-Track')
 
     console.log('$scope.showSearchList', $scope.showSearchList)
 
-    $scope.showList = $scope.showSearchList.slice(0,2);
+    $scope.showList = $scope.showSearchList.slice(0,8);
     reverseOrder = false;
 
     console.log('$scope.showList', $scope.showList)

@@ -10,7 +10,7 @@
 		<!-- <navbar id="navbar"></navbar> -->
 		<sidebar></sidebar>
 		<div class="content" ui-view></div>
-		<player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player>
+		<!-- <player song='player.song' show-songs-list='player.showSongsList' up-next='player.upNext' add-to-up-next='player.addToUpNext'></player> -->
 		<playlist ng-class="{'playlist-open': playListOpen}"></playlist>
 		
 	</body>
@@ -87,6 +87,7 @@
 		<script src="app/directives/shows-search-bar.directive.js"></script>
 		<script src="app/directives/sidebar.directive.js"></script>
 		<script src="app/directives/song-box.directive.js"></script>
+		<script src="app/directives/when-scroll-ends.directive.js"></script>
 		
 		<script src="app/factories/creds.factory.js"></script>
 		<script src="app/factories/map.factory.js"></script>

@@ -10,14 +10,21 @@
   </div>
 
   <div class="shows-list">
-    <!-- <ul infinite-scroll="loadMoreShows()" infinite-scroll-distance="2"> -->
-    <ul infinite-scroll="loadMoreShows()" infinite-scroll-distance="2">
-    <!-- <ul infinite-scroll="loadMoreShows()"> -->
+    <div infinite-scroll="loadMoreShows()">
+      <div class="show-item" ng-repeat="show in showList track by $index">
+        <!-- <show show="show"></show> -->
+        {{ show }}
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="shows-list">
+    <ul whenscrollends="loadMoreShows()">
       <li ng-repeat="show in showList track by $index">
         <show show="show"></show>
       </li>
     </ul>
-  </div>
+  </div> -->
 
 </div>
 
