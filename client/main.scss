@@ -4,12 +4,14 @@ $white: white;
 $red: #F15C5C;
 
 $player-height: 40px;
+$sidebar-width: 50px;
 
 @import 'sass/home';
 @import 'sass/map';
 @import 'sass/map-modal';
 @import 'sass/navbar';
 @import 'sass/player';
+@import 'sass/playlist';
 @import 'sass/show';
 @import 'sass/show-box';
 @import 'sass/shows';
@@ -43,11 +45,11 @@ sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 50px;
+  width: $sidebar-width;
   height: 100%;
   background: $white;
   border-right: 1px solid rgba(0,0,0,0.1);
-  z-index: 1;
+  z-index: 2;
 }
 
 .content {
@@ -66,8 +68,16 @@ sidebar {
   bottom: 0;
   height: $player-height;
   width: 100%;
+  z-index: 1;
 }
 
+playlist {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 
 
 

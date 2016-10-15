@@ -9,9 +9,17 @@ app.directive('player', ["$rootScope", "$sessionStorage", function($rootScope, $
       song: '=',
       showSongsList: '=',
       upNext: '=',
-      addToUpNext: '='
+      addToUpNext: '=',
     },
     link: function(scope, element, attrs) {
+
+      scope.togglePlaylist = function() {
+        console.log('toggled')
+        $rootScope.playListOpen = !$rootScope.playListOpen;
+        console.log('$rootScope.playListOpen', $rootScope.playListOpen)
+      }
+
+
 
       var audio = document.createElement('audio');
       scope.isPlaying = false;

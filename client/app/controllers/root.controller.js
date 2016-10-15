@@ -15,6 +15,9 @@ angular.module('Tour-Track')
     console.log('$rootScope.user', $rootScope.user)
   });
 
+  $rootScope.playListOpen = false;
+  
+
 
 
 }]);
