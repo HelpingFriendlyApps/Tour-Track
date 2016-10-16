@@ -9,7 +9,6 @@ angular.module('Tour-Track').directive('show', [function() {
       show: '='
     },
     link: function(scope, element, attrs) {
-      console.log('element', element)
 
     }
   };

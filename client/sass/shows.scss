@@ -1,69 +1,72 @@
 .shows-container {
-  display: flex;
-
-  & > * {
-    flex: 1;
-    // border: 1px solid $black;
-  }
 
   .shows-search {
-    flex: 0.3;
-    position: relative;
+    height: 100%;
+    width: 30%;
+    position: fixed;
+    text-transform: lowercase;
 
     ul {
+      height: 400px;
+      width: 100%;
       position: absolute;
       top: 50%;
       left: 0;
-      height: 200px;
       white-space: nowrap;
       transform: translate(0, -50%);
-      margin-left: 75px;
-
-      // border: 1px solid black;
+      padding-left: 65px;
       overflow: scroll;
     }
 
-    li {
-      margin: 10px 0;
+    .show-item {
+      color: $black;
+      position: relative;
+      margin-bottom: 15px;
+      outline: none;
+      
+      &:before {
+        content: attr(data-date);
+        height: 100%;
+        position: absolute;
+        top: 0;
+        color: $grey;
+      }
+
+      .location {
+        height: 16px;
+        padding-left: 40px;
+      }
+
+    }
+
+    .active {
+      margin-bottom: 5px;
+
+      &:before {
+        color: $black;
+        line-height: 80px;
+      }
+
+      .location {
+        height: 70px;
+        font-size: 52px;
+        font-weight: 700;
+        letter-spacing: -3px;
+      }
+
     }
 
   }
 
+
+
   .shows-list {
-    flex: 0.7;
-
-    background: mistyrose;
-    // overflow: scroll;    
-
-    .show-item {
-      height: 120px;
-    }
-
-    ul {
-      border: 1px solid black;
-      display: block;
-      overflow: hidden;
-    }
+    width: 70%;
+    float: right;
 
     li {
-      height: 120px;
+      height: 100vh;
     }
-
-    // ul {
-    //   overflow: scroll;
-    //   // height: 100%;
-    //   height: 500px;
-    //   border: 1px solid black;
-    // }
-
-    // li {
-    //   // height: 100%;
-    //   height: 500px;
-    // }
-
-    // .show-container {
-    //   height: 100%;
-    // }
 
   }
 }
