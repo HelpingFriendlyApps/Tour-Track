@@ -6,7 +6,7 @@
     position: fixed;
     text-transform: lowercase;
 
-    ul {
+    .show-list-wrapper {
       height: 400px;
       width: 100%;
       position: absolute;
@@ -14,47 +14,55 @@
       left: 0;
       white-space: nowrap;
       transform: translate(0, -50%);
-      padding-left: 65px;
-      overflow: scroll;
-    }
-
-    .show-item {
-      color: $black;
-      position: relative;
-      margin-bottom: 15px;
-      outline: none;
       
-      &:before {
-        content: attr(data-date);
+      ul.show-list {
+        // height: 400px;
         height: 100%;
-        position: absolute;
-        top: 0;
-        color: $grey;
+        width: 100%;
+        padding-left: 65px;
+        overflow: scroll;
       }
 
-      .location {
-        height: 16px;
-        padding-left: 40px;
-      }
-
-    }
-
-    .active {
-      margin-bottom: 5px;
-
-      &:before {
+      .show-item {
         color: $black;
-        line-height: 80px;
+        position: relative;
+        margin-bottom: 15px;
+        outline: none;
+        
+        &:before {
+          content: attr(data-date);
+          height: 100%;
+          position: absolute;
+          top: 0;
+          color: $grey;
+        }
+
+        .location {
+          height: 16px;
+          padding-left: 40px;
+        }
+
       }
 
-      .location {
-        height: 70px;
-        font-size: 52px;
-        font-weight: 700;
-        letter-spacing: -3px;
-      }
+      .active {
+        margin-bottom: 5px;
 
+        &:before {
+          color: $black;
+          line-height: 80px;
+        }
+
+        .location {
+          height: 70px;
+          font-size: 52px;
+          font-weight: 700;
+          letter-spacing: -3px;
+        }
+
+      }
+      
     }
+
 
   }
 

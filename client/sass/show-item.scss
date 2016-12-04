@@ -1,0 +1,28 @@
+show-item {
+  height: 100%;
+  
+  .show-item-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .setlist {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: stretch;
+
+      & > * {
+        flex: 0 0 50%;
+      }
+
+      li.song {
+        height: auto;
+        display: flex;
+      }
+
+    }
+
+  }
+}

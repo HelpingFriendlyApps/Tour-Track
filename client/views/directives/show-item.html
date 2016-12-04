@@ -1,0 +1,14 @@
+<div class="show-item-container">
+  <div>show</div>
+  <div>{{ show }}</div>
+
+  <div class="setlist">
+    <ul class="set" ng-repeat="set in sets">
+      <li class="song" ng-repeat="song in set">
+        <div>{{ song.title }}</div>
+        <div>{{ song.duration | millisecondsToDate | date:'m:ss' }}</div>
+      </li>
+    </ul>
+  </div>
+
+</div>

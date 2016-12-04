@@ -10,7 +10,8 @@ var app = angular.module('Tour-Track', [
   'ngStorage',
   'infinite-scroll',
   'angularMoment',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'angular-inview'
 ])
 
 .run(function($state, $rootScope) {

@@ -1,18 +1,21 @@
 <div class="shows-container">
   
   <div class="shows-search">
-    <ul class="show-list">
-      <li class="show-item" id="searchAnchor_{{$index}}" ng-class="{'active': show == selectedShow}" data-date="{{ show.date | date: 'M.dd' }}" ng-repeat="show in showSearchList track by $index" ng-click="selectShow(show, $index)">
-        <!-- <div class="date">{{ show.date | date: 'M/dd' }}</div> -->
-        <div class="location overflow-ellipsis">{{ show.location }}</div>
-      </li>
-    </ul>  
+    <div class="show-list-wrapper">
+      <ul class="show-list">
+        <li class="show-item" id="searchAnchor_{{$index}}" ng-class="{'active': show == selectedShow}" data-date="{{ show.date | date: 'M.dd' }}" ng-repeat="show in showSearchList track by $index" ng-click="selectShowInSearch(show, $index)">
+          <!-- <div class="date">{{ show.date | date: 'M/dd' }}</div> -->
+          <div class="location overflow-ellipsis">{{ show.location }}</div>
+        </li>
+      </ul>  
+    </div>
   </div>
 
   <div class="shows-list">
     <ul infinite-scroll="loadMoreShows()">
-      <li class="show-item" id="listAnchor_{{$index}}" ng-repeat="show in showList track by $index">
-        <show show="show"></show>
+      <!-- <li class="show-item" id="listAnchor_{{$index}}" in-view="show.inView = $inview" in-view-options="{ viewportOffset: '[0, 0]'}" ng-repeat="show in showList track by $index"> -->
+      <li class="show-item" id="listAnchor_{{$index}}" in-view="show.inView = $inview" ng-repeat="show in showList track by $index">
+        <show-item show="show"></show-item>
         <!-- {{ show }} -->
       </li>
     </ul>
